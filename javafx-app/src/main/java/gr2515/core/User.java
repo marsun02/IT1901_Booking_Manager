@@ -1,7 +1,6 @@
 package gr2515.core;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 public class User {
     
@@ -10,7 +9,7 @@ public class User {
     private String name;
     private String email;
     private String phoneNumber;
-    private List<Booking> bookings; // Bookings made by this user
+    private Set<Booking> bookings; // Bookings made by this user
 
 
     // Constructor
@@ -20,7 +19,7 @@ public class User {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.bookings = new ArrayList<>();
+        this.bookings = new HashSet<>();
     }
 
 
@@ -66,16 +65,12 @@ public class User {
 
     //Add a booking
     public void addBooking(Booking booking){
-        if (!bookings.contain(booking)){
             bookings.add(booking);
-        }
     }
 
 
     //Remove a booking
     public void removeBooking(Booking booking){
-        if (bookings.contain(booking)){
             bookings.remove(booking);
-        }
     }
 }
