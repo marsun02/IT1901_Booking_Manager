@@ -8,29 +8,35 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import gr2515.core.Table;
 
+
+//Unit tests for table class
+
 public class TableTest {
     
+    
+//Testing Constructor
+@Test
+void TestConstructorTable(){
+    Table table = new Table(1, 6);
 
-    @Test
-    void TestBookTable(){
-        Table table = new Table(2, 2);
-        Date now = new Date();
+    assertEquals(table.getId(), 1);
+    assertEquals(table.getSpots(), 6);
+    assertFalse(table.getStatus());
+    assertNull(table.getCustomerName());
+    assertNull(table.getBookedTime());
+}
 
-        table.book("Ola Nordmann", now);
+//Testing book method
+@Test
+void TestBookTable(){
+    Table table = new Table(2, 2);
+    Date now = new Date();
 
-        assertTrue(table.getStatus());
-        assertEquals("Ola Nordmann", table.getCustomerName());
-        assertEquals(now, table.getBookedTime());
-    }
+    table.book("Ola Nordmann", now);
 
-    @Test
-    void TestConstructorTable(){
-        Table table = new Table(1, 6);
+    assertTrue(table.getStatus());
+    assertEquals("Ola Nordmann", table.getCustomerName());
+    assertEquals(now, table.getBookedTime());
+}
 
-        assertEquals(table.getId(), 1);
-        assertEquals(table.getSpots(), 6);
-        assertFalse(table.getStatus());
-        assertNull(table.getCustomerName());
-        assertNull(table.getBookedTime());
-    }
 }
