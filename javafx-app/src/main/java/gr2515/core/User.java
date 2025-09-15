@@ -9,7 +9,6 @@ public class User {
     private String name;
     private String email;
     private String phoneNumber;
-    private Set<Booking> bookings; // Bookings made by this user
 
 
     // Constructor
@@ -19,7 +18,6 @@ public class User {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.bookings = new HashSet<>();
     }
 
 
@@ -40,8 +38,8 @@ public class User {
         this.phoneNumber = phonenumber;
     }
 
-
     //Getters
+    
     public int getId(){
         return id;
     }
@@ -57,20 +55,3 @@ public class User {
     public String getPhoneNumber(){
         return phoneNumber;
     }
-
-    public List<Booking> getBookings(){ //Returns a copy, instead of the orginal list, to prevent external modification
-        return new ArrayList<>(bookings);
-    }
-
-
-    //Add a booking
-    public void addBooking(Booking booking){
-            bookings.add(booking);
-    }
-
-
-    //Remove a booking
-    public void removeBooking(Booking booking){
-            bookings.remove(booking);
-    }
-}
