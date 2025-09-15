@@ -1,5 +1,6 @@
 package gr2515.core;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class User {
@@ -9,6 +10,7 @@ public class User {
     private String name;
     private String email;
     private String phoneNumber;
+    private Set<Table> bookedTables;
 
 
     // Constructor
@@ -18,25 +20,16 @@ public class User {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.bookedTables = new HashSet<>();
     }
 
+    // public void setEmail(String email){
+    //     this.email = email;
+    // }
 
-    //Setters
-    public void setId(int id){
-        this.id = id;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public void setEmail(String email){
-        this.email = email;
-    }
-
-    public void setPhoneNumber(String phonenumber){
-        this.phoneNumber = phonenumber;
-    }
+    // public void setPhoneNumber(String phonenumber){
+    //     this.phoneNumber = phonenumber;
+    // }
 
     //Getters
     
@@ -55,3 +48,16 @@ public class User {
     public String getPhoneNumber(){
         return phoneNumber;
     }
+
+    public Set<Table> getBookedTables(){
+        return bookedTables;
+    }
+
+    void addTable(Table table){
+        if (!bookedTables.contains(table) && !table.getStatus()){
+            // TODO: handle the event that table is already booked by this or another user
+        }
+
+        this.bookedTables.add(table);
+    }
+}
