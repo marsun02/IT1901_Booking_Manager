@@ -13,7 +13,7 @@ import gr2515.core.Table;
 
 public class TableTest {
     
-    
+
 //Testing Constructor
 @Test
 void TestConstructorTable(){
@@ -39,4 +39,15 @@ void TestBookTable(){
     assertEquals(now, table.getBookedTime());
 }
 
+//Testing free method on a table that isn't booked
+@Test
+void TestFreeTableWhenNotBooked(){
+    Table table = new Table(3, 7);
+
+    table.free();
+
+    assertFalse(table.getStatus());
+    assertNull(table.getCustomerName());
+    assertNull(table.getBookedTime());
+}
 }
