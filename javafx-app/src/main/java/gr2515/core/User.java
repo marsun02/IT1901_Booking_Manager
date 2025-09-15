@@ -50,7 +50,7 @@ public class User {
     }
 
     public Set<Table> getBookedTables(){
-        return bookedTables;
+        return new HashSet<>(bookedTables);
     }
 
     void addTable(Table table){
