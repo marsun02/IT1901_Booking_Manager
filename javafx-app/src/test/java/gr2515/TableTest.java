@@ -23,4 +23,14 @@ public class TableTest {
         assertEquals(now, table.getBookedTime());
     }
 
+    @Test
+    void TestConstructorTable(){
+        Table table = new Table(1, 6);
+
+        assertEquals(table.getId(), 1);
+        assertEquals(table.getSpots(), 6);
+        assertFalse(table.getStatus());
+        assertNull(table.getCustomerName());
+        assertNull(table.getBookedTime());
+    }
 }
