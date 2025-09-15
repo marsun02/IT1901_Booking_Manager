@@ -1,0 +1,13 @@
+# Release 1
+## Plan for project
+For this project we organized a meeting with the whole group, and started browsing ideas for what could become a great project to work on, and a project that we could develop even further. We also wrote down our availbility throughout the week and decided on a weekly meeting date, where everyone would get together and we worked on the project. We decided to meet up on Thursdays as this is the day of the week where we have most availability throughout the whole day. Sometimes Thursdays won't work, so we are in dialogue in a Messenger group chat every day in case we need to switch up one of the days, and we figure out other days of the week that might be a good meeting time. 
+
+## Team Structure
+We get our inspiration from the course SCRUM-model. In this project we set up a sprint, which is a short, time-boxed period where we work to complete a set amount of work within a specific time frame. The work areas of the project has been stated in the beginning of our sprint. Our SCRUM-model is set up in GitHub where we will add Milestones for all submissions throughout the course. On GitHub we also set up issues and assign the work to different group members so that everyone are aware of what areas of work they will complete. Issues will created in a "Todo" stage, where it will be assigned to a member. The member will then work on the issue (In Progress), and when completed, it will be put up for review in the stage "In review". Another group member will review the changes made a optionally commment on any changes that needs to be made. If everything looks good, the issue will be closed and put in the final stage which is called "Done".
+
+## Procedure
+We decided to set the time frame of the first submission at two weeks. In the beginning we made several issues with relevance to the group project. These issues were assigned to different group members and worked on individually. Each issue focused on one specific problem, and every issue was reviewed by another group member to double check that the code was working properly. The code were then merged into the main file. 
+
+## Plan Forward / Notes
+
+We have implemented three classes (User, Table and Restaurant), but we are aware that they are not connected to the javafx page as of this submission. However, our next main goal is to connect the java logic to the javafx-app. Moving forward we will continue working with the same strategy that we have done till now. 
