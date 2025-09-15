@@ -12,7 +12,7 @@ classDiagram
         Date bookedTime
 
         boolean getStatus()
-        int getI()
+        int getId()
         int getSpots()
         String getUser()
         Date getBookedTime()
@@ -23,12 +23,12 @@ classDiagram
     class User{
         int id
         String name
-        Set&lt;Table&gt bookedTables
+        Collection&lt;Table&gt bookedTables
         int phonenumber
 
         int getId()
         int getName()
-        Set&lt;Table&gt getBookedTables()
+        Collection&lt;Table&gt getBookedTables()
         Table getBookedTableById(int id)
         int getPhonenumber
         void bookTable()
@@ -41,7 +41,8 @@ classDiagram
         String name
 
         int getId()
-        Set&lt;Table&gt getTables()
+        Collection&lt;Table&gt getTables()
+        Collection&lt;Table&gt getAvailableTables()
         Table getTableById(int id)
         String getName()
         void addTable()
