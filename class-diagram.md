@@ -24,11 +24,13 @@ classDiagram
         int id
         String name
         Set&lt;Table&gt bookedTables
+        int phonenumber
 
         int getId()
         int getName()
         Set&lt;Table&gt getBookedTables()
         Table getBookedTableById(int id)
+        int getPhonenumber
         void bookTable()
         void freeTable()
     }
