@@ -9,18 +9,20 @@ public class User {
     private int id;
     private String name;
     private String email;
+    private String password;
     private String phoneNumber;
     private Set<Table> bookedTables;
 
 
     // Constructor
-    public User(int id, String name, String email, String phoneNumber){
+    public User(int id, String name, String email, String phoneNumber, String password){
 
         this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.bookedTables = new HashSet<>();
+        this.password = password;
     }
 
     // public void setEmail(String email){
@@ -53,7 +55,7 @@ public class User {
         return new HashSet<>(bookedTables);
     }
 
-    void addTable(Table table){
+    public void addTable(Table table){
         if (!bookedTables.contains(table) && !table.getStatus()){
             // TODO: handle the event that table is already booked by this or another user
         }
@@ -61,11 +63,15 @@ public class User {
         this.bookedTables.add(table);
     }
 
-    void removeTable(Table table){
+    public void removeTable(Table table){
         if (!this.getBookedTables().contains(table)){
             // TODO: handle event that user tries to remove a table that is not booked
         }
 
         this.bookedTables.remove(table);
+    }
+
+    public boolean checkNamePassword(String name, String password){
+        return (this.name == name && this.password == password);
     }
 }
