@@ -60,4 +60,12 @@ public class User {
 
         this.bookedTables.add(table);
     }
+
+    void removeTable(Table table){
+        if (!this.getBookedTables().contains(table)){
+            // TODO: handle event that user tries to remove a table that is not booked
+        }
+
+        this.bookedTables.remove(table);
+    }
 }

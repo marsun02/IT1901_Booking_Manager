@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
@@ -94,6 +95,8 @@ public class ControllerExample {
             }
         }
 
+        // Initialize restaurant and user collections
+        // Restaurants collection have temporary contents
         restaurants = new HashSet<>();
         restaurants.add(new Restaurant("Restaurant_0", 0));
         restaurants.add(new Restaurant("Restaurant_1", 1));
@@ -102,12 +105,27 @@ public class ControllerExample {
         users = new HashSet<>();
     }
 
+    // Add a user with automatically assigned id
     public void addUser(String name, String email, String phoneNumber){
         users.add(new User(userId, name, email, phoneNumber));
         userId++;
     }
 
+    // Add table to a restaurant of choice with automatically assigned id
     public void addTableToRestaurant(Restaurant restaurant, int spots){
         restaurant.addTable(new Table(restaurant.getNextTableId(), spots));
+    }
+
+    public void bookTableAsUser(User user, Table table, Restaurant restaurant){
+        if (!users.contains(user)){
+            // TODO: handle event that user does not exist
+        }
+
+        if (!restaurant.getAvailableTables().contains(table)){
+            // TODO: handle event that restaurant doesn't contain table
+        }
+
+        // Set bookedTime to new Date() temporarily before time functionality is implemented
+        table.book(user, new Date());
     }
 }
