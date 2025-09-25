@@ -7,9 +7,13 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
+import gr2515.core.Restaurant;
+import gr2515.core.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -40,6 +44,10 @@ public class ControllerExample {
 
     @FXML
     private Button table6;
+
+    private Collection<Restaurant> restaurants;
+    private Collection<User> users;
+    private int userId = 0;
 
     @FXML
     private void onTableClicked(ActionEvent event){
@@ -77,11 +85,24 @@ public class ControllerExample {
     @FXML
     public void initialize(){
         ArrayList<String> bookedTables = alreadyBookedTables();
+
         List<Button> allTables = List.of(table1,table2,table3,table4,table5,table6);
         for (Button table : allTables) { // this whole for-loop makes sure to disable the tables that are already booked
             if (bookedTables.contains(table.getText())){
                 table.setDisable(true);
             }
         }
+
+        restaurants = new HashSet<>();
+        restaurants.add(new Restaurant("Restaurant_0", 0));
+        restaurants.add(new Restaurant("Restaurant_1", 1));
+        restaurants.add(new Restaurant("Restaurant_2", 2));
+
+        users = new HashSet<>();
+    }
+
+    public void addUser(String name, String email, String phoneNumber){
+        users.add(new User(userId, name, email, phoneNumber));
+        userId++;
     }
 }
