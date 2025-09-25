@@ -50,6 +50,7 @@ public class ControllerExample {
     private Collection<Restaurant> restaurants;
     private Collection<User> users;
     private int userId = 0;
+    private User loggedInUser;
 
     @FXML
     private void onTableClicked(ActionEvent event){
@@ -116,8 +117,9 @@ public class ControllerExample {
         restaurant.addTable(new Table(restaurant.getNextTableId(), spots));
     }
 
-    public void bookTableAsUser(User user, Table table, Restaurant restaurant){
-        if (!users.contains(user)){
+    // books table for the logged in user
+    public void bookTableAsUser(Table table, Restaurant restaurant){
+        if (!users.contains(loggedInUser)){
             // TODO: handle event that user does not exist
         }
 
@@ -126,6 +128,36 @@ public class ControllerExample {
         }
 
         // Set bookedTime to new Date() temporarily before time functionality is implemented
-        table.book(user, new Date());
+        table.book(loggedInUser, new Date());
+    }
+
+    // log in
+    public void logIn(String userName, String password){
+        User userLoggingIn = null;
+        
+        for (User user : users){
+            if (user.checkNamePassword(userName, password)){
+                userLoggingIn = user;
+            }
+        }
+
+        if (loggedInUser == null){
+            // TODO: handle event that no user matches the username and password
+        }
+
+        if (this.loggedInUser == userLoggingIn){
+            // TODO: handle event that user that tries to log in is already logged in
+        }
+        
+        if (!users.contains(userLoggingIn)){
+            // TODO: handle event that user that tries to log in doesn't exist
+        }
+
+        this.loggedInUser = userLoggingIn;
+    }
+
+    // log out
+    public void logOut(){
+        this.loggedInUser = null;
     }
 }
