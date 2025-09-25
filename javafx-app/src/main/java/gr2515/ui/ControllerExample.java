@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import gr2515.core.Restaurant;
+import gr2515.core.Table;
 import gr2515.core.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -104,5 +105,9 @@ public class ControllerExample {
     public void addUser(String name, String email, String phoneNumber){
         users.add(new User(userId, name, email, phoneNumber));
         userId++;
+    }
+
+    public void addTableToRestaurant(Restaurant restaurant, int spots){
+        restaurant.addTable(new Table(restaurant.getNextTableId(), spots));
     }
 }
