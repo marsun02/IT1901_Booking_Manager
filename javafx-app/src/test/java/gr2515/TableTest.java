@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import gr2515.core.Table;
+import gr2515.core.User;
 
 
 //Unit tests for table class
@@ -22,7 +23,7 @@ void TestConstructorTable(){
     assertEquals(table.getId(), 1);
     assertEquals(table.getSpots(), 6);
     assertFalse(table.getStatus());
-    assertNull(table.getCustomerName());
+    assertNull(table.getBookingUser());
     assertNull(table.getBookedTime());
 }
 
@@ -31,11 +32,12 @@ void TestConstructorTable(){
 void TestBookTable(){
     Table table = new Table(2, 2);
     Date now = new Date();
+    User user = new User(0, null, null, null, null);
 
-    table.book("Ola Nordmann", now);
+    table.book(user, now);
 
     assertTrue(table.getStatus());
-    assertEquals("Ola Nordmann", table.getCustomerName());
+    assertEquals(user, table.getBookingUser());
     assertEquals(now, table.getBookedTime());
 }
 
@@ -44,10 +46,10 @@ void TestBookTable(){
 void TestFreeTableWhenNotBooked(){
     Table table = new Table(3, 7);
 
-    table.free();
+    table.freeTable();
 
     assertFalse(table.getStatus());
-    assertNull(table.getCustomerName());
+    assertNull(table.getBookingUser());
     assertNull(table.getBookedTime());
 }
 }

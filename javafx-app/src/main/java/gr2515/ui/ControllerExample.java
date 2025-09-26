@@ -107,8 +107,8 @@ public class ControllerExample {
     }
 
     // Add a user with automatically assigned id
-    public void addUser(String name, String email, String phoneNumber){
-        users.add(new User(userId, name, email, phoneNumber));
+    public void addUser(String name, String email, String phoneNumber, String password){
+        users.add(new User(userId, name, email, phoneNumber, password));
         userId++;
     }
 
