@@ -59,7 +59,7 @@ public class Restaurant {
     public Collection<Table> getAvailableTables() {
         Collection<Table> available = new HashSet<>();
         for (Table table : tables) {
-            if (table.isBooked()){
+            if (!table.isBooked()){
                 available.add(table);
             }
         }
