@@ -50,7 +50,8 @@ public class Restaurant {
     }
 
     // Adds table to collection of tables
-    public void addTable(Table table){
+    public void addTable(int spots){
+        Table table = new Table(this.tableId, spots);
         this.tables.add(table);
         incrementTableId();
     }
