@@ -8,6 +8,7 @@ public class Restaurant {
     private Collection<Table> tables = new HashSet<>();
     private int id;
     private String name;
+    private int tableId = 0;
 
     // Constructor
     public Restaurant(String name, int id){
@@ -32,6 +33,7 @@ public class Restaurant {
     // Adds table to collection of tables
     public void addTable(Table table){
         this.tables.add(table);
+        incrementTableId();
     }
     
     // Puts all the available tables in a list and returns them
@@ -53,5 +55,13 @@ public class Restaurant {
             }
         }
         return null;
+    }
+
+    public int getNextTableId(){
+        return tableId;
+    }
+
+    private void incrementTableId(){
+        tableId++;
     }
 }
