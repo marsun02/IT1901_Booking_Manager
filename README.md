@@ -49,8 +49,10 @@ Run tests with this command:
 ---
 
 ## Versions and dependencies
-   Java/javafx 23.0.1
-   Maven: 17
+   - Java/javafx 23.0.1
+   - Maven: 17
+   - Jackson: 2.5.3
+   - JUnit: 5.11.0
 
 ---
 
