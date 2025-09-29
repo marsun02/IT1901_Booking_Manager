@@ -45,7 +45,9 @@ void TestBookTable(){
 @Test
 void TestFreeTableWhenNotBooked(){
     Table table = new Table(3, 7);
+    User user = new User(0, null, null, null, null);
 
+    table.book(user, null);
     table.freeTable();
 
     assertFalse(table.getStatus());
