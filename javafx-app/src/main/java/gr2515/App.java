@@ -14,14 +14,13 @@ public class App extends Application{
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("StaticProjectExample.fxml"))));
         primaryStage.setTitle("Booking page");
         primaryStage.show();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
-    catch (Exception e){
-        e.printStackTrace();
-    }
-    }  
 
     public static void main(String[] args) {
         launch(args);
     }
-
 }
