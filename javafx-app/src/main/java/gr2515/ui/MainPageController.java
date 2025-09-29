@@ -1,8 +1,13 @@
 package gr2515.ui;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import gr2515.core.Restaurant;
 import gr2515.core.Table;
 import gr2515.core.User;
@@ -13,6 +18,11 @@ public class MainPageController {
     private Collection<User> users;
     private int userId = 0;
     private User loggedInUser;
+    private File restaurantDataFile = new File("javafx-app/data/restaurants.json");
+
+    public MainPageController(){
+        initialize();
+    }
 
     @FXML
     public void initialize(){
@@ -24,6 +34,15 @@ public class MainPageController {
     
     public void saveRestaurants(){
         // TODO: Save restaurants in collection to json file in data directory
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
+
+        try {
+            // String jsonString = objectMapper.writeValueAsString(restaurant);
+            objectMapper.writeValue(restaurantDataFile, restaurants);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadRestaurants(){
@@ -83,5 +102,16 @@ public class MainPageController {
     // log out
     public void logOut(){
         this.loggedInUser = null;
+    }
+
+    public static void main(String[] args) {
+        // MainPageController tesController = new MainPageController();
+        // System.out.println(tesController);
+        // Restaurant test0 = new Restaurant("test0", 0);
+        // test0.addTable(new Table(0, 0));
+        // Restaurant test1 = new Restaurant("test1", 1);
+        // tesController.restaurants.add(test0);
+        // tesController.restaurants.add(test1);
+        // tesController.saveRestaurants();
     }
 }
