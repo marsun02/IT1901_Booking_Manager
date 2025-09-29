@@ -16,7 +16,7 @@
          <children>
             <Label alignment="CENTER" minWidth="-Infinity" prefHeight="81.0" prefWidth="599.0" text="Booking.no">
                <font>
-                  <Font size="25.0" />
+                  <Font size="35.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
@@ -63,7 +63,7 @@
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets />
+                        <Insets right="20.0" />
                      </HBox.margin>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -105,6 +105,9 @@
                            </graphic>
                         </Button>
                      </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
                   </VBox>
                </children>
             </HBox>
