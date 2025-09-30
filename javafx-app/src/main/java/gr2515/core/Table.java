@@ -22,9 +22,25 @@ public class Table {
         this.bookedTime = null;
     }
 
-    // Getters and setters
+    public Table(){
 
-    public boolean getStatus(){
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public void setSpots(int spots){
+        this.spots = spots;
+    }
+
+    public void setBooked(boolean isBooked){
+        this.isBooked = isBooked;
+    }
+
+    // Getters
+
+    public boolean isBooked(){
         return isBooked;
     }
 
