@@ -22,6 +22,9 @@ public class Table {
         this.bookedTime = null;
     }
 
+    // empty constructors and setters for Jackson
+    // not intended for normal use
+
     public Table(){
 
     }
