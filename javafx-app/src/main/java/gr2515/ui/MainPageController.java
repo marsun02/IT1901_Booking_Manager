@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -29,11 +30,10 @@ public class MainPageController {
         restaurants = new HashSet<>();
         users = new HashSet<>();
 
-        loadRestaurants();
+        // loadRestaurants();
     }
     
     public void saveRestaurants(){
-        // TODO: Save restaurants in collection to json file in data directory
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
 
@@ -47,6 +47,12 @@ public class MainPageController {
 
     public void loadRestaurants(){
         // TODO: Load contents in json file to collection
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            restaurants = objectMapper.readValue(restaurantDataFile, new TypeReference<HashSet<Restaurant>>() {});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Add a user with automatically assigned id
@@ -104,14 +110,20 @@ public class MainPageController {
         this.loggedInUser = null;
     }
 
-    public static void main(String[] args) {
-        // MainPageController tesController = new MainPageController();
-        // System.out.println(tesController);
-        // Restaurant test0 = new Restaurant("test0", 0);
-        // test0.addTable(new Table(0, 0));
-        // Restaurant test1 = new Restaurant("test1", 1);
-        // tesController.restaurants.add(test0);
-        // tesController.restaurants.add(test1);
-        // tesController.saveRestaurants();
-    }
+    // public static void main(String[] args) {
+    //     MainPageController tesController = new MainPageController();
+    //     // System.out.println(tesController);
+    //     // Restaurant test0 = new Restaurant("test0", 0);
+    //     // test0.addTable(new Table(0, 0));
+    //     // Restaurant test1 = new Restaurant("test1", 1);
+    //     // tesController.restaurants.add(test0);
+    //     // tesController.restaurants.add(test1);
+    //     // tesController.saveRestaurants();
+
+    //     tesController.loadRestaurants();
+    //     for (Restaurant restaurant : tesController.restaurants){
+    //         System.out.println(restaurant);
+    //     }
+        
+    // }
 }

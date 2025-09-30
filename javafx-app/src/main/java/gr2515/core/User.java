@@ -56,7 +56,7 @@ public class User {
     }
 
     public void addTable(Table table){
-        if (!bookedTables.contains(table) && !table.getStatus()){
+        if (!bookedTables.contains(table) && !table.isBooked()){
             // TODO: handle the event that table is already booked by this or another user
         }
 
