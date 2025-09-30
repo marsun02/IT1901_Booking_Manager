@@ -3,6 +3,7 @@ package gr2515;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
@@ -11,7 +12,8 @@ public class App extends Application{
     @Override
     public void start(Stage primaryStage){
         try {
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("StaticProjectExample.fxml"))));
+        // primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("StaticProjectExample.fxml"))));
+        primaryStage.setScene(new Scene(new AnchorPane(), 800, 600));
         primaryStage.setTitle("Booking page");
         primaryStage.show();
         }
