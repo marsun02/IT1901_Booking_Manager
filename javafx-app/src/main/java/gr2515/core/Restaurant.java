@@ -17,6 +17,9 @@ public class Restaurant {
         this.tables = new HashSet<>();
     }
 
+    // empty constructor and setters for Jackson
+    // not intended for normal use
+
     public Restaurant(){
 
     }
