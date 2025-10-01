@@ -22,7 +22,9 @@ public class App extends Application{
         BookingPageController bookingController = bookingLoader.getController();
 
         mainController.setStage(this, primaryStage, bookingScene, mainScene);
+        mainController.setBookingPageController(bookingController);
         bookingController.setStage(this, primaryStage, bookingScene, mainScene);
+        bookingController.setMainPageController(mainController);
 
         primaryStage.setScene(bookingScene);
         primaryStage.setTitle("Booking page");
