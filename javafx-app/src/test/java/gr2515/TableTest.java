@@ -22,7 +22,7 @@ void TestConstructorTable(){
 
     assertEquals(table.getId(), 1);
     assertEquals(table.getSpots(), 6);
-    assertFalse(table.getStatus());
+    assertFalse(table.isBooked());
     assertNull(table.getBookingUser());
     assertNull(table.getBookedTime());
 }
@@ -36,7 +36,7 @@ void TestBookTable(){
 
     table.book(user, now);
 
-    assertTrue(table.getStatus());
+    assertTrue(table.isBooked());
     assertEquals(user, table.getBookingUser());
     assertEquals(now, table.getBookedTime());
 }
@@ -45,10 +45,12 @@ void TestBookTable(){
 @Test
 void TestFreeTableWhenNotBooked(){
     Table table = new Table(3, 7);
+    User user = new User(0, null, null, null, null);
 
+    table.book(user, null);
     table.freeTable();
 
-    assertFalse(table.getStatus());
+    assertFalse(table.isBooked());
     assertNull(table.getBookingUser());
     assertNull(table.getBookedTime());
 }
