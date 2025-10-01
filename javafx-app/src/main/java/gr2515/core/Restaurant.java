@@ -8,12 +8,32 @@ public class Restaurant {
     private Collection<Table> tables = new HashSet<>();
     private int id;
     private String name;
+    private int tableId = 0;
 
     // Constructor
     public Restaurant(String name, int id){
         this.name = name;
         this.id = id;
         this.tables = new HashSet<>();
+    }
+
+    // empty constructor and setters for Jackson
+    // not intended for normal use
+
+    public Restaurant(){
+
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public void setNextTableId(int nextTableId){
+        this.tableId = nextTableId;
     }
 
     // Getters
@@ -32,13 +52,14 @@ public class Restaurant {
     // Adds table to collection of tables
     public void addTable(Table table){
         this.tables.add(table);
+        incrementTableId();
     }
     
     // Puts all the available tables in a list and returns them
     public Collection<Table> getAvailableTables() {
         Collection<Table> available = new HashSet<>();
         for (Table table : tables) {
-            if (table.getStatus()){
+            if (table.isBooked()){
                 available.add(table);
             }
         }
@@ -53,5 +74,13 @@ public class Restaurant {
             }
         }
         return null;
+    }
+
+    public int getNextTableId(){
+        return tableId;
+    }
+
+    private void incrementTableId(){
+        tableId++;
     }
 }

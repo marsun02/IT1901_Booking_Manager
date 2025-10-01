@@ -9,7 +9,7 @@ public class Table {
     private boolean isBooked;
     private int id;
     private int spots;
-    private String customerName;
+    private User bookingUser;
     private Date bookedTime;
 
     // Constructor
@@ -18,13 +18,32 @@ public class Table {
         this.id = id;
         this.spots = spots;
         this.isBooked = false;
-        this.customerName = null;
+        this.bookingUser = null;
         this.bookedTime = null;
     }
 
-    // Getters and setters
+    // empty constructors and setters for Jackson
+    // not intended for normal use
 
-    public boolean getStatus(){
+    public Table(){
+
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public void setSpots(int spots){
+        this.spots = spots;
+    }
+
+    public void setBooked(boolean isBooked){
+        this.isBooked = isBooked;
+    }
+
+    // Getters
+
+    public boolean isBooked(){
         return isBooked;
     }
 
@@ -36,8 +55,8 @@ public class Table {
         return this.spots;
     }
 
-    public String getCustomerName(){
-        return customerName;
+    public User getBookingUser(){
+        return bookingUser;
     }
 
     public Date getBookedTime(){
@@ -46,23 +65,25 @@ public class Table {
 
     // Booking and freeing methods
 
-    public void book(String customerName, Date bookedTime){
+    public void book(User bookingUser, Date bookedTime){
         if (this.isBooked){
             // TODO: Display a message that states the table is taken
         }
 
         this.bookedTime = bookedTime;
-        this.customerName = customerName;
+        this.bookingUser = bookingUser;
         this.isBooked = true;
+        bookingUser.addTable(this);
     }
 
-    public void free(){
+    public void freeTable(){
         if (!this.isBooked){
             // TODO: Display message that states the table already is vacant
         }
 
+        bookingUser.removeTable(this);
         this.bookedTime = null;
-        this.customerName = null;
+        this.bookingUser = null;
         this.isBooked = false;
     }
 }
