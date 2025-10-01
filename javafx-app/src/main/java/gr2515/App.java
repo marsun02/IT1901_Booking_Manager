@@ -27,7 +27,7 @@ public class App extends Application{
         bookingController.setMainPageController(mainController);
 
         primaryStage.setScene(bookingScene);
-        primaryStage.setTitle("Booking page");
+        primaryStage.setTitle("Booking manager");
         primaryStage.show();
 
 

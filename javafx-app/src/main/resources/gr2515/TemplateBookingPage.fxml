@@ -46,7 +46,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="414.0" spacing="20.0" style="-fx-background-color: navy;">
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="414.0" spacing="20.0" style="-fx-background-color: beige;">
                <children>
                   <TextField prefHeight="26.0" prefWidth="175.0" promptText="Fornavn" />
                   <TextField prefHeight="26.0" prefWidth="175.0" promptText="Etternavn" />
