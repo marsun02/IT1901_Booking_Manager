@@ -17,7 +17,7 @@
     <HBox alignment="CENTER" layoutX="-2.0" layoutY="469.0" prefHeight="100.0" prefWidth="1007.0" spacing="100.0">
          <children>
             <Button mnemonicParsing="false" text="Tilbakestill" />
-            <Button fx:id="closeButton" alignment="CENTER" mnemonicParsing="false" onAction="#returnToMainPage" text="Lukk" />
+            <Button fx:id="closeButton" alignment="CENTER" mnemonicParsing="false" onAction="#enterRestaurantPage" text="Lukk" />
          </children>
       </HBox>
 </AnchorPane>

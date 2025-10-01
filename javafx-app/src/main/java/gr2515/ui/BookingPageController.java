@@ -38,12 +38,12 @@ public class BookingPageController {
 
 
 
-
+    @FXML
     public void returnToMainPage(){
         primaryStage.setScene(mainScene);
     }
 
-    public void setCurrentResturantDisplayed(Restaurant restaurant){
+    public void setCurrentRestaurantDisplayed(Restaurant restaurant){
         this.restaurant = restaurant;
         restaurantLabel.setText("Velkommen til " + restaurant.getName());
     }
