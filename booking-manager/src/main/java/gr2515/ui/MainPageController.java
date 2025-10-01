@@ -19,7 +19,7 @@ public class MainPageController {
     private Collection<User> users;
     private int userId = 0;
     private User loggedInUser;
-    private File restaurantDataFile = new File("javafx-app/data/restaurants.json");
+    private File restaurantDataFile = new File("booking-manager/data/restaurants.json");
 
     public MainPageController(){
         initialize();
@@ -33,20 +33,20 @@ public class MainPageController {
         // loadRestaurants();
     }
     
+    // saves the current restaurants in restaurants hashSet to file
     public void saveRestaurants(){
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
 
         try {
-            // String jsonString = objectMapper.writeValueAsString(restaurant);
             objectMapper.writeValue(restaurantDataFile, restaurants);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    // loads restaurants from file to hashSet
     public void loadRestaurants(){
-        // TODO: Load contents in json file to collection
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             restaurants = objectMapper.readValue(restaurantDataFile, new TypeReference<HashSet<Restaurant>>() {});
