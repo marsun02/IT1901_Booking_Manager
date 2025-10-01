@@ -9,10 +9,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import gr2515.App;
 import gr2515.core.Restaurant;
 import gr2515.core.Table;
 import gr2515.core.User;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class MainPageController {
     private Collection<Restaurant> restaurants;
@@ -20,6 +23,11 @@ public class MainPageController {
     private int userId = 0;
     private User loggedInUser;
     private File restaurantDataFile = new File("javafx-app/data/restaurants.json");
+
+    private App app;
+    private Stage primaryStage;
+    private Scene bookingScene;
+    private Scene mainScene;
 
     public MainPageController(){
         initialize();
@@ -108,6 +116,22 @@ public class MainPageController {
     // log out
     public void logOut(){
         this.loggedInUser = null;
+    }
+
+    public void setStage(
+        App app,
+        Stage primaryStage,
+        Scene bookingScene,
+        Scene mainScene
+    ) {
+      this.app = app;
+      this.primaryStage = primaryStage;
+      this.bookingScene = bookingScene;
+      this.mainScene = mainScene;
+    }
+
+    public void returnToMainPage(){
+        
     }
 
     // public static void main(String[] args) {
