@@ -13,6 +13,7 @@ import gr2515.App;
 import gr2515.core.Restaurant;
 import gr2515.core.Table;
 import gr2515.core.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -139,9 +140,10 @@ public class MainPageController {
         this.bookingPageController = controller;
     }
 
-    public void enterRestaurantPage(){
+    @FXML
+    public void enterRestaurantPage(ActionEvent event){
         primaryStage.setScene(bookingScene);
-        bookingPageController.setCurrentResturantDisplayed(null);
+        bookingPageController.setCurrentRestaurantDisplayed(null);
     }
 
     // public static void main(String[] args) {
