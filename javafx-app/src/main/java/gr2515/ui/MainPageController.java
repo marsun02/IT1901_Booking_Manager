@@ -29,6 +29,7 @@ public class MainPageController {
     private Stage primaryStage;
     private Scene bookingScene;
     private Scene mainScene;
+    private BookingPageController bookingPageController;
 
     @FXML
     private AnchorPane anchorpane;
@@ -134,8 +135,13 @@ public class MainPageController {
       this.mainScene = mainScene;
     }
 
-    public void returnToMainPage(){
+    public void setBookingPageController(BookingPageController controller){
+        this.bookingPageController = controller;
+    }
+
+    public void enterRestaurantPage(){
         primaryStage.setScene(bookingScene);
+        bookingPageController.setCurrentResturantDisplayed(null);
     }
 
     // public static void main(String[] args) {
