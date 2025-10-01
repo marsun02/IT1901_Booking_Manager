@@ -15,6 +15,7 @@ import gr2515.core.Table;
 import gr2515.core.User;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainPageController {
@@ -28,6 +29,9 @@ public class MainPageController {
     private Stage primaryStage;
     private Scene bookingScene;
     private Scene mainScene;
+
+    @FXML
+    private AnchorPane anchorpane;
 
     public MainPageController(){
         initialize();
@@ -131,7 +135,7 @@ public class MainPageController {
     }
 
     public void returnToMainPage(){
-        
+        primaryStage.setScene(bookingScene);
     }
 
     // public static void main(String[] args) {
