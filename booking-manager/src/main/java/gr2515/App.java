@@ -13,7 +13,7 @@ public class App extends Application{
     @Override
     public void start(Stage primaryStage){
         try {
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("test.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainPage.fxml"));
         Scene mainScene = new Scene(mainLoader.load());
         MainPageController mainController = mainLoader.getController();
 
@@ -26,7 +26,7 @@ public class App extends Application{
         bookingController.setStage(this, primaryStage, bookingScene, mainScene);
         bookingController.setMainPageController(mainController);
 
-        primaryStage.setScene(bookingScene);
+        primaryStage.setScene(mainScene);
         primaryStage.setTitle("Booking manager");
         primaryStage.show();
 

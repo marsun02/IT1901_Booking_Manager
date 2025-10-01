@@ -1,19 +1,37 @@
 [ {
-  "tables" : [ {
-    "id" : 0,
-    "spots" : 0,
-    "bookingUser" : null,
-    "bookedTime" : null,
-    "booked" : false
-  } ],
-  "id" : 0,
-  "name" : "test0",
-  "nextTableId" : 1,
+  "tables" : [ ],
+  "id" : 3,
+  "name" : "Barbecuez",
+  "nextTableId" : 0,
+  "availableTables" : [ ]
+}, {
+  "tables" : [ ],
+  "id" : 5,
+  "name" : "Steak House",
+  "nextTableId" : 0,
   "availableTables" : [ ]
 }, {
   "tables" : [ ],
   "id" : 1,
-  "name" : "test1",
+  "name" : "Szechuan",
+  "nextTableId" : 0,
+  "availableTables" : [ ]
+}, {
+  "tables" : [ ],
+  "id" : 0,
+  "name" : "Frati",
+  "nextTableId" : 0,
+  "availableTables" : [ ]
+}, {
+  "tables" : [ ],
+  "id" : 2,
+  "name" : "Burger King",
+  "nextTableId" : 0,
+  "availableTables" : [ ]
+}, {
+  "tables" : [ ],
+  "id" : 4,
+  "name" : "McDonalds",
   "nextTableId" : 0,
   "availableTables" : [ ]
 } ]
