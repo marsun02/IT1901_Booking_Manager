@@ -1,0 +1,19 @@
+[ {
+  "tables" : [ {
+    "id" : 0,
+    "spots" : 0,
+    "bookingUser" : null,
+    "bookedTime" : null,
+    "booked" : false
+  } ],
+  "id" : 0,
+  "name" : "test0",
+  "nextTableId" : 1,
+  "availableTables" : [ ]
+}, {
+  "tables" : [ ],
+  "id" : 1,
+  "name" : "test1",
+  "nextTableId" : 0,
+  "availableTables" : [ ]
+} ]

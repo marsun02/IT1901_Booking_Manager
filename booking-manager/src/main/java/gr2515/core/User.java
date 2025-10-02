@@ -25,14 +25,6 @@ public class User {
         this.password = password;
     }
 
-    // public void setEmail(String email){
-    //     this.email = email;
-    // }
-
-    // public void setPhoneNumber(String phonenumber){
-    //     this.phoneNumber = phonenumber;
-    // }
-
     //Getters
     
     public int getId(){
@@ -56,7 +48,7 @@ public class User {
     }
 
     public void addTable(Table table){
-        if (!bookedTables.contains(table) && !table.getStatus()){
+        if (!bookedTables.contains(table) && !table.isBooked()){
             // TODO: handle the event that table is already booked by this or another user
         }
 
