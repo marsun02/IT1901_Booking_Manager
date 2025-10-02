@@ -45,3 +45,5 @@ Before requesting a review, please go through all the points below. Following th
 * Any deviances from the above list should be stated in PR description with a reason for deviancy.
 * Request a review from the relevant contributors.
 * Be ready to promptly address feedback and make any changes suggested by the reviewer.
+
+**[Back to root README](../../README.md)**
