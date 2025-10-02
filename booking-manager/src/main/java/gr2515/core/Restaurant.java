@@ -3,6 +3,8 @@ package gr2515.core;
 import java.util.Collection;
 import java.util.HashSet;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Restaurant {
     // Private fields
     private Collection<Table> tables = new HashSet<>();
@@ -56,10 +58,11 @@ public class Restaurant {
     }
     
     // Puts all the available tables in a list and returns them
+    @JsonIgnore // This is to prevent jackson from writing this as a seperate field
     public Collection<Table> getAvailableTables() {
         Collection<Table> available = new HashSet<>();
         for (Table table : tables) {
-            if (table.isBooked()){
+            if (!table.isBooked()){
                 available.add(table);
             }
         }
