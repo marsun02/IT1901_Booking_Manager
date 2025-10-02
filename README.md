@@ -67,6 +67,14 @@ Before committing, please read our guide on how to format commit messages using 
 
 ---
 
+## Before opening PR
+
+Follow the checklist provided below before opening a new PR to ensure smooth colaberation between contributors.
+
+**[Read the cehecklist here](docs/work-practices/pr-checklist.md)**
+
+---
+
 ## Release spesific documentation
 ### Release 1
 [Use of ai-tools in release](docs/release1/ai-tools.md)
