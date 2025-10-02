@@ -36,16 +36,21 @@ classDiagram
     }
 
     class Restaurant{
+        
+        HashSet&lt;Table&gt; tables
         int id
-        Set&lt;Table&gt; tables
         String name
+        int TableId
 
-        int getId()
+
         Collection&lt;Table&gt getTables()
+        String getName()
+        int getId()
+        void addTable()
         Collection&lt;Table&gt getAvailableTables()
         Table getTableById(int id)
-        String getName()
-        void addTable()
+        int getNextTableId()
+        void incrementTableId()
     }
 
     User "1" -- "*" Table : Booking
