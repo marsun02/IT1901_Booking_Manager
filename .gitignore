@@ -2,6 +2,7 @@
 
 # Compiled class files
 booking-manager/target/
+javafx-app/
 *.class
 
 # Maven local repository (optional)
