@@ -11,3 +11,5 @@ We decided to set the time frame of the first submission at two weeks. In the be
 ## Plan Forward / Notes
 
 We have implemented three classes (User, Table and Restaurant), but we are aware that they are not connected to the javafx page as of this submission. However, our next main goal is to connect the java logic to the javafx-app. Moving forward we will continue working with the same strategy that we have done till now. 
+
+**[Back to root README](../../README.md)**
