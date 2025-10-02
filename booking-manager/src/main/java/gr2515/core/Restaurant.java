@@ -49,9 +49,8 @@ public class Restaurant {
         return this.id;
     }
 
-    // Adds table to collection of tables
-    public void addTable(int spots){
-        Table table = new Table(this.tableId, spots);
+     // Adds table to collection of tables
+     public void addTable(Table table){
         this.tables.add(table);
         incrementTableId();
     }
