@@ -1,6 +1,9 @@
 package gr2515.ui;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -9,17 +12,34 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import gr2515.App;
 import gr2515.core.Restaurant;
 import gr2515.core.Table;
 import gr2515.core.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class MainPageController {
     private Collection<Restaurant> restaurants;
     private Collection<User> users;
     private int userId = 0;
     private User loggedInUser;
-    private File restaurantDataFile = new File("booking-manager/data/restaurants.json");
+    String[] restaurantNames = {"Frati", "Szechuan", "Burger King", "Barbecuez", "McDonalds", "Steak House"};
+    Path path = Paths.get("data", "restaurants.json");
+    private final File restaurantDataFile = path.toFile(); // Universal file path we can use to access BookedTables.txt
+
+    private App app;
+    private Stage primaryStage;
+    private Scene bookingScene;
+    private Scene mainScene;
+    private BookingPageController bookingPageController;
+
+    @FXML
+    private AnchorPane anchorpane;
 
     public MainPageController(){
         initialize();
@@ -30,7 +50,16 @@ public class MainPageController {
         restaurants = new HashSet<>();
         users = new HashSet<>();
 
-        // loadRestaurants();
+        loadRestaurants();
+
+        // If the data file does not contain the correct amount of restaurants, it creates 6 new ones
+        if (restaurants.size() != 6){ 
+            restaurants.clear();
+            for (int i = 0; i < restaurantNames.length; i++) {
+                restaurants.add(new Restaurant(restaurantNames[i], i));
+            }
+            saveRestaurants();
+        }
     }
     
     // saves the current restaurants in restaurants hashSet to file
@@ -108,6 +137,42 @@ public class MainPageController {
     // log out
     public void logOut(){
         this.loggedInUser = null;
+    }
+
+    public void setStage(
+        App app,
+        Stage primaryStage,
+        Scene bookingScene,
+        Scene mainScene
+    ) {
+      this.app = app;
+      this.primaryStage = primaryStage;
+      this.bookingScene = bookingScene;
+      this.mainScene = mainScene;
+    }
+
+    public void setBookingPageController(BookingPageController controller){
+        this.bookingPageController = controller;
+    }
+    
+    public Restaurant getRestaurantByFxid(String fxid){ 
+        int id = fxid.charAt(fxid.length()- 1) - '0'; // fetches last character in fxid as integer
+
+        for (Restaurant restaurant : restaurants){
+            if (restaurant.getId() == id){
+                return restaurant;
+            }
+        }
+
+        // TODO: This event needs to be handled as the code crashes if restaurant is null
+        return null;
+    }
+
+    @FXML
+    public void enterRestaurantPage(ActionEvent event){
+        primaryStage.setScene(bookingScene);
+        Button source = (Button) event.getSource();
+        bookingPageController.setCurrentRestaurantDisplayed(getRestaurantByFxid(source.getId()));
     }
 
     // public static void main(String[] args) {

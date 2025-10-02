@@ -1,6 +1,7 @@
-gr2515/App.class
-gr2515/ui/MainPageController.class
-gr2515/core/Restaurant.class
-gr2515/ui/MainPageController$1.class
-gr2515/core/User.class
-gr2515/core/Table.class
+gr2515\core\Table.class
+gr2515\ui\MainPageController.class
+gr2515\ui\BookingPageController.class
+gr2515\App.class
+gr2515\core\Restaurant.class
+gr2515\core\User.class
+gr2515\ui\MainPageController$1.class
