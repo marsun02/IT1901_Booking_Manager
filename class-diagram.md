@@ -8,16 +8,16 @@ classDiagram
         boolean isBooked
         int id
         int spots
-        User user
+        User bookingUser
         Date bookedTime
 
-        boolean getStatus()
+        boolean isBooked()
         int getId()
         int getSpots()
-        String getUser()
+        Iser getBookingUser()
         Date getBookedTime()
-        void book(String customerName, Date bookedTime)
-        void free()
+        void book(User bookingUser, Date bookedTime)
+        void freeTable()
     }
 
     class User{
