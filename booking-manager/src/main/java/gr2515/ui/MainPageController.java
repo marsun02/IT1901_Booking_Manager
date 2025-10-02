@@ -54,12 +54,20 @@ public class MainPageController {
 
         // If the data file does not contain the correct amount of restaurants, it creates 6 new ones
         if (restaurants.size() != 6){ 
-            restaurants.clear();
-            for (int i = 0; i < restaurantNames.length; i++) {
-                restaurants.add(new Restaurant(restaurantNames[i], i));
-            }
-            saveRestaurants();
+            initializeAllRestaurants();
         }
+    }
+
+    private void initializeAllRestaurants(){
+        restaurants.clear();
+        for (int i = 0; i < restaurantNames.length; i++) {
+            Restaurant restaurant = new Restaurant(restaurantNames[i], i);
+            restaurants.add(restaurant);
+            for (int j = 0; j < 10; j++) {
+                addTableToRestaurant(restaurant, 6);
+            }
+        }
+        saveRestaurants();
     }
     
     // saves the current restaurants in restaurants hashSet to file
@@ -173,6 +181,16 @@ public class MainPageController {
         primaryStage.setScene(bookingScene);
         Button source = (Button) event.getSource();
         bookingPageController.setCurrentRestaurantDisplayed(getRestaurantByFxid(source.getId()));
+        bookingPageController.setCorrectTables(getRestaurantByFxid(source.getId()).getTables());
+    }
+
+    public void updateRestaurantsInformation(Restaurant bookedRestaurant){
+        for (Restaurant restaurant : restaurants) {
+            if (restaurant.getName().equals(bookedRestaurant.getName())){
+                restaurant = bookedRestaurant;
+            }
+        }
+        saveRestaurants();
     }
 
     // public static void main(String[] args) {
