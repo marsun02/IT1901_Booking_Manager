@@ -8,44 +8,52 @@ classDiagram
         boolean isBooked
         int id
         int spots
-        User user
+        User bookingUser
         Date bookedTime
 
-        boolean getStatus()
+        boolean isBooked()
         int getId()
         int getSpots()
-        String getUser()
+        Iser getBookingUser()
         Date getBookedTime()
-        void book(String customerName, Date bookedTime)
-        void free()
+        void book(User bookingUser, Date bookedTime)
+        void freeTable()
     }
 
     class User{
         int id
         String name
-        Collection&lt;Table&gt bookedTables
-        int phonenumber
+        String email
+        String password
+        String phoneNumber
+        Set&lt;Table&gt bookedTables
 
         int getId()
-        int getName()
-        Collection&lt;Table&gt getBookedTables()
-        Table getBookedTableById(int id)
-        int getPhonenumber
-        void bookTable()
-        void freeTable()
+        String getName()
+        String getEmail()
+        String getPhonenumber()
+        Set&lt;Table&gt getBookedTables()
+        void addTable(Table table)
+        void removeTable(Table table)
+        boolean checkNamePassword(String name, String password)
     }
 
     class Restaurant{
+        
+        HashSet&lt;Table&gt; tables
         int id
-        Set&lt;Table&gt; tables
         String name
+        int TableId
 
-        int getId()
+
         Collection&lt;Table&gt getTables()
+        String getName()
+        int getId()
+        void addTable()
         Collection&lt;Table&gt getAvailableTables()
         Table getTableById(int id)
-        String getName()
-        void addTable()
+        int getNextTableId()
+        void incrementTableId()
     }
 
     User "1" -- "*" Table : Booking
