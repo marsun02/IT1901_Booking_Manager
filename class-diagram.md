@@ -23,16 +23,19 @@ classDiagram
     class User{
         int id
         String name
-        Collection&lt;Table&gt bookedTables
-        int phonenumber
+        String email
+        String password
+        String phoneNumber
+        Set&lt;Table&gt bookedTables
 
         int getId()
-        int getName()
-        Collection&lt;Table&gt getBookedTables()
-        Table getBookedTableById(int id)
-        int getPhonenumber
-        void bookTable()
-        void freeTable()
+        String getName()
+        String getEmail()
+        String getPhonenumber()
+        Set&lt;Table&gt getBookedTables()
+        void addTable(Table table)
+        void removeTable(Table table)
+        boolean checkNamePassword(String name, String password)
     }
 
     class Restaurant{
