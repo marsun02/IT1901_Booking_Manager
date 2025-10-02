@@ -49,8 +49,8 @@ public class Restaurant {
         return this.id;
     }
 
-    // Adds table to collection of tables
-    public void addTable(Table table){
+     // Adds table to collection of tables
+     public void addTable(Table table){
         this.tables.add(table);
         incrementTableId();
     }
@@ -59,7 +59,7 @@ public class Restaurant {
     public Collection<Table> getAvailableTables() {
         Collection<Table> available = new HashSet<>();
         for (Table table : tables) {
-            if (table.isBooked()){
+            if (!table.isBooked()){
                 available.add(table);
             }
         }
