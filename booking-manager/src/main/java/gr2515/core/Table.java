@@ -68,6 +68,7 @@ public class Table {
     public void book(User bookingUser, Date bookedTime){
         if (this.isBooked){
             // TODO: Display a message that states the table is taken
+            return;
         }
 
         this.bookedTime = bookedTime;
@@ -79,6 +80,7 @@ public class Table {
     public void freeTable(){
         if (!this.isBooked){
             // TODO: Display message that states the table already is vacant
+            return;
         }
 
         bookingUser.removeTable(this);
