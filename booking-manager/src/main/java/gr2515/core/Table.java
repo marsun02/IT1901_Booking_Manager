@@ -9,16 +9,14 @@ public class Table {
     private boolean isBooked;
     private int id;
     private int spots;
-    private User bookingUser;
     private Date bookedTime;
 
     // Constructor
 
     public Table(int id, int spots){
-        this.id = id;
+        this.id = id; // TODO: Make sure that id has to be unique
         this.spots = spots;
         this.isBooked = false;
-        this.bookingUser = null;
         this.bookedTime = null;
     }
 
@@ -55,10 +53,6 @@ public class Table {
         return this.spots;
     }
 
-    public User getBookingUser(){
-        return bookingUser;
-    }
-
     public Date getBookedTime(){
         return bookedTime;
     }
@@ -72,12 +66,11 @@ public class Table {
         }
 
         this.bookedTime = bookedTime;
-        this.bookingUser = bookingUser;
         this.isBooked = true;
         bookingUser.addTable(this);
     }
 
-    public void freeTable(){
+    public void freeTable(User bookingUser){
         if (!this.isBooked){
             // TODO: Display message that states the table already is vacant
             return;
@@ -85,7 +78,6 @@ public class Table {
 
         bookingUser.removeTable(this);
         this.bookedTime = null;
-        this.bookingUser = null;
         this.isBooked = false;
     }
 }

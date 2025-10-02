@@ -2,7 +2,11 @@
 
 # Compiled class files
 booking-manager/target/
+javafx-app/
 *.class
+
+# Data files
+data/
 
 # Maven local repository (optional)
 # Uncomment the next line if you want to ignore your local repo (usually not recommended)

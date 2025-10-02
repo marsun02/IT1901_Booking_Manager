@@ -79,13 +79,11 @@ public class UserTest {
         // Book table from the Table side
         table1.book(user, new Date());
         assertTrue(table1.isBooked());
-        assertEquals(user, table1.getBookingUser());
         assertTrue(user.getBookedTables().contains(table1));
 
         // Free the table
-        table1.freeTable();
+        table1.freeTable(user);
         assertFalse(table1.isBooked());
-        assertNull(table1.getBookingUser());
         assertFalse(user.getBookedTables().contains(table1));
     }
 }
