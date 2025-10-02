@@ -9,7 +9,6 @@ public class Table {
     private boolean isBooked;
     private int id;
     private int spots;
-    private User bookingUser;
     private Date bookedTime;
 
     // Constructor
@@ -70,7 +69,7 @@ public class Table {
         bookingUser.addTable(this);
     }
 
-    public void freeTable(){
+    public void freeTable(User bookingUser){
         if (!this.isBooked){
             // TODO: Display message that states the table already is vacant
         }

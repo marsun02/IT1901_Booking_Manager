@@ -65,6 +65,7 @@ public class BookingPageController {
                 table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null);
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 mainPageController.updateRestaurantsInformation(restaurant);
+                returnToMainPage();
                 alert.setHeaderText("Table successfully booked!");
                 alert.showAndWait();
                 return;
