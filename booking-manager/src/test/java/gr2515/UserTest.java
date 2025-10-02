@@ -14,13 +14,11 @@ public class UserTest {
 
     private User user;
     private Table table1;
-    private Table table2;
 
     @BeforeEach
     void setUp() {
         user = new User(1, "Alice", "alice@example.com", "1234567890", "secret");
         table1 = new Table(101, 4);
-        table2 = new Table(102, 2);
     }
 
     @Test
@@ -80,13 +78,13 @@ public class UserTest {
     void testIntegrationWithTableBooking() {
         // Book table from the Table side
         table1.book(user, new Date());
-        assertTrue(table1.getStatus());
+        assertTrue(table1.isBooked());
         assertEquals(user, table1.getBookingUser());
         assertTrue(user.getBookedTables().contains(table1));
 
         // Free the table
         table1.freeTable();
-        assertFalse(table1.getStatus());
+        assertFalse(table1.isBooked());
         assertNull(table1.getBookingUser());
         assertFalse(user.getBookedTables().contains(table1));
     }

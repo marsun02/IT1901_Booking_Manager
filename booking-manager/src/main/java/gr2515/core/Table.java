@@ -22,9 +22,28 @@ public class Table {
         this.bookedTime = null;
     }
 
-    // Getters and setters
+    // empty constructors and setters for Jackson
+    // not intended for normal use
 
-    public boolean getStatus(){
+    public Table(){
+
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public void setSpots(int spots){
+        this.spots = spots;
+    }
+
+    public void setBooked(boolean isBooked){
+        this.isBooked = isBooked;
+    }
+
+    // Getters
+
+    public boolean isBooked(){
         return isBooked;
     }
 

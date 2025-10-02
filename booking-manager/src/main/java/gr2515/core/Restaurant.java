@@ -17,6 +17,25 @@ public class Restaurant {
         this.tables = new HashSet<>();
     }
 
+    // empty constructor and setters for Jackson
+    // not intended for normal use
+
+    public Restaurant(){
+
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public void setNextTableId(int nextTableId){
+        this.tableId = nextTableId;
+    }
+
     // Getters
     public Collection<Table> getTables(){
         return new HashSet<>(this.tables);
@@ -40,7 +59,7 @@ public class Restaurant {
     public Collection<Table> getAvailableTables() {
         Collection<Table> available = new HashSet<>();
         for (Table table : tables) {
-            if (table.getStatus()){
+            if (table.isBooked()){
                 available.add(table);
             }
         }
