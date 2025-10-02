@@ -48,9 +48,9 @@ Select an emoji that visually represents the chosen type (e.g., ✨ for `feat`, 
 Write a short (max 50-70 characters) and descriptive subject line. This line **must** be terminated with the branch number, and co-author info if pair-programming (note that co-author must me referenced by github-name):
 
 * **Solo Commit:** `Your descriptive subject #branch-number`
-    * *Example:* `fix: correct typo in service API #21`
+    * *Example:* `correct typo in service API #21`
 * **Pair Programming:** `Your descriptive subject (Co-authored-by: GitHub-handle) #branch-number`
-    * *Example:* `feat: implement user authentication flow (Co-authored-by: awesome-coder) #33`
+    * *Example:* `implement user authentication flow (Co-authored-by: awesome-coder) #33`
 
 ### Step 5: Write Long Description (Body)
 
