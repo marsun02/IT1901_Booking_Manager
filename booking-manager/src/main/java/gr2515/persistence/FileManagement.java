@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import gr2515.core.Restaurant;
-import gr2515.ui.MainPageController;
 
 public class FileManagement {
     public static void saveRestaurants(File restaurantDataFile, Collection<Restaurant> restaurants){
