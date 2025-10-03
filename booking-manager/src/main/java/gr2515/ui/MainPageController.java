@@ -83,10 +83,6 @@ public class MainPageController {
     public void setBookingPageController(BookingPageController controller){
         this.bookingPageController = controller;
     }
-    
-    // public Restaurant getRestaurantByFxid(String fxid){ 
-    //     return ControllerHelpFunctions.getRestaurantByFxid(fxid, restaurants);
-    // }
 
     @FXML
     public void enterRestaurantPage(ActionEvent event){
