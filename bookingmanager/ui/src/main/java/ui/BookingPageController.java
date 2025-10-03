@@ -3,7 +3,6 @@ package ui;
 
 import java.util.Collection;
 
-import ui.App;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;

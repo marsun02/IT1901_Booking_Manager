@@ -1,4 +1,4 @@
-package core;
+package persistence;
 
 import java.util.Collection;
 
@@ -7,9 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import persistence.Restaurant;
-import persistence.Table;
 
 public class RestaurantTest {
     Restaurant restaurant;
