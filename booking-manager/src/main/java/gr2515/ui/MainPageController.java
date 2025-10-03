@@ -15,6 +15,8 @@ import gr2515.persistence.FileManagement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -82,16 +84,23 @@ public class MainPageController {
         this.bookingPageController = controller;
     }
     
-    public Restaurant getRestaurantByFxid(String fxid){ 
-        return ControllerHelpFunctions.getRestaurantByFxid(fxid, restaurants);
-    }
+    // public Restaurant getRestaurantByFxid(String fxid){ 
+    //     return ControllerHelpFunctions.getRestaurantByFxid(fxid, restaurants);
+    // }
 
     @FXML
     public void enterRestaurantPage(ActionEvent event){
-        primaryStage.setScene(bookingScene);
         Button source = (Button) event.getSource();
-        bookingPageController.setCurrentRestaurantDisplayed(getRestaurantByFxid(source.getId()));
-        bookingPageController.setCorrectTables(getRestaurantByFxid(source.getId()).getTables());
+        Restaurant restaurant = ControllerHelpFunctions.getRestaurantByFxid(source.getId(), restaurants);
+        if (restaurant == null){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setHeaderText("There was an issue when loading restaurant page");
+            alert.showAndWait();
+            return;
+        }
+        primaryStage.setScene(bookingScene);
+        bookingPageController.setCurrentRestaurantDisplayed(restaurant);
+        bookingPageController.setCorrectTables(restaurant.getTables());
     }
 
     // Updates any restaurant-specific changes made in the booking page
@@ -99,21 +108,4 @@ public class MainPageController {
         restaurants = ControllerHelpFunctions.updateRestaurantsInformation(bookedRestaurant, restaurants);
         saveRestaurants();
     }
-
-    // public static void main(String[] args) {
-    //     MainPageController tesController = new MainPageController();
-    //     // System.out.println(tesController);
-    //     // Restaurant test0 = new Restaurant("test0", 0);
-    //     // test0.addTable(new Table(0, 0));
-    //     // Restaurant test1 = new Restaurant("test1", 1);
-    //     // tesController.restaurants.add(test0);
-    //     // tesController.restaurants.add(test1);
-    //     // tesController.saveRestaurants();
-
-    //     tesController.loadRestaurants();
-    //     for (Restaurant restaurant : tesController.restaurants){
-    //         System.out.println(restaurant);
-    //     }
-        
-    // }
 }
