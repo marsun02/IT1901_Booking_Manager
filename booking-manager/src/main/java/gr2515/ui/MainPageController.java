@@ -16,6 +16,7 @@ import gr2515.App;
 import gr2515.core.Restaurant;
 import gr2515.core.Table;
 import gr2515.core.User;
+import gr2515.persistence.FileManagement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -72,24 +73,12 @@ public class MainPageController {
     
     // saves the current restaurants in restaurants hashSet to file
     public void saveRestaurants(){
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
-
-        try {
-            objectMapper.writeValue(restaurantDataFile, restaurants);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        FileManagement.saveRestaurants(restaurantDataFile, restaurants);
     }
 
     // loads restaurants from file to hashSet
     public void loadRestaurants(){
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            restaurants = objectMapper.readValue(restaurantDataFile, new TypeReference<HashSet<Restaurant>>() {});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        restaurants = FileManagement.loadRestaurants(restaurantDataFile);
     }
 
     // Add a user with automatically assigned id
