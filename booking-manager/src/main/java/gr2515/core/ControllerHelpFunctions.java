@@ -3,7 +3,9 @@ package gr2515.core;
 import java.util.Collection;
 
 public class ControllerHelpFunctions {
+
     // MainPageController
+    
     public static Restaurant getRestaurantByFxid(String fxid, Collection<Restaurant> restaurants){ 
         int id = fxid.charAt(fxid.length()- 1) - '0'; // fetches last character in fxid as integer
 

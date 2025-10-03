@@ -53,15 +53,15 @@ public class BookingPageController {
 
     @FXML
     public void bookTable(){
-        Table testTable = null;
+        Table firstAvailableTable = null;
         
-        for (Table table : restaurant.getAvailableTables()) {
-            testTable = table;
+        for (Table table : restaurant.getAvailableTables()) { 
+            firstAvailableTable = table;
             break;
         }
 
         for(Table table : restaurant.getTables()){
-            if (table.equals(testTable)){
+            if (table.equals(firstAvailableTable)){
                 table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null);
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 mainPageController.updateRestaurantsInformation(restaurant);
