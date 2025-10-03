@@ -24,7 +24,7 @@ This is a project that allows users to book tables at restaurants.
 
 2. Navigate to correct directory:
    ```bash
-   cd javafx-app/
+   cd booking-manager/
    ```
 
 3. Compile code:
@@ -34,7 +34,7 @@ This is a project that allows users to book tables at restaurants.
 
 4. Start app:
    ```bash
-   mvn javafx:run
+   mvn javafx:run -pl ui
    ```
 
 ---
@@ -51,7 +51,7 @@ Run tests with this command:
 ## Versions and dependencies
    - Java/javafx 23.0.1
    - Maven: 17
-   - Jackson: 2.5.3
+   - Jackson: 2.10.0
    - JUnit: 5.11.0
 
 ---
