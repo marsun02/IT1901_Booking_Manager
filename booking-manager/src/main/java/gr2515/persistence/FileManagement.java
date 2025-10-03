@@ -28,7 +28,6 @@ public class FileManagement {
         try {
             restaurants = objectMapper.readValue(restaurantDataFile, new TypeReference<HashSet<Restaurant>>() {});
         } catch (Exception e) {
-            e.printStackTrace();
             restaurants = new HashSet<>();
         }
         return restaurants;
