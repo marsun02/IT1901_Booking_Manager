@@ -1,10 +1,7 @@
-package core;
+package persistence;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import persistence.Table;
-import persistence.User;
 
 import java.util.Date;
 

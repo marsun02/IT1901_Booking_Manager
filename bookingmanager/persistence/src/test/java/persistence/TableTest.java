@@ -1,11 +1,8 @@
-package core;
+package persistence;
 
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
-
-import persistence.Table;
-import persistence.User;
 
 import static org.junit.jupiter.api.Assertions.*;
 

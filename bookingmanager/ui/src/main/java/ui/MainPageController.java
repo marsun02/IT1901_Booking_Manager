@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashSet;
 
-import ui.App;
 import core.ControllerHelpFunctions;
 import core.RestaurantInitialization;
 import persistence.FileManagement;
@@ -24,7 +23,7 @@ import javafx.stage.Stage;
 public class MainPageController {
     private Collection<Restaurant> restaurants;
     private Collection<User> users; // User functionality may be added later
-    Path path = Paths.get("persistence", "src", "main", "resources", "restaurants.json");
+    Path path = Paths.get("persistence", "src", "main", "resources", "persistence", "restaurants.json");
     private final File restaurantDataFile = path.toFile(); // Universal file path we can use to access BookedTables.txt
 
     private App app;
