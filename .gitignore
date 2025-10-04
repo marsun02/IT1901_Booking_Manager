@@ -3,6 +3,7 @@
 # Compiled class files
 bookingmanager/target/
 target/
+**/target/
 javafx-app/
 *.class
 
