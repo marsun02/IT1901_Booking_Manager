@@ -1,4 +1,0 @@
---patch-module
-bookingmanager.core=_
---add-reads
-bookingmanager.core=ALL-UNNAMED
