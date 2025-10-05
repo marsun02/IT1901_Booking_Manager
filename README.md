@@ -96,8 +96,8 @@ In the root directory, you will find the [class-diagram.md](class-diagram.md) fi
 ## Release spesific documentation
 ### Project Specific Documentation
 [Class Diagram](class-diagram.md)
-[Userstory Book Tables]()
-[Userstory Sign in]()
+[Userstory - Book Tables](docs/userstories/table-booking.md)
+[Userstory - Sign in](docs/userstories/sign-in.md)
 
 ### Release 1
 [Teamwork](docs/release1/team-work.md)
