@@ -64,3 +64,5 @@ classDiagram
     Restaurant "1" -- "*" Table : Tables in restaurant
     Restaurant "*" <-- "1" FileManagement : Save/Load
 ```
+
+**[Back to root README](README.md)**
