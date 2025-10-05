@@ -17,9 +17,7 @@ import persistence.User;
 
 public class BookingPageController {
 
-    // private App app;
     private Stage primaryStage;
-    // private Scene bookingScene;
     private Scene mainScene;
     private Restaurant restaurant;
     private MainPageController mainPageController;
@@ -44,9 +42,7 @@ public class BookingPageController {
         Scene bookingScene,
         Scene mainScene
     ) {
-    //   this.app = app;
       this.primaryStage = primaryStage;
-    //   this.bookingScene = bookingScene;
       this.mainScene = mainScene;
     }
 

@@ -26,10 +26,8 @@ public class MainPageController {
     Path path = Paths.get("../persistence/src/main/resources/persistence/restaurants.json");
     File restaurantDataFile = path.toFile(); // File to store restaurant data
 
-    // private App app;
     private Stage primaryStage;
     private Scene bookingScene;
-    // private Scene mainScene;
     private BookingPageController bookingPageController;
 
     @FXML
@@ -74,10 +72,8 @@ public class MainPageController {
         Scene bookingScene,
         Scene mainScene
     ) {
-    //   this.app = app;
         this.primaryStage = primaryStage;
         this.bookingScene = bookingScene;
-    //   this.mainScene = mainScene;
     }
 
     public void setBookingPageController(BookingPageController controller){
