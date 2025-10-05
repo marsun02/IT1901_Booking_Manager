@@ -54,7 +54,10 @@ public class Table {
     }
 
     public Date getBookedTime(){
-        return bookedTime;
+        if (bookedTime == null){
+            return null;
+        }
+        return new Date(bookedTime.getTime());
     }
 
     // Booking and freeing methods
@@ -64,8 +67,11 @@ public class Table {
             // TODO: Display a message that states the table is taken
             return;
         }
-
-        this.bookedTime = bookedTime;
+        if (bookedTime == null){
+            this.bookedTime = null; // set to null because bookedTime.getTime() gives error when it's null
+        } else{
+            this.bookedTime = new Date(bookedTime.getTime()); 
+        }
         this.isBooked = true;
         bookingUser.addTable(this);
     }
