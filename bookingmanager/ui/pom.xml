@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <main.class>ui.App</main.class>
+        <main.class>bookingmanager.ui/ui.App</main.class>
         <javafx.version>23.0.1</javafx.version>
         <jupiter.version>5.12.2</jupiter.version>
         <jackson.version>2.20.0</jackson.version>
