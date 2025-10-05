@@ -17,13 +17,13 @@ import persistence.User;
 
 public class BookingPageController {
 
-    private App app;
+    // private App app;
     private Stage primaryStage;
-    private Scene bookingScene;
+    // private Scene bookingScene;
     private Scene mainScene;
     private Restaurant restaurant;
     private MainPageController mainPageController;
-    private Collection<Table> tables;
+    // private Collection<Table> tables; // Will be used when tables can be chosen in the booking page
 
     @FXML
     Label restaurantLabel;
@@ -36,17 +36,17 @@ public class BookingPageController {
 
     @FXML
     DatePicker date;
-
-
+ 
+    // There comes spotbugs from these, but Stage and Scene should not be copied, therefore the spotsbugs remain for now
     public void setStage(
         App app,
         Stage primaryStage,
         Scene bookingScene,
         Scene mainScene
     ) {
-      this.app = app;
+    //   this.app = app;
       this.primaryStage = primaryStage;
-      this.bookingScene = bookingScene;
+    //   this.bookingScene = bookingScene;
       this.mainScene = mainScene;
     }
 
@@ -100,8 +100,9 @@ public class BookingPageController {
         restaurantLabel.setText("Velkommen til " + restaurant.getName());
     }
 
-    public void setCorrectTables(Collection<Table> tables){
-        this.tables = tables;
-    }
+    // Will be used when tables can be chosen in the booking page
+    // public void setCorrectTables(Collection<Table> tables){ 
+    //     this.tables = tables;
+    // }
 
 }
