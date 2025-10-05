@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class FileManagement {
-    public static void saveRestaurants(File restaurantDataFile, Collection<Restaurant> restaurants){
+    public static void saveRestaurants(File restaurantDataFile, Collection<Restaurant> restaurants) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
 
@@ -20,15 +20,15 @@ public class FileManagement {
         }
     }
 
-    public static Collection<Restaurant> loadRestaurants(File restaurantDataFile){
+    public static Collection<Restaurant> loadRestaurants(File restaurantDataFile) {
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<Restaurant> restaurants;
         try {
-            restaurants = objectMapper.readValue(restaurantDataFile, new TypeReference<HashSet<Restaurant>>() {});
+            restaurants = objectMapper.readValue(restaurantDataFile, new TypeReference<HashSet<Restaurant>>() {
+            });
         } catch (Exception e) {
             restaurants = new HashSet<>();
         }
         return restaurants;
     }
 }
-
