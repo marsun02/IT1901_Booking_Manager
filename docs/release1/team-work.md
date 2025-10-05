@@ -1,4 +1,4 @@
-# Release 1
+# Teamwork Release 1
 ## Plan for project
 For this project we organized a meeting with the whole group, and started browsing ideas for what could become a great project to work on, and a project that we could develop even further. We also wrote down our availbility throughout the week and decided on a weekly meeting date, where everyone would get together and we worked on the project. We decided to meet up on Thursdays as this is the day of the week where we have most availability throughout the whole day. Sometimes Thursdays won't work, so we are in dialogue in a Messenger group chat every day in case we need to switch up one of the days, and we figure out other days of the week that might be a good meeting time. 
 
