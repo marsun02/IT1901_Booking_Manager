@@ -8,8 +8,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-// import persistence.Restaurant;
-
 public class FileManagement {
     public static void saveRestaurants(File restaurantDataFile, Collection<Restaurant> restaurants){
         ObjectMapper objectMapper = new ObjectMapper();
