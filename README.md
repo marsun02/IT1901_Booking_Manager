@@ -4,7 +4,11 @@
 ---
 
 ## Quick description
-This is a project that allows users to book tables at restaurants.
+Our application is an overview of a wide selection of restaurants, which allows users to easily book tables at their preferred locations. The goal is to simplify the table booking process by gathering everything in one convenient place.
+
+Our target users are the people who frequently book tables and want a platform to manage all their table reservations. With this app, you'll be able to view and manage bookings across multiple restaurants at the same time.
+
+To help keep everything organized, the app will include a login feature, giving users a personalized overview of their upcoming table reservations.
 
 ---
 
