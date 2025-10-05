@@ -79,6 +79,20 @@ Follow the checklist provided below before opening a new PR to ensure smooth col
 
 ---
 
+## General folder structure
+
+We have divded our project into different modules, and each module has its own pom.xml file. The bookingmanager folder has the main application logic. It has the core folder which include the core logic. The persistence folder includes the saving and loading from file. While the UI folder has all the application controls. That means it includes all the visible content for the application. 
+
+Within the project, we have a config folder which includes checkstyles and spotbugs. Checkstyles is used to see how the code is formatted while spotbugs is in place to check how it is made and if we have any poor written code that needs to be changed. 
+
+In the docs folder, we have added in all documentation that relates to the specific releases. We are adding in a new folder for each release that we create, and all necessary information will be found there. These will include our general workflow and teamwork, and also ai-tools that we have used and similar documentation.
+
+The application also has a .gitignore file included, to prevent anything that we don't need for the project to be pushed to github. We have added certain directories in this .gitignore file such as "target", which we want to be ignored. That means anything that is locally for your own computer will be disregarded when changed.
+
+In the root directory, you will find the class-diagram.md that explains the relations between our main classes. There is also the root README file (which is this file) that has the main info about the application.
+
+---
+
 ## Release spesific documentation
 ### Release 1
 [Use of ai-tools in release](docs/release1/ai-tools.md)
