@@ -93,7 +93,7 @@
                 </plugin>
 
                 <!-- Run the checkstyle code quality tool -->
-                <!-- <plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>3.6.0</version>
@@ -105,9 +105,10 @@
                         </dependency>
                     </dependencies>
                     <configuration>
-                        <configLocation>../config/checkstyle/custom_google_checkstyle.xml</configLocation>
+                        <configLocation>../config/checkstyle/google_checkstyle.xml</configLocation>
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>true</failsOnError>
+                        <!-- <violationSeverity>warning</violationSeverity> Changes it so checkstyle warnings fails the build, not just errors -->
                         <linkXRef>false</linkXRef>
                     </configuration>
                     <executions>
@@ -127,7 +128,7 @@
                     <configuration>
                         <xmlOutput>false</xmlOutput>
                         <htmlOutput>true</htmlOutput>
-                        <excludeFilterFile>../config/spotbugs/exclude.xml</excludeFilterFile>
+                        <!-- <excludeFilterFile>../config/spotbugs/exclude.xml</excludeFilterFile> -->
                     </configuration>
                     <executions>
                         <execution>
@@ -138,7 +139,7 @@
                             </goals>
                         </execution>
                     </executions>
-                </plugin> -->
+                </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
