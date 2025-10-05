@@ -5,8 +5,6 @@ import java.util.HashSet;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import persistence.Table;
-
 public class Restaurant {
     // Private fields
     private Collection<Table> tables = new HashSet<>();

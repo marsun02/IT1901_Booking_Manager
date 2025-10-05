@@ -8,16 +8,14 @@ classDiagram
         boolean isBooked
         int id
         int spots
-        User bookingUser
         Date bookedTime
 
         boolean isBooked()
         int getId()
         int getSpots()
-        Iser getBookingUser()
         Date getBookedTime()
         void book(User bookingUser, Date bookedTime)
-        void freeTable()
+        void freeTable(User bookingUser)
     }
 
     class User{
