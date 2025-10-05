@@ -62,4 +62,5 @@ classDiagram
 
     User "1" -- "*" Table : Booking
     Restaurant "1" -- "*" Table : Tables in restaurant
+    Restaurant "*" <-- "1" FileManagement : Save/Load
 ```
