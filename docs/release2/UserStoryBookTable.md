@@ -1,4 +1,5 @@
-## Userstory for booking table
+## User story for booking table
+
 ![Picture 1 (homescreen)](UserStoryBookTablePictures/BookTable1.png)
 ![Picture 2 (McDonalds page)](UserStoryBookTablePictures/BookTable2.png)
 ![Picture 3 (filled inn)](UserStoryBookTablePictures/BookTable3.png)
