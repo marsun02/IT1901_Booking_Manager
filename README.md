@@ -104,3 +104,9 @@ In the root directory, you will find the [class-diagram.md](class-diagram.md) fi
 [Use of ai-tools](docs/release1/ai-tools.md)
 
 ### Release 2
+[Teamwork](docs/release2/teamwork.md)
+[Work Practices](docs/release2/work-practices.md)
+[Workflow](docs/release2/workflow.md)
+[Use of ai-tools](docs/release2/ai-tools.md)
+[Persistence](docs/release2/persistence.md)
+[Code quality](docs/release2/code-quality.md)
