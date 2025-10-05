@@ -89,11 +89,18 @@ In the docs folder, we have added in all documentation that relates to the speci
 
 The application also has a .gitignore file included, to prevent anything that we don't need for the project to be pushed to github. We have added certain directories in this .gitignore file such as "target", which we want to be ignored. That means anything that is locally for your own computer will be disregarded when changed.
 
-In the root directory, you will find the class-diagram.md that explains the relations between our main classes. There is also the root README file (which is this file) that has the main info about the application.
+In the root directory, you will find the [class-diagram.md](class-diagram.md) file that explains the relations between our main classes. There is also the root README file (which is this file) that has the main info about the application.
 
 ---
 
 ## Release spesific documentation
+### Project Specific Documentation
+[Class Diagram](class-diagram.md)
+[Userstory Book Tables]()
+[Userstory Sign in]()
+
 ### Release 1
-[Use of ai-tools in release](docs/release1/ai-tools.md)
 [Teamwork](docs/release1/team-work.md)
+[Use of ai-tools](docs/release1/ai-tools.md)
+
+### Release 2
