@@ -22,14 +22,12 @@ import javafx.stage.Stage;
 
 public class MainPageController {
     private Collection<Restaurant> restaurants;
-    private Collection<User> users; // User functionality may be added later
+    // private Collection<User> users; // User functionality may be added later
     Path path = Paths.get("../persistence/src/main/resources/persistence/restaurants.json");
     File restaurantDataFile = path.toFile(); // File to store restaurant data
 
-    private App app;
     private Stage primaryStage;
     private Scene bookingScene;
-    private Scene mainScene;
     private BookingPageController bookingPageController;
 
     @FXML
@@ -42,7 +40,7 @@ public class MainPageController {
     @FXML
     public void initialize(){
         restaurants = new HashSet<>();
-        users = new HashSet<>();
+        // users = new HashSet<>();
 
         loadRestaurants();
 
@@ -67,16 +65,15 @@ public class MainPageController {
         restaurants = FileManagement.loadRestaurants(restaurantDataFile);
     }
 
+    // There comes spotbugs from these, but Stage and Scene should not be copied, therefore the spotsbugs remain for now
     public void setStage(
         App app,
         Stage primaryStage,
         Scene bookingScene,
         Scene mainScene
     ) {
-      this.app = app;
-      this.primaryStage = primaryStage;
-      this.bookingScene = bookingScene;
-      this.mainScene = mainScene;
+        this.primaryStage = primaryStage;
+        this.bookingScene = bookingScene;
     }
 
     public void setBookingPageController(BookingPageController controller){
@@ -95,7 +92,7 @@ public class MainPageController {
         }
         primaryStage.setScene(bookingScene);
         bookingPageController.setCurrentRestaurantDisplayed(restaurant);
-        bookingPageController.setCorrectTables(restaurant.getTables());
+        // bookingPageController.setCorrectTables(restaurant.getTables()); // Will be used when tables can be chosen in the booking page
     }
 
     // Updates any restaurant-specific changes made in the booking page

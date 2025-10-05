@@ -19,7 +19,7 @@ public class RestaurantInitialization {
                 addTableToRestaurant(restaurant, 6);
             }
         }
-        return restaurants;
+        return new HashSet<>(restaurants);
     }
 
     // Add table to a restaurant of choice with automatically assigned id
