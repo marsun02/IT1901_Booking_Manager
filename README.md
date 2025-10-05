@@ -1,5 +1,5 @@
 # Booking Manager Project
-[Open repository in Eclipse Che](https://che.stud.ntnu.no/#https://git.ntnu.no/IT1901-2025-groups/gr2515?new)
+**[Open repository in Eclipse Che](https://che.stud.ntnu.no/#https://git.ntnu.no/IT1901-2025-groups/gr2515?new)**
 
 ---
 
