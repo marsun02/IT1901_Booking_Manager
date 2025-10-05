@@ -1,10 +1,14 @@
 package persistence;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,5 +51,12 @@ public class FileManagementTest {
         // End of code block created with the help of github copilot
 
         testFile.delete();
+    }
+
+    @Test
+    void testLoadFromEmptyFile() {
+        // Trying to load from testFile before saving any data --> loading from empty file
+        Collection<Restaurant> loadedRestaurants = FileManagement.loadRestaurants(testFile);
+        assertEquals(loadedRestaurants, new HashSet<>());
     }
 }
