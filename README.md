@@ -1,4 +1,4 @@
-# Project
+# Booking Manager Project
 [Open repository in Eclipse Che](https://che.stud.ntnu.no/#https://git.ntnu.no/IT1901-2025-groups/gr2515?new)
 
 ---
@@ -73,9 +73,9 @@ Before committing, please read our guide on how to format commit messages using 
 
 ## Before opening PR
 
-Follow the checklist provided below before opening a new PR to ensure smooth colaberation between contributors.
+Follow the checklist provided below before opening a new PR to ensure smooth collaboration between contributors.
 
-**[Read the cehecklist here](docs/work-practices/pr-checklist.md)**
+**[Read the checklist here](docs/work-practices/pr-checklist.md)**
 
 ---
 
@@ -93,7 +93,7 @@ In the root directory, you will find the [class-diagram.md](class-diagram.md) fi
 
 ---
 
-## Release spesific documentation
+## Release specific documentation
 ### Project Specific Documentation
 [Class Diagram](class-diagram.md)
 [Userstory - Book Tables](docs/userstories/table-booking.md)
