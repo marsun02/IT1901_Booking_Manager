@@ -6,3 +6,5 @@ The benefit of using JSON over other file saving methods, is that JSON allows us
 Our JSON file mainly saves the restaurant objects and their contents. We have chosen to implement a basic reset functionality, which clears the file and re-inserts new restaurant objects if the file is corrupt. We run this function as a failsafe when initializing the app.
 
 Our restaurant objects are being saved in a HashSet. Each restaurant contains a HashSet of tables, so that way we will be able to save both restaurants and tables by only saving a HashSet object.
+
+**[Back to root README](../../README.md)**
