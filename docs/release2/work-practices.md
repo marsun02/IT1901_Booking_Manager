@@ -1,0 +1,2 @@
+## Work practices
+For the second release, we have structured Our work-practices by dividing tasks among all group members and working in pairs for the larger issues. Each coding task is created as an issue, and for every issue, we create a separate branch. This helps us maintain a clear workflow, and ensures that incomplete and poorly written code isn't pushed directly into the main branch.
