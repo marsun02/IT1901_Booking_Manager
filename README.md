@@ -24,7 +24,7 @@ This is a project that allows users to book tables at restaurants.
 
 2. Navigate to correct directory:
    ```bash
-   cd booking-manager/
+   cd bookingmanager/
    ```
 
 3. Compile code:
