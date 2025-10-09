@@ -19,16 +19,7 @@ public class ControllerHelpFunctions {
         // TODO: This event needs to be handled as the code crashes if restaurant is null
         return null;
     }
-
-    public static Collection<Restaurant> updateRestaurantsInformation(Restaurant bookedRestaurant, Collection<Restaurant> restaurants){
-        for (Restaurant restaurant : restaurants) {
-            if (restaurant.getName().equals(bookedRestaurant.getName())){
-                restaurant = bookedRestaurant;
-            }
-        }
-        return restaurants;
-    }
-
+    
 
 
 

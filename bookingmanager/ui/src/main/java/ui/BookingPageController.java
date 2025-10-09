@@ -57,7 +57,7 @@ public class BookingPageController {
             if (table.equals(firstAvailableTable)){
                 table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null);
                 Alert alert = new Alert(AlertType.CONFIRMATION);
-                mainPageController.updateRestaurantsInformation(restaurant);
+                mainPageController.saveRestaurants();
                 returnToMainPage();
                 alert.setHeaderText("Table successfully booked!");
                 alert.showAndWait();
