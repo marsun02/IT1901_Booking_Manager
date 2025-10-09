@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import persistence.Restaurant;
-import persistence.Table;
 
 public class ControllerHelpFunctionsTest {
     Collection<Restaurant> restaurants;
