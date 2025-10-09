@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="569.0" prefWidth="1000.0" style="-fx-background-color: beige; -fx-border-color: black; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="BOTTOM_CENTER" layoutY="2.0" prefHeight="115.0" prefWidth="1052.0">
+         <children>
+            <Label text="Sign in to Booking.no" textAlignment="CENTER">
+               <font>
+                  <Font name="Sitka Text" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutY="117.0" prefHeight="363.0" prefWidth="1062.0">
+         <children>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField prefHeight="40.0" prefWidth="350.0" promptText="Username" style="-fx-border-color: gray; -fx-border-width: 2px;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField prefHeight="40.0" prefWidth="350.0" promptText="Password" style="-fx-border-color: gray; -fx-border-width: 2px;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="1062.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: #292928; -fx-border-color: gray; -fx-border-width: 2px;" text="Log in" textFill="WHITE">
+                     <font>
+                        <Font name="Sitka Text" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="1062.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NO ACCOUNT?">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="73.0" prefWidth="1062.0">
+               <children>
+                  <Hyperlink prefHeight="26.0" prefWidth="91.0" text="CREATE ONE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox layoutY="465.0" prefHeight="100.0" prefWidth="1057.0" />
+   </children>
+</AnchorPane>
