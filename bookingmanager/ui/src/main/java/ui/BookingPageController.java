@@ -1,15 +1,13 @@
 package ui;
 
-
 import java.util.Collection;
-
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import persistence.Restaurant;
 import persistence.Table;
@@ -42,8 +40,8 @@ public class BookingPageController {
         Scene bookingScene,
         Scene mainScene
     ) {
-      this.primaryStage = primaryStage;
-      this.mainScene = mainScene;
+        this.primaryStage = primaryStage;
+        this.mainScene = mainScene;
     }
 
     @FXML
@@ -55,7 +53,7 @@ public class BookingPageController {
             break;
         }
 
-        for(Table table : restaurant.getTables()){
+        for (Table table : restaurant.getTables()) {
             if (table.equals(firstAvailableTable)){
                 table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null);
                 Alert alert = new Alert(AlertType.CONFIRMATION);

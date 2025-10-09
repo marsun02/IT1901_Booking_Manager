@@ -69,7 +69,7 @@ public class Table {
         }
         if (bookedTime == null){
             this.bookedTime = null; // set to null because bookedTime.getTime() gives error when it's null
-        } else{
+        } else {
             this.bookedTime = new Date(bookedTime.getTime()); 
         }
         this.isBooked = true;

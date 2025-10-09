@@ -1,12 +1,11 @@
 package persistence;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.HashSet;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import java.io.File;
+import java.util.Collection;
+import java.util.HashSet;
 
 public class FileManagement {
     public static void saveRestaurants(File restaurantDataFile, Collection<Restaurant> restaurants) {

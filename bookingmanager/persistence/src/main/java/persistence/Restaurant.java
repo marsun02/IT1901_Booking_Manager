@@ -1,9 +1,8 @@
 package persistence;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Collection;
 import java.util.HashSet;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Restaurant {
     // Private fields
@@ -51,8 +50,8 @@ public class Restaurant {
         return this.id;
     }
 
-     // Adds table to collection of tables
-     public void addTable(Table table){
+    // Adds table to collection of tables
+    public void addTable(Table table){
         this.tables.add(table);
         incrementTableId();
     }
