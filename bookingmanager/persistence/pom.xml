@@ -73,10 +73,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.3</version>
                 <configuration>
-                    <argLine>
-                        @{jaCoCoArgLine}
-                        --add-opens bookingmanager.persistence/persistence=ALL-UNNAMED
-                    </argLine>
+                    <useModulePath>true</useModulePath>
+                    <argLine>@{jaCoCoArgLine}</argLine>    
                 </configuration>
             </plugin>
             <plugin>
