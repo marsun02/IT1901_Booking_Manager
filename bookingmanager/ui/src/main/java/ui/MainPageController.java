@@ -93,10 +93,4 @@ public class MainPageController {
         bookingPageController.setCurrentRestaurantDisplayed(restaurant);
         // bookingPageController.setCorrectTables(restaurant.getTables()); // Will be used when tables can be chosen in the booking page
     }
-
-    // Updates any restaurant-specific changes made in the booking page
-    public void updateRestaurantsInformation(Restaurant bookedRestaurant){
-        restaurants = ControllerHelpFunctions.updateRestaurantsInformation(bookedRestaurant, restaurants);
-        saveRestaurants();
-    }
 }
