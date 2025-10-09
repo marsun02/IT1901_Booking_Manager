@@ -68,10 +68,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.3</version>
                 <configuration>
-                    <argLine>
-                        @{jaCoCoArgLine}
-                        --add-opens bookingmanager.core/core=ALL-UNNAMED
-                    </argLine>
+                    <useModulePath>false</useModulePath>
+                    <argLine>@{jaCoCoArgLine}</argLine>    
                 </configuration>
             </plugin>
             <plugin>
