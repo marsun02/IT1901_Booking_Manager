@@ -1,7 +1,6 @@
 package core;
 
 import java.util.Collection;
-
 import persistence.Restaurant;
 
 public class ControllerHelpFunctions {

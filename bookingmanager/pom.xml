@@ -98,7 +98,7 @@
                         </dependency>
                     </dependencies>
                     <configuration>
-                        <configLocation>../config/checkstyle/google_checkstyle.xml</configLocation>
+                        <configLocation>../config/checkstyle/google_checkstyle_modified.xml</configLocation>
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>true</failsOnError>
                         <!-- <violationSeverity>warning</violationSeverity> Changes it so checkstyle warnings fails the build, not just errors -->

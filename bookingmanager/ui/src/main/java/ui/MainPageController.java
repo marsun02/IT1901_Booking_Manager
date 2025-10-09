@@ -1,16 +1,12 @@
 package ui;
 
+import core.ControllerHelpFunctions;
+import core.RestaurantInitialization;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashSet;
-
-import core.ControllerHelpFunctions;
-import core.RestaurantInitialization;
-import persistence.FileManagement;
-import persistence.Restaurant;
-import persistence.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -19,6 +15,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import persistence.FileManagement;
+import persistence.Restaurant;
+import persistence.User;
 
 public class MainPageController {
     private Collection<Restaurant> restaurants;
