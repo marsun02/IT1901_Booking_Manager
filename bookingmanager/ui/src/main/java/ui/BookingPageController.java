@@ -4,18 +4,23 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import persistence.CustomDateObject;
 import persistence.FileManagement;
@@ -29,7 +34,7 @@ public class BookingPageController {
     private Scene mainScene;
     private Restaurant restaurant;
     private MainPageController mainPageController;
-    private Collection<String> allAvailableTimeslots = new HashSet<>(); 
+    private Collection<String> allAvailableTimeslots = new ArrayList<>(); 
 
     final Path path = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
     final File allBookingsFile = path.toFile(); // File to store bookings
@@ -46,6 +51,11 @@ public class BookingPageController {
 
     @FXML
     DatePicker date;
+
+    @FXML
+    ChoiceBox<String> timeSlotsPicker;
+
+    private String chosenTimeToBook;
  
     // There comes spotbugs from these, but Stage and Scene should not be copied, therefore the spotsbugs remain for now
     public void setStage(
@@ -67,9 +77,11 @@ public class BookingPageController {
             break;
         }
 
+        // TODO: Make sure that all fields must be filled before booking
         for (Table table : restaurant.getTables()) {
             if (table.equals(firstAvailableTable)){
-                table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null);
+                table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
+                // FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName()));
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 mainPageController.saveRestaurants();
                 returnToMainPage();
@@ -100,7 +112,11 @@ public class BookingPageController {
         for (CustomDateObject customDateObject : bookings) {
                 allAvailableTimeslots.remove(customDateObject.getTime());
         }
-        // TODO: add remaining timeslots as a dropdown element
+        timeSlotsPicker.getItems().clear();
+        for (String time : allAvailableTimeslots) {
+            timeSlotsPicker.getItems().add(time);
+        }
+        timeSlotsPicker.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {chosenTimeToBook = newValue;});
     }
 
 
@@ -121,7 +137,7 @@ public class BookingPageController {
 
     public void clearAndPopulateTimeslots(){ // Chose to hardcode timeslots for now
         allAvailableTimeslots.clear();
-        for (Integer i = 14; i < 22; i++) { // 14 is the opening hour, 23 closing hour
+        for (Integer i = 14; i < 24; i++) { // 14 is the opening hour, 24 closing hour
             allAvailableTimeslots.add(i.toString() + ".00");
             allAvailableTimeslots.add(i.toString() + ".15");
             allAvailableTimeslots.add(i.toString() + ".30");

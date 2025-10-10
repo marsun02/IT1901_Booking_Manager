@@ -5,9 +5,10 @@ public class CustomDateObject {
     private String time;
     private String restaurantName;
 
-    public CustomDateObject(String date, String time){
+    public CustomDateObject(String date, String time, String restaurantName){
         this.date = date;
         this.time = time;
+        this.restaurantName = restaurantName;
     }
 
     public String getDate() {
