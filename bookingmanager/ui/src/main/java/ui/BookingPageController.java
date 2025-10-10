@@ -81,7 +81,7 @@ public class BookingPageController {
         for (Table table : restaurant.getTables()) {
             if (table.equals(firstAvailableTable)){
                 table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                // FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName()));
+                FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName()));
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 mainPageController.saveRestaurants();
                 returnToMainPage();
@@ -109,7 +109,10 @@ public class BookingPageController {
         clearAndPopulateTimeslots();
         LocalDate chosenDate = date.getValue();
         Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificDate(allBookingsFile, chosenDate.toString(), restaurant.getName());
+        System.out.println("Nå er vi forbi linja i pickDateToBook som skal laste inn bookingene");
+        System.out.println(bookings.size());
         for (CustomDateObject customDateObject : bookings) {
+                // System.out.println(customDateObject.getTime());
                 allAvailableTimeslots.remove(customDateObject.getTime());
         }
         timeSlotsPicker.getItems().clear();
