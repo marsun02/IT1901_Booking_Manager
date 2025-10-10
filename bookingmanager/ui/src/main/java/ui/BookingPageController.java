@@ -1,5 +1,9 @@
 package ui;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -13,6 +17,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import persistence.CustomDateObject;
+import persistence.FileManagement;
 import persistence.Restaurant;
 import persistence.Table;
 import persistence.User;
@@ -23,7 +29,10 @@ public class BookingPageController {
     private Scene mainScene;
     private Restaurant restaurant;
     private MainPageController mainPageController;
-    private Collection<Date> allAvailableTimeslots = new HashSet<>(); 
+    private Collection<String> allAvailableTimeslots = new HashSet<>(); 
+
+    final Path path = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
+    final File allBookingsFile = path.toFile(); // File to store bookings
     // private Collection<Table> tables; // Will be used when tables can be chosen in the booking page
 
     @FXML
@@ -85,8 +94,13 @@ public class BookingPageController {
 
     @FXML
     public void pickDateToBook(){
-        System.out.println(date.getValue());
-        System.out.println("hei");
+        clearAndPopulateTimeslots();
+        LocalDate chosenDate = date.getValue();
+        Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificDate(allBookingsFile, chosenDate.toString(), restaurant.getName());
+        for (CustomDateObject customDateObject : bookings) {
+                allAvailableTimeslots.remove(customDateObject.getTime());
+        }
+        // TODO: add remaining timeslots as a dropdown element
     }
 
 
@@ -105,10 +119,13 @@ public class BookingPageController {
         restaurantLabel.setText("Velkommen til " + restaurant.getName());
     }
 
-    public void clearAndPopulateTimeslots(){
+    public void clearAndPopulateTimeslots(){ // Chose to hardcode timeslots for now
         allAvailableTimeslots.clear();
-        for (int i = 0; i < restaurant.getTables().size(); i++) {
-            allAvailableTimeslots.add(new Date());
+        for (Integer i = 14; i < 22; i++) { // 14 is the opening hour, 23 closing hour
+            allAvailableTimeslots.add(i.toString() + ".00");
+            allAvailableTimeslots.add(i.toString() + ".15");
+            allAvailableTimeslots.add(i.toString() + ".30");
+            allAvailableTimeslots.add(i.toString() + ".45");
         }
     }
 
