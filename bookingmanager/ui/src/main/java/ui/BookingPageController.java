@@ -1,6 +1,10 @@
 package ui;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -19,6 +23,7 @@ public class BookingPageController {
     private Scene mainScene;
     private Restaurant restaurant;
     private MainPageController mainPageController;
+    private Collection<Date> allAvailableTimeslots = new HashSet<>(); 
     // private Collection<Table> tables; // Will be used when tables can be chosen in the booking page
 
     @FXML
@@ -78,6 +83,12 @@ public class BookingPageController {
         date.setValue(null);
     }
 
+    @FXML
+    public void pickDateToBook(){
+        System.out.println(date.getValue());
+        System.out.println("hei");
+    }
+
 
 
     public void setMainPageController(MainPageController controller){
@@ -92,6 +103,13 @@ public class BookingPageController {
     public void setCurrentRestaurantDisplayed(Restaurant restaurant){
         this.restaurant = restaurant;
         restaurantLabel.setText("Velkommen til " + restaurant.getName());
+    }
+
+    public void clearAndPopulateTimeslots(){
+        allAvailableTimeslots.clear();
+        for (int i = 0; i < restaurant.getTables().size(); i++) {
+            allAvailableTimeslots.add(new Date());
+        }
     }
 
     // Will be used when tables can be chosen in the booking page

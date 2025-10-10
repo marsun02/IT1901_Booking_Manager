@@ -54,7 +54,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="61.0" prefWidth="414.0" spacing="20.0">
                <children>
-                  <DatePicker fx:id="date" prefHeight="32.0" prefWidth="208.0" promptText="dd/mm/yyyy" showWeekNumbers="true">
+                  <DatePicker fx:id="date" onAction="#pickDateToBook" prefHeight="32.0" prefWidth="208.0" promptText="dd/mm/yyyy" showWeekNumbers="true">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
