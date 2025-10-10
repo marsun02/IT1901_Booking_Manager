@@ -87,6 +87,10 @@ public class BookingPageController {
                 returnToMainPage();
                 alert.setHeaderText("Table successfully booked!");
                 alert.showAndWait();
+                // reset so it doesn't keep information for next time you enter page
+                name.setText("");
+                surname.setText("");
+                date.setValue(null);
                 return;
             }
         }
@@ -107,12 +111,14 @@ public class BookingPageController {
     @FXML
     public void pickDateToBook(){
         clearAndPopulateTimeslots();
-        LocalDate chosenDate = date.getValue();
-        Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificDate(allBookingsFile, chosenDate.toString(), restaurant.getName());
-        System.out.println("Nå er vi forbi linja i pickDateToBook som skal laste inn bookingene");
-        System.out.println(bookings.size());
+        String chosenDateString;
+        if (date.getValue() == null){
+            chosenDateString = "null";
+        } else{
+            chosenDateString = date.getValue().toString();
+        }
+        Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificDate(allBookingsFile, chosenDateString, restaurant.getName());
         for (CustomDateObject customDateObject : bookings) {
-                // System.out.println(customDateObject.getTime());
                 allAvailableTimeslots.remove(customDateObject.getTime());
         }
         timeSlotsPicker.getItems().clear();
