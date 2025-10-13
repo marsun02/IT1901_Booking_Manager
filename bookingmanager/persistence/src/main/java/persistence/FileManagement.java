@@ -73,7 +73,6 @@ public class FileManagement {
                 }
         }
         } catch (Exception e) {
-            e.printStackTrace();
             matchingDateBookings = new HashSet<>();
         }
         return matchingDateBookings; // returns all bookings made for that specific date
