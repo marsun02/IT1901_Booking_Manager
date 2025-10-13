@@ -3,24 +3,17 @@ package ui;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import persistence.CustomDateObject;
 import persistence.FileManagement;
@@ -87,7 +80,7 @@ public class BookingPageController {
                 returnToMainPage();
                 alert.setHeaderText("Table successfully booked!");
                 alert.showAndWait();
-                // reset so it doesn't keep information for next time you enter page
+                // reset so it doesn't keep information for next time you enter page. Using the FXML function resetBookingInfo crashed the app.
                 name.setText("");
                 surname.setText("");
                 date.setValue(null);
