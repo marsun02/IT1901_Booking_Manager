@@ -8,10 +8,14 @@
   "restaurantName" : "McDonalds"
 }, {
   "date" : "2025-10-12",
-  "time" : "18.30",
+  "time" : "18.00",
   "restaurantName" : "Burger King"
 }, {
+  "date" : "2025-10-15",
+  "time" : "18.30",
+  "restaurantName" : "Szechuan"
+}, {
   "date" : "2025-10-12",
-  "time" : "18.00",
+  "time" : "18.30",
   "restaurantName" : "Burger King"
 } ]

@@ -66,6 +66,10 @@ public class BookingPageController {
 
     @FXML
     public void bookTable(){
+        if (!checkThatAllFieldsAreFilled()){
+            return;
+        }
+
         Table firstAvailableTable = null;
         
         for (Table table : restaurant.getAvailableTables()) { 
@@ -103,6 +107,16 @@ public class BookingPageController {
         name.setText("");
         surname.setText("");
         date.setValue(null);
+    }
+
+    private boolean checkThatAllFieldsAreFilled(){
+        if (name.getText().isEmpty() || surname.getText().isEmpty() || date.getValue() == null || timeSlotsPicker.getValue() == null){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setHeaderText("All fields must be filled to complete booking");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
     }
 
     @FXML
