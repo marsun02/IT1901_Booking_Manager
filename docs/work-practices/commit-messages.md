@@ -25,8 +25,8 @@ The basic structure ensures every commit clearly states its purpose:
 | Component | Example | Description |
 | :--- | :--- | :--- |
 | **Type** | `feat`, `fix`, `chore` | The main category of the change. |
-| **Description** | `add user login validation` | Short, descriptive summary of the change. |
-| **Footer** | `Co-authored-by: <name>` & `#branch-number` | Mandatory author/branch details. |
+| **Description** | `add user login validation` & `Branch number` | Short, descriptive summary of the change and branch details. |
+| **Footer** | `Co-authored-by: <name>` | Mandatory author. |
 
 ---
 
@@ -49,12 +49,13 @@ Write a short (max 50-70 characters) and descriptive subject line. This line **m
 
 * **Solo Commit:** `Your descriptive subject #branch-number`
     * *Example:* `correct typo in service API #21`
-* **Pair Programming:** `Your descriptive subject (Co-authored-by: GitHub-handle) #branch-number`
-    * *Example:* `implement user authentication flow (Co-authored-by: awesome-coder) #33`
 
 ### Step 5: Write Long Description (Body)
 
 Provide a longer description if the subject line is insufficient. **Use this section to justify major decisions or clarify ambiguous code choices.**
+* **Pair Programming:** `Co-authored-by: GitHub-handle`
+    * *Example:* `Co-authored-by: awesome-coder`
+* Make sure to add a new line for each co-author.
 
 ### Remaining Steps
 For the rest of the steps (`Breaking Change`, `Issue No.`, etc.), you can typically press **Enter** or skip, unless you are deliberately making a backwards-incompatible change. This is because issu no. is already stated earlier in the commit message.

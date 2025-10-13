@@ -8,13 +8,14 @@ import persistence.Table;
 public class RestaurantInitialization {
     private static Collection<Restaurant> restaurants = new HashSet<>();
     private static String[] restaurantNames = {"Frati", "Szechuan", "Burger King", "Barbecuez", "McDonalds", "Steak House"};
+    private static int tablesPerRestaurant = 8;
 
     public static Collection<Restaurant> initializeAllRestaurants(){
         restaurants.clear();
         for (int i = 0; i < restaurantNames.length; i++) {
             Restaurant restaurant = new Restaurant(restaurantNames[i], i);
             restaurants.add(restaurant);
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < tablesPerRestaurant; j++) {
                 addTableToRestaurant(restaurant, 6);
             }
         }

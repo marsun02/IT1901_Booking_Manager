@@ -17,13 +17,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import persistence.FileManagement;
 import persistence.Restaurant;
-import persistence.User;
 
 public class MainPageController {
     private Collection<Restaurant> restaurants;
     // private Collection<User> users; // User functionality may be added later
-    Path path = Paths.get("../persistence/src/main/resources/persistence/restaurants.json");
-    File restaurantDataFile = path.toFile(); // File to store restaurant data
+    final Path path = Paths.get("../persistence/src/main/resources/persistence/restaurants.json");
+    final File restaurantDataFile = path.toFile(); // File to store restaurant data
 
     private Stage primaryStage;
     private Scene bookingScene;

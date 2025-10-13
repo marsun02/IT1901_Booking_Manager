@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -15,6 +16,7 @@ public class FileManagement {
         try {
             objectMapper.writeValue(restaurantDataFile, restaurants);
         } catch (Exception e) {
+            // TODO: make proper catch
             e.printStackTrace();
         }
     }
@@ -29,5 +31,50 @@ public class FileManagement {
             restaurants = new HashSet<>();
         }
         return restaurants;
+    }
+
+
+
+   
+    public static void saveBooking(File allBookingsFile, CustomDateObject bookedDate) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
+
+        Collection<CustomDateObject> allBookings = new HashSet<>();
+        try {
+            if (allBookingsFile.exists() && allBookingsFile.length() > 0){
+                allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {});
+            }
+        } catch (IOException e) {
+            // TODO: make proper catch
+            e.printStackTrace();
+        }
+
+        allBookings.add(bookedDate);
+
+        try {
+            objectMapper.writeValue(allBookingsFile, allBookings);
+        } catch (Exception e) {
+            // TODO: make proper catch
+            e.printStackTrace();
+        }
+    }
+
+    public static Collection<CustomDateObject> loadBookingsForSpecificDate(File allBookingsFile, String date, String restaurantName) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collection<CustomDateObject> allBookings;
+        Collection<CustomDateObject> matchingDateBookings = new HashSet<>();
+        try {
+            allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
+            });
+            for (CustomDateObject customDateObject : allBookings) {
+                if (customDateObject.getDate().equals(date) && customDateObject.getRestaurantName().equals(restaurantName)){
+                    matchingDateBookings.add(customDateObject);
+                }
+        }
+        } catch (Exception e) {
+            matchingDateBookings = new HashSet<>();
+        }
+        return matchingDateBookings; // returns all bookings made for that specific date
     }
 }
