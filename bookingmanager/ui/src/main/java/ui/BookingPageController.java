@@ -81,9 +81,7 @@ public class BookingPageController {
                 alert.setHeaderText("Table successfully booked!");
                 alert.showAndWait();
                 // reset so it doesn't keep information for next time you enter page. Using the FXML function resetBookingInfo crashed the app.
-                name.setText("");
-                surname.setText("");
-                date.setValue(null);
+                resetInfo();
                 return;
             }
         }
@@ -96,6 +94,10 @@ public class BookingPageController {
 
     @FXML
     public void resetBookingInfo(){
+        resetInfo();
+    }
+
+    private void resetInfo(){
         name.setText("");
         surname.setText("");
         date.setValue(null);
