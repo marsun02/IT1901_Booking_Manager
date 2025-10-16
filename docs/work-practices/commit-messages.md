@@ -58,6 +58,6 @@ Provide a longer description if the subject line is insufficient. **Use this sec
 * Make sure to add a new line for each co-author.
 
 ### Remaining Steps
-For the rest of the steps (`Breaking Change`, `Issue No.`, etc.), you can typically press **Enter** or skip, unless you are deliberately making a backwards-incompatible change. This is because issu no. is already stated earlier in the commit message.
+For the rest of the steps (`Breaking Change`, `Issue No.`, etc.), you can typically press **Enter** or skip, unless you are deliberately making a backwards-incompatible change. This is because issue no. is already stated earlier in the commit message.
 
 **[Back to root README](../../README.md)**
