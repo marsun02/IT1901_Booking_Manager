@@ -48,10 +48,11 @@ public class LoginPageController {
         App app,
         Stage primaryStage,
         Scene bookingScene,
-        Scene mainScene
+        Scene mainScene,
+        Scene loginScene
     ) {
         this.primaryStage = primaryStage;
-        this.mainScene = bookingScene;
+        this.mainScene = mainScene;
         // Makes hyperlink take you to correct "page"
         createAccountLink.setOnAction(e -> {
             if (currentLayoutIsRegisterAccount){
@@ -93,8 +94,31 @@ public class LoginPageController {
             alert.setHeaderText("Account created");
             alert.showAndWait();
         } else{
-            // TODO: Login user
-            // TODO: Make sure all fields are filled
+            // Makes sure all fields must be filled
+            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()){
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText("All fields must be filled to login");
+                alert.showAndWait();
+                return;
+            }
+            // Login the user and pass that user to the main page
+            Collection<User> users = FileManagement.loadUsers(userDataFile);
+            for (User user : users) {
+                if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())){
+                    if (user.checkNamePassword(usernameField.getText(), passwordField.getText())){
+                        primaryStage.setScene(mainScene);
+                        mainPageController.setcurrentlyLoggedInUser(user);
+                        return;
+                    }
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setHeaderText("Username and password do not match");
+                    alert.showAndWait();
+                    return;
+                }
+            }
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setHeaderText("No such user found");
+            alert.showAndWait();
         }
     }
 

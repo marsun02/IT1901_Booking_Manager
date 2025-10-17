@@ -23,11 +23,11 @@ public class App extends Application{
             Scene loginScene = new Scene(loginLoader.load());
             LoginPageController loginController = loginLoader.getController();
 
-            mainController.setStage(this, primaryStage, bookingScene, mainScene);
+            mainController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
             mainController.setBookingPageController(bookingController);
-            bookingController.setStage(this, primaryStage, bookingScene, mainScene);
+            bookingController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
             bookingController.setMainPageController(mainController);
-            loginController.setStage(this, primaryStage, loginScene, loginScene);
+            loginController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
             loginController.setMainPageController(mainController);
 
             primaryStage.setScene(loginScene);

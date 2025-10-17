@@ -101,6 +101,6 @@ public class User {
     }
 
     public boolean checkNamePassword(String name, String password){
-        return (this.name.equals(name) && this.password.equals(password));
+        return (this.name.toLowerCase().equals(name.toLowerCase()) && this.password.equals(password));
     }
 }

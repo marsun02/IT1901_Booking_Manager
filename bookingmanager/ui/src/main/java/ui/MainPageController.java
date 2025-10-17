@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import persistence.FileManagement;
 import persistence.Restaurant;
+import persistence.User;
 
 public class MainPageController {
     private Collection<Restaurant> restaurants;
@@ -27,6 +28,7 @@ public class MainPageController {
     private Stage primaryStage;
     private Scene bookingScene;
     private BookingPageController bookingPageController;
+    private User currentlyLoggedInUser;
 
     @FXML
     private AnchorPane anchorpane;
@@ -68,7 +70,8 @@ public class MainPageController {
         App app,
         Stage primaryStage,
         Scene bookingScene,
-        Scene mainScene
+        Scene mainScene,
+        Scene loginScene
     ) {
         this.primaryStage = primaryStage;
         this.bookingScene = bookingScene;
@@ -91,5 +94,9 @@ public class MainPageController {
         primaryStage.setScene(bookingScene);
         bookingPageController.setCurrentRestaurantDisplayed(restaurant);
         // bookingPageController.setCorrectTables(restaurant.getTables()); // Will be used when tables can be chosen in the booking page
+    }
+
+    public void setcurrentlyLoggedInUser(User loggedInUser){
+        currentlyLoggedInUser = loggedInUser;
     }
 }
