@@ -3,13 +3,18 @@ package persistence;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class User {
     
     // Private fields
     private int id;
     private String name;
     private String email;
+
+    @JsonProperty // tells jackson to include password since we don't wanna expose it with a getter
     private String password;
+
     private String phoneNumber;
     private Set<Table> bookedTables;
 
@@ -25,8 +30,39 @@ public class User {
         this.password = password;
     }
 
-    // Getters
+    // Empty constructor and setters for Jackson
+    public User(){
+
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setBookedTables(Set<Table> bookedTables) {
+        this.bookedTables = bookedTables;
+    }
     
+
+    // Getters
+
+
     public int getId(){
         return id;
     }
