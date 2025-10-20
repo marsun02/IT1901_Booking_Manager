@@ -3,7 +3,7 @@
 
     %% Pakke: Persistance
     subgraph Persistance["Persistance"]
-        A1[CustomDateobject]
+        A1[CustomDateObject]
         A2[FileManagement]
         A3[Restaurant]
         A4[Table]
