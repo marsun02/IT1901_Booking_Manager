@@ -15,6 +15,7 @@
     %% Pakke: Core
     subgraph Core["Core"]
         B1[RestaurantInitialization]
+        B2[ControllerHelpFunctions]
     end   
 
     %% Pakke: UI
