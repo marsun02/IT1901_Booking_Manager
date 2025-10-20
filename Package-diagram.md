@@ -4,6 +4,11 @@
     %% Pakke: Persistance
     subgraph Persistance["Persistance"]
         A1[CustomDateobject]
+        A2[FileManagement]
+        A3[Restaurant]
+        A4[Table]
+        A5[User]
+
     end    
 
 
