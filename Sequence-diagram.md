@@ -3,7 +3,6 @@
 sequenceDiagram
     participant User
     participant UI
-    participant controller
     participant bookinglogic
     participant persistance
 
@@ -12,6 +11,6 @@ sequenceDiagram
     bookinglogic->>persistance: Read existing bookings
     persistance-->>bookinglogic: Return data
     bookinglogic->>persistance: Save new booking
-    persistance-->>controller: Confirm saving
-    controller-->>UI: Show confirmation
-    UI-->>User: Show
+    persistance-->>bookinglogic: Confirm saving
+    bookinglogic-->>UI: Show confirmation
+    UI-->>User: Show Booked table
