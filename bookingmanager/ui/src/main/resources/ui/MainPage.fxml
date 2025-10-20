@@ -10,121 +10,135 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="569.0" prefWidth="1000.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainPageController">
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1003.0" prefWidth="1000.0" style="-fx-background-color: grey;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainPageController">
    <content>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="569.0" prefWidth="1000.0" style="-fx-background-color: beige; -fx-border-color: black; -fx-border-width: 2px;">
+      <VBox prefHeight="1004.0" prefWidth="994.0">
          <children>
-            <HBox prefHeight="28.0" prefWidth="973.0">
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="549.0" prefWidth="984.0" style="-fx-background-color: beige;">
                <children>
-                  <Label fx:id="loggedInUserLabel" text="Label">
-                     <HBox.margin>
-                        <Insets left="5.0" top="5.0" />
-                     </HBox.margin>
+                  <HBox prefHeight="28.0" prefWidth="995.0">
+                     <children>
+                        <Label fx:id="loggedInUserLabel" text="Label">
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#logOutUser" text="Log out">
+                           <HBox.margin>
+                              <Insets left="850.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" minWidth="-Infinity" prefHeight="81.0" prefWidth="599.0" text="Booking.no">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" onAction="#logOutUser" text="Log out">
-                     <HBox.margin>
-                        <Insets left="850.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
+                  <HBox alignment="CENTER" prefHeight="618.0" prefWidth="1000.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="restaurant0" mnemonicParsing="false" onAction="#enterRestaurantPage" prefHeight="128.0" prefWidth="130.0" style="-fx-background-color: transparent;">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@FratiLogo.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="restaurant1" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="120.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Szechuan.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="restaurant2" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@BurgerKing.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="restaurant3" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Barbecuez.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="restaurant4" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@McDonald's.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="restaurant5" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@SteakHouse.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Label alignment="CENTER" minWidth="-Infinity" prefHeight="81.0" prefWidth="599.0" text="Booking.no">
-               <font>
-                  <Font size="35.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin></Label>
-            <HBox alignment="CENTER" prefHeight="444.0" prefWidth="579.0">
+            </VBox>
+            <VBox prefHeight="483.0" prefWidth="994.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="restaurant0" mnemonicParsing="false" onAction="#enterRestaurantPage" prefHeight="128.0" prefWidth="130.0" style="-fx-background-color: transparent;">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@FratiLogo.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="restaurant1" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="120.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@Szechuan.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="restaurant2" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@BurgerKing.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
+                        <Label style="-fx-border-color: black;" text="YOUR BOOKINGS" />
                      </children>
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Button fx:id="restaurant3" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@Barbecuez.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="restaurant4" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@McDonald's.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="restaurant5" mnemonicParsing="false" onAction="#enterRestaurantPage" style="-fx-background-color: transparent;">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@SteakHouse.jpg" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </VBox>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
          </children>
       </VBox>
    </content>
