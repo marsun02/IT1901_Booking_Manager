@@ -14,6 +14,20 @@
    <content>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="569.0" prefWidth="1000.0" style="-fx-background-color: beige; -fx-border-color: black; -fx-border-width: 2px;">
          <children>
+            <HBox prefHeight="28.0" prefWidth="973.0">
+               <children>
+                  <Label fx:id="loggedInUserLabel" text="Label">
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#logOutUser" text="Log out">
+                     <HBox.margin>
+                        <Insets left="850.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
             <Label alignment="CENTER" minWidth="-Infinity" prefHeight="81.0" prefWidth="599.0" text="Booking.no">
                <font>
                   <Font size="35.0" />

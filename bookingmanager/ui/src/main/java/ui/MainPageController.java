@@ -13,23 +13,30 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import persistence.FileManagement;
 import persistence.Restaurant;
+import persistence.User;
 
 public class MainPageController {
-    private Collection<Restaurant> restaurants;
+    Collection<Restaurant> restaurants;
     // private Collection<User> users; // User functionality may be added later
     final Path path = Paths.get("../persistence/src/main/resources/persistence/restaurants.json");
     final File restaurantDataFile = path.toFile(); // File to store restaurant data
 
     private Stage primaryStage;
     private Scene bookingScene;
+    private Scene loginScene;
     private BookingPageController bookingPageController;
+    private User currentlyLoggedInUser = new User();
 
     @FXML
     private AnchorPane anchorpane;
+    
+    @FXML
+    private Label loggedInUserLabel;
 
     public MainPageController(){
         initialize();
@@ -68,10 +75,12 @@ public class MainPageController {
         App app,
         Stage primaryStage,
         Scene bookingScene,
-        Scene mainScene
+        Scene mainScene,
+        Scene loginScene
     ) {
         this.primaryStage = primaryStage;
         this.bookingScene = bookingScene;
+        this.loginScene = loginScene;
     }
 
     public void setBookingPageController(BookingPageController controller){
@@ -91,5 +100,19 @@ public class MainPageController {
         primaryStage.setScene(bookingScene);
         bookingPageController.setCurrentRestaurantDisplayed(restaurant);
         // bookingPageController.setCorrectTables(restaurant.getTables()); // Will be used when tables can be chosen in the booking page
+    }
+
+    public void setcurrentlyLoggedInUser(User loggedInUser){
+        currentlyLoggedInUser = loggedInUser;
+    }
+
+    public void setLoggedInUserLabel(String name){
+        loggedInUserLabel.setText(name);
+    }
+
+    @FXML
+    public void logOutUser(){
+        this.currentlyLoggedInUser = null;
+        primaryStage.setScene(loginScene);
     }
 }

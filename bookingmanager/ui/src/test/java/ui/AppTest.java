@@ -126,10 +126,11 @@ public class AppTest {
                 Stage stage = new Stage();
                 Scene mainScene = new Scene(new javafx.scene.layout.Pane());
                 Scene bookingScene = new Scene(new javafx.scene.layout.Pane());
+                Scene loginScene = new Scene(new javafx.scene.layout.Pane());
 
-                main.setStage(new App(), stage, bookingScene, mainScene);
+                main.setStage(new App(), stage, bookingScene, mainScene, loginScene);
                 main.setBookingPageController(booking);
-                booking.setStage(new App(), stage, bookingScene, mainScene);
+                booking.setStage(new App(), stage, bookingScene, mainScene, loginScene);
                 booking.setMainPageController(main);
             } finally {
                 latch.countDown();

@@ -77,4 +77,43 @@ public class FileManagement {
         }
         return matchingDateBookings; // returns all bookings made for that specific date
     }
+
+
+
+
+    public static Collection<User> loadUsers(File userDataFile) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collection<User> users;
+        try {
+            users = objectMapper.readValue(userDataFile, new TypeReference<HashSet<User>>() {
+            });
+        } catch (Exception e) {
+            users = new HashSet<>();
+        }
+        return users;
+    }
+
+    public static void saveUser(File usersFile, User newUser) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
+
+        Collection<User> allUsers = new HashSet<>();
+        try {
+            if (usersFile.exists() && usersFile.length() > 0){
+                allUsers = objectMapper.readValue(usersFile, new TypeReference<HashSet<User>>() {});
+            }
+        } catch (IOException e) {
+            // TODO: make proper catch
+            e.printStackTrace();
+        }
+
+        allUsers.add(newUser);
+
+        try {
+            objectMapper.writeValue(usersFile, allUsers);
+        } catch (Exception e) {
+            // TODO: make proper catch
+            e.printStackTrace();
+        }
+    }
 }

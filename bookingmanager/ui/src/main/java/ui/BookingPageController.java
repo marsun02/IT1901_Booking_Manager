@@ -57,7 +57,8 @@ public class BookingPageController {
         App app,
         Stage primaryStage,
         Scene bookingScene,
-        Scene mainScene
+        Scene mainScene,
+        Scene loginScene
     ) {
         this.primaryStage = primaryStage;
         this.mainScene = mainScene;

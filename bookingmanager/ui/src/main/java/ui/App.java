@@ -19,12 +19,18 @@ public class App extends Application{
             Scene bookingScene = new Scene(bookingLoader.load());
             BookingPageController bookingController = bookingLoader.getController();
 
-            mainController.setStage(this, primaryStage, bookingScene, mainScene);
-            mainController.setBookingPageController(bookingController);
-            bookingController.setStage(this, primaryStage, bookingScene, mainScene);
-            bookingController.setMainPageController(mainController);
+            FXMLLoader loginLoader = new FXMLLoader(App.class.getResource("LoginPage.fxml"));
+            Scene loginScene = new Scene(loginLoader.load());
+            LoginPageController loginController = loginLoader.getController();
 
-            primaryStage.setScene(mainScene);
+            mainController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
+            mainController.setBookingPageController(bookingController);
+            bookingController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
+            bookingController.setMainPageController(mainController);
+            loginController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
+            loginController.setMainPageController(mainController);
+
+            primaryStage.setScene(loginScene);
             primaryStage.setTitle("Booking manager");
             primaryStage.show();
         } catch (Exception e){
