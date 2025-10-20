@@ -21,5 +21,7 @@
     %% Pakke: UI
     subgraph UI["UI"]
         C1[App]
+        C2[BookingPageController]
+        C3[MainPageController]
     end 
 ```
