@@ -13,4 +13,4 @@ sequenceDiagram
     bookinglogic->>persistance: Save new booking
     persistance-->>bookinglogic: Confirm saving
     bookinglogic-->>UI: Show confirmation
-    UI-->>User: Show Booked table
+    UI-->>User: Show booked table
