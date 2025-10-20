@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import persistence.FileManagement;
@@ -27,11 +28,15 @@ public class MainPageController {
 
     private Stage primaryStage;
     private Scene bookingScene;
+    private Scene loginScene;
     private BookingPageController bookingPageController;
-    private User currentlyLoggedInUser;
+    private User currentlyLoggedInUser = new User();
 
     @FXML
     private AnchorPane anchorpane;
+    
+    @FXML
+    private Label loggedInUserLabel;
 
     public MainPageController(){
         initialize();
@@ -75,6 +80,7 @@ public class MainPageController {
     ) {
         this.primaryStage = primaryStage;
         this.bookingScene = bookingScene;
+        this.loginScene = loginScene;
     }
 
     public void setBookingPageController(BookingPageController controller){
@@ -98,5 +104,15 @@ public class MainPageController {
 
     public void setcurrentlyLoggedInUser(User loggedInUser){
         currentlyLoggedInUser = loggedInUser;
+    }
+
+    public void setLoggedInUserLabel(String name){
+        loggedInUserLabel.setText(name);
+    }
+
+    @FXML
+    public void logOutUser(){
+        this.currentlyLoggedInUser = null;
+        primaryStage.setScene(loginScene);
     }
 }

@@ -108,6 +108,8 @@ public class LoginPageController {
                     if (user.checkNamePassword(usernameField.getText(), passwordField.getText())){
                         primaryStage.setScene(mainScene);
                         mainPageController.setcurrentlyLoggedInUser(user);
+                        mainPageController.setLoggedInUserLabel(user.getName());
+                        resetInfo();
                         return;
                     }
                     Alert alert = new Alert(AlertType.ERROR);
