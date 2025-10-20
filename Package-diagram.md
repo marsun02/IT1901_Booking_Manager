@@ -24,4 +24,8 @@
         C2[BookingPageController]
         C3[MainPageController]
     end 
+
+    %% Dependencies
+    UI --> Core
+    Core --> Persistance
 ```
