@@ -1,9 +1,14 @@
 ```mermaid
     graph TD
 
-    %% Pakke: 
+    %% Pakke: Persistance 
+    subgraph persistance["Persistance"]
+        
 
-    %% Pakke:
 
-    %% Pakke:
+    *%% Pakke: Core
+    subgraph Core["Core"]
+
+    %% Pakke: UI
+    subgraph UI["UI"]
 ```
