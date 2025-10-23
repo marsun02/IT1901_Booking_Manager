@@ -83,6 +83,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Code section fetched from stack overflow |
+        https://stackoverflow.com/questions/29360631/can-i-add-springboot-framework-to-existing-maven-project -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- End of stack overflow section -->
 
     </dependencies>
     <build>
@@ -101,7 +108,7 @@
                 <version>3.5.3</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
-                    <argLine>@{jaCoCoArgLine}</argLine>    
+                    <argLine>@{jaCoCoArgLine}</argLine>
                 </configuration>
             </plugin>
             <plugin>
@@ -141,6 +148,13 @@
                     <propertyName>jaCoCoArgLine</propertyName>
                 </configuration>
             </plugin>
+            <!-- Code section fetched from stack overflow |
+            https://stackoverflow.com/questions/29360631/can-i-add-springboot-framework-to-existing-maven-project -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- End of stack overflow section -->
         </plugins>
     </build>
 </project>
