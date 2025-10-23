@@ -86,8 +86,6 @@ public class FileManagement {
             allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
             });
             for (CustomDateObject customDateObject : allBookings) {
-                System.out.println(customDateObject.getUser());
-                System.out.println(user);
                 if (customDateObject.getUser().equals(user)){
                     matchingDateBookings.add(customDateObject);
                 }

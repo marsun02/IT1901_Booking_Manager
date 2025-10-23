@@ -156,16 +156,13 @@ public class MainPageController {
    
     public void loadUserBookings(){
         tableName.setCellValueFactory(cellData -> 
-            new ReadOnlyObjectWrapper<>(cellData.getValue().getUser()));
+            new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
         tableDate.setCellValueFactory(cellData -> 
             new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
         tableTime.setCellValueFactory(cellData -> 
             new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
         
         Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
-        
-        System.out.println("Vi kom hit");
-        System.out.println(bookings.size());
 
         for (CustomDateObject booking : bookings) {
             bookingOverview.getItems().add(booking);

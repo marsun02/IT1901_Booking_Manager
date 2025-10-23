@@ -82,7 +82,7 @@ public class BookingPageController {
         for (Table table : restaurant.getTables()) {
             if (table.equals(firstAvailableTable)){
                 table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName()));
+                FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText() + " " + surname.getText()));
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 mainPageController.saveRestaurants();
                 returnToMainPage();
