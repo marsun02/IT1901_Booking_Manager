@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -36,7 +37,6 @@ public class MainPageController {
 
     final Path path2 = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
     final File allBookingsFile = path2.toFile(); // File to store bookings
-
 
     private Stage primaryStage;
     private Scene bookingScene;
@@ -66,10 +66,10 @@ public class MainPageController {
     private TableColumn<CustomDateObject, String> tableTime;
 
     @FXML
-    private TableColumn<CustomDateObject, String> tableEdit;
+    private TableColumn<CustomDateObject, Button> tableEdit;
 
     @FXML
-    private TableColumn<CustomDateObject, String> tableDelete;
+    private TableColumn<CustomDateObject, Button> tableDelete;
 
     public MainPageController(){
         initialize();
@@ -162,6 +162,22 @@ public class MainPageController {
             new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
         tableTime.setCellValueFactory(cellData -> 
             new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
+        tableEdit.setCellValueFactory(cellData -> {
+            final Image editImage = new Image(getClass().getResourceAsStream("/ui/editIcon.png"));
+            final ImageView editImageView = new ImageView(editImage);
+            editImageView.setFitWidth(20);
+            editImageView.setFitHeight(20);
+            Button editButton = new Button("", editImageView);
+            return new ReadOnlyObjectWrapper<>(editButton);
+        });
+        tableDelete.setCellValueFactory(cellData -> {
+            final Image deleteImage = new Image(getClass().getResourceAsStream("/ui/deleteIcon.png"));
+            final ImageView deleteImageView = new ImageView(deleteImage);
+            deleteImageView.setFitWidth(20);
+            deleteImageView.setFitHeight(20);
+            Button deleteButton = new Button("", deleteImageView);
+            return new ReadOnlyObjectWrapper<>(deleteButton);
+        });
         
         Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
 
@@ -169,7 +185,5 @@ public class MainPageController {
             bookingOverview.getItems().add(booking);
         }
     }
-
-    
 
 }
