@@ -7,17 +7,21 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.jar.Attributes.Name;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import persistence.CustomDateObject;
 import persistence.FileManagement;
 import persistence.Restaurant;
 import persistence.Table;
@@ -42,25 +46,25 @@ public class MainPageController {
     private Label loggedInUserLabel;
 
     @FXML
-    private TableView bookingOverview;
+    private TableView<CustomDateObject> bookingOverview;
 
     @FXML
-    private TableColumn tableImage;
+    private TableColumn<CustomDateObject, Image> tableImage;
 
     @FXML 
-    private TableColumn tableName;
+    private TableColumn<CustomDateObject, String> tableName;
 
     @FXML
-    private TableColumn tableDate;
+    private TableColumn<CustomDateObject, String> tableDate;
 
     @FXML
-    private TableColumn tableTime;
+    private TableColumn<CustomDateObject, String> tableTime;
 
     @FXML
-    private TableColumn tableEdit;
+    private TableColumn<CustomDateObject, String> tableEdit;
 
     @FXML
-    private TableColumn tableDelete;
+    private TableColumn<CustomDateObject, String> tableDelete;
 
     public MainPageController(){
         initialize();
@@ -140,7 +144,12 @@ public class MainPageController {
         primaryStage.setScene(loginScene);
     }
 
+    
+    public User getCurrentlyLoggedInUser(){
+        return currentlyLoggedInUser;
+    }
+   
     public void loadUserBookings(){
-
+        tableImage.setCellValueFactory(cellData -> cellData.getValue().getRestaurantName());
     }
 }

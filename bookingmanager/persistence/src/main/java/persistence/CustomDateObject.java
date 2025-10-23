@@ -4,11 +4,13 @@ public class CustomDateObject {
     private String date;
     private String time;
     private String restaurantName;
+    private String user;
 
-    public CustomDateObject(String date, String time, String restaurantName){
+    public CustomDateObject(String date, String time, String restaurantName, String user){
         this.date = date;
         this.time = time;
         this.restaurantName = restaurantName;
+        this.user = user;
     }
 
     public CustomDateObject() {}
@@ -25,6 +27,10 @@ public class CustomDateObject {
         return restaurantName;
     }
 
+    public String getUser(){
+        return user;
+    }
+
     public void setDate(String date) {
         this.date = date;
     }
@@ -37,4 +43,7 @@ public class CustomDateObject {
         this.restaurantName = restaurantName;
     }
 
+    public void setUser(String user){
+        this.user = user;
+    }
 }
