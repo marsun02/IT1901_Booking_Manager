@@ -54,7 +54,7 @@ public class MainPageController {
     private TableView<CustomDateObject> bookingOverview;
 
     @FXML
-    private TableColumn<CustomDateObject, Image> tableImage;
+    private TableColumn<CustomDateObject, String> tableImage;
 
     @FXML 
     private TableColumn<CustomDateObject, String> tableName;
@@ -156,16 +156,15 @@ public class MainPageController {
    
     public void loadUserBookings(){
         bookingOverview.getItems().clear();
-        tableImage.setCellValueFactory(cellData -> {
-            final Image restaurantImage = new Image(getClass().getResourceAsStream("/ui/" + cellData.getValue().getRestaurantName() + ".png"));
-            return new ReadOnlyObjectWrapper<>();
-        });
+        // TODO: Add image instead of text
+        tableImage.setCellValueFactory(cellData ->
+        new ReadOnlyObjectWrapper<>(cellData.getValue().getRestaurantName()));
         tableName.setCellValueFactory(cellData -> 
-            new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
+        new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
         tableDate.setCellValueFactory(cellData -> 
-            new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
+        new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
         tableTime.setCellValueFactory(cellData -> 
-            new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
+        new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
         tableEdit.setCellValueFactory(cellData -> {
             final Image editImage = new Image(getClass().getResourceAsStream("/ui/editIcon.png"));
             final ImageView editImageView = new ImageView(editImage);
@@ -184,7 +183,7 @@ public class MainPageController {
         });
         
         Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
-
+        
         for (CustomDateObject booking : bookings) {
             bookingOverview.getItems().add(booking);
         }

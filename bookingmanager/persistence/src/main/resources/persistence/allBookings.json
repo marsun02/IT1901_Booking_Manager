@@ -6,8 +6,14 @@
   "bookedName" : "Kristoffer Kristiansen"
 }, {
   "date" : "2025-10-29",
+  "time" : "19.30",
+  "restaurantName" : "Barbecuez",
+  "user" : "Admin",
+  "bookedName" : "Martin Leo"
+}, {
+  "date" : "2025-10-29",
   "time" : "18.30",
-  "restaurantName" : "Steak House",
+  "restaurantName" : "SteakHouse",
   "user" : "Admin",
   "bookedName" : "Marius Carl"
 }, {
@@ -17,9 +23,9 @@
   "user" : "Admin",
   "bookedName" : "Maris falis"
 }, {
-  "date" : "2025-10-29",
-  "time" : "19.30",
-  "restaurantName" : "Barbecuez",
+  "date" : "2025-10-24",
+  "time" : "19.00",
+  "restaurantName" : "Frati",
   "user" : "Admin",
-  "bookedName" : "Martin Leo"
+  "bookedName" : "Martin Sunnset"
 } ]
