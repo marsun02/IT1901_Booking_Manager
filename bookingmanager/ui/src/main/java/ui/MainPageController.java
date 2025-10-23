@@ -14,10 +14,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import persistence.FileManagement;
 import persistence.Restaurant;
+import persistence.Table;
 import persistence.User;
 
 public class MainPageController {
@@ -37,6 +40,27 @@ public class MainPageController {
     
     @FXML
     private Label loggedInUserLabel;
+
+    @FXML
+    private TableView bookingOverview;
+
+    @FXML
+    private TableColumn tableImage;
+
+    @FXML 
+    private TableColumn tableName;
+
+    @FXML
+    private TableColumn tableDate;
+
+    @FXML
+    private TableColumn tableTime;
+
+    @FXML
+    private TableColumn tableEdit;
+
+    @FXML
+    private TableColumn tableDelete;
 
     public MainPageController(){
         initialize();
@@ -114,5 +138,9 @@ public class MainPageController {
     public void logOutUser(){
         this.currentlyLoggedInUser = null;
         primaryStage.setScene(loginScene);
+    }
+
+    public void loadUserBookings(){
+
     }
 }
