@@ -1,0 +1,11 @@
+[ {
+  "date" : "2025-10-31",
+  "time" : "19.00",
+  "restaurantName" : "Frati",
+  "user" : "Admin"
+}, {
+  "date" : "2025-10-28",
+  "time" : "18.00",
+  "restaurantName" : "Barbecuez",
+  "user" : "Admin"
+} ]

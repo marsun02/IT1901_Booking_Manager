@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.jar.Attributes.Name;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -32,6 +33,10 @@ public class MainPageController {
     // private Collection<User> users; // User functionality may be added later
     final Path path = Paths.get("../persistence/src/main/resources/persistence/restaurants.json");
     final File restaurantDataFile = path.toFile(); // File to store restaurant data
+
+    final Path path2 = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
+    final File allBookingsFile = path2.toFile(); // File to store bookings
+
 
     private Stage primaryStage;
     private Scene bookingScene;
@@ -150,6 +155,23 @@ public class MainPageController {
     }
    
     public void loadUserBookings(){
-        tableImage.setCellValueFactory(cellData -> cellData.getValue().getRestaurantName());
+        tableName.setCellValueFactory(cellData -> 
+            new ReadOnlyObjectWrapper<>(cellData.getValue().getUser()));
+        tableDate.setCellValueFactory(cellData -> 
+            new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
+        tableTime.setCellValueFactory(cellData -> 
+            new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
+        
+        Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
+        
+        System.out.println("Vi kom hit");
+        System.out.println(bookings.size());
+
+        for (CustomDateObject booking : bookings) {
+            bookingOverview.getItems().add(booking);
+        }
     }
+
+    
+
 }

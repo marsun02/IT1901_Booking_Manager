@@ -78,6 +78,25 @@ public class FileManagement {
         return matchingDateBookings; // returns all bookings made for that specific date
     }
 
+    public static Collection<CustomDateObject> loadBookingsForSpecificUser(File allBookingsFile, String user) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collection<CustomDateObject> allBookings;
+        Collection<CustomDateObject> matchingDateBookings = new HashSet<>();
+        try {
+            allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
+            });
+            for (CustomDateObject customDateObject : allBookings) {
+                System.out.println(customDateObject.getUser());
+                System.out.println(user);
+                if (customDateObject.getUser().equals(user)){
+                    matchingDateBookings.add(customDateObject);
+                }
+        }
+        } catch (Exception e) {
+            matchingDateBookings = new HashSet<>();
+        }
+        return matchingDateBookings; // returns all bookings made for that specific user
+    }
 
 
 

@@ -149,6 +149,7 @@ public class BookingPageController {
     @FXML
     public void returnToMainPage(){
         primaryStage.setScene(mainScene);
+        mainPageController.loadUserBookings();
     }
 
     public void setCurrentRestaurantDisplayed(Restaurant restaurant){

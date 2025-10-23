@@ -153,9 +153,9 @@
                             <TableColumn fx:id="tableImage" prefWidth="163.9999938607216" text="Restaurants" />
                               <TableColumn fx:id="tableName" prefWidth="228.00006103515625" text="Name" />
                               <TableColumn fx:id="tableDate" prefWidth="163.199951171875" text="Date" />
-                              <TableColumn fx:id="tableTime" prefWidth="276.79998779296875" text="Time" />
-                            <TableColumn fx:id="tableEdit" minWidth="0.0" prefWidth="82.39996337890625" text="Edit" />
-                              <TableColumn fx:id="tableDelete" prefWidth="260.0" text="Delete" />
+                              <TableColumn fx:id="tableTime" prefWidth="274.39996337890625" text="Time" />
+                            <TableColumn fx:id="tableEdit" minWidth="0.0" prefWidth="79.20001220703125" text="Edit" />
+                              <TableColumn fx:id="tableDelete" prefWidth="84.800048828125" text="Delete" />
                           </columns>
                         </TableView>
                      </children>
