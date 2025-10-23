@@ -147,23 +147,17 @@
                            </effect></Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <TableView fx:id="bookingOverview" prefHeight="100.0" prefWidth="994.0">
-                          <columns>
-                            <TableColumn fx:id="tableImage" prefWidth="163.9999938607216" text="Restaurants" />
-                              <TableColumn fx:id="tableName" prefWidth="228.00006103515625" text="Name" />
-                              <TableColumn fx:id="tableDate" prefWidth="163.199951171875" text="Date" />
-                              <TableColumn fx:id="tableTime" prefWidth="274.39996337890625" text="Time" />
-                            <TableColumn fx:id="tableEdit" minWidth="0.0" prefWidth="79.20001220703125" text="Edit" />
-                              <TableColumn fx:id="tableDelete" prefWidth="84.800048828125" text="Delete" />
-                          </columns>
-                        </TableView>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <TableView fx:id="bookingOverview" prefHeight="330.0" prefWidth="994.0">
+                    <columns>
+                      <TableColumn fx:id="tableImage" prefWidth="163.9999938607216" text="Restaurants" />
+                        <TableColumn fx:id="tableName" prefWidth="228.00006103515625" text="Name" />
+                        <TableColumn fx:id="tableDate" prefWidth="214.40005493164062" text="Date" />
+                        <TableColumn fx:id="tableTime" prefWidth="223.199951171875" text="Time" />
+                      <TableColumn fx:id="tableEdit" minWidth="0.0" prefWidth="79.20001220703125" text="Edit" />
+                        <TableColumn fx:id="tableDelete" prefWidth="84.800048828125" text="Delete" />
+                    </columns>
+                  </TableView>
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                </children>
             </VBox>

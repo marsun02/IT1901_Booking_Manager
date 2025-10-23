@@ -1,7 +1,25 @@
 [ {
-  "date" : "2025-10-24",
-  "time" : "18.00",
-  "restaurantName" : "McDonalds",
+  "date" : "2025-10-27",
+  "time" : "19.00",
+  "restaurantName" : "Szechuan",
   "user" : "Admin",
-  "bookedName" : "Martin Sunnset"
+  "bookedName" : "Kristoffer Kristiansen"
+}, {
+  "date" : "2025-10-29",
+  "time" : "18.30",
+  "restaurantName" : "Steak House",
+  "user" : "Admin",
+  "bookedName" : "Marius Carl"
+}, {
+  "date" : "2025-10-28",
+  "time" : "17.30",
+  "restaurantName" : "Frati",
+  "user" : "Admin",
+  "bookedName" : "Maris falis"
+}, {
+  "date" : "2025-10-29",
+  "time" : "19.30",
+  "restaurantName" : "Barbecuez",
+  "user" : "Admin",
+  "bookedName" : "Martin Leo"
 } ]

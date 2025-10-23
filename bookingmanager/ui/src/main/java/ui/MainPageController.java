@@ -155,6 +155,7 @@ public class MainPageController {
     }
    
     public void loadUserBookings(){
+        bookingOverview.getItems().clear();
         tableName.setCellValueFactory(cellData -> 
             new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
         tableDate.setCellValueFactory(cellData -> 
