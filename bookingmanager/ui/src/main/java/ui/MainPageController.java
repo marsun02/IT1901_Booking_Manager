@@ -156,6 +156,10 @@ public class MainPageController {
    
     public void loadUserBookings(){
         bookingOverview.getItems().clear();
+        tableImage.setCellValueFactory(cellData -> {
+            final Image restaurantImage = new Image(getClass().getResourceAsStream("/ui/" + cellData.getValue().getRestaurantName() + ".png"));
+            return new ReadOnlyObjectWrapper<>();
+        });
         tableName.setCellValueFactory(cellData -> 
             new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
         tableDate.setCellValueFactory(cellData -> 
@@ -185,5 +189,4 @@ public class MainPageController {
             bookingOverview.getItems().add(booking);
         }
     }
-
 }

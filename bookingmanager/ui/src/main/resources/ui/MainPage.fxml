@@ -64,7 +64,7 @@
                                  <graphic>
                                     <ImageView fitHeight="120.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Szechuan.jpg" />
+                                          <Image url="@Szechuan.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -95,7 +95,7 @@
                                  <graphic>
                                     <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Barbecuez.jpg" />
+                                          <Image url="@Barbecuez.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -119,7 +119,7 @@
                                  <graphic>
                                     <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@SteakHouse.jpg" />
+                                          <Image url="@SteakHouse.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
