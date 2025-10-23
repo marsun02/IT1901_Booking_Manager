@@ -87,9 +87,9 @@ public class LoginPageController {
                     return;
                 }
             }
-            switchBackToLoginLayout();
             User newUser = new User(0, usernameField.getText(), null, null, passwordField.getText());
             FileManagement.saveUser(userDataFile, newUser);
+            switchBackToLoginLayout();
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText("Account created");
             alert.showAndWait();
