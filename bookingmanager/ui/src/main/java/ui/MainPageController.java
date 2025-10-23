@@ -11,12 +11,14 @@ import java.util.jar.Attributes.Name;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -179,6 +181,16 @@ public class MainPageController {
             deleteImageView.setFitWidth(20);
             deleteImageView.setFitHeight(20);
             Button deleteButton = new Button("", deleteImageView);
+            deleteButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    FileManagement.deleteBooking(allBookingsFile, cellData.getValue());
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText("Booking deleted");
+                    alert.showAndWait();
+                    loadUserBookings();
+                }
+            });
             return new ReadOnlyObjectWrapper<>(deleteButton);
         });
         

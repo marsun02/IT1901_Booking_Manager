@@ -60,6 +60,38 @@ public class FileManagement {
         }
     }
 
+    public static void deleteBooking(File allBookingsFile, CustomDateObject dateToDelete) {
+        System.out.println("deleted");
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
+
+        Collection<CustomDateObject> allBookings = new HashSet<>();
+        try {
+            if (allBookingsFile.exists() && allBookingsFile.length() > 0){
+                allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {});
+            }
+        } catch (IOException e) {
+            // TODO: make proper catch
+            e.printStackTrace();
+        }
+
+        CustomDateObject bookingToRemove = new CustomDateObject();
+        for (CustomDateObject booking : allBookings) {
+            // TODO: Implement unique ID for bookings (and should for users too)
+            if (booking.getDate().equals(dateToDelete.getDate()) && booking.getTime().equals(dateToDelete.getTime()) && booking.getRestaurantName().equals(dateToDelete.getRestaurantName())){
+                bookingToRemove = booking;
+            }
+        }
+        allBookings.remove(bookingToRemove);
+
+        try {
+            objectMapper.writeValue(allBookingsFile, allBookings);
+        } catch (Exception e) {
+            // TODO: make proper catch
+            e.printStackTrace();
+        }
+    }
+
     public static Collection<CustomDateObject> loadBookingsForSpecificDate(File allBookingsFile, String date, String restaurantName) {
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<CustomDateObject> allBookings;
