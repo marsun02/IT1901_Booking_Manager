@@ -61,7 +61,6 @@ public class FileManagement {
     }
 
     public static void deleteBooking(File allBookingsFile, CustomDateObject dateToDelete) {
-        System.out.println("deleted");
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
 
