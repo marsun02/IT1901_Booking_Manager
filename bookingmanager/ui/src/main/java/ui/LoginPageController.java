@@ -87,7 +87,7 @@ public class LoginPageController {
                     return;
                 }
             }
-            User newUser = new User(0, usernameField.getText(), null, null, passwordField.getText());
+            User newUser = new User(FileManagement.getId("userId"), usernameField.getText(), null, null, passwordField.getText());
             FileManagement.saveUser(userDataFile, newUser);
             switchBackToLoginLayout();
             Alert alert = new Alert(AlertType.INFORMATION);

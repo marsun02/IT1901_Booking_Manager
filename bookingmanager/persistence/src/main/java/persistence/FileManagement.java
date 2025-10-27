@@ -5,8 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class FileManagement {
     public static void saveRestaurants(File restaurantDataFile, Collection<Restaurant> restaurants) {
@@ -184,5 +188,32 @@ public class FileManagement {
             // TODO: make proper catch
             e.printStackTrace();
         }
+    }
+
+    public static Integer getId(String idType){
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
+        Map<String, Integer> ids = new HashMap<>();
+        final Path path = Paths.get("../persistence/src/main/resources/persistence/idManager.json");
+        final File idsFile = path.toFile(); // File to store bookings
+        try {
+            ids = objectMapper.readValue(idsFile, new TypeReference<Map<String, Integer>>() {});
+        } catch (Exception e) {
+            // TODO: Implement proper catch
+            e.printStackTrace();
+        }
+
+        int nextId = ids.getOrDefault(idType, 0) + 1;
+        ids.put(idType, nextId);
+
+        try {
+            objectMapper.writeValue(idsFile, ids);
+        } catch (Exception e) {
+            // TODO: Make proper catch
+            e.printStackTrace();
+        }
+
+        return nextId;
+
     }
 }
