@@ -128,6 +128,27 @@ public class FileManagement {
         return matchingDateBookings; // returns all bookings made for that specific user
     }
 
+    public static CustomDateObject loadSpecificBooking(File allBookingsFile, String user, String date, String time, String restaurantName) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collection<CustomDateObject> allBookings;
+        CustomDateObject matchingBooking = null;
+        try {
+            allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
+            });
+            for (CustomDateObject customDateObject : allBookings) {
+                if (customDateObject.getUser().equals(user) && customDateObject.getDate().equals(date) && customDateObject.getTime().equals(time) && customDateObject.getRestaurantName().equals(restaurantName)){
+                    matchingBooking = customDateObject;
+                }
+        }
+        } catch (Exception e) {
+            // TODO: make proper exception
+            e.printStackTrace();
+        }
+        return matchingBooking; // returns specific booking
+    }
+
+
+
 
 
     public static Collection<User> loadUsers(File userDataFile) {

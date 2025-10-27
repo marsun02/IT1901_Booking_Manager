@@ -30,6 +30,7 @@ public class BookingPageController {
     private Restaurant restaurant;
     private MainPageController mainPageController;
     private Collection<String> allAvailableTimeslots = new ArrayList<>(); 
+    private boolean currentlyInEditState = false;
 
     final Path path = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
     final File allBookingsFile = path.toFile(); // File to store bookings
@@ -188,5 +189,16 @@ public class BookingPageController {
     // public void setCorrectTables(Collection<Table> tables){ 
     //     this.tables = tables;
     // }
+
+    public void setEditState(boolean state){
+        currentlyInEditState = state;
+    }
+
+    public void fillFieldsWithExistingBookingInfo(String name, String surname, LocalDate date, String timeSlot){
+        this.name.setText(name);
+        this.surname.setText(surname);
+        this.date.setValue(date);
+        this.timeSlotsPicker.setValue(timeSlot);
+    }
 
 }

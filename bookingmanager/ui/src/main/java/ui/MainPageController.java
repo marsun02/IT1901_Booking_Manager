@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.jar.Attributes.Name;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
@@ -28,7 +27,6 @@ import javafx.stage.Stage;
 import persistence.CustomDateObject;
 import persistence.FileManagement;
 import persistence.Restaurant;
-import persistence.Table;
 import persistence.User;
 
 public class MainPageController {
@@ -173,6 +171,15 @@ public class MainPageController {
             editImageView.setFitWidth(20);
             editImageView.setFitHeight(20);
             Button editButton = new Button("", editImageView);
+            // editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            //     @Override
+            //     public void handle(MouseEvent event) {
+            //         // CustomDateObject bookingToEdit = FileManagement.loadSpecificBooking(allBookingsFile, currentlyLoggedInUser.getName(), tableDate., null, null)
+            //         // bookingPageController.setEditState(true);
+            //         // bookingPageController.fillFieldsWithExistingBookingInfo(null, null, null, null);
+            //         // primaryStage.setScene(bookingScene);
+            //     }
+            // });
             return new ReadOnlyObjectWrapper<>(editButton);
         });
         tableDelete.setCellValueFactory(cellData -> {
