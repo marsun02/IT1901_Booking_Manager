@@ -16,7 +16,7 @@ public class RestaurantInitializationTest {
     
     @BeforeEach
     void setUp() {
-        restaurantNames = new HashSet<>(Arrays.asList("Frati", "Szechuan", "Burger King", "Barbecuez", "McDonalds", "Steak House"));
+        restaurantNames = new HashSet<>(Arrays.asList("Frati", "Szechuan", "BurgerKing", "Barbecuez", "McDonalds", "SteakHouse"));
     }
 
     @Test

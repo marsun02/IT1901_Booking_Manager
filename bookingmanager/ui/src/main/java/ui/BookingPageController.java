@@ -30,6 +30,7 @@ public class BookingPageController {
     private Restaurant restaurant;
     private MainPageController mainPageController;
     private Collection<String> allAvailableTimeslots = new ArrayList<>(); 
+    private boolean currentlyInEditState = false;
 
     final Path path = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
     final File allBookingsFile = path.toFile(); // File to store bookings
@@ -82,7 +83,7 @@ public class BookingPageController {
         for (Table table : restaurant.getTables()) {
             if (table.equals(firstAvailableTable)){
                 table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName()));
+                FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText() + " " + surname.getText()));
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 mainPageController.saveRestaurants();
                 returnToMainPage();
@@ -149,6 +150,7 @@ public class BookingPageController {
     @FXML
     public void returnToMainPage(){
         primaryStage.setScene(mainScene);
+        mainPageController.loadUserBookings();
     }
 
     public void setCurrentRestaurantDisplayed(Restaurant restaurant){
@@ -187,5 +189,16 @@ public class BookingPageController {
     // public void setCorrectTables(Collection<Table> tables){ 
     //     this.tables = tables;
     // }
+
+    public void setEditState(boolean state){
+        currentlyInEditState = state;
+    }
+
+    public void fillFieldsWithExistingBookingInfo(String name, String surname, LocalDate date, String timeSlot){
+        this.name.setText(name);
+        this.surname.setText(surname);
+        this.date.setValue(date);
+        this.timeSlotsPicker.setValue(timeSlot);
+    }
 
 }

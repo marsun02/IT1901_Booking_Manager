@@ -7,7 +7,7 @@ import persistence.Table;
 
 public class RestaurantInitialization {
     private static Collection<Restaurant> restaurants = new HashSet<>();
-    private static String[] restaurantNames = {"Frati", "Szechuan", "Burger King", "Barbecuez", "McDonalds", "Steak House"};
+    private static String[] restaurantNames = {"Frati", "Szechuan", "BurgerKing", "Barbecuez", "McDonalds", "SteakHouse"};
     private static int tablesPerRestaurant = 8;
 
     public static Collection<Restaurant> initializeAllRestaurants(){

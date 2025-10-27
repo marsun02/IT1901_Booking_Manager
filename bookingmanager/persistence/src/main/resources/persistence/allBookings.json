@@ -1,0 +1,19 @@
+[ {
+  "date" : "2025-10-27",
+  "time" : "19.00",
+  "restaurantName" : "Szechuan",
+  "user" : "Admin",
+  "bookedName" : "Kristoffer Kristiansen"
+}, {
+  "date" : "2025-10-28",
+  "time" : "17.30",
+  "restaurantName" : "Frati",
+  "user" : "Admin",
+  "bookedName" : "Maris falis"
+}, {
+  "date" : "2025-10-29",
+  "time" : "19.30",
+  "restaurantName" : "Barbecuez",
+  "user" : "Admin",
+  "bookedName" : "Martin Leo"
+} ]

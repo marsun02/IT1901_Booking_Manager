@@ -7,15 +7,24 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashSet;
+
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import persistence.CustomDateObject;
 import persistence.FileManagement;
 import persistence.Restaurant;
 import persistence.User;
@@ -25,6 +34,9 @@ public class MainPageController {
     // private Collection<User> users; // User functionality may be added later
     final Path path = Paths.get("../persistence/src/main/resources/persistence/restaurants.json");
     final File restaurantDataFile = path.toFile(); // File to store restaurant data
+
+    final Path path2 = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
+    final File allBookingsFile = path2.toFile(); // File to store bookings
 
     private Stage primaryStage;
     private Scene bookingScene;
@@ -37,6 +49,27 @@ public class MainPageController {
     
     @FXML
     private Label loggedInUserLabel;
+
+    @FXML
+    private TableView<CustomDateObject> bookingOverview;
+
+    @FXML
+    private TableColumn<CustomDateObject, String> tableImage;
+
+    @FXML 
+    private TableColumn<CustomDateObject, String> tableName;
+
+    @FXML
+    private TableColumn<CustomDateObject, String> tableDate;
+
+    @FXML
+    private TableColumn<CustomDateObject, String> tableTime;
+
+    @FXML
+    private TableColumn<CustomDateObject, Button> tableEdit;
+
+    @FXML
+    private TableColumn<CustomDateObject, Button> tableDelete;
 
     public MainPageController(){
         initialize();
@@ -114,5 +147,64 @@ public class MainPageController {
     public void logOutUser(){
         this.currentlyLoggedInUser = null;
         primaryStage.setScene(loginScene);
+    }
+
+    
+    public User getCurrentlyLoggedInUser(){
+        return currentlyLoggedInUser;
+    }
+   
+    public void loadUserBookings(){
+        bookingOverview.getItems().clear();
+        // TODO: Add image instead of text
+        tableImage.setCellValueFactory(cellData ->
+        new ReadOnlyObjectWrapper<>(cellData.getValue().getRestaurantName()));
+        tableName.setCellValueFactory(cellData -> 
+        new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
+        tableDate.setCellValueFactory(cellData -> 
+        new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
+        tableTime.setCellValueFactory(cellData -> 
+        new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
+        tableEdit.setCellValueFactory(cellData -> {
+            final Image editImage = new Image(getClass().getResourceAsStream("/ui/editIcon.png"));
+            final ImageView editImageView = new ImageView(editImage);
+            editImageView.setFitWidth(20);
+            editImageView.setFitHeight(20);
+            Button editButton = new Button("", editImageView);
+            // editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            //     @Override
+            //     public void handle(MouseEvent event) {
+            //         // CustomDateObject bookingToEdit = FileManagement.loadSpecificBooking(allBookingsFile, currentlyLoggedInUser.getName(), tableDate., null, null)
+            //         // bookingPageController.setEditState(true);
+            //         // bookingPageController.fillFieldsWithExistingBookingInfo(null, null, null, null);
+            //         // primaryStage.setScene(bookingScene);
+            //     }
+            // });
+            return new ReadOnlyObjectWrapper<>(editButton);
+        });
+        tableDelete.setCellValueFactory(cellData -> {
+            final Image deleteImage = new Image(getClass().getResourceAsStream("/ui/deleteIcon.png"));
+            final ImageView deleteImageView = new ImageView(deleteImage);
+            deleteImageView.setFitWidth(20);
+            deleteImageView.setFitHeight(20);
+            Button deleteButton = new Button("", deleteImageView);
+            deleteButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    FileManagement.deleteBooking(allBookingsFile, cellData.getValue());
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText("Booking deleted");
+                    alert.showAndWait();
+                    loadUserBookings();
+                }
+            });
+            return new ReadOnlyObjectWrapper<>(deleteButton);
+        });
+        
+        Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
+        
+        for (CustomDateObject booking : bookings) {
+            bookingOverview.getItems().add(booking);
+        }
     }
 }

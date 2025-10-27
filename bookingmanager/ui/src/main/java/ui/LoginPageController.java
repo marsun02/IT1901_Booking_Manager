@@ -110,6 +110,7 @@ public class LoginPageController {
                         mainPageController.setcurrentlyLoggedInUser(user);
                         mainPageController.setLoggedInUserLabel(user.getName());
                         resetInfo();
+                        mainPageController.loadUserBookings();
                         return;
                     }
                     Alert alert = new Alert(AlertType.ERROR);
