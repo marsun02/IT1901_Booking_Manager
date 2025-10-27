@@ -17,7 +17,9 @@ From an environmental view, the app provides immediate benefits by combining mul
 ### Technical Dimension
 
 Technically, the app is scalable and adaptable, allowing new features like menus, table orders, or payments to be added later. This creates strengthning effects by supporting continuous learning for developers and users. Structurally, it could inspire a broader move toward sentraled digital platform that forcus on sustainable design.
-Economic Dimension
+
+### Economic Dimension
+
 Economically, the app offers immediate benefits through time savings and simpler decision-making. Over time, it can help the growth in the restaurant sector by encouraging people to eat out more, increasing economic activity and potentially creating jobs. However, structural issues such as overconsumption or food waste may arise when more people are dining out frequenlty. On the positive side, the app can optimize operations through data analysis, reducing resource waste and supporting a more sustainable restaurant economy.
 
 ### Conclusion 
