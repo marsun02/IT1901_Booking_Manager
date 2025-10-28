@@ -149,6 +149,7 @@ public class BookingPageController {
 
     @FXML
     public void returnToMainPage(){
+        resetInfo();
         primaryStage.setScene(mainScene);
         mainPageController.loadUserBookings();
     }
