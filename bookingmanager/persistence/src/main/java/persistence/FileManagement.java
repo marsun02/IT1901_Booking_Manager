@@ -190,7 +190,7 @@ public class FileManagement {
         }
     }
 
-    public static Integer getId(String idType){
+    public static int getId(String idType){
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
         Map<String, Integer> ids = new HashMap<>();
