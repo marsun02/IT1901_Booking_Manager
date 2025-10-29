@@ -31,6 +31,7 @@ public class BookingPageController {
     private MainPageController mainPageController;
     private Collection<String> allAvailableTimeslots = new ArrayList<>(); 
     private boolean currentlyInEditState = false;
+    private CustomDateObject bookingToEdit = null;
 
     final Path path = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
     final File allBookingsFile = path.toFile(); // File to store bookings
@@ -82,13 +83,24 @@ public class BookingPageController {
         // TODO: Make sure that all fields must be filled before booking
         for (Table table : restaurant.getTables()) {
             if (table.equals(firstAvailableTable)){
-                table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText() + " " + surname.getText()));
-                Alert alert = new Alert(AlertType.CONFIRMATION);
-                mainPageController.saveRestaurants();
-                returnToMainPage();
-                alert.setHeaderText("Table successfully booked!");
-                alert.showAndWait();
+                if (currentlyInEditState){
+                    // table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
+                    FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText()));
+                    FileManagement.deleteBooking(allBookingsFile, bookingToEdit);
+                    Alert alert = new Alert(AlertType.CONFIRMATION);
+                    mainPageController.saveRestaurants();
+                    returnToMainPage();
+                    alert.setHeaderText("Booking sucessfully changed!");
+                    alert.showAndWait();
+                } else {
+                    table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
+                    FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText()));
+                    Alert alert = new Alert(AlertType.CONFIRMATION);
+                    mainPageController.saveRestaurants();
+                    returnToMainPage();
+                    alert.setHeaderText("Table successfully booked!");
+                    alert.showAndWait();
+                }
                 resetInfo();
                 return;
             }
@@ -150,6 +162,7 @@ public class BookingPageController {
     @FXML
     public void returnToMainPage(){
         resetInfo();
+        setEditState(false, null); // Makes sure the state is reset in the scenario where one clicks edit then doesn't save any changes
         primaryStage.setScene(mainScene);
         mainPageController.loadUserBookings();
     }
@@ -191,14 +204,15 @@ public class BookingPageController {
     //     this.tables = tables;
     // }
 
-    public void setEditState(boolean state){
+    public void setEditState(boolean state, CustomDateObject bookingToEdit){
         currentlyInEditState = state;
+        this.bookingToEdit = bookingToEdit;
     }
 
-    public void fillFieldsWithExistingBookingInfo(String name, String surname, LocalDate date, String timeSlot){
+    public void fillFieldsWithExistingBookingInfo(String name, String surname, String date, String timeSlot){
         this.name.setText(name);
         this.surname.setText(surname);
-        this.date.setValue(date);
+        this.date.setValue(LocalDate.parse(date));
         this.timeSlotsPicker.setValue(timeSlot);
     }
 

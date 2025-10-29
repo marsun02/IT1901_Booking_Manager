@@ -1,1 +1,28 @@
-[ ]
+[ {
+  "date" : "2025-10-31",
+  "time" : "19.00",
+  "restaurantName" : "SteakHouse",
+  "user" : "Admin",
+  "bookedName" : "test2 jada",
+  "id" : 6,
+  "firstName" : "test2",
+  "lastName" : "jada"
+}, {
+  "date" : "2025-10-31",
+  "time" : "19.00",
+  "restaurantName" : "BurgerKing",
+  "user" : "Admin",
+  "bookedName" : "testja hais",
+  "id" : 8,
+  "firstName" : "testja",
+  "lastName" : "hais"
+}, {
+  "date" : "2025-10-31",
+  "time" : "18.00",
+  "restaurantName" : "BurgerKing",
+  "user" : "Admin",
+  "bookedName" : "hallois jaja",
+  "id" : 11,
+  "firstName" : "hallois",
+  "lastName" : "jaja"
+} ]
