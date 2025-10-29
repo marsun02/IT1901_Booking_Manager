@@ -1,29 +1,15 @@
 [ {
   "id" : 0,
-  "name" : "test1",
-  "email" : null,
-  "password" : "testpassword",
-  "phoneNumber" : null,
-  "bookedTables" : [ ]
-}, {
-  "id" : 0,
   "name" : "Admin",
   "email" : null,
   "password" : "12345",
   "phoneNumber" : null,
   "bookedTables" : [ ]
 }, {
-  "id" : 0,
-  "name" : "Test4",
+  "id" : 1,
+  "name" : "testaccountyay",
   "email" : null,
-  "password" : "testtesttest",
-  "phoneNumber" : null,
-  "bookedTables" : [ ]
-}, {
-  "id" : 0,
-  "name" : "testaccount",
-  "email" : null,
-  "password" : "jada",
+  "password" : "password",
   "phoneNumber" : null,
   "bookedTables" : [ ]
 } ]
