@@ -7,9 +7,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 public class FileManagement {
@@ -113,12 +115,12 @@ public class FileManagement {
         return matchingDateBookings; // returns all bookings made for that specific date
     }
 
-    public static Collection<CustomDateObject> loadBookingsForSpecificUser(File allBookingsFile, String user) {
+    public static List<CustomDateObject> loadBookingsForSpecificUser(File allBookingsFile, String user) {
         ObjectMapper objectMapper = new ObjectMapper();
-        Collection<CustomDateObject> allBookings;
-        Collection<CustomDateObject> matchingDateBookings = new HashSet<>();
+        List<CustomDateObject> allBookings;
+        List<CustomDateObject> matchingDateBookings = new ArrayList<>();
         try {
-            allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
+            allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<ArrayList<CustomDateObject>>() {
             });
             for (CustomDateObject customDateObject : allBookings) {
                 if (customDateObject.getUser().equals(user)){
@@ -126,12 +128,12 @@ public class FileManagement {
                 }
         }
         } catch (Exception e) {
-            matchingDateBookings = new HashSet<>();
+            matchingDateBookings = new ArrayList<>();
         }
         return matchingDateBookings; // returns all bookings made for that specific user
     }
 
-    public static CustomDateObject loadSpecificBooking(File allBookingsFile, String user, String date, String time, String restaurantName) {
+    public static CustomDateObject loadSpecificBooking(File allBookingsFile, int id) {
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<CustomDateObject> allBookings;
         CustomDateObject matchingBooking = null;
@@ -139,7 +141,7 @@ public class FileManagement {
             allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
             });
             for (CustomDateObject customDateObject : allBookings) {
-                if (customDateObject.getUser().equals(user) && customDateObject.getDate().equals(date) && customDateObject.getTime().equals(time) && customDateObject.getRestaurantName().equals(restaurantName)){
+                if (customDateObject.getId().equals(id)){
                     matchingBooking = customDateObject;
                 }
         }

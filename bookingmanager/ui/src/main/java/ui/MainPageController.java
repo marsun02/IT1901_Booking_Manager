@@ -5,8 +5,10 @@ import core.RestaurantInitialization;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
@@ -171,15 +173,21 @@ public class MainPageController {
             editImageView.setFitWidth(20);
             editImageView.setFitHeight(20);
             Button editButton = new Button("", editImageView);
-            // editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            //     @Override
-            //     public void handle(MouseEvent event) {
-            //         // CustomDateObject bookingToEdit = FileManagement.loadSpecificBooking(allBookingsFile, currentlyLoggedInUser.getName(), tableDate., null, null)
-            //         // bookingPageController.setEditState(true);
-            //         // bookingPageController.fillFieldsWithExistingBookingInfo(null, null, null, null);
-            //         // primaryStage.setScene(bookingScene);
-            //     }
-            // });
+            editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    CustomDateObject bookingToEdit = FileManagement.loadSpecificBooking(allBookingsFile, cellData.getValue().getId());
+                    bookingPageController.setEditState(true, bookingToEdit);
+                    bookingPageController.fillFieldsWithExistingBookingInfo(cellData.getValue().getFirstName(), cellData.getValue().getLastName(), cellData.getValue().getDate(), cellData.getValue().getTime());
+                    for (Restaurant restaurant : restaurants){
+                        if (restaurant.getName().equals(cellData.getValue().getRestaurantName())){
+                            bookingPageController.setCurrentRestaurantDisplayed(restaurant);
+                            break;
+                        }
+                    }
+                    primaryStage.setScene(bookingScene);
+                }
+            });
             return new ReadOnlyObjectWrapper<>(editButton);
         });
         tableDelete.setCellValueFactory(cellData -> {
@@ -201,7 +209,8 @@ public class MainPageController {
             return new ReadOnlyObjectWrapper<>(deleteButton);
         });
         
-        Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
+        List<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
+        ControllerHelpFunctions.sortBookings(bookings);
         
         for (CustomDateObject booking : bookings) {
             bookingOverview.getItems().add(booking);
