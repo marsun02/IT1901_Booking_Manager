@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
@@ -208,7 +209,8 @@ public class MainPageController {
             return new ReadOnlyObjectWrapper<>(deleteButton);
         });
         
-        Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
+        List<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
+        ControllerHelpFunctions.sortBookings(bookings);
         
         for (CustomDateObject booking : bookings) {
             bookingOverview.getItems().add(booking);

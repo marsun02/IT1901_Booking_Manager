@@ -6,9 +6,9 @@ public class CustomDateObject {
     private String restaurantName;
     private String user;
     private String bookedName;
-    private int id;
     private String firstName;
     private String lastName;
+    private int id;
 
     public CustomDateObject(String date, String time, String restaurantName, String user, String firstName, String lastName){
         this.date = date;
@@ -43,10 +43,6 @@ public class CustomDateObject {
         return bookedName;
     }
 
-    public Integer getId(){ // Integer instead of int so we can use toString() on it
-        return id;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -54,6 +50,11 @@ public class CustomDateObject {
     public String getLastName() {
         return lastName;
     }
+
+    public Integer getId(){ // Integer instead of int so we can use toString() on it
+        return id;
+    }
+
 
     public void setDate(String date) {
         this.date = date;
@@ -75,10 +76,6 @@ public class CustomDateObject {
         this.bookedName = bookedName;
     }
 
-    public void setId(int id){
-        this.id = id;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -86,4 +83,9 @@ public class CustomDateObject {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    
+    public void setId(int id){
+        this.id = id;
+    }
+
 }
