@@ -64,6 +64,8 @@ public class BookingPageController {
     ) {
         this.primaryStage = primaryStage;
         this.mainScene = mainScene;
+        // Add listener for timeslotspicker only once
+        timeSlotsPicker.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {chosenTimeToBook = newValue;});
     }
     
 
@@ -92,6 +94,7 @@ public class BookingPageController {
                     returnToMainPage();
                     alert.setHeaderText("Booking sucessfully changed!");
                     alert.showAndWait();
+                    currentlyInEditState = false;
                 } else {
                     table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
                     FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText()));
@@ -147,10 +150,12 @@ public class BookingPageController {
                 allAvailableTimeslots.remove(customDateObject.getTime());
         }
         timeSlotsPicker.getItems().clear();
+        timeSlotsPicker.getSelectionModel().clearSelection(); // resets logical selection
+        timeSlotsPicker.setValue(null); // reset UI selection
+        chosenTimeToBook = null; // Reset the chosen time so it doesn't try to save the previously selected time, avoid "ghost selection"
         for (String time : allAvailableTimeslots) {
             timeSlotsPicker.getItems().add(time);
         }
-        timeSlotsPicker.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {chosenTimeToBook = newValue;});
     }
 
 
