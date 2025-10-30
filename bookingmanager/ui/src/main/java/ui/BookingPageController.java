@@ -64,8 +64,6 @@ public class BookingPageController {
     ) {
         this.primaryStage = primaryStage;
         this.mainScene = mainScene;
-        // Add listener for timeslotspicker only once
-        timeSlotsPicker.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {chosenTimeToBook = newValue;});
     }
     
 
@@ -170,6 +168,7 @@ public class BookingPageController {
         setEditState(false, null); // Makes sure the state is reset in the scenario where one clicks edit then doesn't save any changes
         primaryStage.setScene(mainScene);
         mainPageController.loadUserBookings();
+        timeSlotsPicker.getSelectionModel().selectedItemProperty().removeListener((observable, oldValue, newValue) -> {chosenTimeToBook = newValue;});
     }
 
     public void setCurrentRestaurantDisplayed(Restaurant restaurant){
@@ -192,6 +191,8 @@ public class BookingPageController {
             }
         });
         // --------------------------------- Ends here
+        // Add listener for timeslotspicker only once
+        timeSlotsPicker.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {chosenTimeToBook = newValue;});
     }
 
     public void clearAndPopulateTimeslots(){ // Chose to hardcode timeslots for now
