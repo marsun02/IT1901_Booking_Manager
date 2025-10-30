@@ -9,13 +9,14 @@
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: grey;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainPageController">
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1199.0" prefWidth="1000.0" style="-fx-background-color: grey;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainPageController">
    <content>
-      <VBox prefHeight="1004.0" prefWidth="994.0">
+      <VBox prefHeight="1205.0" prefWidth="994.0">
          <children>
             <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="549.0" prefWidth="984.0" style="-fx-background-color: beige;">
                <children>
@@ -52,7 +53,7 @@
                                  <graphic>
                                     <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@FratiLogo.png" />
+                                          <Image url="@Frati.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -107,7 +108,7 @@
                                  <graphic>
                                     <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@McDonald's.png" />
+                                          <Image url="@McDonalds.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -133,14 +134,14 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="483.0" prefWidth="994.0" style="-fx-background-color: beige;">
+            <VBox prefHeight="649.0" prefWidth="994.0" style="-fx-background-color: beige;">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="162.0" style="-fx-border-color: black; -fx-border-width: 2px;" text="YOUR BOOKINGS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="334.0" text="YOUR BOOKINGS">
                            <font>
-                              <Font name="Franklin Gothic Demi Cond" size="18.0" />
+                              <Font name="Franklin Gothic Demi Cond" size="36.0" />
                            </font>
                            <effect>
                               <Bloom />
@@ -148,16 +149,26 @@
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" />
-                  <TableView fx:id="bookingOverview" prefHeight="330.0" prefWidth="994.0">
-                    <columns>
-                      <TableColumn fx:id="tableImage" prefWidth="163.9999938607216" text="Restaurants" />
-                        <TableColumn fx:id="tableName" prefWidth="228.00006103515625" text="Name" />
-                        <TableColumn fx:id="tableDate" prefWidth="214.40005493164062" text="Date" />
-                        <TableColumn fx:id="tableTime" prefWidth="223.199951171875" text="Time" />
-                      <TableColumn fx:id="tableEdit" minWidth="0.0" prefWidth="79.20001220703125" text="Edit" />
-                        <TableColumn fx:id="tableDelete" prefWidth="84.800048828125" text="Delete" />
-                    </columns>
-                  </TableView>
+                  <BorderPane prefHeight="470.0" prefWidth="858.0">
+                     <top>
+                        <TableView fx:id="bookingOverview" prefHeight="469.0" prefWidth="9.0" BorderPane.alignment="CENTER">
+                          <columns>
+                            <TableColumn fx:id="tableImage" prefWidth="210.0" text="Restaurants" />
+                              <TableColumn fx:id="tableName" prefWidth="200.0" text="Name" />
+                              <TableColumn fx:id="tableDate" prefWidth="150.0" text="Date" />
+                              <TableColumn fx:id="tableTime" prefWidth="150.0" text="Time" />
+                            <TableColumn fx:id="tableEdit" maxWidth="170.0" prefWidth="100.0" text="Edit" />
+                              <TableColumn fx:id="tableDelete" maxWidth="170.0" prefWidth="100.0" text="Delete" />
+                          </columns>
+                        </TableView>
+                     </top>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="40.0" right="40.0" />
+                     </padding>
+                  </BorderPane>
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                </children>
             </VBox>

@@ -157,12 +157,13 @@ public class MainPageController {
    
     public void loadUserBookings(){
         bookingOverview.getItems().clear();
+        bookingOverview.getColumns().forEach(col -> col.setStyle("-fx-alignment: CENTER;"));
         // TODO: Add image instead of text
         tableImage.setCellValueFactory(cellData -> {
-            final Image editImage = new Image(getClass().getResourceAsStream("/ui/editIcon.png"));
+            final Image editImage = new Image(getClass().getResourceAsStream("/ui/" + cellData.getValue().getRestaurantName() + ".png"));
             final ImageView editImageView = new ImageView(editImage);
-            editImageView.setFitWidth(30);
-            editImageView.setFitHeight(30);
+            editImageView.setFitWidth(100);
+            editImageView.setFitHeight(100);
             // Button imageButton = new Button("", editImageView);
             return new ReadOnlyObjectWrapper<>(editImageView);
 
