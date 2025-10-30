@@ -1,0 +1,1 @@
+Once again we started working on the new assignment shortly after submitting the last previous one, having learned that we are left with an advantage by starting early. We discovered from the last submission that working in pairs was effective for some of the tasks, but less so for others. Therefore, we evaluated whether a task was best suited for one or two people.
