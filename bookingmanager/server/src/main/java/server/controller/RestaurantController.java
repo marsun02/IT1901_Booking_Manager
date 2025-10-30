@@ -1,5 +1,8 @@
 package server.controller;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collection;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,19 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import model.Restaurant;
-import server.service.RestaurantService;
+import server.persistence.FileManagement;
 
 @RestController
 @RequestMapping("/api/restaurants")
 public class RestaurantController {
-    private RestaurantService restaurantService;
+    final Path PATH = Paths.get("../server/src/main/resources/restaurants.json");
+    final File RESTAURANT_DATA_FILE = PATH.toFile();
 
-    public RestaurantController(RestaurantService service) {
-        this.restaurantService = service;
-    }
-    
     @GetMapping
     public Collection<Restaurant> getAllRestaurants(){
-        return restaurantService.getAllRestaurants();
+        return FileManagement.loadRestaurants(RESTAURANT_DATA_FILE);
     }
 }
