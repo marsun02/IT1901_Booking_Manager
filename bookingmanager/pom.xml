@@ -82,7 +82,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>1.2.2.RELEASE</version>
+                <version>3.3.4</version>
             </dependency>
             <!-- End of stack overflow section -->
         </dependencies>
