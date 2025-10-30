@@ -1,4 +1,4 @@
-package persistence;
+package model;
 
 public class CustomDateObject {
     private String date;
@@ -10,7 +10,7 @@ public class CustomDateObject {
     private String lastName;
     private int id;
 
-    public CustomDateObject(String date, String time, String restaurantName, String user, String firstName, String lastName){
+    public CustomDateObject(String date, String time, String restaurantName, String user, String firstName, String lastName, int id){
         this.date = date;
         this.time = time;
         this.restaurantName = restaurantName;
@@ -18,7 +18,7 @@ public class CustomDateObject {
         this.firstName = firstName;
         this.lastName = lastName;
         this.bookedName = firstName + " " + lastName;
-        this.id = FileManagement.getId("bookingId");
+        this.id = id;
     }
 
     public CustomDateObject() {}

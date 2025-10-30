@@ -10,7 +10,7 @@ import java.util.HashSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import persistence.Restaurant;
+import model.Restaurant;
 
 public class ControllerHelpFunctionsTest {
     Collection<Restaurant> restaurants;

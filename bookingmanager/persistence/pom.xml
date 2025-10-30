@@ -22,6 +22,11 @@
         <jackson.version>2.20.0</jackson.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>gr2515</groupId>
+            <artifactId>bookingmanager.model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -74,7 +79,7 @@
                 <version>3.5.3</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
-                    <argLine>@{jaCoCoArgLine}</argLine>    
+                    <argLine>@{jaCoCoArgLine}</argLine>
                 </configuration>
             </plugin>
             <plugin>

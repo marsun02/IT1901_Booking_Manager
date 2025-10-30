@@ -1,8 +1,9 @@
-package persistence;
+package model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Collection;
 import java.util.HashSet;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Restaurant {
     // Private fields

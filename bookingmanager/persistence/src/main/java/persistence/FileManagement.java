@@ -3,6 +3,11 @@ package persistence;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
+import model.CustomDateObject;
+import model.Restaurant;
+import model.User;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;

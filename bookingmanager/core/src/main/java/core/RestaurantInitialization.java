@@ -2,8 +2,9 @@ package core;
 
 import java.util.Collection;
 import java.util.HashSet;
-import persistence.Restaurant;
-import persistence.Table;
+
+import model.Restaurant;
+import model.Table;
 
 public class RestaurantInitialization {
     private static Collection<Restaurant> restaurants = new HashSet<>();
