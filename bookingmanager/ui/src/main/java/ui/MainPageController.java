@@ -5,7 +5,6 @@ import core.RestaurantInitialization;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -56,7 +55,7 @@ public class MainPageController {
     private TableView<CustomDateObject> bookingOverview;
 
     @FXML
-    private TableColumn<CustomDateObject, String> tableImage;
+    private TableColumn<CustomDateObject, ImageView> tableImage;
 
     @FXML 
     private TableColumn<CustomDateObject, String> tableName;
@@ -159,8 +158,16 @@ public class MainPageController {
     public void loadUserBookings(){
         bookingOverview.getItems().clear();
         // TODO: Add image instead of text
-        tableImage.setCellValueFactory(cellData ->
-        new ReadOnlyObjectWrapper<>(cellData.getValue().getRestaurantName()));
+        tableImage.setCellValueFactory(cellData -> {
+            final Image editImage = new Image(getClass().getResourceAsStream("/ui/editIcon.png"));
+            final ImageView editImageView = new ImageView(editImage);
+            editImageView.setFitWidth(30);
+            editImageView.setFitHeight(30);
+            // Button imageButton = new Button("", editImageView);
+            return new ReadOnlyObjectWrapper<>(editImageView);
+
+
+        });
         tableName.setCellValueFactory(cellData -> 
         new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
         tableDate.setCellValueFactory(cellData -> 
