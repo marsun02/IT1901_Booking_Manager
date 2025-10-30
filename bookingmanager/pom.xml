@@ -82,7 +82,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>1.2.2.RELEASE</version>
+                <version>3.3.4</version>
             </dependency>
             <!-- End of stack overflow section -->
         </dependencies>
@@ -188,7 +188,10 @@
                         <propertyName>jaCoCoArgLine</propertyName>
                     </configuration>
                 </plugin>
-                
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -198,6 +201,7 @@
         <module>core</module>
         <module>ui</module>
         <module>model</module>
+        <module>server</module>
     </modules>
 
 </project>
