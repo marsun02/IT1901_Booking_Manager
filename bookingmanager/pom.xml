@@ -197,6 +197,7 @@
         <module>persistence</module>
         <module>core</module>
         <module>ui</module>
+        <module>model</module>
     </modules>
 
 </project>

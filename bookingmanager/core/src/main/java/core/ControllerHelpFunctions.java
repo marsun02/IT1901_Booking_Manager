@@ -6,8 +6,8 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
-import persistence.CustomDateObject;
-import persistence.Restaurant;
+import model.CustomDateObject;
+import model.Restaurant;
 
 public class ControllerHelpFunctions {
 

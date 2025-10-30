@@ -5,7 +5,6 @@ import core.RestaurantInitialization;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -26,10 +25,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import persistence.CustomDateObject;
+import model.CustomDateObject;
+import model.Restaurant;
+import model.User;
 import persistence.FileManagement;
-import persistence.Restaurant;
-import persistence.User;
 
 public class MainPageController {
     Collection<Restaurant> restaurants;

@@ -11,6 +11,8 @@ import java.util.HashSet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import model.Restaurant;
+
 public class FileManagementTest {
     Collection<Restaurant> restaurants;
     File testFile;

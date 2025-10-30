@@ -17,11 +17,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import persistence.CustomDateObject;
+import model.CustomDateObject;
+import model.Restaurant;
+import model.Table;
+import model.User;
 import persistence.FileManagement;
-import persistence.Restaurant;
-import persistence.Table;
-import persistence.User;
 
 public class BookingPageController {
 
@@ -87,7 +87,7 @@ public class BookingPageController {
             if (table.equals(firstAvailableTable)){
                 if (currentlyInEditState){
                     // table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                    FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText()));
+                    FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), FileManagement.getId("bookingId")));
                     FileManagement.deleteBooking(allBookingsFile, bookingToEdit);
                     Alert alert = new Alert(AlertType.CONFIRMATION);
                     mainPageController.saveRestaurants();
@@ -97,7 +97,7 @@ public class BookingPageController {
                     currentlyInEditState = false;
                 } else {
                     table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                    FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText()));
+                    FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), FileManagement.getId("bookingId")));
                     Alert alert = new Alert(AlertType.CONFIRMATION);
                     mainPageController.saveRestaurants();
                     returnToMainPage();
