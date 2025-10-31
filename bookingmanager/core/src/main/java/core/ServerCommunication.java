@@ -26,4 +26,22 @@ public class ServerCommunication {
 
         return restaurants;
     }
+
+    public void saveAllRestaurants(Collection<Restaurant> restaurants){
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            String jsonContents = objectMapper.writeValueAsString(restaurants);
+
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/restaurants")).header("content-type", "application/json").POST(HttpRequest.BodyPublishers.ofString(jsonContents)).build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200){
+                System.out.println("All okay!");
+            } else{
+                System.out.println("Posting failed!");
+            }
+        } catch (Exception e) {
+            // TODO: make proper catch
+            e.printStackTrace();
+        }
+    }
 }

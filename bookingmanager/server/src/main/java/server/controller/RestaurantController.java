@@ -6,6 +6,8 @@ import java.nio.file.Paths;
 import java.util.Collection;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +23,10 @@ public class RestaurantController {
     @GetMapping
     public Collection<Restaurant> getAllRestaurants(){
         return FileManagement.loadRestaurants(RESTAURANT_DATA_FILE);
+    }
+
+    @PostMapping
+    public void saveAllRestaurants(@RequestBody Collection<Restaurant> restaurants){
+        FileManagement.saveRestaurants(RESTAURANT_DATA_FILE, restaurants);
     }
 }
