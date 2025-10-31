@@ -15,21 +15,26 @@ import model.Restaurant;
 
 public class ServerCommunication {
     ObjectMapper objectMapper = new ObjectMapper();
+    HttpClient client = HttpClient.newHttpClient();
 
-    public Collection<Restaurant> getAllRestaurants() throws IOException, InterruptedException{
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/restaurants")).build();
-
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        
-        Collection<Restaurant> restaurants = objectMapper.readValue(response.body(), new TypeReference<HashSet<Restaurant>>(){});
-
-        return restaurants;
+    public Collection<Restaurant> getAllRestaurants(){
+        try {
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/restaurants")).GET().build();
+    
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            
+            Collection<Restaurant> restaurants = objectMapper.readValue(response.body(), new TypeReference<HashSet<Restaurant>>(){});
+    
+            return restaurants;
+        } catch (Exception e) {
+            // TODO: Make proper catch
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void saveAllRestaurants(Collection<Restaurant> restaurants){
         try {
-            HttpClient client = HttpClient.newHttpClient();
             String jsonContents = objectMapper.writeValueAsString(restaurants);
 
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/restaurants")).header("content-type", "application/json").POST(HttpRequest.BodyPublishers.ofString(jsonContents)).build();
@@ -40,7 +45,7 @@ public class ServerCommunication {
                 System.out.println("Posting failed!");
             }
         } catch (Exception e) {
-            // TODO: make proper catch
+            // TODO: Make proper catch
             e.printStackTrace();
         }
     }
