@@ -77,4 +77,23 @@ public class ServerCommunication {
             return null;
         }
     }
+
+    public Collection<CustomDateObject> getAllBookings() {
+        try {
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/bookings"))
+                    .GET().build();
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            Collection<CustomDateObject> bookings = objectMapper.readValue(response.body(),
+                    new TypeReference<HashSet<CustomDateObject>>() {
+                    });
+
+            return bookings;
+        } catch (Exception e) {
+            // TODO: Make proper catch
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

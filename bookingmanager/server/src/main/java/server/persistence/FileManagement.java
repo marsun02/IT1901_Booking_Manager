@@ -138,6 +138,18 @@ public class FileManagement {
         return matchingDateBookings; // returns all bookings made for that specific user
     }
 
+    public static Collection<CustomDateObject> loadAllBookings(File allBookingsFile){
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collection<CustomDateObject> bookings;
+        try {
+            bookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
+            });
+        } catch (Exception e) {
+            bookings = new HashSet<>();
+        }
+        return bookings;
+    }
+
     public static CustomDateObject loadSpecificBooking(File allBookingsFile, int id) {
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<CustomDateObject> allBookings;
