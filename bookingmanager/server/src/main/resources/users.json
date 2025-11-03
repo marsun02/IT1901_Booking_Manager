@@ -1,0 +1,15 @@
+[ {
+  "id" : 1,
+  "name" : "testaccountyay",
+  "email" : null,
+  "password" : "password",
+  "phoneNumber" : null,
+  "bookedTables" : [ ]
+}, {
+  "id" : 0,
+  "name" : "Admin",
+  "email" : null,
+  "password" : "12345",
+  "phoneNumber" : null,
+  "bookedTables" : [ ]
+} ]
