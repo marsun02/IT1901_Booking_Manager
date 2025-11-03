@@ -25,4 +25,9 @@ public class CustomDateObjectTest {
     assertEquals("Ola Nordmann", obj.getBookedName());
     assertEquals(4, obj.getId());
     }
+
+    @Test
+    void testEmptyConstructorAndSetters(){
+        CustomDateObject obj = new CustomDateObject();
+    }
 }
