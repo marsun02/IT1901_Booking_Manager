@@ -22,6 +22,7 @@ public class CustomDateObjectTest {
     assertEquals("testUser", obj.getUser());
     assertEquals("Ola", obj.getFirstName());
     assertEquals("Nordmann", obj.getLastName());
+    assertEquals("Ola Nordmann", obj.getBookedName());
     assertEquals(4, obj.getId());
     }
 }
