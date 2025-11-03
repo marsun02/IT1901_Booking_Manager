@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -76,5 +77,14 @@ public class CustomDateObjectTest {
     assertEquals("Aas", obj.getLastName());
     assertEquals("Peder Aas", obj.getBookedName());
     assertEquals(2, obj.getId());
+    }
+
+    @Test
+    void testIdNotNull(){
+        CustomDateObject obj = new CustomDateObject();
+        obj.setId(3);
+        assertNotNull(obj.getId());
+        assertEquals(Integer.valueOf(3), obj.getId());
+        assertEquals("3", obj.getId().toString());
     }
 }
