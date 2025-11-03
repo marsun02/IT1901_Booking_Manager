@@ -96,7 +96,7 @@ public class LoginPageController implements Initializable{
     private void loginAccount(){
         if (currentLayoutIsRegisterAccount){
             // Makes sure all fields must be filled
-            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()){
+            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty() || confirmPasswordField.getText().isEmpty() || emailField.getText().isEmpty() || phoneNumberField.getText().isEmpty()){
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("All fields must be filled to create account");
                 alert.showAndWait();
@@ -111,6 +111,13 @@ public class LoginPageController implements Initializable{
                     alert.showAndWait();
                     return;
                 }
+            }
+            // Check that passwords match
+            if (!passwordField.getText().equals(confirmPasswordField.getText())){
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText("Passwords do not match");
+                alert.showAndWait();
+                return;
             }
             User newUser = new User(FileManagement.getId("userId"), usernameField.getText(), emailField.getText(), phoneNumberField.getText(), passwordField.getText());
             FileManagement.saveUser(userDataFile, newUser);
