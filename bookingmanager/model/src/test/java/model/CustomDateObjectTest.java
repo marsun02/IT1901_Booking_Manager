@@ -29,5 +29,13 @@ public class CustomDateObjectTest {
     @Test
     void testEmptyConstructorAndSetters(){
         CustomDateObject obj = new CustomDateObject();
+        obj.setDate("2025-12-23");
+        obj.setTime("17.00");
+        obj.setRestaurantName("Barbequez");
+        obj.setUser("User2");
+        obj.setFirstName("Peder");
+        obj.setLastName("Aas");
+        obj.setBookedName("Peder Aas");
+        obj.setId(2);
     }
 }
