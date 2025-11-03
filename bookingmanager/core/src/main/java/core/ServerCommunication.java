@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.CustomDateObject;
 import model.Restaurant;
+import model.User;
 
 public class ServerCommunication {
     ObjectMapper objectMapper = new ObjectMapper();
@@ -169,6 +170,53 @@ public class ServerCommunication {
             if (response.statusCode() == 200) {
                 System.out.println("All okay!");
             } else {
+                System.out.println("Posting failed!");
+            }
+        } catch (Exception e) {
+            // TODO: Make proper catch
+            e.printStackTrace();
+        }
+    }
+
+    public int updateId(String idType){
+        try {
+            String url = "http://localhost:8080/api/ids?idType=" + URLEncoder.encode(idType, StandardCharsets.UTF_8);
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            return Integer.parseInt(response.body());
+        } catch (Exception e) {
+            // TODO: Make proper catch
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public Collection<User> getUsers(){
+        try {
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/users")).GET().build();
+    
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            
+            Collection<User> users = objectMapper.readValue(response.body(), new TypeReference<HashSet<User>>(){});
+    
+            return users;
+        } catch (Exception e) {
+            // TODO: Make proper catch
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void saveUser(User user){
+        try {
+            String jsonContents = objectMapper.writeValueAsString(user);
+
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/users")).header("content-type", "application/json").POST(HttpRequest.BodyPublishers.ofString(jsonContents)).build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200){
+                System.out.println("All okay!");
+            } else{
                 System.out.println("Posting failed!");
             }
         } catch (Exception e) {
