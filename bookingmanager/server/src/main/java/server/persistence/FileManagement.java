@@ -195,7 +195,7 @@ public class FileManagement {
         }
     }
 
-    public static int getId(File idsFile, String idType){
+    public static int updateId(File idsFile, String idType){ // This function gets and updates/increments the given ID
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
         Map<String, Integer> ids = new HashMap<>();

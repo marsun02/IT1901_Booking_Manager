@@ -52,7 +52,7 @@ public class ServerCommunication {
         }
     }
 
-    public int getId(String idType){
+    public int updateId(String idType){
         try {
             String url = "http://localhost:8080/api/ids?idType=" + URLEncoder.encode(idType, StandardCharsets.UTF_8);
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
