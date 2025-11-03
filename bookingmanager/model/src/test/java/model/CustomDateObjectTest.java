@@ -49,5 +49,14 @@ public class CustomDateObjectTest {
     }
 
     @Test
-    void testChangesAfterConstruction(){}
+    void testChangesAfterConstruction(){
+        CustomDateObject obj = new CustomDateObject(
+            "2025-12-24",
+            "18.00", 
+            "BurgerKing", 
+            "initUser", 
+            "Ola", 
+            "Nordmann", 
+            4);
+    }
 }
