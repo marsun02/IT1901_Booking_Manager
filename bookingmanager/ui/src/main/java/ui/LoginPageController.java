@@ -1,23 +1,28 @@
 package ui;
 
 import java.io.File;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.User;
 import persistence.FileManagement;
 
-public class LoginPageController {
+public class LoginPageController implements Initializable{
 
     private Stage primaryStage;
     private Scene mainScene;
@@ -31,7 +36,25 @@ public class LoginPageController {
     TextField usernameField;
 
     @FXML
-    TextField passwordField;
+    PasswordField passwordField;
+
+    @FXML
+    PasswordField confirmPasswordField;
+
+    @FXML
+    HBox confirmPasswordHBox;
+
+    @FXML
+    TextField emailField;
+
+    @FXML
+    HBox emailHBox;
+
+    @FXML
+    TextField phoneNumberField;
+
+    @FXML
+    HBox phoneNumberHBox;
 
     @FXML
     Button loginButton;
@@ -63,6 +86,8 @@ public class LoginPageController {
         });
     }
 
+    
+
     public void setMainPageController(MainPageController controller){
         this.mainPageController = controller;
     }
@@ -87,7 +112,7 @@ public class LoginPageController {
                     return;
                 }
             }
-            User newUser = new User(FileManagement.getId("userId"), usernameField.getText(), null, null, passwordField.getText());
+            User newUser = new User(FileManagement.getId("userId"), usernameField.getText(), emailField.getText(), phoneNumberField.getText(), passwordField.getText());
             FileManagement.saveUser(userDataFile, newUser);
             switchBackToLoginLayout();
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -135,6 +160,12 @@ public class LoginPageController {
         // createAccountLink.setDisable(true);
         currentLayoutIsRegisterAccount = true;
         resetInfo();
+        emailHBox.setVisible(true);
+        emailHBox.setManaged(true);
+        confirmPasswordHBox.setVisible(true);
+        confirmPasswordHBox.setManaged(true);
+        phoneNumberHBox.setVisible(true);
+        phoneNumberHBox.setManaged(true);
     }
 
     private void switchBackToLoginLayout(){
@@ -146,11 +177,29 @@ public class LoginPageController {
         // createAccountLink.setDisable(false);
         currentLayoutIsRegisterAccount = false;
         resetInfo();
+        emailHBox.setVisible(false);
+        emailHBox.setManaged(false);
+        confirmPasswordHBox.setVisible(false);
+        confirmPasswordHBox.setManaged(false);
+        phoneNumberHBox.setVisible(false);
+        phoneNumberHBox.setManaged(false);
     }
 
     private void resetInfo(){
         usernameField.setText("");
         passwordField.setText("");
+    }
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        emailHBox.setVisible(false);
+        emailHBox.setManaged(false);
+        confirmPasswordHBox.setVisible(false);
+        confirmPasswordHBox.setManaged(false);
+        phoneNumberHBox.setVisible(false);
+        phoneNumberHBox.setManaged(false);
     }
 
 
