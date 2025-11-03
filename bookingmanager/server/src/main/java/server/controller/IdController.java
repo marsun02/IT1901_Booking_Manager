@@ -5,8 +5,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import server.persistence.FileManagement;
@@ -18,7 +18,7 @@ public class IdController {
     final File IDS_DATA_FILE = PATH.toFile();
 
     @GetMapping
-    public int getId(@RequestBody String idType){
+    public int getId(@RequestParam("idType") String idType){
         return FileManagement.getId(IDS_DATA_FILE, idType);
     }
 }

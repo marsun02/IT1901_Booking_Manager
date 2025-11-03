@@ -1,9 +1,11 @@
 package core;
 
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -50,13 +52,19 @@ public class ServerCommunication {
         }
     }
 
-    // public int getId(String idType){
-    //     try {
-            
-    //     } catch (Exception e) {
-    //         // TODO: handle exception
-    //     }
-    // }
+    public int getId(String idType){
+        try {
+            String url = "http://localhost:8080/api/ids?idType=" + URLEncoder.encode(idType, StandardCharsets.UTF_8);
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            return Integer.parseInt(response.body());
+        } catch (Exception e) {
+            // TODO: Make proper catch
+            e.printStackTrace();
+            return -1;
+        }
+    }
 
     public Collection<User> getUsers(){
         try {
