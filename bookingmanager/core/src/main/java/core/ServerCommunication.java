@@ -78,6 +78,25 @@ public class ServerCommunication {
         }
     }
 
+    public Collection<CustomDateObject> getBookingsByUser(String user){
+        try {
+            String url = String.format(
+                "http://localhost:8080/api/bookings?date=%s&restaurantName=%s",
+                URLEncoder.encode(user, StandardCharsets.UTF_8)
+            );
+
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            Collection<CustomDateObject> returnedBookings = objectMapper.readValue(response.body(), new TypeReference<HashSet<CustomDateObject>>() {});
+            return returnedBookings;
+        } catch (Exception e) {
+            // TODO: make proper catch
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public Collection<CustomDateObject> getAllBookings() {
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/bookings"))

@@ -4,6 +4,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,10 +22,17 @@ public class BookingController {
 
     @GetMapping(params = {"date", "restaurantName"})
     public Collection<CustomDateObject> getBookingsByDateAndRestaurantName(
-            @RequestParam(name = "date") String date,
-            @RequestParam(name = "restaurantName") String restaurantName
-        ) {
+        @RequestParam(name = "date") String date,
+        @RequestParam(name = "restaurantName") String restaurantName
+    ) {
         return FileManagement.loadBookingsForSpecificDate(BOOKING_DATA_FILE, date, restaurantName);
+    }
+
+    @GetMapping(params = "user")
+    public List<CustomDateObject> getBookingsByUser(
+        @RequestParam(name = "user") String user
+    ) {
+        return FileManagement.loadBookingsForSpecificUser(BOOKING_DATA_FILE, user);
     }
 
     @GetMapping
