@@ -150,7 +150,8 @@ public class FileManagement {
         return bookings;
     }
 
-    public static CustomDateObject loadSpecificBooking(File allBookingsFile, int id) {
+    public static CustomDateObject loadSpecificBooking(File allBookingsFile, String stringId) {
+        int id = Integer.parseInt(stringId);
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<CustomDateObject> allBookings;
         CustomDateObject matchingBooking = null;

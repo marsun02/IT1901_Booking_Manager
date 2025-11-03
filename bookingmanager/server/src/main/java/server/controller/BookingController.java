@@ -35,6 +35,13 @@ public class BookingController {
         return FileManagement.loadBookingsForSpecificUser(BOOKING_DATA_FILE, user);
     }
 
+    @GetMapping(params = "id")
+    public CustomDateObject getBookingById(
+        @RequestParam(name = "id") String id
+    ){
+        return FileManagement.loadSpecificBooking(BOOKING_DATA_FILE, id);
+    }
+
     @GetMapping
     public Collection<CustomDateObject> getAllBookings(){
         return FileManagement.loadAllBookings(BOOKING_DATA_FILE);

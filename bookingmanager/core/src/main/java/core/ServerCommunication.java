@@ -8,6 +8,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -78,7 +79,7 @@ public class ServerCommunication {
         }
     }
 
-    public Collection<CustomDateObject> getBookingsByUser(String user){
+    public List<CustomDateObject> getBookingsByUser(String user){
         try {
             String url = String.format(
                 "http://localhost:8080/api/bookings?date=%s&restaurantName=%s",
@@ -88,7 +89,7 @@ public class ServerCommunication {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            Collection<CustomDateObject> returnedBookings = objectMapper.readValue(response.body(), new TypeReference<HashSet<CustomDateObject>>() {});
+            List<CustomDateObject> returnedBookings = objectMapper.readValue(response.body(), new TypeReference<List<CustomDateObject>>() {});
             return returnedBookings;
         } catch (Exception e) {
             // TODO: make proper catch
@@ -97,6 +98,25 @@ public class ServerCommunication {
         }
     }
 
+    public CustomDateObject getBookingById(String id){
+        try {
+            String url = String.format(
+                "http://localhost:8080/api/bookings?date=%s&restaurantName=%s",
+                URLEncoder.encode(id, StandardCharsets.UTF_8)
+            );
+
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            CustomDateObject returnedBooking = objectMapper.readValue(response.body(), new TypeReference<CustomDateObject>() {});
+            return returnedBooking;
+        } catch (Exception e) {
+            // TODO: make proper catch
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public Collection<CustomDateObject> getAllBookings() {
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/bookings"))
