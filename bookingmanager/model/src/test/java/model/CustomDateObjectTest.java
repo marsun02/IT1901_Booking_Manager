@@ -58,5 +58,14 @@ public class CustomDateObjectTest {
             "Ola", 
             "Nordmann", 
             4);
+    
+        obj.setDate("2025-12-23");
+        obj.setTime("17.00");
+        obj.setRestaurantName("Barbequez");
+        obj.setUser("newUser");
+        obj.setFirstName("Peder");
+        obj.setLastName("Aas");
+        obj.setBookedName("Peder Aas");
+        obj.setId(2);
     }
 }
