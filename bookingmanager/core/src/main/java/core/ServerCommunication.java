@@ -1,6 +1,5 @@
 package core;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -15,15 +14,38 @@ import model.Restaurant;
 
 public class ServerCommunication {
     ObjectMapper objectMapper = new ObjectMapper();
+    HttpClient client = HttpClient.newHttpClient();
 
-    public Collection<Restaurant> getAllRestaurants() throws IOException, InterruptedException{
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/restaurants")).build();
+    public Collection<Restaurant> getAllRestaurants(){
+        try {
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/restaurants")).GET().build();
+    
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            
+            Collection<Restaurant> restaurants = objectMapper.readValue(response.body(), new TypeReference<HashSet<Restaurant>>(){});
+    
+            return restaurants;
+        } catch (Exception e) {
+            // TODO: Make proper catch
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        
-        Collection<Restaurant> restaurants = objectMapper.readValue(response.body(), new TypeReference<HashSet<Restaurant>>(){});
+    public void saveAllRestaurants(Collection<Restaurant> restaurants){
+        try {
+            String jsonContents = objectMapper.writeValueAsString(restaurants);
 
-        return restaurants;
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/restaurants")).header("content-type", "application/json").POST(HttpRequest.BodyPublishers.ofString(jsonContents)).build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200){
+                System.out.println("All okay!");
+            } else{
+                System.out.println("Posting failed!");
+            }
+        } catch (Exception e) {
+            // TODO: Make proper catch
+            e.printStackTrace();
+        }
     }
 }
