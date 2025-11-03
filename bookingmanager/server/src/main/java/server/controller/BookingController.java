@@ -49,10 +49,17 @@ public class BookingController {
         return FileManagement.loadAllBookings(BOOKING_DATA_FILE);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public void saveBooking(
         @RequestBody CustomDateObject bookedDate
     ) {
         FileManagement.saveBooking(BOOKING_DATA_FILE, bookedDate);
+    }
+
+    @PostMapping("/delete")
+    public void deleteBooking(
+        @RequestBody CustomDateObject bookingToDelete
+    ) {
+        FileManagement.deleteBooking(BOOKING_DATA_FILE, bookingToDelete);
     }
 }
