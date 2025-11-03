@@ -23,7 +23,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.CustomDateObject;
 import model.Restaurant;
@@ -44,9 +43,6 @@ public class MainPageController {
     private Scene loginScene;
     private BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
-
-    @FXML
-    private AnchorPane anchorpane;
     
     @FXML
     private Label loggedInUserLabel;
