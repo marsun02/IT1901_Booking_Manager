@@ -67,5 +67,14 @@ public class CustomDateObjectTest {
         obj.setLastName("Aas");
         obj.setBookedName("Peder Aas");
         obj.setId(2);
+
+    assertEquals("2025-12-23", obj.getDate());
+    assertEquals("17.00", obj.getTime());
+    assertEquals("Barbequez", obj.getRestaurantName());
+    assertEquals("newUser", obj.getUser());
+    assertEquals("Peder", obj.getFirstName());
+    assertEquals("Aas", obj.getLastName());
+    assertEquals("Peder Aas", obj.getBookedName());
+    assertEquals(2, obj.getId());
     }
 }
