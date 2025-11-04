@@ -1,8 +1,5 @@
 package ui;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collection;
 
 import core.ServerCommunication;

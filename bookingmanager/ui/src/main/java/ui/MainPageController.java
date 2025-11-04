@@ -4,9 +4,6 @@ import core.ControllerHelpFunctions;
 import core.RestaurantInitialization;
 import core.ServerCommunication;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;

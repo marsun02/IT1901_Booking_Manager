@@ -36,7 +36,9 @@ To help keep everything organized, the app will include a login feature, giving 
    mvn clean compile
    ```
 
-4. Start app:
+4. Start SpringBoot app (important to do before Javafx app)
+
+5. Start Javafx app:
    ```bash
    mvn javafx:run -pl ui
    ```
@@ -57,6 +59,8 @@ Run tests with this command:
    - Maven: 17
    - Jackson: 2.10.0
    - JUnit: 5.11.0
+   - SpringBoot: 3.3.4
+   - JaCoCo: 0.8.3
 
 ---
 
