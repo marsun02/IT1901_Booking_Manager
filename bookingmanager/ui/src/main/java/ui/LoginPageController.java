@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 
+import core.ServerCommunication;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -78,7 +79,8 @@ public class LoginPageController {
                 return;
             }
             // Checks if username is taken
-            Collection<User> users = FileManagement.loadUsers(userDataFile);
+            // Collection<User> users = FileManagement.loadUsers(userDataFile);
+            Collection<User> users = ServerCommunication.getAllUsers();
             for (User user : users) {
                 if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())){
                     Alert alert = new Alert(AlertType.ERROR);
@@ -87,8 +89,10 @@ public class LoginPageController {
                     return;
                 }
             }
-            User newUser = new User(FileManagement.getId("userId"), usernameField.getText(), null, null, passwordField.getText());
-            FileManagement.saveUser(userDataFile, newUser);
+            // User newUser = new User(FileManagement.getId("userId"), usernameField.getText(), null, null, passwordField.getText());
+            User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null, passwordField.getText());
+            // FileManagement.saveUser(userDataFile, newUser);
+            ServerCommunication.saveUser(newUser);
             switchBackToLoginLayout();
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText("Account created");
@@ -102,7 +106,8 @@ public class LoginPageController {
                 return;
             }
             // Login the user and pass that user to the main page
-            Collection<User> users = FileManagement.loadUsers(userDataFile);
+            // Collection<User> users = FileManagement.loadUsers(userDataFile);
+            Collection<User> users = ServerCommunication.getAllUsers();
             for (User user : users) {
                 if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())){
                     if (user.checkNamePassword(usernameField.getText(), passwordField.getText())){

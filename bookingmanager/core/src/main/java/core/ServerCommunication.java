@@ -192,7 +192,7 @@ public class ServerCommunication {
         }
     }
 
-    public static Collection<User> getUsers(){
+    public static Collection<User> getAllUsers(){
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/users")).GET().build();
     
