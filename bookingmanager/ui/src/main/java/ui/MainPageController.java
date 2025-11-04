@@ -33,12 +33,6 @@ import model.User;
 
 public class MainPageController {
     Collection<Restaurant> restaurants;
-    // private Collection<User> users; // User functionality may be added later
-    final Path path = Paths.get("../persistence/src/main/resources/persistence/restaurants.json");
-    final File restaurantDataFile = path.toFile(); // File to store restaurant data
-
-    final Path path2 = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
-    final File allBookingsFile = path2.toFile(); // File to store bookings
 
     private Stage primaryStage;
     private Scene bookingScene;

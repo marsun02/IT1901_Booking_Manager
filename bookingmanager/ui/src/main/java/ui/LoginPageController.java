@@ -24,9 +24,6 @@ public class LoginPageController {
     private MainPageController mainPageController;
     private boolean currentLayoutIsRegisterAccount = false;
 
-    final Path path = Paths.get("../persistence/src/main/resources/persistence/users.json");
-    final File userDataFile = path.toFile(); // File to store user data
-
     @FXML
     TextField usernameField;
 

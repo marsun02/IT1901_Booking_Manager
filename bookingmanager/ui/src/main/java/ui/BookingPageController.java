@@ -33,10 +33,6 @@ public class BookingPageController {
     private boolean currentlyInEditState = false;
     private CustomDateObject bookingToEdit = null;
 
-    final Path path = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
-    final File allBookingsFile = path.toFile(); // File to store bookings
-    // private Collection<Table> tables; // Will be used when tables can be chosen in the booking page
-
     @FXML
     Label restaurantLabel;
 
