@@ -84,7 +84,7 @@ public class ServerCommunication {
     public List<CustomDateObject> getBookingsByUser(String user) {
         try {
             String url = String.format(
-                    "http://localhost:8080/api/bookings?date=%s&restaurantName=%s",
+                    "http://localhost:8080/api/bookings?user=%s",
                     URLEncoder.encode(user, StandardCharsets.UTF_8));
 
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
@@ -104,7 +104,7 @@ public class ServerCommunication {
     public CustomDateObject getBookingById(String id) {
         try {
             String url = String.format(
-                    "http://localhost:8080/api/bookings?date=%s&restaurantName=%s",
+                    "http://localhost:8080/api/bookings?id=%s",
                     URLEncoder.encode(id, StandardCharsets.UTF_8));
 
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
