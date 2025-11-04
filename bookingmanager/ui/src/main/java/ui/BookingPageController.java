@@ -22,7 +22,6 @@ import model.CustomDateObject;
 import model.Restaurant;
 import model.Table;
 import model.User;
-import persistence.FileManagement;
 
 public class BookingPageController {
 
@@ -86,9 +85,7 @@ public class BookingPageController {
             if (table.equals(firstAvailableTable)){
                 if (currentlyInEditState){
                     // table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                    // FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), FileManagement.getId("bookingId")));
                     ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
-                    // FileManagement.deleteBooking(allBookingsFile, bookingToEdit);
                     ServerCommunication.deleteBooking(bookingToEdit);
                     Alert alert = new Alert(AlertType.CONFIRMATION);
                     mainPageController.saveRestaurants();
@@ -98,7 +95,6 @@ public class BookingPageController {
                     currentlyInEditState = false;
                 } else {
                     table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                    // FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), FileManagement.getId("bookingId")));
                     ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
                     Alert alert = new Alert(AlertType.CONFIRMATION);
                     mainPageController.saveRestaurants();
@@ -147,7 +143,6 @@ public class BookingPageController {
         } else{
             chosenDateString = date.getValue().toString();
         }
-        // Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificDate(allBookingsFile, chosenDateString, restaurant.getName());
         Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByDateAndRestaurantName(chosenDateString, restaurant.getName());
         for (CustomDateObject customDateObject : bookings) {
                 allAvailableTimeslots.remove(customDateObject.getTime());

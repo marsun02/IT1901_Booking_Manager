@@ -30,7 +30,6 @@ import javafx.stage.Stage;
 import model.CustomDateObject;
 import model.Restaurant;
 import model.User;
-import persistence.FileManagement;
 
 public class MainPageController {
     Collection<Restaurant> restaurants;
@@ -98,13 +97,11 @@ public class MainPageController {
     
     // saves the current restaurants in restaurants hashSet to file
     public void saveRestaurants(){
-        // FileManagement.saveRestaurants(restaurantDataFile, restaurants);
         ServerCommunication.saveAllRestaurants(restaurants);
     }
 
     // loads restaurants from file to hashSet
     public void loadRestaurants(){
-        // restaurants = FileManagement.loadRestaurants(restaurantDataFile);
         restaurants = ServerCommunication.getAllRestaurants();
     }
 
@@ -188,7 +185,6 @@ public class MainPageController {
             editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    // CustomDateObject bookingToEdit = FileManagement.loadSpecificBooking(allBookingsFile, cellData.getValue().getId());
                     CustomDateObject bookingToEdit = ServerCommunication.getBookingById(cellData.getValue().getId().toString());
                     bookingPageController.setEditState(true, bookingToEdit);
                     bookingPageController.fillFieldsWithExistingBookingInfo(cellData.getValue().getFirstName(), cellData.getValue().getLastName(), cellData.getValue().getDate(), cellData.getValue().getTime());
@@ -212,7 +208,6 @@ public class MainPageController {
             deleteButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    // FileManagement.deleteBooking(allBookingsFile, cellData.getValue());
                     ServerCommunication.deleteBooking(cellData.getValue());
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setHeaderText("Booking deleted");
@@ -223,7 +218,6 @@ public class MainPageController {
             return new ReadOnlyObjectWrapper<>(deleteButton);
         });
         
-        // List<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
         List<CustomDateObject> bookings = ServerCommunication.getBookingsByUser(currentlyLoggedInUser.getName());
         ControllerHelpFunctions.sortBookings(bookings);
         

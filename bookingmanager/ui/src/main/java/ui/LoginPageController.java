@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.User;
-import persistence.FileManagement;
 
 public class LoginPageController {
 
@@ -79,7 +78,6 @@ public class LoginPageController {
                 return;
             }
             // Checks if username is taken
-            // Collection<User> users = FileManagement.loadUsers(userDataFile);
             Collection<User> users = ServerCommunication.getAllUsers();
             for (User user : users) {
                 if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())){
@@ -89,9 +87,7 @@ public class LoginPageController {
                     return;
                 }
             }
-            // User newUser = new User(FileManagement.getId("userId"), usernameField.getText(), null, null, passwordField.getText());
             User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null, passwordField.getText());
-            // FileManagement.saveUser(userDataFile, newUser);
             ServerCommunication.saveUser(newUser);
             switchBackToLoginLayout();
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -106,7 +102,6 @@ public class LoginPageController {
                 return;
             }
             // Login the user and pass that user to the main page
-            // Collection<User> users = FileManagement.loadUsers(userDataFile);
             Collection<User> users = ServerCommunication.getAllUsers();
             for (User user : users) {
                 if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())){
