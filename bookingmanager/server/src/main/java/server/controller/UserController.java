@@ -21,7 +21,7 @@ public class UserController {
     final File USERS_DATA_FILE = PATH.toFile();
     
     @GetMapping
-    public Collection<User> getUsers(){
+    public Collection<User> getAllUsers(){
         return FileManagement.loadUsers(USERS_DATA_FILE);
     }
 
