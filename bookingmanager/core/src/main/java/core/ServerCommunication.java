@@ -36,7 +36,7 @@ public class ServerCommunication {
         } catch (Exception e) {
             // TODO: Make proper catch
             e.printStackTrace();
-            return null;
+            return new HashSet<>();
         }
     }
 
@@ -77,7 +77,7 @@ public class ServerCommunication {
         } catch (Exception e) {
             // TODO: make proper catch
             e.printStackTrace();
-            return null;
+            return new HashSet<>();
         }
     }
 
@@ -117,7 +117,7 @@ public class ServerCommunication {
         } catch (Exception e) {
             // TODO: make proper catch
             e.printStackTrace();
-            return null;
+            return new CustomDateObject();
         }
     }
 
@@ -136,7 +136,7 @@ public class ServerCommunication {
         } catch (Exception e) {
             // TODO: Make proper catch
             e.printStackTrace();
-            return null;
+            return new HashSet<>();
         }
     }
 
@@ -204,7 +204,7 @@ public class ServerCommunication {
         } catch (Exception e) {
             // TODO: Make proper catch
             e.printStackTrace();
-            return null;
+            return new HashSet<>();
         }
     }
 
