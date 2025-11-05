@@ -46,6 +46,9 @@ public class MainPageController {
     private Label loggedInUserLabel;
 
     @FXML
+    private Label yourBookingsLabel;
+
+    @FXML
     private TableView<CustomDateObject> bookingOverview;
 
     @FXML
@@ -215,8 +218,10 @@ public class MainPageController {
 
         if (currentlyLoggedInUser.getName().toLowerCase().equals(SUPER_USER_NAME.toLowerCase())){
             bookings = new ArrayList<>(ServerCommunication.getAllBookings());
+            yourBookingsLabel.setText("ALL BOOKINGS");
         }else{
             bookings = ServerCommunication.getBookingsByUser(currentlyLoggedInUser.getName());
+            yourBookingsLabel.setText("YOUR BOOKINGS");
         }
 
         ControllerHelpFunctions.sortBookings(bookings);

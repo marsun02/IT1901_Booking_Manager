@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1199.0" prefWidth="1000.0" style="-fx-background-color: grey;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainPageController">
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1199.0" prefWidth="1000.0" style="-fx-background-color: grey;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainPageController">
    <content>
       <VBox prefHeight="1205.0" prefWidth="994.0">
          <children>
@@ -139,7 +139,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="334.0" text="YOUR BOOKINGS">
+                        <Label fx:id="yourBookingsLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="68.0" prefWidth="334.0" text="YOUR BOOKINGS">
                            <font>
                               <Font name="Franklin Gothic Demi Cond" size="36.0" />
                            </font>
