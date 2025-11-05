@@ -20,8 +20,8 @@ public class ControllerHelpFunctionsTest {
     @BeforeEach
     void setUp() {
         restaurants = new HashSet<>();
-        restaurant0 = new Restaurant("restaurant0", 0);
-        restaurant1 = new Restaurant("restaurant1", 1);
+        restaurant0 = new Restaurant("restaurant0", 0, 8);
+        restaurant1 = new Restaurant("restaurant1", 1, 8);
         restaurants.add(restaurant0);
         restaurants.add(restaurant1);
     }
