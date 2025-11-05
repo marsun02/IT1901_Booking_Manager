@@ -114,6 +114,13 @@ public class LoginPageController implements Initializable{
                 return;
             }
 
+            if (!emailField.getText().contains("@") || emailField.getText().startsWith("@") || emailField.getText().endsWith("@")) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText("Email not valid");
+                alert.showAndWait();
+                return;
+            }
+
             try {
                 Integer.parseInt(phoneNumberField.getText());
             } catch (Exception e) {
@@ -123,19 +130,20 @@ public class LoginPageController implements Initializable{
                 return;
             }
 
-            if (!emailField.getText().contains("@") || emailField.getText().startsWith("@") || emailField.getText().endsWith("@")) {
+            User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null, passwordField.getText());
+            int returnValue = ServerCommunication.saveUser(newUser);
+            if (returnValue == 0){
+                switchBackToLoginLayout();
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText("Account created");
+                alert.showAndWait();
+                
+            } else{
                 Alert alert = new Alert(AlertType.ERROR);
-                alert.setHeaderText("Email not valid");
+                alert.setHeaderText("Error creating new account");
                 alert.showAndWait();
                 return;
             }
-
-            User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null, passwordField.getText());
-            ServerCommunication.saveUser(newUser);
-            switchBackToLoginLayout();
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setHeaderText("Account created");
-            alert.showAndWait();
         } else{
             // Makes sure all fields must be filled
             if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()){

@@ -208,7 +208,7 @@ public class ServerCommunication {
         }
     }
 
-    public static void saveUser(User user){
+    public static int saveUser(User user){
         try {
             String jsonContents = objectMapper.writeValueAsString(user);
 
@@ -219,9 +219,11 @@ public class ServerCommunication {
             } else{
                 System.out.println("Posting failed!");
             }
+            return 0;
         } catch (Exception e) {
             // TODO: Make proper catch
             e.printStackTrace();
+            return 1;
         }
     }
 }
