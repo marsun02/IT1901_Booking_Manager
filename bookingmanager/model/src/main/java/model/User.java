@@ -1,8 +1,5 @@
 package model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
