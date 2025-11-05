@@ -4,6 +4,7 @@ import core.ControllerHelpFunctions;
 import core.RestaurantInitialization;
 import core.ServerCommunication;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -36,6 +37,7 @@ public class MainPageController {
     private Scene loginScene;
     private BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
+    private final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the entire app
 
     @FXML
     private AnchorPane anchorpane;
@@ -209,7 +211,14 @@ public class MainPageController {
             return new ReadOnlyObjectWrapper<>(deleteButton);
         });
         
-        List<CustomDateObject> bookings = ServerCommunication.getBookingsByUser(currentlyLoggedInUser.getName());
+        List<CustomDateObject> bookings;
+
+        if (currentlyLoggedInUser.getName().toLowerCase().equals(SUPER_USER_NAME.toLowerCase())){
+            bookings = new ArrayList<>(ServerCommunication.getAllBookings());
+        }else{
+            bookings = ServerCommunication.getBookingsByUser(currentlyLoggedInUser.getName());
+        }
+
         ControllerHelpFunctions.sortBookings(bookings);
         
         for (CustomDateObject booking : bookings) {
