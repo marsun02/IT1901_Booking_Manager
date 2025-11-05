@@ -1,12 +1,12 @@
 [ {
   "date" : "2025-11-12",
-  "time" : "17:10",
+  "time" : "17:50",
   "restaurantName" : "McDonalds",
   "user" : "Admin",
-  "bookedName" : "test test",
-  "firstName" : "test",
-  "lastName" : "test",
-  "id" : 22
+  "bookedName" : "test2 test2",
+  "firstName" : "test2",
+  "lastName" : "test2",
+  "id" : 23
 }, {
   "date" : "2025-10-31",
   "time" : "18.00",
@@ -26,15 +26,6 @@
   "lastName" : "jada",
   "id" : 19
 }, {
-  "date" : "2025-11-12",
-  "time" : "17:50",
-  "restaurantName" : "McDonalds",
-  "user" : "Admin",
-  "bookedName" : "test2 test2",
-  "firstName" : "test2",
-  "lastName" : "test2",
-  "id" : 23
-}, {
   "date" : "2025-10-31",
   "time" : "22.00",
   "restaurantName" : "SteakHouse",
@@ -43,6 +34,15 @@
   "firstName" : "e",
   "lastName" : "a",
   "id" : 16
+}, {
+  "date" : "2025-11-12",
+  "time" : "17:30",
+  "restaurantName" : "McDonalds",
+  "user" : "Admin",
+  "bookedName" : "test test",
+  "firstName" : "test",
+  "lastName" : "test",
+  "id" : 24
 }, {
   "date" : "2025-10-31",
   "time" : "16:39",

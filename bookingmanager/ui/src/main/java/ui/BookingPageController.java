@@ -105,6 +105,19 @@ public class BookingPageController {
         }
     }
 
+    
+    private void removeBookedTimeSlots(String chosenDateString){
+        Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByDateAndRestaurantName(chosenDateString, restaurant.getName());
+        for (CustomDateObject customDateObject : bookings) {
+            allAvailableTimeslots.remove(customDateObject.getTime());
+        }
+    }
+
+    public void correctlyReloadTimeSlots(String chosenDateString){
+        removeBookedTimeSlots(chosenDateString);
+        reloadTimeSlotPicker();
+    }
+
     private boolean checkThatAllFieldsAreFilled(){
         if (name.getText().isEmpty() || surname.getText().isEmpty() || date.getValue() == null || timeSlotsPicker.getValue() == null){
             Alert alert = new Alert(AlertType.ERROR);
@@ -124,11 +137,7 @@ public class BookingPageController {
             chosenDateString = date.getValue().toString();
         }
         clearAndPopulateTimeslots();
-        Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByDateAndRestaurantName(chosenDateString, restaurant.getName());
-        for (CustomDateObject customDateObject : bookings) {
-                allAvailableTimeslots.remove(customDateObject.getTime());
-        }
-        reloadTimeSlotPicker();
+        correctlyReloadTimeSlots(chosenDateString);
     }
 
     public void setMainPageController(MainPageController controller){
@@ -148,7 +157,6 @@ public class BookingPageController {
         this.restaurant = restaurant;
         restaurantLabel.setText("Velkommen til " + restaurant.getName());
         clearAndPopulateTimeslots();
-        reloadTimeSlotPicker();
 
         // makes Date field un-editable so you must pick a correctly formatted date
         date.getEditor().setDisable(true);

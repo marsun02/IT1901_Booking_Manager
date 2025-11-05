@@ -183,6 +183,7 @@ public class MainPageController {
                     }
                     CustomDateObject bookingToEdit = ServerCommunication.getBookingById(cellData.getValue().getId().toString());
                     bookingPageController.setEditState(true, bookingToEdit);
+                    bookingPageController.correctlyReloadTimeSlots(bookingToEdit.getDate());
                     bookingPageController.fillFieldsWithExistingBookingInfo(cellData.getValue().getFirstName(), cellData.getValue().getLastName(), cellData.getValue().getDate(), cellData.getValue().getTime());
                     primaryStage.setScene(bookingScene);
                 }
