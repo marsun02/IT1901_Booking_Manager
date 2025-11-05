@@ -6,8 +6,6 @@ import model.User;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -138,7 +136,20 @@ public class FileManagement {
         return matchingDateBookings; // returns all bookings made for that specific user
     }
 
-    public static CustomDateObject loadSpecificBooking(File allBookingsFile, int id) {
+    public static Collection<CustomDateObject> loadAllBookings(File allBookingsFile){
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collection<CustomDateObject> bookings;
+        try {
+            bookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
+            });
+        } catch (Exception e) {
+            bookings = new HashSet<>();
+        }
+        return bookings;
+    }
+
+    public static CustomDateObject loadSpecificBooking(File allBookingsFile, String stringId) {
+        int id = Integer.parseInt(stringId);
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<CustomDateObject> allBookings;
         CustomDateObject matchingBooking = null;
@@ -197,12 +208,10 @@ public class FileManagement {
         }
     }
 
-    public static int getId(String idType){
+    public static int updateId(File idsFile, String idType){ // This function gets and updates/increments the given ID
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
         Map<String, Integer> ids = new HashMap<>();
-        final Path path = Paths.get("../persistence/src/main/resources/persistence/idManager.json");
-        final File idsFile = path.toFile(); // File to store bookings
         try {
             ids = objectMapper.readValue(idsFile, new TypeReference<Map<String, Integer>>() {});
         } catch (Exception e) {

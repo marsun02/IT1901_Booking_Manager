@@ -3,7 +3,6 @@ module bookingmanager.ui {
     requires javafx.fxml;
     requires javafx.graphics;
     requires transitive bookingmanager.core;
-    requires bookingmanager.persistence;
     requires transitive bookingmanager.model;
 
     opens ui to javafx.fxml;

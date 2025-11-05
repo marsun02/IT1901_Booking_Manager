@@ -1,12 +1,10 @@
 package ui;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import core.ServerCommunication;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -21,7 +19,6 @@ import model.CustomDateObject;
 import model.Restaurant;
 import model.Table;
 import model.User;
-import persistence.FileManagement;
 
 public class BookingPageController {
 
@@ -32,10 +29,6 @@ public class BookingPageController {
     private Collection<String> allAvailableTimeslots = new ArrayList<>(); 
     private boolean currentlyInEditState = false;
     private CustomDateObject bookingToEdit = null;
-
-    final Path path = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
-    final File allBookingsFile = path.toFile(); // File to store bookings
-    // private Collection<Table> tables; // Will be used when tables can be chosen in the booking page
 
     @FXML
     Label restaurantLabel;
@@ -85,8 +78,8 @@ public class BookingPageController {
             if (table.equals(firstAvailableTable)){
                 if (currentlyInEditState){
                     // table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                    FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), FileManagement.getId("bookingId")));
-                    FileManagement.deleteBooking(allBookingsFile, bookingToEdit);
+                    ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
+                    ServerCommunication.deleteBooking(bookingToEdit);
                     Alert alert = new Alert(AlertType.CONFIRMATION);
                     mainPageController.saveRestaurants();
                     returnToMainPage();
@@ -95,7 +88,7 @@ public class BookingPageController {
                     currentlyInEditState = false;
                 } else {
                     table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                    FileManagement.saveBooking(allBookingsFile, new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), FileManagement.getId("bookingId")));
+                    ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
                     Alert alert = new Alert(AlertType.CONFIRMATION);
                     mainPageController.saveRestaurants();
                     returnToMainPage();
@@ -143,7 +136,7 @@ public class BookingPageController {
         } else{
             chosenDateString = date.getValue().toString();
         }
-        Collection<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificDate(allBookingsFile, chosenDateString, restaurant.getName());
+        Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByDateAndRestaurantName(chosenDateString, restaurant.getName());
         for (CustomDateObject customDateObject : bookings) {
                 allAvailableTimeslots.remove(customDateObject.getTime());
         }
