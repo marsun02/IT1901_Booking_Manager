@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="569.0" prefWidth="1000.0" style="-fx-background-color: beige; -fx-border-color: black; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LoginPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="640" prefWidth="1000.0" style="-fx-background-color: beige; -fx-border-color: black; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LoginPageController">
    <children>
-      <HBox alignment="BOTTOM_CENTER" layoutY="2.0" prefHeight="115.0" prefWidth="1052.0">
+      <HBox alignment="CENTER" layoutY="2.0" prefHeight="115.0" prefWidth="1052.0">
          <children>
             <Label text="Sign in to Booking.no" textAlignment="CENTER">
                <font>
@@ -22,9 +22,9 @@
             </Label>
          </children>
       </HBox>
-      <VBox layoutY="117.0" prefHeight="363.0" prefWidth="1062.0">
+      <VBox layoutY="117.0" prefHeight="0.0" prefWidth="1062.0" spacing="20.0">
          <children>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="usernameField" prefHeight="40.0" prefWidth="350.0" promptText="Username" style="-fx-border-color: gray; -fx-border-width: 2px;">
                      <font>
@@ -42,16 +42,43 @@
                   </PasswordField>
                </children>
             </HBox>
+            <HBox fx:id="confirmPasswordHBox" alignment="CENTER" layoutX="10.0" layoutY="76.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <PasswordField fx:id="confirmPasswordField" prefHeight="40.0" prefWidth="350.0" promptText="Confirm Password" style="-fx-border-color: gray; -fx-border-width: 2px;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </HBox>
+            <HBox fx:id="emailHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="emailField" prefHeight="40.0" prefWidth="350.0" promptText="Email" style="-fx-border-color: gray; -fx-border-width: 2px;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox fx:id="phoneNumberHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="phoneNumberField" prefHeight="40.0" prefWidth="350.0" promptText="Phone Number" style="-fx-border-color: gray; -fx-border-width: 2px;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="71.0" prefWidth="1062.0">
                <children>
-                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAccount" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: #292928; -fx-border-color: gray; -fx-border-width: 2px;" text="Log in" textFill="WHITE">
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAccount" prefHeight="66.0" prefWidth="350.0" style="-fx-background-color: #292928; -fx-border-color: gray; -fx-border-width: 2px;" text="Log in" textFill="WHITE">
                      <font>
                         <Font name="Sitka Text" size="24.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="1062.0">
+            <HBox alignment="CENTER" prefHeight="81.0" prefWidth="1062.0">
                <children>
                   <Text fx:id="noAccountText" strokeType="OUTSIDE" strokeWidth="0.0" text="NO ACCOUNT?">
                      <font>
@@ -60,7 +87,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="73.0" prefWidth="1062.0">
+            <HBox alignment="CENTER" prefHeight="72.0" prefWidth="1062.0">
                <children>
                   <Hyperlink fx:id="createAccountLink" alignment="CENTER" prefHeight="26.0" prefWidth="91.0" text="CREATE ONE">
                      <font>
@@ -71,6 +98,6 @@
             </HBox>
          </children>
       </VBox>
-      <HBox layoutY="465.0" prefHeight="100.0" prefWidth="1057.0" />
+      <HBox layoutY="516.0" prefHeight="49.0" prefWidth="1058.0" />
    </children>
 </AnchorPane>

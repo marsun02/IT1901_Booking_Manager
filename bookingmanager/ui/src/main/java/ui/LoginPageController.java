@@ -1,20 +1,25 @@
 package ui;
 
+import java.net.URL;
 import java.util.Collection;
+import java.util.ResourceBundle;
 
 import core.ServerCommunication;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.User;
 
-public class LoginPageController {
+public class LoginPageController implements Initializable{
 
     private Stage primaryStage;
     private Scene mainScene;
@@ -25,7 +30,25 @@ public class LoginPageController {
     TextField usernameField;
 
     @FXML
-    TextField passwordField;
+    PasswordField passwordField;
+
+    @FXML
+    PasswordField confirmPasswordField;
+
+    @FXML
+    HBox confirmPasswordHBox;
+
+    @FXML
+    TextField emailField;
+
+    @FXML
+    HBox emailHBox;
+
+    @FXML
+    TextField phoneNumberField;
+
+    @FXML
+    HBox phoneNumberHBox;
 
     @FXML
     Button loginButton;
@@ -57,6 +80,8 @@ public class LoginPageController {
         });
     }
 
+    
+
     public void setMainPageController(MainPageController controller){
         this.mainPageController = controller;
     }
@@ -65,7 +90,7 @@ public class LoginPageController {
     private void loginAccount(){
         if (currentLayoutIsRegisterAccount){
             // Makes sure all fields must be filled
-            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()){
+            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty() || confirmPasswordField.getText().isEmpty() || emailField.getText().isEmpty() || phoneNumberField.getText().isEmpty()){
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("All fields must be filled to create account");
                 alert.showAndWait();
@@ -81,12 +106,44 @@ public class LoginPageController {
                     return;
                 }
             }
+            // Check that passwords match
+            if (!passwordField.getText().equals(confirmPasswordField.getText())){
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText("Passwords do not match");
+                alert.showAndWait();
+                return;
+            }
+
+            if (!emailField.getText().contains("@") || emailField.getText().startsWith("@") || emailField.getText().endsWith("@")) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText("Email not valid");
+                alert.showAndWait();
+                return;
+            }
+
+            try {
+                Integer.parseInt(phoneNumberField.getText());
+            } catch (Exception e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText("Phone number not valid");
+                alert.showAndWait();
+                return;
+            }
+
             User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null, passwordField.getText());
-            ServerCommunication.saveUser(newUser);
-            switchBackToLoginLayout();
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setHeaderText("Account created");
-            alert.showAndWait();
+            int returnValue = ServerCommunication.saveUser(newUser);
+            if (returnValue == 0){
+                switchBackToLoginLayout();
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText("Account created");
+                alert.showAndWait();
+                
+            } else{
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText("Error creating new account");
+                alert.showAndWait();
+                return;
+            }
         } else{
             // Makes sure all fields must be filled
             if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()){
@@ -129,6 +186,12 @@ public class LoginPageController {
         // createAccountLink.setDisable(true);
         currentLayoutIsRegisterAccount = true;
         resetInfo();
+        emailHBox.setVisible(true);
+        emailHBox.setManaged(true);
+        confirmPasswordHBox.setVisible(true);
+        confirmPasswordHBox.setManaged(true);
+        phoneNumberHBox.setVisible(true);
+        phoneNumberHBox.setManaged(true);
     }
 
     private void switchBackToLoginLayout(){
@@ -140,11 +203,32 @@ public class LoginPageController {
         // createAccountLink.setDisable(false);
         currentLayoutIsRegisterAccount = false;
         resetInfo();
+        emailHBox.setVisible(false);
+        emailHBox.setManaged(false);
+        confirmPasswordHBox.setVisible(false);
+        confirmPasswordHBox.setManaged(false);
+        phoneNumberHBox.setVisible(false);
+        phoneNumberHBox.setManaged(false);
     }
 
     private void resetInfo(){
         usernameField.setText("");
         passwordField.setText("");
+        confirmPasswordField.setText("");
+        emailField.setText("");
+        phoneNumberField.setText("");
+    }
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        emailHBox.setVisible(false);
+        emailHBox.setManaged(false);
+        confirmPasswordHBox.setVisible(false);
+        confirmPasswordHBox.setManaged(false);
+        phoneNumberHBox.setVisible(false);
+        phoneNumberHBox.setManaged(false);
     }
 
 
