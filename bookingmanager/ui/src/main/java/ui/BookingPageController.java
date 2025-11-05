@@ -95,6 +95,16 @@ public class BookingPageController {
         date.setValue(null);
     }
 
+    private void reloadTimeSlotPicker(){
+        timeSlotsPicker.getItems().clear();
+        timeSlotsPicker.getSelectionModel().clearSelection(); // resets logical selection
+        timeSlotsPicker.setValue(null); // reset UI selection
+        chosenTimeToBook = null; // Reset the chosen time so it doesn't try to save the previously selected time, avoid "ghost selection"
+        for (String time : allAvailableTimeslots) {
+            timeSlotsPicker.getItems().add(time);
+        }
+    }
+
     private boolean checkThatAllFieldsAreFilled(){
         if (name.getText().isEmpty() || surname.getText().isEmpty() || date.getValue() == null || timeSlotsPicker.getValue() == null){
             Alert alert = new Alert(AlertType.ERROR);
@@ -107,24 +117,18 @@ public class BookingPageController {
 
     @FXML
     public void pickDateToBook(){
-        clearAndPopulateTimeslots();
         String chosenDateString;
         if (date.getValue() == null){
             chosenDateString = "null";
         } else{
             chosenDateString = date.getValue().toString();
         }
+        clearAndPopulateTimeslots();
         Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByDateAndRestaurantName(chosenDateString, restaurant.getName());
         for (CustomDateObject customDateObject : bookings) {
                 allAvailableTimeslots.remove(customDateObject.getTime());
         }
-        timeSlotsPicker.getItems().clear();
-        timeSlotsPicker.getSelectionModel().clearSelection(); // resets logical selection
-        timeSlotsPicker.setValue(null); // reset UI selection
-        chosenTimeToBook = null; // Reset the chosen time so it doesn't try to save the previously selected time, avoid "ghost selection"
-        for (String time : allAvailableTimeslots) {
-            timeSlotsPicker.getItems().add(time);
-        }
+        reloadTimeSlotPicker();
     }
 
     public void setMainPageController(MainPageController controller){
@@ -143,6 +147,8 @@ public class BookingPageController {
     public void setCurrentRestaurantDisplayed(Restaurant restaurant){
         this.restaurant = restaurant;
         restaurantLabel.setText("Velkommen til " + restaurant.getName());
+        clearAndPopulateTimeslots();
+        reloadTimeSlotPicker();
 
         // makes Date field un-editable so you must pick a correctly formatted date
         date.getEditor().setDisable(true);
@@ -164,18 +170,13 @@ public class BookingPageController {
         timeSlotsPicker.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {chosenTimeToBook = newValue;});
     }
 
-    // TODO: Add different timeslots based on restaurants amount of tables
-    public void clearAndPopulateTimeslots(){ // Chose to hardcode timeslots for now
+    public void clearAndPopulateTimeslots(){
         allAvailableTimeslots.clear();
         int bookingIntervalLength = (int) (120/restaurant.getAmountOfTables());
         for (Integer i = 14; i < 24; i++) { // For simplicity we pretend that all restaurants open at 14 and close at midnight.
             for (int j = 0; j < 60; j+=bookingIntervalLength) {
-                allAvailableTimeslots.add(i.toString() + String.format("%02d", j)); // formats the minute part to always be 2 digits.
+                allAvailableTimeslots.add(i.toString() + ":" + String.format("%02d", j)); // formats the minute part to always be 2 digits.
             }
-            // allAvailableTimeslots.add(i.toString() + ".00");
-            // allAvailableTimeslots.add(i.toString() + ".15");
-            // allAvailableTimeslots.add(i.toString() + ".30");
-            // allAvailableTimeslots.add(i.toString() + ".45");
         }
     }
 

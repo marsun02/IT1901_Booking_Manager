@@ -3,13 +3,11 @@
   "name" : "testaccountyay",
   "email" : null,
   "password" : "password",
-  "phoneNumber" : null,
-  "bookedTables" : [ ]
+  "phoneNumber" : null
 }, {
   "id" : 0,
   "name" : "Admin",
   "email" : null,
   "password" : "12345",
-  "phoneNumber" : null,
-  "bookedTables" : [ ]
+  "phoneNumber" : null
 } ]

@@ -1,21 +1,12 @@
 [ {
-  "date" : "2025-10-31",
-  "time" : "19.00",
-  "restaurantName" : "SteakHouse",
+  "date" : "2025-11-12",
+  "time" : "17:10",
+  "restaurantName" : "McDonalds",
   "user" : "Admin",
-  "bookedName" : "test2 jada",
-  "firstName" : "test2",
-  "lastName" : "jada",
-  "id" : 6
-}, {
-  "date" : "2025-10-30",
-  "time" : "16.30",
-  "restaurantName" : "Frati",
-  "user" : "Admin",
-  "bookedName" : "jajatest woho",
-  "firstName" : "jajatest",
-  "lastName" : "woho",
-  "id" : 15
+  "bookedName" : "test test",
+  "firstName" : "test",
+  "lastName" : "test",
+  "id" : 22
 }, {
   "date" : "2025-10-31",
   "time" : "18.00",
@@ -27,6 +18,24 @@
   "id" : 11
 }, {
   "date" : "2025-10-31",
+  "time" : "18:13",
+  "restaurantName" : "SteakHouse",
+  "user" : "Admin",
+  "bookedName" : "test2 jada",
+  "firstName" : "test2",
+  "lastName" : "jada",
+  "id" : 19
+}, {
+  "date" : "2025-11-12",
+  "time" : "17:50",
+  "restaurantName" : "McDonalds",
+  "user" : "Admin",
+  "bookedName" : "test2 test2",
+  "firstName" : "test2",
+  "lastName" : "test2",
+  "id" : 23
+}, {
+  "date" : "2025-10-31",
   "time" : "22.00",
   "restaurantName" : "SteakHouse",
   "user" : "KjellMagnar",
@@ -36,11 +45,20 @@
   "id" : 16
 }, {
   "date" : "2025-10-31",
-  "time" : "19.00",
+  "time" : "16:39",
   "restaurantName" : "BurgerKing",
   "user" : "Admin",
   "bookedName" : "testja hais",
   "firstName" : "testja",
   "lastName" : "hais",
-  "id" : 8
+  "id" : 18
+}, {
+  "date" : "2025-10-30",
+  "time" : "16.30",
+  "restaurantName" : "Frati",
+  "user" : "Admin",
+  "bookedName" : "jajatest woho",
+  "firstName" : "jajatest",
+  "lastName" : "woho",
+  "id" : 15
 } ]

@@ -124,9 +124,8 @@ public class MainPageController {
             alert.showAndWait();
             return;
         }
-        primaryStage.setScene(bookingScene);
         bookingPageController.setCurrentRestaurantDisplayed(restaurant);
-        // bookingPageController.setCorrectTables(restaurant.getTables()); // Will be used when tables can be chosen in the booking page
+        primaryStage.setScene(bookingScene);
     }
 
     public void setcurrentlyLoggedInUser(User loggedInUser){
@@ -151,7 +150,6 @@ public class MainPageController {
     public void loadUserBookings(){
         bookingOverview.getItems().clear();
         bookingOverview.getColumns().forEach(col -> col.setStyle("-fx-alignment: CENTER;"));
-        // TODO: Add image instead of text
         tableImage.setCellValueFactory(cellData -> {
             final Image editImage = new Image(getClass().getResourceAsStream("/ui/" + cellData.getValue().getRestaurantName() + ".png"));
             final ImageView editImageView = new ImageView(editImage);
@@ -177,15 +175,15 @@ public class MainPageController {
             editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    CustomDateObject bookingToEdit = ServerCommunication.getBookingById(cellData.getValue().getId().toString());
-                    bookingPageController.setEditState(true, bookingToEdit);
-                    bookingPageController.fillFieldsWithExistingBookingInfo(cellData.getValue().getFirstName(), cellData.getValue().getLastName(), cellData.getValue().getDate(), cellData.getValue().getTime());
                     for (Restaurant restaurant : restaurants){
                         if (restaurant.getName().equals(cellData.getValue().getRestaurantName())){
                             bookingPageController.setCurrentRestaurantDisplayed(restaurant);
                             break;
                         }
                     }
+                    CustomDateObject bookingToEdit = ServerCommunication.getBookingById(cellData.getValue().getId().toString());
+                    bookingPageController.setEditState(true, bookingToEdit);
+                    bookingPageController.fillFieldsWithExistingBookingInfo(cellData.getValue().getFirstName(), cellData.getValue().getLastName(), cellData.getValue().getDate(), cellData.getValue().getTime());
                     primaryStage.setScene(bookingScene);
                 }
             });
