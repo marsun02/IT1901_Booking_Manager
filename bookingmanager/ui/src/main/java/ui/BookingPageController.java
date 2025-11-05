@@ -17,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.CustomDateObject;
 import model.Restaurant;
-import model.User;
 
 public class BookingPageController {
 
@@ -67,7 +66,6 @@ public class BookingPageController {
 
         // TODO: Make sure that all fields must be filled before booking
         if (currentlyInEditState){
-            // table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
             ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
             ServerCommunication.deleteBooking(bookingToEdit);
             Alert alert = new Alert(AlertType.CONFIRMATION);
