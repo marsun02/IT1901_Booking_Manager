@@ -17,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.CustomDateObject;
 import model.Restaurant;
-import model.Table;
 import model.User;
 
 public class BookingPageController {
@@ -66,44 +65,27 @@ public class BookingPageController {
             return;
         }
 
-        Table firstAvailableTable = null;
-        
-        for (Table table : restaurant.getAvailableTables()) { 
-            firstAvailableTable = table;
-            break;
-        }
-
         // TODO: Make sure that all fields must be filled before booking
-        for (Table table : restaurant.getTables()) {
-            if (table.equals(firstAvailableTable)){
-                if (currentlyInEditState){
-                    // table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                    ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
-                    ServerCommunication.deleteBooking(bookingToEdit);
-                    Alert alert = new Alert(AlertType.CONFIRMATION);
-                    mainPageController.saveRestaurants();
-                    returnToMainPage();
-                    alert.setHeaderText("Booking sucessfully changed!");
-                    alert.showAndWait();
-                    currentlyInEditState = false;
-                } else {
-                    table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
-                    ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
-                    Alert alert = new Alert(AlertType.CONFIRMATION);
-                    mainPageController.saveRestaurants();
-                    returnToMainPage();
-                    alert.setHeaderText("Table successfully booked!");
-                    alert.showAndWait();
-                }
-                resetInfo();
-                return;
-            }
+        if (currentlyInEditState){
+            // table.book(new User(0, name.getText() + " " + surname.getText(), null, null, null), null); // TODO: Add actual booked time
+            ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
+            ServerCommunication.deleteBooking(bookingToEdit);
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            mainPageController.saveRestaurants();
+            returnToMainPage();
+            alert.setHeaderText("Booking sucessfully changed!");
+            alert.showAndWait();
+            currentlyInEditState = false;
+        } else {
+            // TODO: Add try catch for when the server is down
+            ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            mainPageController.saveRestaurants();
+            returnToMainPage();
+            alert.setHeaderText("Table successfully booked!");
+            alert.showAndWait();
         }
-
-        // this alert is only here since the user cannot see the available time slots yet
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setHeaderText("Unfortunately there were no available tables");
-        alert.showAndWait();
+        resetInfo();
     }
 
     @FXML
@@ -149,8 +131,6 @@ public class BookingPageController {
         }
     }
 
-
-
     public void setMainPageController(MainPageController controller){
         this.mainPageController = controller;
     }
@@ -188,6 +168,7 @@ public class BookingPageController {
         timeSlotsPicker.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {chosenTimeToBook = newValue;});
     }
 
+    // TODO: Add different timeslots based on restaurants amount of tables
     public void clearAndPopulateTimeslots(){ // Chose to hardcode timeslots for now
         allAvailableTimeslots.clear();
         for (Integer i = 14; i < 24; i++) { // 14 is the opening hour, 24 closing hour
