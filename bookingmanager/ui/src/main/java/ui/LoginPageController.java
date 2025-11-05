@@ -1,10 +1,8 @@
 package ui;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collection;
 
+import core.ServerCommunication;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.User;
-import persistence.FileManagement;
 
 public class LoginPageController {
 
@@ -23,9 +20,6 @@ public class LoginPageController {
     private Scene mainScene;
     private MainPageController mainPageController;
     private boolean currentLayoutIsRegisterAccount = false;
-
-    final Path path = Paths.get("../persistence/src/main/resources/persistence/users.json");
-    final File userDataFile = path.toFile(); // File to store user data
 
     @FXML
     TextField usernameField;
@@ -78,7 +72,7 @@ public class LoginPageController {
                 return;
             }
             // Checks if username is taken
-            Collection<User> users = FileManagement.loadUsers(userDataFile);
+            Collection<User> users = ServerCommunication.getAllUsers();
             for (User user : users) {
                 if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())){
                     Alert alert = new Alert(AlertType.ERROR);
@@ -87,8 +81,8 @@ public class LoginPageController {
                     return;
                 }
             }
-            User newUser = new User(FileManagement.getId("userId"), usernameField.getText(), null, null, passwordField.getText());
-            FileManagement.saveUser(userDataFile, newUser);
+            User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null, passwordField.getText());
+            ServerCommunication.saveUser(newUser);
             switchBackToLoginLayout();
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setHeaderText("Account created");
@@ -102,7 +96,7 @@ public class LoginPageController {
                 return;
             }
             // Login the user and pass that user to the main page
-            Collection<User> users = FileManagement.loadUsers(userDataFile);
+            Collection<User> users = ServerCommunication.getAllUsers();
             for (User user : users) {
                 if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())){
                     if (user.checkNamePassword(usernameField.getText(), passwordField.getText())){

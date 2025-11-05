@@ -2,9 +2,8 @@ package ui;
 
 import core.ControllerHelpFunctions;
 import core.RestaurantInitialization;
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import core.ServerCommunication;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -28,16 +27,9 @@ import javafx.stage.Stage;
 import model.CustomDateObject;
 import model.Restaurant;
 import model.User;
-import persistence.FileManagement;
 
 public class MainPageController {
     Collection<Restaurant> restaurants;
-    // private Collection<User> users; // User functionality may be added later
-    final Path path = Paths.get("../persistence/src/main/resources/persistence/restaurants.json");
-    final File restaurantDataFile = path.toFile(); // File to store restaurant data
-
-    final Path path2 = Paths.get("../persistence/src/main/resources/persistence/allBookings.json");
-    final File allBookingsFile = path2.toFile(); // File to store bookings
 
     private Stage primaryStage;
     private Scene bookingScene;
@@ -96,12 +88,12 @@ public class MainPageController {
     
     // saves the current restaurants in restaurants hashSet to file
     public void saveRestaurants(){
-        FileManagement.saveRestaurants(restaurantDataFile, restaurants);
+        ServerCommunication.saveAllRestaurants(restaurants);
     }
 
     // loads restaurants from file to hashSet
     public void loadRestaurants(){
-        restaurants = FileManagement.loadRestaurants(restaurantDataFile);
+        restaurants = ServerCommunication.getAllRestaurants();
     }
 
     // There comes spotbugs from these, but Stage and Scene should not be copied, therefore the spotsbugs remain for now
@@ -184,7 +176,7 @@ public class MainPageController {
             editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    CustomDateObject bookingToEdit = FileManagement.loadSpecificBooking(allBookingsFile, cellData.getValue().getId());
+                    CustomDateObject bookingToEdit = ServerCommunication.getBookingById(cellData.getValue().getId().toString());
                     bookingPageController.setEditState(true, bookingToEdit);
                     bookingPageController.fillFieldsWithExistingBookingInfo(cellData.getValue().getFirstName(), cellData.getValue().getLastName(), cellData.getValue().getDate(), cellData.getValue().getTime());
                     for (Restaurant restaurant : restaurants){
@@ -207,7 +199,7 @@ public class MainPageController {
             deleteButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    FileManagement.deleteBooking(allBookingsFile, cellData.getValue());
+                    ServerCommunication.deleteBooking(cellData.getValue());
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setHeaderText("Booking deleted");
                     alert.showAndWait();
@@ -217,7 +209,7 @@ public class MainPageController {
             return new ReadOnlyObjectWrapper<>(deleteButton);
         });
         
-        List<CustomDateObject> bookings = FileManagement.loadBookingsForSpecificUser(allBookingsFile, currentlyLoggedInUser.getName());
+        List<CustomDateObject> bookings = ServerCommunication.getBookingsByUser(currentlyLoggedInUser.getName());
         ControllerHelpFunctions.sortBookings(bookings);
         
         for (CustomDateObject booking : bookings) {
