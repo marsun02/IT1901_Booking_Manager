@@ -64,7 +64,6 @@ public class BookingPageController {
             return;
         }
 
-        // TODO: Make sure that all fields must be filled before booking
         if (currentlyInEditState){
             ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
             ServerCommunication.deleteBooking(bookingToEdit);
@@ -75,7 +74,6 @@ public class BookingPageController {
             alert.showAndWait();
             currentlyInEditState = false;
         } else {
-            // TODO: Add try catch for when the server is down
             ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook, restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(), surname.getText(), ServerCommunication.updateId("bookingId")));
             Alert alert = new Alert(AlertType.CONFIRMATION);
             mainPageController.saveRestaurants();
@@ -169,18 +167,17 @@ public class BookingPageController {
     // TODO: Add different timeslots based on restaurants amount of tables
     public void clearAndPopulateTimeslots(){ // Chose to hardcode timeslots for now
         allAvailableTimeslots.clear();
-        for (Integer i = 14; i < 24; i++) { // 14 is the opening hour, 24 closing hour
-            allAvailableTimeslots.add(i.toString() + ".00");
-            allAvailableTimeslots.add(i.toString() + ".15");
-            allAvailableTimeslots.add(i.toString() + ".30");
-            allAvailableTimeslots.add(i.toString() + ".45");
+        int bookingIntervalLength = (int) (120/restaurant.getAmountOfTables());
+        for (Integer i = 14; i < 24; i++) { // For simplicity we pretend that all restaurants open at 14 and close at midnight.
+            for (int j = 0; j < 60; j+=bookingIntervalLength) {
+                allAvailableTimeslots.add(i.toString() + String.format("%02d", j)); // formats the minute part to always be 2 digits.
+            }
+            // allAvailableTimeslots.add(i.toString() + ".00");
+            // allAvailableTimeslots.add(i.toString() + ".15");
+            // allAvailableTimeslots.add(i.toString() + ".30");
+            // allAvailableTimeslots.add(i.toString() + ".45");
         }
     }
-
-    // Will be used when tables can be chosen in the booking page
-    // public void setCorrectTables(Collection<Table> tables){ 
-    //     this.tables = tables;
-    // }
 
     public void setEditState(boolean state, CustomDateObject bookingToEdit){
         currentlyInEditState = state;
