@@ -113,6 +113,23 @@ public class LoginPageController implements Initializable{
                 alert.showAndWait();
                 return;
             }
+
+            try {
+                Integer.parseInt(phoneNumberField.getText());
+            } catch (Exception e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText("Phone number not valid");
+                alert.showAndWait();
+                return;
+            }
+
+            if (!emailField.getText().contains("@") || emailField.getText().startsWith("@") || emailField.getText().endsWith("@")) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText("Email not valid");
+                alert.showAndWait();
+                return;
+            }
+
             User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null, passwordField.getText());
             ServerCommunication.saveUser(newUser);
             switchBackToLoginLayout();
@@ -189,6 +206,9 @@ public class LoginPageController implements Initializable{
     private void resetInfo(){
         usernameField.setText("");
         passwordField.setText("");
+        confirmPasswordField.setText("");
+        emailField.setText("");
+        phoneNumberField.setText("");
     }
 
 
