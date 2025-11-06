@@ -95,7 +95,7 @@ public class BookingPageController {
         date.setValue(null);
     }
 
-    private void reloadTimeSlotPicker(){
+    public void reloadTimeSlotPicker(){
         timeSlotsPicker.getItems().clear();
         timeSlotsPicker.getSelectionModel().clearSelection(); // resets logical selection
         timeSlotsPicker.setValue(null); // reset UI selection

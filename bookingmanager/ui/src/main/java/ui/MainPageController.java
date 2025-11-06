@@ -125,6 +125,8 @@ public class MainPageController {
             return;
         }
         bookingPageController.setCurrentRestaurantDisplayed(restaurant);
+        bookingPageController.reloadTimeSlotPicker();
+
         primaryStage.setScene(bookingScene);
     }
 

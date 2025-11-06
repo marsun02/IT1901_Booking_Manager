@@ -1,18 +1,6 @@
 [ {
-  "id" : 0,
-  "name" : "Frati",
-  "amountOfTables" : 8
-}, {
   "id" : 3,
   "name" : "Barbecuez",
-  "amountOfTables" : 8
-}, {
-  "id" : 4,
-  "name" : "McDonalds",
-  "amountOfTables" : 12
-}, {
-  "id" : 1,
-  "name" : "Szechuan",
   "amountOfTables" : 8
 }, {
   "id" : 2,
@@ -22,4 +10,16 @@
   "id" : 5,
   "name" : "SteakHouse",
   "amountOfTables" : 9
+}, {
+  "id" : 4,
+  "name" : "McDonalds",
+  "amountOfTables" : 12
+}, {
+  "id" : 0,
+  "name" : "Frati",
+  "amountOfTables" : 8
+}, {
+  "id" : 1,
+  "name" : "Szechuan",
+  "amountOfTables" : 8
 } ]

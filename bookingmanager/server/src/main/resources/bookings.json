@@ -1,39 +1,30 @@
 [ {
+  "date" : "2025-10-30",
+  "time" : "16.30",
+  "restaurantName" : "Frati",
+  "user" : "Admin",
+  "bookedName" : "jajatest woho",
+  "firstName" : "jajatest",
+  "lastName" : "woho",
+  "id" : 15
+}, {
+  "date" : "2025-10-31",
+  "time" : "16:39",
+  "restaurantName" : "BurgerKing",
+  "user" : "Admin",
+  "bookedName" : "testja hais",
+  "firstName" : "testja",
+  "lastName" : "hais",
+  "id" : 18
+}, {
   "date" : "2025-11-12",
-  "time" : "17:50",
+  "time" : "15:20",
   "restaurantName" : "McDonalds",
   "user" : "Admin",
   "bookedName" : "test2 test2",
   "firstName" : "test2",
   "lastName" : "test2",
-  "id" : 23
-}, {
-  "date" : "2025-10-31",
-  "time" : "18.00",
-  "restaurantName" : "BurgerKing",
-  "user" : "Admin",
-  "bookedName" : "hallois jaja",
-  "firstName" : "hallois",
-  "lastName" : "jaja",
-  "id" : 11
-}, {
-  "date" : "2025-10-31",
-  "time" : "18:13",
-  "restaurantName" : "SteakHouse",
-  "user" : "Admin",
-  "bookedName" : "test2 jada",
-  "firstName" : "test2",
-  "lastName" : "jada",
-  "id" : 19
-}, {
-  "date" : "2025-10-31",
-  "time" : "22.00",
-  "restaurantName" : "SteakHouse",
-  "user" : "KjellMagnar",
-  "bookedName" : "e a",
-  "firstName" : "e",
-  "lastName" : "a",
-  "id" : 16
+  "id" : 25
 }, {
   "date" : "2025-11-12",
   "time" : "17:30",
@@ -45,20 +36,38 @@
   "id" : 24
 }, {
   "date" : "2025-10-31",
-  "time" : "16:39",
+  "time" : "22.00",
+  "restaurantName" : "SteakHouse",
+  "user" : "KjellMagnar",
+  "bookedName" : "e a",
+  "firstName" : "e",
+  "lastName" : "a",
+  "id" : 16
+}, {
+  "date" : "2025-11-14",
+  "time" : "17:13",
+  "restaurantName" : "SteakHouse",
+  "user" : "Admin",
+  "bookedName" : "test3 test3",
+  "firstName" : "test3",
+  "lastName" : "test3",
+  "id" : 26
+}, {
+  "date" : "2025-10-31",
+  "time" : "18:13",
+  "restaurantName" : "SteakHouse",
+  "user" : "Admin",
+  "bookedName" : "test2 jada",
+  "firstName" : "test2",
+  "lastName" : "jada",
+  "id" : 19
+}, {
+  "date" : "2025-10-31",
+  "time" : "18.00",
   "restaurantName" : "BurgerKing",
   "user" : "Admin",
-  "bookedName" : "testja hais",
-  "firstName" : "testja",
-  "lastName" : "hais",
-  "id" : 18
-}, {
-  "date" : "2025-10-30",
-  "time" : "16.30",
-  "restaurantName" : "Frati",
-  "user" : "Admin",
-  "bookedName" : "jajatest woho",
-  "firstName" : "jajatest",
-  "lastName" : "woho",
-  "id" : 15
+  "bookedName" : "hallois jaja",
+  "firstName" : "hallois",
+  "lastName" : "jaja",
+  "id" : 11
 } ]
