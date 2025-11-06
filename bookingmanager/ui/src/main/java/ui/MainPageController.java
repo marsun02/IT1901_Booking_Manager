@@ -3,12 +3,10 @@ package ui;
 import core.ControllerHelpFunctions;
 import core.RestaurantInitialization;
 import core.ServerCommunication;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,13 +14,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.CustomDateObject;
 import model.Restaurant;
@@ -37,7 +35,7 @@ public class MainPageController {
     private BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
     private final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
-                                                    // entire app
+    // entire app
 
     @FXML
     private Label loggedInUserLabel;
