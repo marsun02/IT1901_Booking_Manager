@@ -49,10 +49,10 @@ public class RestaurantControllerTest {
         Collection<Restaurant> actualRestaurants = new HashSet<>();
         actualRestaurants.add(new Restaurant());
         controller.saveAllRestaurants(actualRestaurants);
-        assertNotEquals(controller.getAllRestaurants().size(), 0); // Check that the file is not empty to begin with
-        assertEquals(controller.getAllRestaurants().size(), 1);
+        assertNotEquals(0, controller.getAllRestaurants().size()); // Check that the file is not empty to begin with
+        assertEquals(1, controller.getAllRestaurants().size());
         Collection<Restaurant> noRestaurants = new HashSet<>();
         controller.saveAllRestaurants(noRestaurants);
-        assertEquals(controller.getAllRestaurants().size(), 0); // Check that it now is empty
+        assertEquals(0, controller.getAllRestaurants().size()); // Check that it now is empty
     }
 }
