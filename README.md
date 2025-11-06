@@ -36,9 +36,17 @@ To help keep everything organized, the app will include a login feature, giving 
    mvn clean compile
    ```
 
-4. Start SpringBoot app (important to do before Javafx app)
+4. Install code: 
+   ```bash
+   mvn clean install
+   ```
 
-5. Start Javafx app:
+5. Start SpringBoot app (important to do before Javafx app)
+   ```bash
+   mvn spring-boot:run -pl server
+   ```
+
+6. Start Javafx app:
    ```bash
    mvn javafx:run -pl ui
    ```
