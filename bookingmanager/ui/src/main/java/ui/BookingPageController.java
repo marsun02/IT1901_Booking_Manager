@@ -202,7 +202,7 @@ public class BookingPageController {
 
     public void setEditState(boolean state, CustomDateObject bookingToEdit) {
         currentlyInEditState = state;
-        this.bookingToEdit = bookingToEdit;
+        this.bookingToEdit = new CustomDateObject(bookingToEdit);
     }
 
     public void fillFieldsWithExistingBookingInfo(String name, String surname, String date, String timeSlot) {

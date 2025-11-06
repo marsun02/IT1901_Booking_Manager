@@ -106,7 +106,7 @@ public class FileManagement {
                     matchingDateBookings.add(customDateObject);
                 }
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             matchingDateBookings = new HashSet<>();
         }
         return matchingDateBookings; // returns all bookings made for that specific date
@@ -124,7 +124,7 @@ public class FileManagement {
                     matchingDateBookings.add(customDateObject);
                 }
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             matchingDateBookings = new ArrayList<>();
         }
         return matchingDateBookings; // returns all bookings made for that specific user
