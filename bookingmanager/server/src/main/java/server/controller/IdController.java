@@ -18,7 +18,7 @@ public class IdController {
     final File IDS_DATA_FILE = PATH.toFile();
 
     @GetMapping
-    public int updateId(@RequestParam("idType") String idType){
+    public int updateId(@RequestParam("idType") String idType) {
         return FileManagement.updateId(IDS_DATA_FILE, idType);
     }
 }
