@@ -65,10 +65,10 @@ Run tests with this command:
 ## Versions and dependencies
    - Java/javafx 23.0.1
    - Maven: 17
-   - Jackson: 2.10.0
-   - JUnit: 5.11.0
+   - Jackson: 2.20.0
+   - JUnit: 5.12.2
    - SpringBoot: 3.3.4
-   - JaCoCo: 0.8.3
+   - JaCoCo: 0.8.13
 
 ---
 
