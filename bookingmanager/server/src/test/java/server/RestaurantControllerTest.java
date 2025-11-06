@@ -48,7 +48,9 @@ public class RestaurantControllerTest {
     void SaveAndGetRestaurantTest(){
         Collection<Restaurant> actualRestaurants = new HashSet<>();
         actualRestaurants.add(new Restaurant());
+        controller.saveAllRestaurants(actualRestaurants);
         assertNotEquals(controller.getAllRestaurants().size(), 0); // Check that the file is not empty to begin with
+        assertEquals(controller.getAllRestaurants().size(), 1);
         Collection<Restaurant> noRestaurants = new HashSet<>();
         controller.saveAllRestaurants(noRestaurants);
         assertEquals(controller.getAllRestaurants().size(), 0); // Check that it now is empty
