@@ -2,9 +2,11 @@
 
 sequenceDiagram
     participant User
-    participant UI
-    participant bookinglogic
-    participant persistance
+    participant BookingPageController
+    participant ServerCommunication
+    participant bookings
+    participant id
+    participant Filemanagement
 
     User->>UI: Presses "Book table"
     UI->>bookinglogic: Sends booking request
