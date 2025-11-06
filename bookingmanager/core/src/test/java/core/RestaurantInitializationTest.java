@@ -29,4 +29,9 @@ public class RestaurantInitializationTest {
             assertTrue(restaurantNames.contains(restaurant.getName()));
         }
     }
+
+    @Test
+    void testClassInitialize(){
+        new RestaurantInitialization();
+    }
 }

@@ -60,4 +60,8 @@ public class ControllerHelpFunctionsTest {
         assertEquals("2025-12-24", bookings.get(3).getDate());
         assertEquals("18.00", bookings.get(3).getTime());
     }
+    @Test
+    void testClassInitialization(){
+        new ControllerHelpFunctions();
+    }
 }
