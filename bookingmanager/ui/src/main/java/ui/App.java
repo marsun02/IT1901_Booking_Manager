@@ -5,11 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-public class App extends Application{
+public class App extends Application {
 
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage) {
         try {
             FXMLLoader mainLoader = new FXMLLoader(App.class.getResource("MainPage.fxml"));
             Scene mainScene = new Scene(mainLoader.load());
@@ -33,8 +32,8 @@ public class App extends Application{
             primaryStage.setScene(loginScene);
             primaryStage.setTitle("Booking manager");
             primaryStage.show();
-        } catch (Exception e){
-            System.out.println("Error loading FXML file: " + e.getMessage()); 
+        } catch (Exception e) {
+            System.out.println("Error loading FXML file: " + e.getMessage());
             e.printStackTrace();
         }
     }
