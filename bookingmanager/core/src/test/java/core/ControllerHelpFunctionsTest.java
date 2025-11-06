@@ -39,7 +39,7 @@ public class ControllerHelpFunctionsTest {
     }
 
     @Test
-    void testSortbookings(){
+    void testSortBookings(){
         List<CustomDateObject> bookings= new ArrayList<>();
         bookings.add(new CustomDateObject("2025-12-24", "18.00", "Burger King", "User", "Ola", "Nordmann", 1));
         bookings.add(new CustomDateObject("2025-12-23", "19.00", "Burger King", "User", "Ola", "Nordmann", 1));
