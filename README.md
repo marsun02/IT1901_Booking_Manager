@@ -128,6 +128,7 @@ In the root directory, you'll find the main README file, which contains the key 
 [Code quality](docs/release2/code-quality.md)
 
 ### Release 3
+[Rest api](docs/release3/rest-api.md)
 [Teamwork]
 [Sustainability]
 [Challenges]
@@ -137,4 +138,3 @@ In the root directory, you'll find the main README file, which contains the key 
 [Workflow]
 [Persistence]
 [Code quality]
-[REST Documentation]
