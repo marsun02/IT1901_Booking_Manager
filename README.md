@@ -18,6 +18,10 @@ To help keep everything organized, the app will include a login feature, giving 
 - Prevents double booking by checking availability before completing the booking process
 - Supports multiple users on the same booking management system
 
+### Additional notes:
+- An admin user will have access to all bookings
+- If the server is down, the login function won't work. Due to us implementing a try/catch for the login page, we have chosen to not implement any try/catch for the booking side of the application, as this part of the code will not be accessible if the server is down.
+
 ---
 
 ## How to run
@@ -124,3 +128,13 @@ In the root directory, you will find the [class-diagram.md](class-diagram.md) fi
 [Code quality](docs/release2/code-quality.md)
 
 ### Release 3
+[Teamwork]
+[Sustainability]
+[Challenges]
+[Contribution]
+[Use of ai-tools]
+[Work Practices]
+[Workflow]
+[Persistence]
+[Code quality]
+[REST Documentation]
