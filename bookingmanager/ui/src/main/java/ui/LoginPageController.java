@@ -24,7 +24,7 @@ public class LoginPageController implements Initializable{
     private Stage primaryStage;
     private Scene mainScene;
     private MainPageController mainPageController;
-    private boolean currentLayoutIsRegisterAccount = false;
+    boolean currentLayoutIsRegisterAccount = false;
 
     @FXML
     TextField usernameField;
@@ -86,8 +86,7 @@ public class LoginPageController implements Initializable{
         this.mainPageController = controller;
     }
 
-    @FXML
-    private void loginAccount(){
+    @FXML void loginAccount(){
         if (currentLayoutIsRegisterAccount){
             // Makes sure all fields must be filled
             if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty() || confirmPasswordField.getText().isEmpty() || emailField.getText().isEmpty() || phoneNumberField.getText().isEmpty()){
@@ -131,6 +130,7 @@ public class LoginPageController implements Initializable{
             }
 
             User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null, passwordField.getText());
+
             int returnValue = ServerCommunication.saveUser(newUser);
             if (returnValue == 0){
                 switchBackToLoginLayout();
@@ -174,6 +174,8 @@ public class LoginPageController implements Initializable{
             alert.setHeaderText("No such user found");
             alert.showAndWait();
         }
+
+        
     }
 
     
@@ -211,7 +213,7 @@ public class LoginPageController implements Initializable{
         phoneNumberHBox.setManaged(false);
     }
 
-    private void resetInfo(){
+    void resetInfo(){
         usernameField.setText("");
         passwordField.setText("");
         confirmPasswordField.setText("");
@@ -230,6 +232,4 @@ public class LoginPageController implements Initializable{
         phoneNumberHBox.setVisible(false);
         phoneNumberHBox.setManaged(false);
     }
-
-
 }
