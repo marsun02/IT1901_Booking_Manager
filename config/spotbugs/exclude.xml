@@ -1,0 +1,9 @@
+<!-- This code is generated using ChatGPT -->
+<FindBugsFilter>
+    <!-- Exclude CT_CONSTRUCTOR_THROW in ServerApp -->
+    <Match>
+        <Class name="server.ServerApp"/>
+        <Bug pattern="CT_CONSTRUCTOR_THROW"/>
+    </Match>
+</FindBugsFilter>
+<!-- Ends here -->
