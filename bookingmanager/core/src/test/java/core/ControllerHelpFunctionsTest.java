@@ -49,8 +49,15 @@ public class ControllerHelpFunctionsTest {
         ControllerHelpFunctions.sortBookings(bookings);
 
         assertEquals("2025-12-23", bookings.get(0).getDate());
+        assertEquals("17.00", bookings.get(0).getTime());
+
         assertEquals("2025-12-23", bookings.get(1).getDate());
+        assertEquals("19.00", bookings.get(1).getTime());
+
         assertEquals("2025-12-24", bookings.get(2).getDate());
+        assertEquals("17.00", bookings.get(2).getTime());
+
         assertEquals("2025-12-24", bookings.get(3).getDate());
+        assertEquals("18.00", bookings.get(3).getTime());
     }
 }
