@@ -4,17 +4,17 @@
 ---
 
 ## Quick description
-Our application is an overview of a wide selection of restaurants, which allows users to easily book tables at their preferred locations. The goal is to simplify the table booking process by gathering everything in one convenient place.
+Our application is an overview of a wide selection of restaurants, which allows users to easily book reservations at their preferred locations. The goal is to simplify the booking process by gathering everything in one convenient place.
 
-Our target users are the people who frequently book tables and want a platform to manage all their table reservations. With this app, you'll be able to view and manage bookings across multiple restaurants at the same time.
+Our target users are the people who frequently book reservations and want a platform to manage all their restaurant reservations. With this app, you'll be able to view and manage bookings across multiple restaurants at the same time.
 
-To help keep everything organized, the app will include a login feature, giving users a personalized overview of their upcoming table reservations.
+To help keep everything organized, the app will include a login feature, giving users a personalized overview of their upcoming restaurant reservations.
 
 ---
 
 ## Features
-- Shows a list of available tables in the selected restaurant
-- Allows the user to book the desired table
+- Shows a list of available time slots in the selected restaurant
+- Allows the user to book the desired reservation
 - Prevents double booking by checking availability before completing the booking process
 - Supports multiple users on the same booking management system
 
@@ -122,3 +122,5 @@ In the root directory, you will find the [class-diagram.md](class-diagram.md) fi
 [Use of ai-tools](docs/release2/ai-tools.md)
 [Persistence](docs/release2/persistence.md)
 [Code quality](docs/release2/code-quality.md)
+
+### Release 3
