@@ -34,7 +34,6 @@ public class ServerCommunication {
 
             return restaurants;
         } catch (Exception e) {
-            // TODO: Make proper catch
             e.printStackTrace();
             return new HashSet<>();
         }
@@ -54,7 +53,6 @@ public class ServerCommunication {
                 System.out.println("Posting failed!");
             }
         } catch (Exception e) {
-            // TODO: Make proper catch
             e.printStackTrace();
         }
     }
@@ -75,7 +73,6 @@ public class ServerCommunication {
                     });
             return returnedBookings;
         } catch (Exception e) {
-            // TODO: make proper catch
             e.printStackTrace();
             return new HashSet<>();
         }
@@ -95,7 +92,6 @@ public class ServerCommunication {
                     });
             return returnedBookings;
         } catch (Exception e) {
-            // TODO: make proper catch
             e.printStackTrace();
             return null;
         }
@@ -115,7 +111,6 @@ public class ServerCommunication {
                     });
             return returnedBooking;
         } catch (Exception e) {
-            // TODO: make proper catch
             e.printStackTrace();
             return new CustomDateObject();
         }
@@ -134,7 +129,6 @@ public class ServerCommunication {
 
             return bookings;
         } catch (Exception e) {
-            // TODO: Make proper catch
             e.printStackTrace();
             return new HashSet<>();
         }
@@ -154,7 +148,6 @@ public class ServerCommunication {
                 System.out.println("Posting failed!");
             }
         } catch (Exception e) {
-            // TODO: Make proper catch
             e.printStackTrace();
         }
     }
@@ -173,12 +166,11 @@ public class ServerCommunication {
                 System.out.println("Posting failed!");
             }
         } catch (Exception e) {
-            // TODO: Make proper catch
             e.printStackTrace();
         }
     }
 
-    public static int updateId(String idType){
+    public static int updateId(String idType) {
         try {
             String url = "http://localhost:8080/api/ids?idType=" + URLEncoder.encode(idType, StandardCharsets.UTF_8);
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
@@ -186,42 +178,43 @@ public class ServerCommunication {
 
             return Integer.parseInt(response.body());
         } catch (Exception e) {
-            // TODO: Make proper catch
             e.printStackTrace();
             return -1;
         }
     }
 
-    public static Collection<User> getAllUsers(){
+    public static Collection<User> getAllUsers() {
         try {
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/users")).GET().build();
-    
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/users")).GET()
+                    .build();
+
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            
-            Collection<User> users = objectMapper.readValue(response.body(), new TypeReference<HashSet<User>>(){});
-            
+
+            Collection<User> users = objectMapper.readValue(response.body(), new TypeReference<HashSet<User>>() {
+            });
+
             return users;
         } catch (Exception e) {
-            // TODO: Make proper catch
             e.printStackTrace();
             return new HashSet<>();
         }
     }
 
-    public static int saveUser(User user){
+    public static int saveUser(User user) {
         try {
             String jsonContents = objectMapper.writeValueAsString(user);
 
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/users")).header("content-type", "application/json").POST(HttpRequest.BodyPublishers.ofString(jsonContents)).build();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/users"))
+                    .header("content-type", "application/json").POST(HttpRequest.BodyPublishers.ofString(jsonContents))
+                    .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == 200){
+            if (response.statusCode() == 200) {
                 System.out.println("All okay!");
-            } else{
+            } else {
                 System.out.println("Posting failed!");
             }
             return 0;
         } catch (Exception e) {
-            // TODO: Make proper catch
             e.printStackTrace();
             return 1;
         }
