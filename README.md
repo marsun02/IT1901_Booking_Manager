@@ -97,15 +97,15 @@ Follow the checklist provided below before opening a new PR to ensure smooth col
 
 ## General directory structure
 
-We have divded our project into different modules, and each module has its own pom.xml file. The bookingmanager folder has the main application logic. It has the core folder which include the core logic. The server folder includes the saving and loading from file, and also includes the controllers which makes the application function. The model folder has the classes that the project is dependent on. While the UI folder has all the application controls. That means it includes all the visible content for the application. 
+We have divded our project into several modules, each with its own pom.xml file. The bookingmanager module contains the main application logic, including the core folder, which holds the essential functionality. The server module handles saving and loading data from files, as well as the controllers which make the application run. The model module contains the classes that the rest of the project depends on. Finally, the UI module manages all the application controls. That means it includes all the visible content for the application. 
 
-Within the project, we have a config folder which includes checkstyles and spotbugs. Checkstyles is used to see how the code is formatted while spotbugs is in place to check how it is made and if we have any poor written code that needs to be changed. 
+In our project, we have a config folder that includes Checkstyle and SpotBugs. Checkstyle is used to ensure that the code follows consistent formatting and style guidelines, while SpotBugs helps identify potential issues or poorly written code that may need improvement.
 
-In the docs folder, we have added in all documentation that relates to the specific releases. We are adding in a new folder for each release that we create, and all necessary information will be found there. These will include our general workflow and teamwork, and also ai-tools that we have used and similar documentation. We have also added userstories, diagrams and a few work-practices within the docs folder. The documentation will help give a better understanding to guide potential new members joining the group.
+The docs folder contains all documentation related to each project releases. For every new release, we create a separate folder that includes all the necessary information. This documentation covers topics such as our general workflow, teamwork practices, and AI tools we've used. It also includes userstories, diagrams and other work-related materials. Overall, the documentation is intended to provide a clear overview of the project and serve as a helpful guide for any new members joining the team.
 
-The application also has a .gitignore file included, to prevent anything that we don't need for the project to be pushed to github. We have added certain directories in this .gitignore file such as "target", which we want to be ignored. That means anything that is locally for your own computer will be disregarded when changed.
+The application also includes a .gitignore file to prevent unnecessary or local files from being pushed to GitHub. We've added certain directories to this file, such as "target", so that files generated locally on each computer are ignored and not included in version control.
 
-In the root directory, you will find the root README file (this file) that has the main info about the application. The root README file will also include links to all documentation within this project.
+In the root directory, you'll find the main README file, which contains the key information about the application. This file also includes links to all the documentation related to the project.
 
 ---
 
