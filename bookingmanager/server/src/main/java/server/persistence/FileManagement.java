@@ -176,8 +176,7 @@ public class FileManagement {
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<User> users;
         try {
-            users = objectMapper.readValue(userDataFile, new TypeReference<HashSet<User>>() {
-            });
+            users = objectMapper.readValue(userDataFile, new TypeReference<HashSet<User>>() {});
         } catch (Exception e) {
             users = new HashSet<>();
         }

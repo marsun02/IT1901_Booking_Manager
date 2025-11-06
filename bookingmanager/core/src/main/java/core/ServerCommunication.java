@@ -199,7 +199,7 @@ public class ServerCommunication {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             
             Collection<User> users = objectMapper.readValue(response.body(), new TypeReference<HashSet<User>>(){});
-    
+            
             return users;
         } catch (Exception e) {
             // TODO: Make proper catch
