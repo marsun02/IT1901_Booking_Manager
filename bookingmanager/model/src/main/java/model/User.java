@@ -10,7 +10,7 @@ public class User {
     private String email;
 
     @JsonProperty // tells jackson to include password since we don't wanna expose it with a
-                  // getter
+    // getter
     private String password;
 
     private String phoneNumber;

@@ -1,9 +1,8 @@
 package server.persistence;
 
-import model.CustomDateObject;
-import model.Restaurant;
-import model.User;
-
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,10 +11,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import model.CustomDateObject;
+import model.Restaurant;
+import model.User;
 
 public class FileManagement {
     public static void saveRestaurants(File restaurantDataFile, Collection<Restaurant> restaurants) {

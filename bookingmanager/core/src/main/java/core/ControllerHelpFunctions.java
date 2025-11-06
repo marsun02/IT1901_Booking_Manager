@@ -5,7 +5,6 @@ import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-
 import model.CustomDateObject;
 import model.Restaurant;
 
@@ -31,7 +30,7 @@ public class ControllerHelpFunctions {
         bookings.sort(Comparator.comparing((CustomDateObject booking) -> LocalDate.parse(booking.getDate()))
                 .thenComparing((CustomDateObject booking) -> {
                     String timeString = booking.getTime().replace(".", ":"); // Replaces the dot with colon so LocalTime
-                                                                             // can parse it
+                    // can parse it
                     return LocalTime.parse(timeString);
                 }));
     }

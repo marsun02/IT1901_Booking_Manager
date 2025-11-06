@@ -152,6 +152,7 @@
                     <configuration>
                         <xmlOutput>false</xmlOutput>
                         <htmlOutput>true</htmlOutput>
+                        <!-- <failOnError>false</failOnError> -->
                         <!-- <excludeFilterFile>../config/spotbugs/exclude.xml</excludeFilterFile> -->
                     </configuration>
                     <executions>
