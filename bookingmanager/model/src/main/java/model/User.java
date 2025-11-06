@@ -71,6 +71,9 @@ public class User {
     }
 
     public boolean checkNamePassword(String name, String password){
+        if (name == null || password == null){
+            return false;
+        }
         return (this.name.toLowerCase().equals(name.toLowerCase()) && this.password.equals(password));
     }
 }

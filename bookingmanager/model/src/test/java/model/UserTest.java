@@ -33,4 +33,29 @@ public class UserTest {
         assertFalse(user.checkNamePassword("Bob", "secret"));
         assertFalse(user.checkNamePassword("Bob", "wrong"));
     }
+
+    @Test
+    void testEmptyconstructorAndSetters(){
+        User emptyUser = new User();
+        assertNull(emptyUser.getEmail());
+        assertEquals(0, emptyUser.getId());
+        assertNull(emptyUser.getName());
+        assertNull(emptyUser.getPhoneNumber());
+        assertFalse(emptyUser.checkNamePassword(null, null)); // Should return false when either name or password is false
+
+        emptyUser.setName("name");
+        assertEquals("name", emptyUser.getName());
+
+        emptyUser.setId(1);
+        assertEquals(1, emptyUser.getId());
+
+        emptyUser.setEmail("e@mail.test");
+        assertEquals("e@mail.test", emptyUser.getEmail());
+
+        emptyUser.setPhoneNumber("12345678");
+        assertEquals("12345678", emptyUser.getPhoneNumber());
+
+        emptyUser.setPassword("password");
+        assertTrue(emptyUser.checkNamePassword("name", "password"));
+    }
 }
