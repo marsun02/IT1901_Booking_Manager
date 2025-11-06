@@ -19,14 +19,14 @@ import server.persistence.FileManagement;
 public class UserController {
     final Path PATH = Paths.get("../server/src/main/resources/users.json");
     final File USERS_DATA_FILE = PATH.toFile();
-    
+
     @GetMapping
-    public Collection<User> getAllUsers(){
+    public Collection<User> getAllUsers() {
         return FileManagement.loadUsers(USERS_DATA_FILE);
     }
 
     @PostMapping
-    public void saveUser(@RequestBody User user){
+    public void saveUser(@RequestBody User user) {
         FileManagement.saveUser(USERS_DATA_FILE, user);
     }
 
