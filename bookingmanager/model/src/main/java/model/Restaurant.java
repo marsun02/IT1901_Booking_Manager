@@ -7,7 +7,7 @@ public class Restaurant {
     private int amountOfTables;
 
     // Constructor
-    public Restaurant(String name, int id, int amountOfTables){
+    public Restaurant(String name, int id, int amountOfTables) {
         this.name = name;
         this.id = id;
         this.amountOfTables = amountOfTables;
@@ -16,31 +16,31 @@ public class Restaurant {
     // empty constructor and setters for Jackson
     // not intended for normal use
 
-    public Restaurant(){
+    public Restaurant() {
 
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setAmountOfTables(int amount){
+    public void setAmountOfTables(int amount) {
         this.amountOfTables = amount;
     }
 
     public String getName() {
         return name;
     }
-    
-    public int getId(){
+
+    public int getId() {
         return id;
     }
 
-    public int getAmountOfTables(){
+    public int getAmountOfTables() {
         return amountOfTables;
     }
 }
