@@ -17,10 +17,7 @@ To help keep everything organized, the app will include a login feature, giving 
 - Allows the user to book the desired reservation
 - Prevents double booking by checking availability before completing the booking process
 - Supports multiple users on the same booking management system
-
-### Additional notes:
 - An admin user will have access to all bookings
-- If the server is down, the login function won't work. Due to us implementing a try/catch for the login page, we have chosen to not implement any try/catch for the booking side of the application, as this part of the code will not be accessible if the server is down.
 
 ---
 
