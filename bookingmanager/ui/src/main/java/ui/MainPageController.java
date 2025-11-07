@@ -31,40 +31,31 @@ import model.User;
 public class MainPageController {
     Collection<Restaurant> restaurants;
 
-    private Stage primaryStage;
+    Stage primaryStage;
     private Scene bookingScene;
-    private Scene loginScene;
-    private BookingPageController bookingPageController;
+    Scene loginScene;
+    BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
     private final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
                                                     // entire app
 
-    @FXML
-    private Label loggedInUserLabel;
+    @FXML Label loggedInUserLabel;
 
-    @FXML
-    private Label yourBookingsLabel;
+    @FXML Label yourBookingsLabel;
 
-    @FXML
-    private TableView<CustomDateObject> bookingOverview;
+    @FXML TableView<CustomDateObject> bookingOverview;
 
-    @FXML
-    private TableColumn<CustomDateObject, ImageView> tableImage;
+    @FXML TableColumn<CustomDateObject, ImageView> tableImage;
 
-    @FXML
-    private TableColumn<CustomDateObject, String> tableName;
+    @FXML TableColumn<CustomDateObject, String> tableName;
 
-    @FXML
-    private TableColumn<CustomDateObject, String> tableDate;
+    @FXML TableColumn<CustomDateObject, String> tableDate;
 
-    @FXML
-    private TableColumn<CustomDateObject, String> tableTime;
+    @FXML TableColumn<CustomDateObject, String> tableTime;
 
-    @FXML
-    private TableColumn<CustomDateObject, Button> tableEdit;
+    @FXML TableColumn<CustomDateObject, Button> tableEdit;
 
-    @FXML
-    private TableColumn<CustomDateObject, Button> tableDelete;
+    @FXML TableColumn<CustomDateObject, Button> tableDelete;
 
     public MainPageController() {
         initialize();
