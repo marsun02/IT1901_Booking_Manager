@@ -15,6 +15,9 @@ sequenceDiagram
     Filemanagement-->id: return new id
     id-->ServerCommunication: return new id
     ServerCommunication-->BookingPageController: Return id
+    BookingPageController->>ServerCommunication: saveBooking(CustomDateObject)
+    ServerCommunication->>bookings: Post
+    bookings->>Filemanagement: saveBookings(CustomDateObject)
     
     
 ```
