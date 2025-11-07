@@ -18,6 +18,9 @@ sequenceDiagram
     BookingPageController->>ServerCommunication: saveBooking(CustomDateObject)
     ServerCommunication->>bookings: Post
     bookings->>Filemanagement: saveBookings(CustomDateObject)
-    
+    Filemanagement-->bookings: confirm booking
+    bookings-->ServerCommunication: 200 ok
+    ServerCommunication-->BookingPageController: 200 ok
+    BookingPageController-->User: shows confirmed booking
     
 ```
