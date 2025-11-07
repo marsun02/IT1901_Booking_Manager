@@ -58,4 +58,16 @@ public class BookingControllerTest {
         assertEquals(allbookings.size(), 8);
         
     } 
-}
+    @Test 
+    void delteAndSaveBookingTest(){
+        Collection<CustomDateObject> bookings = controller.getAllBookings();
+        CustomDateObject booking = new CustomDateObject("2026-10-12", "16.30", "Frati", "admin", "ad", "min", 30);
+        controller.saveBooking(booking);
+        Collection<CustomDateObject> bookingsWithAddedBooking = controller.getAllBookings();
+        assertEquals(bookingsWithAddedBooking.size(), bookings.size() + 1);
+        controller.deleteBooking(booking);
+        Collection<CustomDateObject> bookingsAfterDelete = controller.getAllBookings();
+        assertEquals(bookingsAfterDelete.size(), bookingsWithAddedBooking.size() - 1);
+        }
+    }
+
