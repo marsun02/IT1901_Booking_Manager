@@ -1,6 +1,5 @@
 package core;
 
-import org.eclipse.jetty.server.Server;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -267,6 +266,7 @@ public class ServerCommunicationTest {
     @Test
     void saveAllRestaurantsTest(){
         server.stubFor(post(urlEqualTo("/api/restaurants"))
+        // The content inside withRequestBody is just a copy/paste of our json file contents.
         .withRequestBody(equalToJson("[ {\r\n" + //
                         "  \"id\" : 3,\r\n" + //
                         "  \"name\" : \"Barbecuez\",\r\n" + //
@@ -293,34 +293,7 @@ public class ServerCommunicationTest {
                         "  \"amountOfTables\" : 8\r\n" + //
                         "} ]", true, true))
         .willReturn(aResponse()
-        .withStatus(200)
-        .withHeader("content-type", "application/json")
-        // The content inside withBody is just a copy/paste of our json file contents.
-        .withBody("[ {\r\n" + //
-                        "  \"id\" : 3,\r\n" + //
-                        "  \"name\" : \"Barbecuez\",\r\n" + //
-                        "  \"amountOfTables\" : 8\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 2,\r\n" + //
-                        "  \"name\" : \"BurgerKing\",\r\n" + //
-                        "  \"amountOfTables\" : 10\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 5,\r\n" + //
-                        "  \"name\" : \"SteakHouse\",\r\n" + //
-                        "  \"amountOfTables\" : 9\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 4,\r\n" + //
-                        "  \"name\" : \"McDonalds\",\r\n" + //
-                        "  \"amountOfTables\" : 12\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 0,\r\n" + //
-                        "  \"name\" : \"Frati\",\r\n" + //
-                        "  \"amountOfTables\" : 8\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 1,\r\n" + //
-                        "  \"name\" : \"Szechuan\",\r\n" + //
-                        "  \"amountOfTables\" : 8\r\n" + //
-                        "} ]")));
+        .withStatus(200)));
 
     Collection<Restaurant> restaurants = new HashSet<>();
     restaurants.add(new Restaurant("Barbecuez",3, 8));
@@ -359,5 +332,4 @@ public class ServerCommunicationTest {
                         "  \"amountOfTables\" : 8\r\n" + //
                         "} ]", true, true)));
     }
-
 }
