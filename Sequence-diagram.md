@@ -12,5 +12,9 @@ sequenceDiagram
     BookingPageController->>ServerCommunication: updateId("bookingId")
     ServerCommunication->>id:Get
     id->>Filemanagement: update ids in ids.jsn
+    Filemanagement-->id: return new id
+    id-->ServerCommunication: return new id
+    ServerCommunication-->BookingPageController: Return id
+    
     
 ```
