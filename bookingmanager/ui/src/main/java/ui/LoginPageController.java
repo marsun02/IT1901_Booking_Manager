@@ -19,7 +19,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.User;
 
-public class LoginPageController implements Initializable{
+public class LoginPageController implements Initializable {
 
     private Stage primaryStage;
     private Scene mainScene;
@@ -59,38 +59,37 @@ public class LoginPageController implements Initializable{
     @FXML
     Text noAccountText;
 
-
-    // There comes spotbugs from these, but Stage and Scene should not be copied, therefore the spotsbugs remain for now
+    // There comes spotbugs from these, but Stage and Scene should not be copied,
+    // therefore the spotsbugs remain for now
     public void setStage(
-        App app,
-        Stage primaryStage,
-        Scene bookingScene,
-        Scene mainScene,
-        Scene loginScene
-    ) {
+            App app,
+            Stage primaryStage,
+            Scene bookingScene,
+            Scene mainScene,
+            Scene loginScene) {
         this.primaryStage = primaryStage;
         this.mainScene = mainScene;
         // Makes hyperlink take you to correct "page"
         createAccountLink.setOnAction(e -> {
-            if (currentLayoutIsRegisterAccount){
+            if (currentLayoutIsRegisterAccount) {
                 switchBackToLoginLayout();
-            } else{
+            } else {
                 switchLayoutToRegisterAccount();
             }
         });
     }
 
-    
-
-    public void setMainPageController(MainPageController controller){
+    public void setMainPageController(MainPageController controller) {
         this.mainPageController = controller;
     }
 
     @FXML
-    private void loginAccount(){
-        if (currentLayoutIsRegisterAccount){
+    private void loginAccount() {
+        if (currentLayoutIsRegisterAccount) {
             // Makes sure all fields must be filled
-            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty() || confirmPasswordField.getText().isEmpty() || emailField.getText().isEmpty() || phoneNumberField.getText().isEmpty()){
+            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()
+                    || confirmPasswordField.getText().isEmpty() || emailField.getText().isEmpty()
+                    || phoneNumberField.getText().isEmpty()) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("All fields must be filled to create account");
                 alert.showAndWait();
@@ -99,7 +98,7 @@ public class LoginPageController implements Initializable{
             // Checks if username is taken
             Collection<User> users = ServerCommunication.getAllUsers();
             for (User user : users) {
-                if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())){
+                if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())) {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setHeaderText("Username already taken");
                     alert.showAndWait();
@@ -107,14 +106,15 @@ public class LoginPageController implements Initializable{
                 }
             }
             // Check that passwords match
-            if (!passwordField.getText().equals(confirmPasswordField.getText())){
+            if (!passwordField.getText().equals(confirmPasswordField.getText())) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("Passwords do not match");
                 alert.showAndWait();
                 return;
             }
 
-            if (!emailField.getText().contains("@") || emailField.getText().startsWith("@") || emailField.getText().endsWith("@")) {
+            if (!emailField.getText().contains("@") || emailField.getText().startsWith("@")
+                    || emailField.getText().endsWith("@")) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("Email not valid");
                 alert.showAndWait();
@@ -130,23 +130,24 @@ public class LoginPageController implements Initializable{
                 return;
             }
 
-            User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null, passwordField.getText());
+            User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null,
+                    passwordField.getText());
             int returnValue = ServerCommunication.saveUser(newUser);
-            if (returnValue == 0){
+            if (returnValue == 0) {
                 switchBackToLoginLayout();
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("Account created");
                 alert.showAndWait();
-                
-            } else{
+
+            } else {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("Error creating new account");
                 alert.showAndWait();
                 return;
             }
-        } else{
+        } else {
             // Makes sure all fields must be filled
-            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()){
+            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("All fields must be filled to login");
                 alert.showAndWait();
@@ -155,8 +156,8 @@ public class LoginPageController implements Initializable{
             // Login the user and pass that user to the main page
             Collection<User> users = ServerCommunication.getAllUsers();
             for (User user : users) {
-                if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())){
-                    if (user.checkNamePassword(usernameField.getText(), passwordField.getText())){
+                if (user.getName().toLowerCase().equals(usernameField.getText().toLowerCase())) {
+                    if (user.checkNamePassword(usernameField.getText(), passwordField.getText())) {
                         primaryStage.setScene(mainScene);
                         mainPageController.setcurrentlyLoggedInUser(user);
                         mainPageController.setLoggedInUserLabel(user.getName());
@@ -176,14 +177,10 @@ public class LoginPageController implements Initializable{
         }
     }
 
-    
-    private void switchLayoutToRegisterAccount(){
+    private void switchLayoutToRegisterAccount() {
         loginButton.setText("Register Account");
         noAccountText.setText("ALREADY HAVE AN ACCOUNT?");
         createAccountLink.setText("LOGIN");
-        // noAccountText.setOpacity(0);
-        // createAccountLink.setOpacity(0);
-        // createAccountLink.setDisable(true);
         currentLayoutIsRegisterAccount = true;
         resetInfo();
         emailHBox.setVisible(true);
@@ -194,13 +191,10 @@ public class LoginPageController implements Initializable{
         phoneNumberHBox.setManaged(true);
     }
 
-    private void switchBackToLoginLayout(){
+    private void switchBackToLoginLayout() {
         loginButton.setText("Log in");
         noAccountText.setText("NO ACCOUNT?");
         createAccountLink.setText("CREATE ONE");
-        // noAccountText.setOpacity(1);
-        // createAccountLink.setOpacity(1);
-        // createAccountLink.setDisable(false);
         currentLayoutIsRegisterAccount = false;
         resetInfo();
         emailHBox.setVisible(false);
@@ -211,15 +205,13 @@ public class LoginPageController implements Initializable{
         phoneNumberHBox.setManaged(false);
     }
 
-    private void resetInfo(){
+    private void resetInfo() {
         usernameField.setText("");
         passwordField.setText("");
         confirmPasswordField.setText("");
         emailField.setText("");
         phoneNumberField.setText("");
     }
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -230,6 +222,5 @@ public class LoginPageController implements Initializable{
         phoneNumberHBox.setVisible(false);
         phoneNumberHBox.setManaged(false);
     }
-
 
 }

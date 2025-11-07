@@ -25,7 +25,6 @@ public class FileManagement {
         try {
             objectMapper.writeValue(restaurantDataFile, restaurants);
         } catch (Exception e) {
-            // TODO: make proper catch
             e.printStackTrace();
         }
     }
@@ -42,20 +41,17 @@ public class FileManagement {
         return restaurants;
     }
 
-
-
-   
     public static void saveBooking(File allBookingsFile, CustomDateObject bookedDate) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
 
         Collection<CustomDateObject> allBookings = new HashSet<>();
         try {
-            if (allBookingsFile.exists() && allBookingsFile.length() > 0){
-                allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {});
+            if (allBookingsFile.exists() && allBookingsFile.length() > 0) {
+                allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
+                });
             }
         } catch (IOException e) {
-            // TODO: make proper catch
             e.printStackTrace();
         }
 
@@ -64,7 +60,6 @@ public class FileManagement {
         try {
             objectMapper.writeValue(allBookingsFile, allBookings);
         } catch (Exception e) {
-            // TODO: make proper catch
             e.printStackTrace();
         }
     }
@@ -75,18 +70,18 @@ public class FileManagement {
 
         Collection<CustomDateObject> allBookings = new HashSet<>();
         try {
-            if (allBookingsFile.exists() && allBookingsFile.length() > 0){
-                allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {});
+            if (allBookingsFile.exists() && allBookingsFile.length() > 0) {
+                allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
+                });
             }
         } catch (IOException e) {
-            // TODO: make proper catch
             e.printStackTrace();
         }
 
         CustomDateObject bookingToRemove = new CustomDateObject();
         for (CustomDateObject booking : allBookings) {
-            // TODO: Implement unique ID for bookings (and should for users too)
-            if (booking.getDate().equals(dateToDelete.getDate()) && booking.getTime().equals(dateToDelete.getTime()) && booking.getRestaurantName().equals(dateToDelete.getRestaurantName())){
+            if (booking.getDate().equals(dateToDelete.getDate()) && booking.getTime().equals(dateToDelete.getTime())
+                    && booking.getRestaurantName().equals(dateToDelete.getRestaurantName())) {
                 bookingToRemove = booking;
             }
         }
@@ -95,12 +90,12 @@ public class FileManagement {
         try {
             objectMapper.writeValue(allBookingsFile, allBookings);
         } catch (Exception e) {
-            // TODO: make proper catch
             e.printStackTrace();
         }
     }
 
-    public static Collection<CustomDateObject> loadBookingsForSpecificDate(File allBookingsFile, String date, String restaurantName) {
+    public static Collection<CustomDateObject> loadBookingsForSpecificDate(File allBookingsFile, String date,
+            String restaurantName) {
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<CustomDateObject> allBookings;
         Collection<CustomDateObject> matchingDateBookings = new HashSet<>();
@@ -108,10 +103,11 @@ public class FileManagement {
             allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
             });
             for (CustomDateObject customDateObject : allBookings) {
-                if (customDateObject.getDate().equals(date) && customDateObject.getRestaurantName().equals(restaurantName)){
+                if (customDateObject.getDate().equals(date)
+                        && customDateObject.getRestaurantName().equals(restaurantName)) {
                     matchingDateBookings.add(customDateObject);
                 }
-        }
+            }
         } catch (Exception e) {
             matchingDateBookings = new HashSet<>();
         }
@@ -126,17 +122,17 @@ public class FileManagement {
             allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<ArrayList<CustomDateObject>>() {
             });
             for (CustomDateObject customDateObject : allBookings) {
-                if (customDateObject.getUser().equals(user)){
+                if (customDateObject.getUser().equals(user)) {
                     matchingDateBookings.add(customDateObject);
                 }
-        }
+            }
         } catch (Exception e) {
             matchingDateBookings = new ArrayList<>();
         }
         return matchingDateBookings; // returns all bookings made for that specific user
     }
 
-    public static Collection<CustomDateObject> loadAllBookings(File allBookingsFile){
+    public static Collection<CustomDateObject> loadAllBookings(File allBookingsFile) {
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<CustomDateObject> bookings;
         try {
@@ -157,26 +153,22 @@ public class FileManagement {
             allBookings = objectMapper.readValue(allBookingsFile, new TypeReference<HashSet<CustomDateObject>>() {
             });
             for (CustomDateObject customDateObject : allBookings) {
-                if (customDateObject.getId().equals(id)){
+                if (customDateObject.getId().equals(id)) {
                     matchingBooking = customDateObject;
                 }
-        }
+            }
         } catch (Exception e) {
-            // TODO: make proper exception
             e.printStackTrace();
         }
         return matchingBooking; // returns specific booking
     }
 
-
-
-
-
     public static Collection<User> loadUsers(File userDataFile) {
         ObjectMapper objectMapper = new ObjectMapper();
         Collection<User> users;
         try {
-            users = objectMapper.readValue(userDataFile, new TypeReference<HashSet<User>>() {});
+            users = objectMapper.readValue(userDataFile, new TypeReference<HashSet<User>>() {
+            });
         } catch (Exception e) {
             users = new HashSet<>();
         }
@@ -189,11 +181,11 @@ public class FileManagement {
 
         Collection<User> allUsers = new HashSet<>();
         try {
-            if (usersFile.exists() && usersFile.length() > 0){
-                allUsers = objectMapper.readValue(usersFile, new TypeReference<HashSet<User>>() {});
+            if (usersFile.exists() && usersFile.length() > 0) {
+                allUsers = objectMapper.readValue(usersFile, new TypeReference<HashSet<User>>() {
+                });
             }
         } catch (IOException e) {
-            // TODO: make proper catch
             e.printStackTrace();
         }
 
@@ -202,19 +194,18 @@ public class FileManagement {
         try {
             objectMapper.writeValue(usersFile, allUsers);
         } catch (Exception e) {
-            // TODO: make proper catch
             e.printStackTrace();
         }
     }
 
-    public static int updateId(File idsFile, String idType){ // This function gets and updates/increments the given ID
+    public static int updateId(File idsFile, String idType) { // This function gets and updates/increments the given ID
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // enables pretty printing to json file
         Map<String, Integer> ids = new HashMap<>();
         try {
-            ids = objectMapper.readValue(idsFile, new TypeReference<Map<String, Integer>>() {});
+            ids = objectMapper.readValue(idsFile, new TypeReference<Map<String, Integer>>() {
+            });
         } catch (Exception e) {
-            // TODO: Implement proper catch
             e.printStackTrace();
         }
 
@@ -224,7 +215,6 @@ public class FileManagement {
         try {
             objectMapper.writeValue(idsFile, ids);
         } catch (Exception e) {
-            // TODO: Make proper catch
             e.printStackTrace();
         }
 

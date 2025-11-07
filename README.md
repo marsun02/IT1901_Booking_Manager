@@ -114,3 +114,6 @@ In the root directory, you will find the [class-diagram.md](class-diagram.md) fi
 [Use of ai-tools](docs/release2/ai-tools.md)
 [Persistence](docs/release2/persistence.md)
 [Code quality](docs/release2/code-quality.md)
+
+### Release 3
+[Rest api](docs/release3/rest-api.md)

@@ -3,20 +3,20 @@ package model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
-    
+
     // Private fields
     private int id;
     private String name;
     private String email;
 
-    @JsonProperty // tells jackson to include password since we don't wanna expose it with a getter
+    @JsonProperty // tells jackson to include password since we don't wanna expose it with a
+                  // getter
     private String password;
 
     private String phoneNumber;
 
-
     // Constructor
-    public User(int id, String name, String email, String phoneNumber, String password){
+    public User(int id, String name, String email, String phoneNumber, String password) {
 
         this.id = id;
         this.name = name;
@@ -26,7 +26,7 @@ public class User {
     }
 
     // Empty constructor and setters for Jackson
-    public User(){
+    public User() {
 
     }
 
@@ -49,28 +49,29 @@ public class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
 
     // Getters
 
-
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 
-    public String getPhoneNumber(){
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public boolean checkNamePassword(String name, String password){
+    public boolean checkNamePassword(String name, String password) {
+        if (name == null || password == null) {
+            return false;
+        }
         return (this.name.toLowerCase().equals(name.toLowerCase()) && this.password.equals(password));
     }
 }

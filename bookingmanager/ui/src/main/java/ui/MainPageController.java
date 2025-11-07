@@ -36,8 +36,9 @@ public class MainPageController {
     private Scene loginScene;
     private BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
-    private final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the entire app
-    
+    private final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
+                                                    // entire app
+
     @FXML
     private Label loggedInUserLabel;
 
@@ -50,7 +51,7 @@ public class MainPageController {
     @FXML
     private TableColumn<CustomDateObject, ImageView> tableImage;
 
-    @FXML 
+    @FXML
     private TableColumn<CustomDateObject, String> tableName;
 
     @FXML
@@ -65,60 +66,60 @@ public class MainPageController {
     @FXML
     private TableColumn<CustomDateObject, Button> tableDelete;
 
-    public MainPageController(){
+    public MainPageController() {
         initialize();
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         restaurants = new HashSet<>();
-        // users = new HashSet<>();
 
         loadRestaurants();
 
-        // If the data file does not contain the correct amount of restaurants, it creates 6 new ones
-        if (restaurants.size() != 6){ 
+        // If the data file does not contain the correct amount of restaurants, it
+        // creates 6 new ones
+        if (restaurants.size() != 6) {
             initializeAllRestaurants();
         }
     }
 
-    private void initializeAllRestaurants(){
+    private void initializeAllRestaurants() {
         restaurants = RestaurantInitialization.initializeAllRestaurants();
         saveRestaurants();
     }
-    
+
     // saves the current restaurants in restaurants hashSet to file
-    public void saveRestaurants(){
+    public void saveRestaurants() {
         ServerCommunication.saveAllRestaurants(restaurants);
     }
 
     // loads restaurants from file to hashSet
-    public void loadRestaurants(){
+    public void loadRestaurants() {
         restaurants = ServerCommunication.getAllRestaurants();
     }
 
-    // There comes spotbugs from these, but Stage and Scene should not be copied, therefore the spotsbugs remain for now
+    // There comes spotbugs from these, but Stage and Scene should not be copied,
+    // therefore the spotsbugs remain for now
     public void setStage(
-        App app,
-        Stage primaryStage,
-        Scene bookingScene,
-        Scene mainScene,
-        Scene loginScene
-    ) {
+            App app,
+            Stage primaryStage,
+            Scene bookingScene,
+            Scene mainScene,
+            Scene loginScene) {
         this.primaryStage = primaryStage;
         this.bookingScene = bookingScene;
         this.loginScene = loginScene;
     }
 
-    public void setBookingPageController(BookingPageController controller){
+    public void setBookingPageController(BookingPageController controller) {
         this.bookingPageController = controller;
     }
 
     @FXML
-    public void enterRestaurantPage(ActionEvent event){
+    public void enterRestaurantPage(ActionEvent event) {
         Button source = (Button) event.getSource();
         Restaurant restaurant = ControllerHelpFunctions.getRestaurantByFxid(source.getId(), restaurants);
-        if (restaurant == null){
+        if (restaurant == null) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("There was an issue when loading restaurant page");
             alert.showAndWait();
@@ -130,44 +131,39 @@ public class MainPageController {
         primaryStage.setScene(bookingScene);
     }
 
-    public void setcurrentlyLoggedInUser(User loggedInUser){
+    public void setcurrentlyLoggedInUser(User loggedInUser) {
         currentlyLoggedInUser = loggedInUser;
     }
 
-    public void setLoggedInUserLabel(String name){
+    public void setLoggedInUserLabel(String name) {
         loggedInUserLabel.setText(name);
     }
 
     @FXML
-    public void logOutUser(){
+    public void logOutUser() {
         this.currentlyLoggedInUser = null;
         primaryStage.setScene(loginScene);
     }
 
-    
-    public User getCurrentlyLoggedInUser(){
+    public User getCurrentlyLoggedInUser() {
         return currentlyLoggedInUser;
     }
-   
-    public void loadUserBookings(){
+
+    public void loadUserBookings() {
         bookingOverview.getItems().clear();
         bookingOverview.getColumns().forEach(col -> col.setStyle("-fx-alignment: CENTER;"));
         tableImage.setCellValueFactory(cellData -> {
-            final Image editImage = new Image(getClass().getResourceAsStream("/ui/" + cellData.getValue().getRestaurantName() + ".png"));
+            final Image editImage = new Image(
+                    getClass().getResourceAsStream("/ui/" + cellData.getValue().getRestaurantName() + ".png"));
             final ImageView editImageView = new ImageView(editImage);
             editImageView.setFitWidth(100);
             editImageView.setFitHeight(100);
-            // Button imageButton = new Button("", editImageView);
             return new ReadOnlyObjectWrapper<>(editImageView);
 
-
         });
-        tableName.setCellValueFactory(cellData -> 
-        new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
-        tableDate.setCellValueFactory(cellData -> 
-        new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
-        tableTime.setCellValueFactory(cellData -> 
-        new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
+        tableName.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
+        tableDate.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
+        tableTime.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
         tableEdit.setCellValueFactory(cellData -> {
             final Image editImage = new Image(getClass().getResourceAsStream("/ui/editIcon.png"));
             final ImageView editImageView = new ImageView(editImage);
@@ -177,16 +173,19 @@ public class MainPageController {
             editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    for (Restaurant restaurant : restaurants){
-                        if (restaurant.getName().equals(cellData.getValue().getRestaurantName())){
+                    for (Restaurant restaurant : restaurants) {
+                        if (restaurant.getName().equals(cellData.getValue().getRestaurantName())) {
                             bookingPageController.setCurrentRestaurantDisplayed(restaurant);
                             break;
                         }
                     }
-                    CustomDateObject bookingToEdit = ServerCommunication.getBookingById(cellData.getValue().getId().toString());
+                    CustomDateObject bookingToEdit = ServerCommunication
+                            .getBookingById(cellData.getValue().getId().toString());
                     bookingPageController.setEditState(true, bookingToEdit);
                     bookingPageController.correctlyReloadTimeSlots(bookingToEdit.getDate());
-                    bookingPageController.fillFieldsWithExistingBookingInfo(cellData.getValue().getFirstName(), cellData.getValue().getLastName(), cellData.getValue().getDate(), cellData.getValue().getTime());
+                    bookingPageController.fillFieldsWithExistingBookingInfo(cellData.getValue().getFirstName(),
+                            cellData.getValue().getLastName(), cellData.getValue().getDate(),
+                            cellData.getValue().getTime());
                     primaryStage.setScene(bookingScene);
                 }
             });
@@ -210,19 +209,19 @@ public class MainPageController {
             });
             return new ReadOnlyObjectWrapper<>(deleteButton);
         });
-        
+
         List<CustomDateObject> bookings;
 
-        if (currentlyLoggedInUser.getName().toLowerCase().equals(SUPER_USER_NAME.toLowerCase())){
+        if (currentlyLoggedInUser.getName().toLowerCase().equals(SUPER_USER_NAME.toLowerCase())) {
             bookings = new ArrayList<>(ServerCommunication.getAllBookings());
             yourBookingsLabel.setText("ALL BOOKINGS");
-        }else{
+        } else {
             bookings = ServerCommunication.getBookingsByUser(currentlyLoggedInUser.getName());
             yourBookingsLabel.setText("YOUR BOOKINGS");
         }
 
         ControllerHelpFunctions.sortBookings(bookings);
-        
+
         for (CustomDateObject booking : bookings) {
             bookingOverview.getItems().add(booking);
         }

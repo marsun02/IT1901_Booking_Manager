@@ -10,7 +10,8 @@ public class CustomDateObject {
     private String lastName;
     private int id;
 
-    public CustomDateObject(String date, String time, String restaurantName, String user, String firstName, String lastName, int id){
+    public CustomDateObject(String date, String time, String restaurantName, String user, String firstName,
+            String lastName, int id) {
         this.date = date;
         this.time = time;
         this.restaurantName = restaurantName;
@@ -21,7 +22,8 @@ public class CustomDateObject {
         this.id = id;
     }
 
-    public CustomDateObject() {}
+    public CustomDateObject() {
+    }
 
     public String getDate() {
         return date;
@@ -35,11 +37,11 @@ public class CustomDateObject {
         return restaurantName;
     }
 
-    public String getUser(){
+    public String getUser() {
         return user;
     }
 
-    public String getBookedName(){
+    public String getBookedName() {
         return bookedName;
     }
 
@@ -51,10 +53,9 @@ public class CustomDateObject {
         return lastName;
     }
 
-    public Integer getId(){ // Integer instead of int so we can use toString() on it
+    public Integer getId() { // Integer instead of int so we can use toString() on it
         return id;
     }
-
 
     public void setDate(String date) {
         this.date = date;
@@ -63,16 +64,16 @@ public class CustomDateObject {
     public void setTime(String time) {
         this.time = time;
     }
-    
+
     public void setRestaurantName(String restaurantName) {
         this.restaurantName = restaurantName;
     }
 
-    public void setUser(String user){
+    public void setUser(String user) {
         this.user = user;
     }
 
-    public void setBookedName(String bookedName){
+    public void setBookedName(String bookedName) {
         this.bookedName = bookedName;
     }
 
@@ -83,8 +84,8 @@ public class CustomDateObject {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
 

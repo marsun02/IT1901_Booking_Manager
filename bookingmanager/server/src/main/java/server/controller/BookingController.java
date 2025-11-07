@@ -22,44 +22,39 @@ public class BookingController {
     final Path PATH = Paths.get("../server/src/main/resources/bookings.json");
     final File BOOKING_DATA_FILE = PATH.toFile();
 
-    @GetMapping(params = {"date", "restaurantName"})
+    @GetMapping(params = { "date", "restaurantName" })
     public Collection<CustomDateObject> getBookingsByDateAndRestaurantName(
-        @RequestParam(name = "date") String date,
-        @RequestParam(name = "restaurantName") String restaurantName
-    ) {
+            @RequestParam(name = "date") String date,
+            @RequestParam(name = "restaurantName") String restaurantName) {
         return FileManagement.loadBookingsForSpecificDate(BOOKING_DATA_FILE, date, restaurantName);
     }
 
     @GetMapping(params = "user")
     public List<CustomDateObject> getBookingsByUser(
-        @RequestParam(name = "user") String user
-    ) {
+            @RequestParam(name = "user") String user) {
         return FileManagement.loadBookingsForSpecificUser(BOOKING_DATA_FILE, user);
     }
 
     @GetMapping(params = "id")
     public CustomDateObject getBookingById(
-        @RequestParam(name = "id") String id
-    ){
+            @RequestParam(name = "id") String id) {
         return FileManagement.loadSpecificBooking(BOOKING_DATA_FILE, id);
     }
 
     @GetMapping
-    public Collection<CustomDateObject> getAllBookings(){
+    public Collection<CustomDateObject> getAllBookings() {
         return FileManagement.loadAllBookings(BOOKING_DATA_FILE);
     }
 
     @PostMapping("/save")
     public void saveBooking(
-        @RequestBody CustomDateObject bookedDate
-    ) {
+            @RequestBody CustomDateObject bookedDate) {
         FileManagement.saveBooking(BOOKING_DATA_FILE, bookedDate);
     }
 
     @PostMapping("/delete")
     public void deleteBooking(
-        @RequestBody CustomDateObject bookingToDelete
-    ) {
+            @RequestBody CustomDateObject bookingToDelete) {
         FileManagement.deleteBooking(BOOKING_DATA_FILE, bookingToDelete);
     }
 }
