@@ -21,12 +21,12 @@ public class RestaurantController {
     final File RESTAURANT_DATA_FILE = PATH.toFile();
 
     @GetMapping
-    public Collection<Restaurant> getAllRestaurants(){
+    public Collection<Restaurant> getAllRestaurants() {
         return FileManagement.loadRestaurants(RESTAURANT_DATA_FILE);
     }
 
     @PostMapping
-    public void saveAllRestaurants(@RequestBody Collection<Restaurant> restaurants){
+    public void saveAllRestaurants(@RequestBody Collection<Restaurant> restaurants) {
         FileManagement.saveRestaurants(RESTAURANT_DATA_FILE, restaurants);
     }
 }

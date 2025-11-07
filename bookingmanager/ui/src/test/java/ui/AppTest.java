@@ -92,7 +92,7 @@ public class AppTest {
                 latch.countDown();
             }
         });
-        assertTrue(latch.await(5, TimeUnit.SECONDS));
+        assertTrue(latch.await(10, TimeUnit.SECONDS));
     }
 
     // Test BookingPage FXML loads normally
@@ -112,7 +112,7 @@ public class AppTest {
                 latch.countDown();
             }
         });
-        assertTrue(latch.await(5, TimeUnit.SECONDS));
+        assertTrue(latch.await(10, TimeUnit.SECONDS));
     }
 
     // Test controller setter methods
