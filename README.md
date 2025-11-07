@@ -44,13 +44,26 @@ To help keep everything organized, the app will include a login feature, giving 
 
 5. Start SpringBoot app (important to do before Javafx app)
    ```bash
-   mvn spring-boot:run -pl server
+   mvn clean spring-boot:run -pl server
    ```
 
 6. Start Javafx app:
    ```bash
    mvn javafx:run -pl ui
    ```
+
+## Download and run
+
+1. Download app
+   ```bash
+   mvn javafx:jlink -f ui/pom.xml
+   ```
+2. Run from downloaded file
+   ```bash
+   ./ui/target/BookingManagerImage/bin/bookingmanager
+   ```
+
+   You can find zip file in ui/target/
 
 ---
 
