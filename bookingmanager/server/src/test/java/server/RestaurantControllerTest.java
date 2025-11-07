@@ -8,8 +8,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -45,7 +48,17 @@ public class RestaurantControllerTest {
     }
 
     @Test
-    void SaveAndGetRestaurantTest(){
+    void getRestaurntTest(){
+        Collection<Restaurant> restaurants = controller.getAllRestaurants();
+        assertEquals(restaurants.size(), 6);
+        ArrayList<String> names = new ArrayList<>(Arrays.asList("Frati", "Barbecuez", "BurgerKing", "SteakHouse", "McDonalds", "Szechuan"));
+        for (Restaurant restaurant : restaurants){
+            names.contains(restaurant.getName());
+        }
+    }
+
+    @Test
+    void saveRestaurantTest(){
         Collection<Restaurant> actualRestaurants = new HashSet<>();
         actualRestaurants.add(new Restaurant());
         controller.saveAllRestaurants(actualRestaurants);
