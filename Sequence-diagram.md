@@ -10,17 +10,17 @@ sequenceDiagram
 
     User->>BookingPageController: Chooses restaurant, date, time and fills in name
     BookingPageController->>ServerCommunication: updateId("bookingId")
-    ServerCommunication->>id:Get
+    ServerCommunication->>id: GET /api/ids?idType=bookingId
     id->>Filemanagement: update ids in ids.jsn
     Filemanagement-->id: return new id
     id-->ServerCommunication: return new id
     ServerCommunication-->BookingPageController: Return id
     BookingPageController->>ServerCommunication: saveBooking(CustomDateObject)
-    ServerCommunication->>bookings: Post
+    ServerCommunication->>bookings: POST /api/bookings/save
     bookings->>Filemanagement: saveBookings(CustomDateObject)
     Filemanagement-->bookings: confirm booking
-    bookings-->ServerCommunication: 200 ok
-    ServerCommunication-->BookingPageController: 200 ok
-    BookingPageController-->User: shows confirmed booking
+    bookings-->ServerCommunication: 200 OK
+    ServerCommunication-->BookingPageController: 200 OK
+    BookingPageController-->User: Shows confirmed booking
     
 ```
