@@ -18,7 +18,7 @@ sequenceDiagram
     BookingPageController->>ServerCommunication: saveBooking(CustomDateObject)
     ServerCommunication->>bookings: POST /api/bookings/save
     bookings->>FileManagement: saveBooking(Bookings.json)
-    FileManagement-->bookings: confirm booking
+    FileManagement-->bookings: confirm saving
     bookings-->ServerCommunication: 200 OK
     ServerCommunication-->BookingPageController: 200 OK
     BookingPageController-->User: Shows confirmed booking
