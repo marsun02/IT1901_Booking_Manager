@@ -1,5 +1,6 @@
 package core;
 
+import org.eclipse.jetty.server.Server;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 
@@ -39,12 +41,15 @@ public class ServerCommunicationTest {
         new ServerCommunication();
     }
 
+
+    // GET
+
     @Test
     void getAllRestaurantsTest(){
         server.stubFor(get(urlEqualTo("/api/restaurants"))
         .willReturn(aResponse()
         .withStatus(200)
-        .withHeader("Content-type", "application/json")
+        .withHeader("content-type", "application/json")
         // The content inside withBody is just a copy/paste of our json file contents.
         .withBody("[ {\r\n" + //
                         "  \"id\" : 3,\r\n" + //
@@ -80,7 +85,7 @@ public class ServerCommunicationTest {
         server.stubFor(get(urlEqualTo("/api/users"))
         .willReturn(aResponse()
         .withStatus(200)
-        .withHeader("Content-type", "application/json")
+        .withHeader("content-type", "application/json")
         // The content inside withBody is just a copy/paste of our json file contents.
         .withBody("[ {\r\n" + //
                         "  \"id\" : 1,\r\n" + //
@@ -104,7 +109,7 @@ public class ServerCommunicationTest {
         server.stubFor(get(urlEqualTo("/api/bookings"))
         .willReturn(aResponse()
         .withStatus(200)
-        .withHeader("Content-type", "application/json")
+        .withHeader("content-type", "application/json")
         // The content inside withBody is just a copy/paste of our json file contents.
         .withBody("[ {\r\n" + //
                         "  \"date\" : \"2025-10-30\",\r\n" + //
@@ -146,7 +151,7 @@ public class ServerCommunicationTest {
         .withQueryParam("id", equalTo(id))
         .willReturn(aResponse()
         .withStatus(200)
-        .withHeader("Content-type", "application/json")
+        .withHeader("content-type", "application/json")
         // The content inside withBody is just a copy/paste of our json file contents.
         .withBody("{\r\n" + //
                         "  \"date\" : \"2025-11-12\",\r\n" + //
@@ -172,7 +177,7 @@ public class ServerCommunicationTest {
         .withQueryParam("user", equalTo(param))
         .willReturn(aResponse()
         .withStatus(200)
-        .withHeader("Content-type", "application/json")
+        .withHeader("content-type", "application/json")
         // The content inside withBody is just a copy/paste of our json file contents.
         .withBody("[ {\r\n" + //
                         "  \"date\" : \"2025-10-30\",\r\n" + //
@@ -228,7 +233,7 @@ public class ServerCommunicationTest {
         .withQueryParam("restaurantName", equalTo(restaurant.getName()))
         .willReturn(aResponse()
         .withStatus(200)
-        .withHeader("Content-type", "application/json")
+        .withHeader("content-type", "application/json")
         // The content inside withBody is just a copy/paste of our json file contents.
         .withBody("[ {\r\n" + //
                         "  \"date\" : \"2025-10-31\",\r\n" + //
@@ -256,4 +261,103 @@ public class ServerCommunicationTest {
         assertEquals(restaurant.getName(), booking.getRestaurantName());
         }
     }
+
+
+    // POST
+    @Test
+    void saveAllRestaurantsTest(){
+        server.stubFor(post(urlEqualTo("/api/restaurants"))
+        .withRequestBody(equalToJson("[ {\r\n" + //
+                        "  \"id\" : 3,\r\n" + //
+                        "  \"name\" : \"Barbecuez\",\r\n" + //
+                        "  \"amountOfTables\" : 8\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 2,\r\n" + //
+                        "  \"name\" : \"BurgerKing\",\r\n" + //
+                        "  \"amountOfTables\" : 10\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 5,\r\n" + //
+                        "  \"name\" : \"SteakHouse\",\r\n" + //
+                        "  \"amountOfTables\" : 9\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 4,\r\n" + //
+                        "  \"name\" : \"McDonalds\",\r\n" + //
+                        "  \"amountOfTables\" : 12\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 0,\r\n" + //
+                        "  \"name\" : \"Frati\",\r\n" + //
+                        "  \"amountOfTables\" : 8\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 1,\r\n" + //
+                        "  \"name\" : \"Szechuan\",\r\n" + //
+                        "  \"amountOfTables\" : 8\r\n" + //
+                        "} ]", true, true))
+        .willReturn(aResponse()
+        .withStatus(200)
+        .withHeader("content-type", "application/json")
+        // The content inside withBody is just a copy/paste of our json file contents.
+        .withBody("[ {\r\n" + //
+                        "  \"id\" : 3,\r\n" + //
+                        "  \"name\" : \"Barbecuez\",\r\n" + //
+                        "  \"amountOfTables\" : 8\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 2,\r\n" + //
+                        "  \"name\" : \"BurgerKing\",\r\n" + //
+                        "  \"amountOfTables\" : 10\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 5,\r\n" + //
+                        "  \"name\" : \"SteakHouse\",\r\n" + //
+                        "  \"amountOfTables\" : 9\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 4,\r\n" + //
+                        "  \"name\" : \"McDonalds\",\r\n" + //
+                        "  \"amountOfTables\" : 12\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 0,\r\n" + //
+                        "  \"name\" : \"Frati\",\r\n" + //
+                        "  \"amountOfTables\" : 8\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 1,\r\n" + //
+                        "  \"name\" : \"Szechuan\",\r\n" + //
+                        "  \"amountOfTables\" : 8\r\n" + //
+                        "} ]")));
+
+    Collection<Restaurant> restaurants = new HashSet<>();
+    restaurants.add(new Restaurant("Barbecuez",3, 8));
+    restaurants.add(new Restaurant("BurgerKing",2, 10));
+    restaurants.add(new Restaurant("SteakHouse",5, 9));
+    restaurants.add(new Restaurant("McDonalds",4, 12));
+    restaurants.add(new Restaurant("Frati",0, 8));
+    restaurants.add(new Restaurant("Szechuan",1, 8));
+    ServerCommunication.saveAllRestaurants(restaurants);
+    
+    verify(postRequestedFor(urlEqualTo("/api/restaurants"))
+    .withHeader("content-type", equalTo("application/json"))
+    .withRequestBody(equalToJson("[ {\r\n" + //
+                        "  \"id\" : 3,\r\n" + //
+                        "  \"name\" : \"Barbecuez\",\r\n" + //
+                        "  \"amountOfTables\" : 8\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 2,\r\n" + //
+                        "  \"name\" : \"BurgerKing\",\r\n" + //
+                        "  \"amountOfTables\" : 10\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 5,\r\n" + //
+                        "  \"name\" : \"SteakHouse\",\r\n" + //
+                        "  \"amountOfTables\" : 9\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 4,\r\n" + //
+                        "  \"name\" : \"McDonalds\",\r\n" + //
+                        "  \"amountOfTables\" : 12\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 0,\r\n" + //
+                        "  \"name\" : \"Frati\",\r\n" + //
+                        "  \"amountOfTables\" : 8\r\n" + //
+                        "}, {\r\n" + //
+                        "  \"id\" : 1,\r\n" + //
+                        "  \"name\" : \"Szechuan\",\r\n" + //
+                        "  \"amountOfTables\" : 8\r\n" + //
+                        "} ]", true, true)));
+    }
+
 }
