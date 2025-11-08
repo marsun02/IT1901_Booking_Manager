@@ -33,7 +33,20 @@
         IdController
     end
 
-    subgraph Server_Persistece
+    subgraph Server_Persistence
         FileManagement
     end
+
+
+    %% Dependencies
+    UI --> Core
+    UI --> Model
+
+    Core --> Model
+    Core --> Server_Controller
+
+    Server_Controller --> Model
+    Server_Controller --> Server_Persistence
+
+    Server_Persistence --> Model
 ```
