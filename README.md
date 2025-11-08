@@ -22,15 +22,17 @@ To help keep everything organized, the app will include a login feature, giving 
 ---
 
 ## How to run
-1. Clone the repository:
+1. Clone the repository in a directory of choice:
    ```bash
    git clone git@git.ntnu.no:IT1901-2025-groups/gr2515.git
    ```
 
-2. Navigate to correct directory:
+2. Navigate to the correct directory:
    ```bash
    cd bookingmanager/
    ```
+
+The rest of the commands are meant to be run from the **bookingmanager**-directory. Always be sure to be in the correct directory before running any commands.
 
 3. Compile code:
    ```bash
@@ -60,12 +62,14 @@ To help keep everything organized, the app will include a login feature, giving 
    ```bash
    mvn javafx:jlink -f ui/pom.xml
    ```
-2. Run from downloaded file
+2. Run the downloaded file from terminal
    ```bash
    ./ui/target/BookingManagerImage/bin/bookingmanager
    ```
 
    You can also find zip file in ui/target/
+   Also make sure the **server** is running when trying to use the downloaded app.
+   An alternative way to run the downloaded app is to navigate to the executable with the path in the last command and run it from a file manager.
 
 ---
 
@@ -75,6 +79,7 @@ Run tests with this command:
    ```bash
    mvn test
    ```
+   Note that some tests will print a stacktrace unless the **server** is running. The tests should still pass, but may clutter the terminal window.
 
 ---
 
