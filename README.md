@@ -22,15 +22,17 @@ To help keep everything organized, the app will include a login feature, giving 
 ---
 
 ## How to run
-1. Clone the repository:
+1. Clone the repository in a directory of choice:
    ```bash
    git clone git@git.ntnu.no:IT1901-2025-groups/gr2515.git
    ```
 
-2. Navigate to correct directory:
+2. Navigate to the correct directory:
    ```bash
    cd bookingmanager/
    ```
+
+The rest of the commands are meant to be run from the **bookingmanager**-directory. Always be sure to be in the correct directory before running any commands.
 
 3. Compile code:
    ```bash
@@ -44,12 +46,36 @@ To help keep everything organized, the app will include a login feature, giving 
 
 5. Start SpringBoot app (important to do before Javafx app)
    ```bash
-   mvn spring-boot:run -pl server
+   mvn clean spring-boot:run -pl server
    ```
 
 6. Start Javafx app:
    ```bash
    mvn javafx:run -pl ui
+   ```
+
+---
+
+## Download and run
+
+All of the following commands are meant to be run from the **bookingmanager**-directory. Always be sure to be in the correct directory before running any commands.
+
+1. Download app:
+   ```bash
+   mvn javafx:jlink -f ui/pom.xml
+   ```
+
+2. To run the downloaded app, paste the following command in your terminal:
+   ```bash
+   ./ui/target/BookingManagerImage/bin/bookingmanager
+   ```
+
+   If step 2 does not work, you can also find the zip file in ui/target/
+   
+   Also make sure the **server** is running when trying to use the downloaded app.
+   If the server is not running, you can do so using the following line of code:
+   ```bash
+   mvn clean spring-boot:run -pl server
    ```
 
 ---
@@ -60,6 +86,7 @@ Run tests with this command:
    ```bash
    mvn test
    ```
+   Note that some tests will print a stacktrace unless the **server** is running. The tests should still pass, but may clutter the terminal window.
 
 ---
 
@@ -101,8 +128,6 @@ In our project, we have a config folder that includes Checkstyle and SpotBugs. C
 The docs folder contains all documentation related to each project release. For every new release, we create a separate folder that includes all the necessary information. This documentation covers topics such as our general workflow, teamwork practices, and AI tools we've used. It also includes userstories, diagrams and other work-related materials. Overall, the documentation is intended to provide a clear overview of the project and serve as a helpful guide for any new members joining the team.
 
 The application also includes a .gitignore file to prevent unnecessary or local files from being pushed to GitHub. We've added certain directories to this file, such as "target", so that files generated locally on each computer are ignored and not included in version control.
-
-In the root directory, you'll find the main README file, which contains the key information about the application. This file also includes links to all the documentation related to the project.
 
 ---
 
