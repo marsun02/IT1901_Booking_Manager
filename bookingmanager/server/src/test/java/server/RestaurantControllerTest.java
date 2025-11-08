@@ -49,7 +49,7 @@ public class RestaurantControllerTest {
     }
 
     @Test
-    void getRestaurntTest(){
+    void getRestaurantTest(){
         Collection<Restaurant> restaurants = controller.getAllRestaurants();
         assertEquals(restaurants.size(), 6);
         ArrayList<String> names = new ArrayList<>(Arrays.asList("Frati", "Barbecuez", "BurgerKing", "SteakHouse", "McDonalds", "Szechuan"));
