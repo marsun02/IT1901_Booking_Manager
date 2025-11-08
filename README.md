@@ -58,11 +58,11 @@ The rest of the commands are meant to be run from the **bookingmanager**-directo
 
 ## Download and run
 
-1. Download app
+1. Download app:
    ```bash
    mvn javafx:jlink -f ui/pom.xml
    ```
-2. Run the downloaded file from terminal
+2. Run the downloaded file from terminal:
    ```bash
    ./ui/target/BookingManagerImage/bin/bookingmanager
    ```
