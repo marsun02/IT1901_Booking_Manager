@@ -52,6 +52,8 @@ To help keep everything organized, the app will include a login feature, giving 
    mvn javafx:run -pl ui
    ```
 
+---
+
 ## Download and run
 
 1. Download app
