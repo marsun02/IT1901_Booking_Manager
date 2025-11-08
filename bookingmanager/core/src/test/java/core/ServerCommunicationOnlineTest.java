@@ -18,7 +18,7 @@ import model.CustomDateObject;
 import model.Restaurant;
 import model.User;
 
-public class ServerCommunicationTest {
+public class ServerCommunicationOnlineTest {
     private static WireMockServer server;
 
     @BeforeAll
@@ -75,8 +75,8 @@ public class ServerCommunicationTest {
                         "  \"name\" : \"Szechuan\",\r\n" + //
                         "  \"amountOfTables\" : 8\r\n" + //
                         "} ]")));
-    Collection<Restaurant> restaurants = ServerCommunication.getAllRestaurants();
-    assertEquals(6, restaurants.size());
+        Collection<Restaurant> restaurants = ServerCommunication.getAllRestaurants();
+        assertEquals(6, restaurants.size());
     }
 
     @Test
@@ -99,8 +99,8 @@ public class ServerCommunicationTest {
                         "  \"password\" : \"12345\",\r\n" + //
                         "  \"phoneNumber\" : null\r\n" + //
                         "} ]")));
-    Collection<User> users = ServerCommunication.getAllUsers();
-    assertEquals(2, users.size());
+        Collection<User> users = ServerCommunication.getAllUsers();
+        assertEquals(2, users.size());
     }
 
     @Test
@@ -138,8 +138,8 @@ public class ServerCommunicationTest {
                         "  \"lastName\" : \"test2\",\r\n" + //
                         "  \"id\" : 25\r\n" + //
                         "} ]")));
-    Collection<CustomDateObject> bookings = ServerCommunication.getAllBookings();
-    assertEquals(3, bookings.size());
+        Collection<CustomDateObject> bookings = ServerCommunication.getAllBookings();
+        assertEquals(3, bookings.size());
     }
 
     @Test
@@ -162,9 +162,9 @@ public class ServerCommunicationTest {
                         "  \"lastName\" : \"test\",\r\n" + //
                         "  \"id\" : 3\r\n" + //
                         "}")));
-    CustomDateObject booking = ServerCommunication.getBookingById(id);
-    assertNotNull(booking);
-    assertEquals(3, booking.getId());
+        CustomDateObject booking = ServerCommunication.getBookingById(id);
+        assertNotNull(booking);
+        assertEquals(3, booking.getId());
     }
 
     @Test
@@ -215,11 +215,11 @@ public class ServerCommunicationTest {
                         "  \"lastName\" : \"test\",\r\n" + //
                         "  \"id\" : 24\r\n" + //
                         "} ]")));
-    Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByUser(user.getName());
-    assertEquals(4, bookings.size());
-    for (CustomDateObject booking : bookings) {
-        assertEquals(user.getName(), booking.getUser());
-        }
+        Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByUser(user.getName());
+        assertEquals(4, bookings.size());
+        for (CustomDateObject booking : bookings) {
+            assertEquals(user.getName(), booking.getUser());
+            }
     }
 
     @Test
@@ -253,12 +253,12 @@ public class ServerCommunicationTest {
                         "  \"lastName\" : \"jada\",\r\n" + //
                         "  \"id\" : 19\r\n" + //
                         "} ]")));
-    Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByDateAndRestaurantName(date, restaurant.getName());
-    assertEquals(2, bookings.size());
-    for (CustomDateObject booking : bookings) {
-        assertEquals(date, booking.getDate());
-        assertEquals(restaurant.getName(), booking.getRestaurantName());
-        }
+        Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByDateAndRestaurantName(date, restaurant.getName());
+        assertEquals(2, bookings.size());
+        for (CustomDateObject booking : bookings) {
+            assertEquals(date, booking.getDate());
+            assertEquals(restaurant.getName(), booking.getRestaurantName());
+            }
     }
 
     @Test
