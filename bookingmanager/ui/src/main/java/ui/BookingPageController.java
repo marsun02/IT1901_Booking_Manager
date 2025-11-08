@@ -161,7 +161,7 @@ public class BookingPageController {
     }
 
     public void setCurrentRestaurantDisplayed(Restaurant restaurant) {
-        this.restaurant = restaurant;
+        this.restaurant = new Restaurant(restaurant);
         restaurantLabel.setText("Velkommen til " + restaurant.getName());
         clearAndPopulateTimeslots();
 
