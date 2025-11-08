@@ -122,8 +122,6 @@ The docs folder contains all documentation related to each project release. For 
 
 The application also includes a .gitignore file to prevent unnecessary or local files from being pushed to GitHub. We've added certain directories to this file, such as "target", so that files generated locally on each computer are ignored and not included in version control.
 
-In the root directory, you'll find the main README file, which contains the key information about the application. This file also includes links to all the documentation related to the project.
-
 ---
 
 ## Release specific documentation
