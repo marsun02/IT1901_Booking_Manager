@@ -261,6 +261,21 @@ public class ServerCommunicationTest {
         }
     }
 
+    @Test
+    void updateIdTest(){
+        String idType = "userId";
+
+        server.stubFor(get(urlPathEqualTo("/api/ids"))
+        .withQueryParam("idType", equalTo(idType))
+        .willReturn(aResponse()
+        .withStatus(200)
+        .withHeader("content-type", "application/json")
+        .withBody("1")));
+        int id = ServerCommunication.updateId(idType);
+        assertNotNull(id);
+        assertEquals(1, id);
+    }
+
 
     // POST
     @Test
@@ -295,41 +310,138 @@ public class ServerCommunicationTest {
         .willReturn(aResponse()
         .withStatus(200)));
 
-    Collection<Restaurant> restaurants = new HashSet<>();
-    restaurants.add(new Restaurant("Barbecuez",3, 8));
-    restaurants.add(new Restaurant("BurgerKing",2, 10));
-    restaurants.add(new Restaurant("SteakHouse",5, 9));
-    restaurants.add(new Restaurant("McDonalds",4, 12));
-    restaurants.add(new Restaurant("Frati",0, 8));
-    restaurants.add(new Restaurant("Szechuan",1, 8));
-    ServerCommunication.saveAllRestaurants(restaurants);
-    
-    verify(postRequestedFor(urlEqualTo("/api/restaurants"))
-    .withHeader("content-type", equalTo("application/json"))
-    .withRequestBody(equalToJson("[ {\r\n" + //
-                        "  \"id\" : 3,\r\n" + //
-                        "  \"name\" : \"Barbecuez\",\r\n" + //
-                        "  \"amountOfTables\" : 8\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 2,\r\n" + //
-                        "  \"name\" : \"BurgerKing\",\r\n" + //
-                        "  \"amountOfTables\" : 10\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 5,\r\n" + //
-                        "  \"name\" : \"SteakHouse\",\r\n" + //
-                        "  \"amountOfTables\" : 9\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 4,\r\n" + //
-                        "  \"name\" : \"McDonalds\",\r\n" + //
-                        "  \"amountOfTables\" : 12\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 0,\r\n" + //
-                        "  \"name\" : \"Frati\",\r\n" + //
-                        "  \"amountOfTables\" : 8\r\n" + //
-                        "}, {\r\n" + //
-                        "  \"id\" : 1,\r\n" + //
-                        "  \"name\" : \"Szechuan\",\r\n" + //
-                        "  \"amountOfTables\" : 8\r\n" + //
-                        "} ]", true, true)));
+        Collection<Restaurant> restaurants = new HashSet<>();
+        restaurants.add(new Restaurant("Barbecuez",3, 8));
+        restaurants.add(new Restaurant("BurgerKing",2, 10));
+        restaurants.add(new Restaurant("SteakHouse",5, 9));
+        restaurants.add(new Restaurant("McDonalds",4, 12));
+        restaurants.add(new Restaurant("Frati",0, 8));
+        restaurants.add(new Restaurant("Szechuan",1, 8));
+        ServerCommunication.saveAllRestaurants(restaurants);
+        
+        verify(postRequestedFor(urlEqualTo("/api/restaurants"))
+        .withHeader("content-type", equalTo("application/json"))
+        .withRequestBody(equalToJson("[ {\r\n" + //
+                            "  \"id\" : 3,\r\n" + //
+                            "  \"name\" : \"Barbecuez\",\r\n" + //
+                            "  \"amountOfTables\" : 8\r\n" + //
+                            "}, {\r\n" + //
+                            "  \"id\" : 2,\r\n" + //
+                            "  \"name\" : \"BurgerKing\",\r\n" + //
+                            "  \"amountOfTables\" : 10\r\n" + //
+                            "}, {\r\n" + //
+                            "  \"id\" : 5,\r\n" + //
+                            "  \"name\" : \"SteakHouse\",\r\n" + //
+                            "  \"amountOfTables\" : 9\r\n" + //
+                            "}, {\r\n" + //
+                            "  \"id\" : 4,\r\n" + //
+                            "  \"name\" : \"McDonalds\",\r\n" + //
+                            "  \"amountOfTables\" : 12\r\n" + //
+                            "}, {\r\n" + //
+                            "  \"id\" : 0,\r\n" + //
+                            "  \"name\" : \"Frati\",\r\n" + //
+                            "  \"amountOfTables\" : 8\r\n" + //
+                            "}, {\r\n" + //
+                            "  \"id\" : 1,\r\n" + //
+                            "  \"name\" : \"Szechuan\",\r\n" + //
+                            "  \"amountOfTables\" : 8\r\n" + //
+                            "} ]", true, true)));
     }
+
+    @Test
+    void saveBookingTest(){
+        server.stubFor(post(urlEqualTo("/api/bookings/save"))
+        // The content inside withRequestBody is just a copy/paste of our json file contents.
+        .withRequestBody(equalToJson("{\r\n" + //
+                        "  \"date\" : \"2025-10-30\",\r\n" + //
+                        "  \"time\" : \"16.30\",\r\n" + //
+                        "  \"restaurantName\" : \"Frati\",\r\n" + //
+                        "  \"user\" : \"Admin\",\r\n" + //
+                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
+                        "  \"firstName\" : \"jajatest\",\r\n" + //
+                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"id\" : 15\r\n" + //
+                        "}", true, true))
+        .willReturn(aResponse()
+        .withStatus(200)));
+
+        CustomDateObject booking = new CustomDateObject("2025-10-30", "16.30", "Frati", "Admin", "jajatest", "woho", 15);
+        ServerCommunication.saveBooking(booking);
+        
+        verify(postRequestedFor(urlEqualTo("/api/bookings/save"))
+        .withHeader("content-type", equalTo("application/json"))
+        .withRequestBody(equalToJson("{\r\n" + //
+                        "  \"date\" : \"2025-10-30\",\r\n" + //
+                        "  \"time\" : \"16.30\",\r\n" + //
+                        "  \"restaurantName\" : \"Frati\",\r\n" + //
+                        "  \"user\" : \"Admin\",\r\n" + //
+                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
+                        "  \"firstName\" : \"jajatest\",\r\n" + //
+                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"id\" : 15\r\n" + //
+                        "}", true, true)));
+    }
+
+    @Test
+    void deleteBookingTest(){
+        server.stubFor(post(urlEqualTo("/api/bookings/delete"))
+        // The content inside withRequestBody is just a copy/paste of our json file contents.
+        .withRequestBody(equalToJson("{\r\n" + //
+                        "  \"date\" : \"2025-10-30\",\r\n" + //
+                        "  \"time\" : \"16.30\",\r\n" + //
+                        "  \"restaurantName\" : \"Frati\",\r\n" + //
+                        "  \"user\" : \"Admin\",\r\n" + //
+                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
+                        "  \"firstName\" : \"jajatest\",\r\n" + //
+                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"id\" : 15\r\n" + //
+                        "}", true, true))
+        .willReturn(aResponse()
+        .withStatus(200)));
+
+        CustomDateObject bookingToDelete = new CustomDateObject("2025-10-30", "16.30", "Frati", "Admin", "jajatest", "woho", 15);
+        ServerCommunication.deleteBooking(bookingToDelete);
+        
+        verify(postRequestedFor(urlEqualTo("/api/bookings/delete"))
+        .withHeader("content-type", equalTo("application/json"))
+        .withRequestBody(equalToJson("{\r\n" + //
+                        "  \"date\" : \"2025-10-30\",\r\n" + //
+                        "  \"time\" : \"16.30\",\r\n" + //
+                        "  \"restaurantName\" : \"Frati\",\r\n" + //
+                        "  \"user\" : \"Admin\",\r\n" + //
+                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
+                        "  \"firstName\" : \"jajatest\",\r\n" + //
+                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"id\" : 15\r\n" + //
+                        "}", true, true)));
+    }
+
+    @Test
+    void saveUserTest(){
+        server.stubFor(post(urlEqualTo("/api/users"))
+        // The content inside withRequestBody is just a copy/paste of our json file contents.
+        .withRequestBody(equalToJson("{\r\n" + //
+                        "  \"id\" : 0,\r\n" + //
+                        "  \"name\" : \"Admin\",\r\n" + //
+                        "  \"email\" : null,\r\n" + //
+                        "  \"password\" : \"12345\",\r\n" + //
+                        "  \"phoneNumber\" : null\r\n" + //
+                        "}", true, true))
+        .willReturn(aResponse()
+        .withStatus(200)));
+
+        User user = new User(0, "Admin", null, null, "12345");
+        ServerCommunication.saveUser(user);
+        
+        verify(postRequestedFor(urlEqualTo("/api/users"))
+        .withHeader("content-type", equalTo("application/json"))
+        .withRequestBody(equalToJson("{\r\n" + //
+                        "  \"id\" : 0,\r\n" + //
+                        "  \"name\" : \"Admin\",\r\n" + //
+                        "  \"email\" : null,\r\n" + //
+                        "  \"password\" : \"12345\",\r\n" + //
+                        "  \"phoneNumber\" : null\r\n" + //
+                        "}", true, true)));
+    }
+
 }
