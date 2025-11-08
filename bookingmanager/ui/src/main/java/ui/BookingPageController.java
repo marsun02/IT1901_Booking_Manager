@@ -3,6 +3,7 @@ package ui;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.function.Consumer;
 
 import core.ServerCommunication;
 import javafx.fxml.FXML;
@@ -25,8 +26,11 @@ public class BookingPageController {
     private Restaurant restaurant;
     private MainPageController mainPageController;
     private Collection<String> allAvailableTimeslots = new ArrayList<>();
-    private boolean currentlyInEditState = false;
+    boolean currentlyInEditState = false;
     private CustomDateObject bookingToEdit = null;
+
+    // Injected for testing (no effect in production)
+    private Consumer<CustomDateObject> saveBookingFunction = ServerCommunication::saveBooking;
 
     @FXML
     Label restaurantLabel;
@@ -46,7 +50,7 @@ public class BookingPageController {
     private String chosenTimeToBook;
 
     // There comes spotbugs from these, but Stage and Scene should not be copied,
-    // therefore the spotsbugs remain for now
+    // therefore the spotbugs remain for now
     public void setStage(
             App app,
             Stage primaryStage,
@@ -64,7 +68,8 @@ public class BookingPageController {
         }
 
         if (currentlyInEditState) {
-            ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook,
+            // Use injected function for testing, otherwise same logic
+            saveBookingFunction.accept(new CustomDateObject(date.getValue().toString(), chosenTimeToBook,
                     restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(),
                     surname.getText(), ServerCommunication.updateId("bookingId")));
             ServerCommunication.deleteBooking(bookingToEdit);
@@ -75,7 +80,8 @@ public class BookingPageController {
             alert.showAndWait();
             currentlyInEditState = false;
         } else {
-            ServerCommunication.saveBooking(new CustomDateObject(date.getValue().toString(), chosenTimeToBook,
+            // Same as original, but using saveBookingFunction
+            saveBookingFunction.accept(new CustomDateObject(date.getValue().toString(), chosenTimeToBook,
                     restaurant.getName(), mainPageController.getCurrentlyLoggedInUser().getName(), name.getText(),
                     surname.getText(), ServerCommunication.updateId("bookingId")));
             Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -183,6 +189,7 @@ public class BookingPageController {
             }
         });
         // --------------------------------- Ends here
+
         // Add listener for timeslotspicker only once
         timeSlotsPicker.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             chosenTimeToBook = newValue;
@@ -213,4 +220,8 @@ public class BookingPageController {
         this.timeSlotsPicker.setValue(timeSlot);
     }
 
+    // Added setter for test injection (harmless in production)
+    public void setSaveBookingFunction(Consumer<CustomDateObject> saveBookingFunction) {
+        this.saveBookingFunction = saveBookingFunction;
+    }
 }
