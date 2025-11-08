@@ -58,18 +58,25 @@ The rest of the commands are meant to be run from the **bookingmanager**-directo
 
 ## Download and run
 
+All of the following commands are meant to be run from the **bookingmanager**-directory. Always be sure to be in the correct directory before running any commands.
+
 1. Download app:
    ```bash
    mvn javafx:jlink -f ui/pom.xml
    ```
-2. Run the downloaded file from terminal:
+
+2. To run the downloaded app, paste the following command in your terminal:
    ```bash
    ./ui/target/BookingManagerImage/bin/bookingmanager
    ```
 
-   You can also find zip file in ui/target/
+   If step 2 does not work, you can also find the zip file in ui/target/
+   
    Also make sure the **server** is running when trying to use the downloaded app.
-   An alternative way to run the downloaded app is to navigate to the executable with the path in the last command and run it from a file manager.
+   If the server is not running, you can do so using the following line of code:
+   ```bash
+   mvn clean spring-boot:run -pl server
+   ```
 
 ---
 
