@@ -1,14 +1,14 @@
 <!-- This text is copied from release 2 and modified with updated info to fit this third release -->
 
 ## Work practices
-In our project, we have structured our work-practices by dividing tasks and areas of the code among all group members and working in pairs for the larger issues. Each coding task is created as an issue, and for every issue, we create a separate branch. This helps us maintain a clear workflow, and ensures that incomplete and poorly written code isn't pushed directly into the main branch.
+In our project, we structured our work-practices by dividing tasks and areas of the code among all group members, and often working in pairs on larger issues. Each coding task is created as an issue, and for every issue, we create a separate branch. This approach helps us maintain a clear workflow and ensures that incomplete code isn't pushed directly to the main branch.
 
-Working in branches allows us to collaborate more effectively without overwriting each other's work. We've also set up milestones in the project to guide our progress. For example, we created milestones for every releases and set them to one day before the submission date. The milestones contains info about the features and tasks we aim to complete within this phase.
+Working in branches allows us to collaborate more effectively without overwriting each other's work. We also use milestones to track our progress. For example, we created milestones for every releases and scheduled the deadline of the progress a day before the submission deadline. Each milestone includes details about the features and tasks we aim to complete during that phase.
 
-Most of the major tasks have been approached using pair programming, where we work together at one computer, discussing and implementing the solution in real time. For transparency, we include a "Co-authored-by" line in our commit messages to reflect the team work.
+For major tasks, we often use pair programming, working together on the same computer to discuss and implement solutions in real time. To maintain transparency, we include a "Co-authored-by" line in our commit messages to reflect shared contributions.
 
-For internal use within our group, we’ve added a set of work practice files designed to help us improve the quality of our commit messages and pull requests. These files are intended to be a guide for new contributors and a reference point for current team members. The files have been organized into a folder named work-practices, located in the root directory of the project. 
+Within our group, we've also created a set of internal work-practice files to help improve the quality of our commit messages and pull requests. These files serve as both a reference for existing members and a guide for new contributors. They are stored in the work-practices folder located in the root directory of the project. 
 
-This way of working has proven efficiently, and it has allowed us to complete tasks more quickly and with higher quality, while smaller tasks and issues are still handled individually.
+This way of working has proven effective, allowing us to complete tasks more efficiently and with higher quality, while smaller issues continue to be handled individually.
 
 **[Back to root README](../../README.md)**
