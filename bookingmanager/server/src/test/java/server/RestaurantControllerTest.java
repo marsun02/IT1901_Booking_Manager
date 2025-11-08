@@ -2,6 +2,7 @@ package server;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -53,7 +54,7 @@ public class RestaurantControllerTest {
         assertEquals(restaurants.size(), 6);
         ArrayList<String> names = new ArrayList<>(Arrays.asList("Frati", "Barbecuez", "BurgerKing", "SteakHouse", "McDonalds", "Szechuan"));
         for (Restaurant restaurant : restaurants){
-            names.contains(restaurant.getName());
+            assertTrue(names.contains(restaurant.getName()));
         }
     }
 
