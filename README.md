@@ -63,7 +63,7 @@ To help keep everything organized, the app will include a login feature, giving 
    ./ui/target/BookingManagerImage/bin/bookingmanager
    ```
 
-   You can find zip file in ui/target/
+   You can also find zip file in ui/target/
 
 ---
 
