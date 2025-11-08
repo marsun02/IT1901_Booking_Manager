@@ -133,5 +133,5 @@ In the root directory, you'll find the main README file, which contains the key 
 [Use of ai-tools]
 [Work Practices]
 [Workflow]
-[Persistence]
+[Persistence](docs/release3/persistence.md)
 [Code quality]
