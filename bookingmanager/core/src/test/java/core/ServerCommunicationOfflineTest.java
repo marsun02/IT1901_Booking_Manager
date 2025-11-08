@@ -56,7 +56,7 @@ public class ServerCommunicationOfflineTest {
         assertEquals(null, booking.getBookedName());
         assertEquals(null, booking.getDate());
         assertEquals(null, booking.getFirstName());
-        assertEquals(null, booking.getId());
+        assertEquals(0, booking.getId());
         assertEquals(null, booking.getLastName());
         assertEquals(null, booking.getRestaurantName());
         assertEquals(null, booking.getTime());
@@ -88,5 +88,13 @@ public class ServerCommunicationOfflineTest {
         int id = ServerCommunication.updateId(idType);
         assertNotNull(id);
         assertEquals(-1, id);
+    }
+
+    @Test
+    void saveUserTest(){
+        User user = new User(0, "Admin", null, null, "12345");
+        int response = ServerCommunication.saveUser(user);
+        assertEquals(1, response);
+
     }
 }
