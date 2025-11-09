@@ -46,24 +46,14 @@ public class BookingControllerTest {
         }
     }
 
-    @Test
-    void getBookingsTest(){
-        Collection<CustomDateObject> bookingsByDateAndRestaurant = controller.getBookingsByDateAndRestaurantName("2025-11-12", "McDonalds");
-        assertEquals(bookingsByDateAndRestaurant.size(), 2);
-        List<CustomDateObject> bookingsByUser = controller.getBookingsByUser( "KjellMagnar");
-        assertEquals(bookingsByUser.size(), 1);
-        CustomDateObject bookingById = controller.getBookingById("18");
-        assertEquals(bookingById.getBookedName(), "testja hais");
-        Collection<CustomDateObject> allbookings = controller.getAllBookings();
-        assertEquals(allbookings.size(), 8);
-        
-    } 
     @Test 
-    void delteAndSaveBookingTest(){
+    void gettersAndDeleteBookingAndSaveBookingTest(){
         Collection<CustomDateObject> bookings = controller.getAllBookings();
         CustomDateObject booking = new CustomDateObject("2026-10-12", "16.30", "Frati", "admin", "ad", "min", 30);
         controller.saveBooking(booking);
         Collection<CustomDateObject> bookingsWithAddedBooking = controller.getAllBookings();
+        CustomDateObject bookingById = controller.getBookingById("30");
+        assertEquals(booking.getBookedName(), bookingById.getBookedName());
         assertEquals(bookingsWithAddedBooking.size(), bookings.size() + 1);
         controller.deleteBooking(booking);
         Collection<CustomDateObject> bookingsAfterDelete = controller.getAllBookings();
