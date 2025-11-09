@@ -15,8 +15,8 @@ import server.persistence.FileManagement;
 @RestController
 @RequestMapping("/api/ids")
 public class IdController {
-    final Path PATH = Paths.get("../server/src/main/resources/ids.json");
-    final File IDS_DATA_FILE = PATH.toFile();
+    final Path path = Paths.get("../server/src/main/resources/ids.json");
+    final File idsDataFile = path.toFile();
 
     /**
      * Api call updating the given id.
@@ -26,6 +26,6 @@ public class IdController {
      */
     @GetMapping
     public int updateId(@RequestParam("idType") String idType) {
-        return FileManagement.updateId(IDS_DATA_FILE, idType);
+        return FileManagement.updateId(idsDataFile, idType);
     }
 }
