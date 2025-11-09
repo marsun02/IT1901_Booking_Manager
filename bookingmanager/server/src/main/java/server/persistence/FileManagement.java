@@ -22,10 +22,10 @@ import model.User;
 public class FileManagement {
 
     /**
-     * Saves the given restauratns to the given file.
+     * Saves the given restaurants to the given file.
 
      * @param restaurantDataFile File in which to write to.
-     * @param restaurants Restauranst that are to be written.
+     * @param restaurants Restaurants that are to be written.
      */
     public static void saveRestaurants(File restaurantDataFile, Collection<Restaurant> restaurants) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -175,7 +175,7 @@ public class FileManagement {
     }
 
     /**
-     * Retrieves all saved booknigs.
+     * Retrieves all saved bookings.
 
      * @param allBookingsFile file to be read from.
      * @return all saved bookings.
