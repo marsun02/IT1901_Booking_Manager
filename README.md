@@ -144,21 +144,21 @@ The application also includes a .gitignore file to prevent unnecessary or local 
 [Use of ai-tools](docs/release1/ai-tools.md)
 
 ### Release 2
-[Teamwork](docs/release2/teamwork.md)
-[Work Practices](docs/release2/work-practices.md)
-[Workflow](docs/release2/workflow.md)
-[Use of ai-tools](docs/release2/ai-tools.md)
-[Persistence](docs/release2/persistence.md)
 [Code quality](docs/release2/code-quality.md)
+[Persistence](docs/release2/persistence.md)
+[Teamwork](docs/release2/teamwork.md)
+[Use of ai-tools](docs/release2/ai-tools.md)
+[Workflow](docs/release2/workflow.md)
+[Work Practices](docs/release2/work-practices.md)
 
 ### Release 3
-[Rest api](docs/release3/rest-api.md)
-[Teamwork]
-[Sustainability]
-[Challenges]
-[Contribution]
-[Use of ai-tools]
-[Work Practices]
-[Workflow]
+[Challenges](docs/release3/challenges.md)
+[Code quality](docs/release3/code-quality.md)
+[Contribution](docs/release3/contribution.md)
 [Persistence](docs/release3/persistence.md)
-[Code quality]
+[Rest api](docs/release3/rest-api.md)
+[Sustainability](docs/release3/sustainability-reflection.md)
+[Teamwork](docs/release3/teamwork.md)
+[Use of ai-tools](docs/release3/ai-tools.md)
+[Workflow](docs/release3/workflow.md)
+[Work Practices](docs/release3/work-practices.md)
