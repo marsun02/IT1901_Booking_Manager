@@ -1,11 +1,9 @@
 package ui;
 
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.CustomDateObject;
 import model.Restaurant;
@@ -114,6 +112,7 @@ public class BookingPageControllerUITest {
 
     @Test
     void testBookingFailsWithEmptyFields(FxRobot robot) {
+        @SuppressWarnings("unchecked")
         Consumer<CustomDateObject> mockSaveBooking = mock(Consumer.class);
         controller.setSaveBookingFunction(mockSaveBooking);
 
