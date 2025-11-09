@@ -25,6 +25,21 @@ public class LoginPageController implements Initializable {
     private MainPageController mainPageController;
     boolean currentLayoutIsRegisterAccount = false;
 
+    // -------------------- TEST HOOKS FOR UI TESTING --------------------
+    // Allows tests to inject a custom action when login/register is triggered
+    private java.util.function.Consumer<User> loginActionFunction;
+    public void setLoginActionFunction(java.util.function.Consumer<User> loginActionFunction) {
+        this.loginActionFunction = loginActionFunction;
+    }
+
+    // Optional: allows tests to provide a pre-constructed User for login/register
+    private User injectedTestUser;
+    public void setInjectedTestUser(User injectedTestUser) {
+        this.injectedTestUser = injectedTestUser;
+    }
+    // ------------------------------------------------------------------
+
+
     @FXML
     TextField usernameField;
 
@@ -83,7 +98,36 @@ public class LoginPageController implements Initializable {
     }
 
     @FXML
-    private void loginAccount() {
+    void loginAccount() {
+        // TEST INJECTION: run for both login and registration
+        if (loginActionFunction != null) {
+            User testUser;
+            if (currentLayoutIsRegisterAccount) {
+                testUser = injectedTestUser != null
+                        ? injectedTestUser
+                        : new User(
+                                0,
+                                usernameField.getText(),
+                                emailField.getText(),
+                                phoneNumberField.getText(),
+                                passwordField.getText()
+                        );
+            } else {
+                testUser = injectedTestUser != null
+                        ? injectedTestUser
+                        : new User(
+                                0,
+                                usernameField.getText(),
+                                null,
+                                null,
+                                passwordField.getText()
+                        );
+            }
+            loginActionFunction.accept(testUser);
+            resetInfo();
+            return;
+        }
+
         if (currentLayoutIsRegisterAccount) {
             // Makes sure all fields must be filled
             if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()
@@ -129,21 +173,20 @@ public class LoginPageController implements Initializable {
                 return;
             }
 
-            User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(), null, null,
-                    passwordField.getText());
+            User newUser = new User(ServerCommunication.updateId("userId"), usernameField.getText(),
+                    emailField.getText(), phoneNumberField.getText(), passwordField.getText());
             int returnValue = ServerCommunication.saveUser(newUser);
             if (returnValue == 0) {
                 switchBackToLoginLayout();
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("Account created");
                 alert.showAndWait();
-
             } else {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("Error creating new account");
                 alert.showAndWait();
-                return;
             }
+
         } else {
             // Makes sure all fields must be filled
             if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
@@ -170,15 +213,15 @@ public class LoginPageController implements Initializable {
                     return;
                 }
             }
+
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("No such user found");
             alert.showAndWait();
         }
-
-        
     }
 
-    private void switchLayoutToRegisterAccount() {
+
+    void switchLayoutToRegisterAccount() {
         loginButton.setText("Register Account");
         noAccountText.setText("ALREADY HAVE AN ACCOUNT?");
         createAccountLink.setText("LOGIN");
@@ -223,5 +266,4 @@ public class LoginPageController implements Initializable {
         phoneNumberHBox.setVisible(false);
         phoneNumberHBox.setManaged(false);
     }
-
 }
