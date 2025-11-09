@@ -17,6 +17,14 @@ import javafx.stage.Stage;
 import model.CustomDateObject;
 import model.Restaurant;
 
+/**
+ * Controller class for booking page in the application
+ * <p>
+ * Handles all logic related to booking a table, including displaying available
+ * time slots, validating user input, saving new bookings, editing 
+ * existing bookings, and navigating back to the main page.
+ */
+
 public class BookingPageController {
 
     private Stage primaryStage;
@@ -46,6 +54,15 @@ public class BookingPageController {
 
     // There comes spotbugs from these, but Stage and Scene should not be copied,
     // therefore the spotsbugs remain for now
+
+    /**
+     * 
+     * @param app           reference to the main application
+     * @param primaryStage  the primary stage of the application
+     * @param bookingScene  the booking page
+     * @param mainScene     the main page
+     * @param loginScene    the login page
+     */
     public void setStage(
             App app,
             Stage primaryStage,
@@ -56,6 +73,13 @@ public class BookingPageController {
         this.mainScene = mainScene;
     }
 
+    /**
+     * Handles the booking process.
+     * <p>
+     * If the user is editing an existing booking, the old one is replaced with
+     * the new details. Otherwise, a new booking is created. After saving, the
+     * method resets the form and returns to the main page.
+     */
     @FXML
     public void bookTable() {
         if (!checkThatAllFieldsAreFilled()) {
@@ -86,17 +110,28 @@ public class BookingPageController {
         resetInfo();
     }
 
+    /**
+     * Resets all booking input fields.
+     */
     @FXML
     public void resetBookingInfo() {
         resetInfo();
     }
 
+    /**
+     * Clears the text fields and date picker selections.
+     */
     private void resetInfo() {
         name.setText("");
         surname.setText("");
         date.setValue(null);
     }
 
+    /**
+     * Refreshes the list of available time slots in the time slot picker.
+     * <p>
+     * Clears any previous selections to prevent unintended booking of old time slots.
+     */
     public void reloadTimeSlotPicker() {
         timeSlotsPicker.getItems().clear();
         timeSlotsPicker.getSelectionModel().clearSelection(); // resets logical selection
@@ -108,6 +143,11 @@ public class BookingPageController {
         }
     }
 
+    /**
+     * Removes time slots that are already booked for a given date and restaurant.
+     * 
+     * @param chosenDateString the selected date as a string
+     */
     private void removeBookedTimeSlots(String chosenDateString) {
         Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByDateAndRestaurantName(chosenDateString,
                 restaurant.getName());
