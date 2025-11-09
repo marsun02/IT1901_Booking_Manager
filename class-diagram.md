@@ -4,65 +4,70 @@ title: Class diagram
 ---
 
 classDiagram
-    class Table{
-        boolean isBooked
-        int id
-        int spots
-        Date bookedTime
-
-        boolean isBooked()
-        int getId()
-        int getSpots()
-        Date getBookedTime()
-        void book(User bookingUser, Date bookedTime)
-        void freeTable(User bookingUser)
-    }
-
     class User{
         int id
         String name
         String email
         String password
         String phoneNumber
-        Set&lt;Table&gt bookedTables
 
         int getId()
         String getName()
         String getEmail()
         String getPhonenumber()
-        Set&lt;Table&gt getBookedTables()
-        void addTable(Table table)
-        void removeTable(Table table)
         boolean checkNamePassword(String name, String password)
     }
 
     class Restaurant{
-        
-        HashSet&lt;Table&gt; tables
         int id
         String name
-        int tableId
+        int amountOfTables
 
-
-        Collection&lt;Table&gt getTables()
         String getName()
         int getId()
-        void addTable(Table table)
-        Collection&lt;Table&gt getAvailableTables()
-        Table getTableById(int tableId)
-        int getNextTableId()
-        void incrementTableId()
+        int getAmountOfTables()
+    }
+
+    class CustomDateObject {
+        String date
+        String time
+        String restaurantName
+        String user
+        String bookedName
+        String firstName
+        String lastName
+        int id
+
+        String getDate()
+        String getTime()
+        String getRestaurantName()
+        String getUser()
+        String getBookedName()
+        String getFirstName()
+        String getLastName()
+        Integer getId()
     }
 
     class FileManagement{
 
-        void saveRestaurants(File restaurantDataFile, Collection&lt;Restaurant&gt restaurants)
-        Collection&lt;Restaurant&gt loadRestaurants(File restaurantDataFile)
+        saveRestaurants(File, Collection~Restaurant~)
+        loadRestaurants(File)
+        saveBooking(File, CustomDateObject)
+        deleteBooking(File, CustomDateObject)
+        loadBookingsForSpecificDate(File, date, restaurantName)
+        loadBookingsForSpecificUser(File, user)
+        loadAllBookings(File)
+        loadSpecificBooking(File, id)
+        loadUsers(File)
+        saveUser(File, User)
+        updateId(File, idType)
     }
 
-    User "1" -- "*" Table : Booking
-    Restaurant "1" -- "*" Table : Tables in restaurant
-    Restaurant "*" <-- "1" FileManagement : Save/Load
+    User "1" -- "*" CustomDateObject : creates bookings
+    Restaurant "1" -- "*" CustomDateObject : bookings for restaurant
+    Restaurant "*" --> "1" FileManagement : save/load
+    User "*" --> "1" FileManagement : save/load
+    CustomDateObject "*" --> "1" FileManagement : save/load
 ```
 
 **[Back to root README](README.md)**
