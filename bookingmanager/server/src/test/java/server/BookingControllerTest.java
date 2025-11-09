@@ -1,23 +1,18 @@
 package server;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import model.CustomDateObject;
-// import model.Restaurant;
 import server.controller.BookingController;
 
 public class BookingControllerTest {
@@ -55,9 +50,9 @@ public class BookingControllerTest {
         CustomDateObject bookingById = controller.getBookingById("30");
         assertEquals(booking.getBookedName(), bookingById.getBookedName());
         assertEquals(bookingsWithAddedBooking.size(), bookings.size() + 1);
+        
         controller.deleteBooking(booking);
         Collection<CustomDateObject> bookingsAfterDelete = controller.getAllBookings();
         assertEquals(bookingsAfterDelete.size(), bookingsWithAddedBooking.size() - 1);
-        }
     }
-
+}
