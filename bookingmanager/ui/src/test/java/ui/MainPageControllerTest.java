@@ -25,7 +25,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ApplicationExtension.class)
-public class MainPageControllerUITest {
+public class MainPageControllerTest {
 
     private MainPageController controller;
     private BookingPageController bookingController;

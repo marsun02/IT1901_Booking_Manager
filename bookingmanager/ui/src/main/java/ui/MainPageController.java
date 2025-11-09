@@ -34,33 +34,42 @@ import model.User;
  * saving, and displaying restaurant and booking data.
  */
 public class MainPageController {
-    Collection<Restaurant> restaurants;
+    private Collection<Restaurant> restaurants;
 
-    Stage primaryStage;
-    Scene bookingScene;
-    Scene loginScene;
-    BookingPageController bookingPageController;
+    private Stage primaryStage;
+    private Scene bookingScene;
+    private Scene loginScene;
+    private BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
     private final static String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
     // entire app
 
-    @FXML Label loggedInUserLabel;
+    @FXML 
+    protected Label loggedInUserLabel;
 
-    @FXML Label yourBookingsLabel;
+    @FXML 
+    protected Label yourBookingsLabel;
 
-    @FXML TableView<CustomDateObject> bookingOverview;
+    @FXML 
+    protected TableView<CustomDateObject> bookingOverview;
 
-    @FXML TableColumn<CustomDateObject, ImageView> tableImage;
+    @FXML 
+    protected TableColumn<CustomDateObject, ImageView> tableImage;
 
-    @FXML TableColumn<CustomDateObject, String> tableName;
+    @FXML 
+    protected TableColumn<CustomDateObject, String> tableName;
 
-    @FXML TableColumn<CustomDateObject, String> tableDate;
+    @FXML 
+    protected TableColumn<CustomDateObject, String> tableDate;
 
-    @FXML TableColumn<CustomDateObject, String> tableTime;
+    @FXML 
+    protected TableColumn<CustomDateObject, String> tableTime;
 
-    @FXML TableColumn<CustomDateObject, Button> tableEdit;
+    @FXML 
+    protected TableColumn<CustomDateObject, Button> tableEdit;
 
-    @FXML TableColumn<CustomDateObject, Button> tableDelete;
+    @FXML 
+    protected TableColumn<CustomDateObject, Button> tableDelete;
 
     /**
      * Default constructor.
@@ -199,6 +208,15 @@ public class MainPageController {
      */
     public User getCurrentlyLoggedInUser() {
         return currentlyLoggedInUser;
+    }
+
+    /**
+     * Returns the collection of all restaurants.
+     * 
+     * @return the {@link Collection} of {@link Restaurant} objects
+     */
+    public Collection<Restaurant> getRestaurants() {
+        return restaurants;
     }
 
     /**
