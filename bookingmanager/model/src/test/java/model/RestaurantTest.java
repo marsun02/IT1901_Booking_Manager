@@ -30,6 +30,9 @@ public class RestaurantTest {
         
         restaurant.setAmountOfTables(15);
         assertEquals(15, restaurant.getAmountOfTables());
+
+        restaurant.setAmountOfTables(-5);
+        assertEquals(0, restaurant.getAmountOfTables());
     }
 
     @Test

@@ -6,12 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.github.tomakehurst.wiremock.WireMockServer;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 import java.util.Collection;
-
-import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 
 import model.CustomDateObject;
 import model.Restaurant;
@@ -19,11 +16,9 @@ import model.User;
 
 // All of these tests will trigger printStackTraces in the terminal, however that is intentional as it is supposed to test what happens when the server is down
 public class ServerCommunicationOfflineTest {
-    private static WireMockServer server;
 
     @BeforeAll
     static void setupMockServer(){ // But not starting it
-        server = new WireMockServer(WireMockConfiguration.options().port(9999));
         configureFor("localhost", 9999);
         System.setProperty("server.base.url", "http://localhost:9999");
     }
