@@ -150,6 +150,11 @@ public class ServerCommunication {
         }
     }
 
+    /**
+     * Calls the get request that retrieves all saved bookings.
+
+     * @return Collection containing all saved bookings.
+     */
     public static Collection<CustomDateObject> getAllBookings() {
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/bookings"))
@@ -168,6 +173,11 @@ public class ServerCommunication {
         }
     }
 
+    /**
+     * Calls post request that saves a booking.
+
+     * @param bookedTime Date object representing booking to save.
+     */
     public static void saveBooking(CustomDateObject bookedTime) {
         try {
             String jsonContents = objectMapper.writeValueAsString(bookedTime);
@@ -186,6 +196,12 @@ public class ServerCommunication {
         }
     }
 
+    /**
+     * Calls post request that deletes a booking from the collection.
+     * Does this by reading all bookings, removing the one identical to the given, before writing the updated collection.
+
+     * @param bookingToDelete date object representing the booking to delete.
+     */
     public static void deleteBooking(CustomDateObject bookingToDelete) {
         try {
             String jsonContents = objectMapper.writeValueAsString(bookingToDelete);
@@ -204,6 +220,14 @@ public class ServerCommunication {
         }
     }
 
+    /**
+     * Calls the post request that updates the saved id.
+     * Two ids are stored in the file.
+     * Reads the saved id, adds one, returns and writes the updated id value.
+
+     * @param idType string indicating which saved id to update.
+     * @return the updated id.
+     */
     public static int updateId(String idType) {
         try {
             String url = "http://localhost:8080/api/ids?idType=" + URLEncoder.encode(idType, StandardCharsets.UTF_8);
@@ -217,6 +241,11 @@ public class ServerCommunication {
         }
     }
 
+    /**
+     * Calls the get request that loads all the saved users.
+
+     *  @return Collection of all saved users.
+     */
     public static Collection<User> getAllUsers() {
         try {
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/api/users")).GET()
@@ -234,6 +263,13 @@ public class ServerCommunication {
         }
     }
 
+    /**
+     * Calls post request that adds a user to the saved collection.
+     * Used when creating new user in login page.
+
+     * @param user user to be added to collection.
+     * @return exit code that represents success or not.
+     */
     public static int saveUser(User user) {
         try {
             String jsonContents = objectMapper.writeValueAsString(user);
