@@ -63,9 +63,11 @@ classDiagram
         updateId(File, idType)
     }
 
-    User "1" -- "*" Table : Booking
-    Restaurant "1" -- "*" Table : Tables in restaurant
-    Restaurant "*" <-- "1" FileManagement : Save/Load
+    User "1" -- "*" CustomDateObject : creates bookings
+    Restaurant "1" -- "*" CustomDateObject : bookings for restaurant
+    Restaurant "*" --> "1" FileManagement : save/load
+    User "*" --> "1" FileManagement : save/load
+    CustomDateObject "*" --> "1" FileManagement : save/load
 ```
 
 **[Back to root README](README.md)**
