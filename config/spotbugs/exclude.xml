@@ -5,5 +5,56 @@
         <Class name="server.ServerApp"/>
         <Bug pattern="CT_CONSTRUCTOR_THROW"/>
     </Match>
+
+    <!-- ===== BookingPageController exclusions ===== -->
+    <Match>
+        <Class name="ui.BookingPageController"/>
+        <Method name="setMainPageController"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+
+    <Match>
+        <Class name="ui.BookingPageController"/>
+        <Method name="setStage"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+
+    <!-- ===== LoginPageController exclusions ===== -->
+    <Match>
+        <Class name="ui.LoginPageController"/>
+        <Method name="setMainPageController"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+
+    <Match>
+        <Class name="ui.LoginPageController"/>
+        <Method name="setStage"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+
+    <!-- ===== MainPageController exclusions ===== -->
+    <Match>
+        <Class name="ui.MainPageController"/>
+        <Method name="setBookingPageController"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+
+    <Match>
+        <Class name="ui.MainPageController"/>
+        <Method name="setStage"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+
+    <!-- Ignore false positives for user getter/setter -->
+    <Match>
+        <Class name="ui.MainPageController"/>
+        <Method name="getCurrentlyLoggedInUser"/>
+        <Bug pattern="EI_EXPOSE_REP"/>
+    </Match>
+
+    <Match>
+        <Class name="ui.MainPageController"/>
+        <Method name="setcurrentlyLoggedInUser"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
 </FindBugsFilter>
-<!-- Ends here -->

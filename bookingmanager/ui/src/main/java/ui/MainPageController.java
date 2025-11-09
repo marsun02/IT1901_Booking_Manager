@@ -34,7 +34,7 @@ public class MainPageController {
     private Scene loginScene;
     private BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
-    private final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
+    private final static String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
     // entire app
 
     @FXML
