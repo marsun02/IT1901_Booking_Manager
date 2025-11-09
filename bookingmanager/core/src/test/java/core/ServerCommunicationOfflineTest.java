@@ -23,8 +23,9 @@ public class ServerCommunicationOfflineTest {
 
     @BeforeAll
     static void setupMockServer(){ // But not starting it
-        server = new WireMockServer(WireMockConfiguration.options().port(8080));
-        configureFor("localhost", 8080);
+        server = new WireMockServer(WireMockConfiguration.options().port(9999));
+        configureFor("localhost", 9999);
+        System.setProperty("server.base.url", "http://localhost:9999");
     }
 
     @Test
