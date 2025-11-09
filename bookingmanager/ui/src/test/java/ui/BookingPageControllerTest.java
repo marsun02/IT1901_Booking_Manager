@@ -32,7 +32,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(ApplicationExtension.class)
-public class BookingPageControllerUITest {
+public class BookingPageControllerTest {
 
     private static final Path ORIGINAL_IDS = Paths.get("../server/src/main/resources/ids.json");
     private static final Path ORIGINAL_BOOKINGS = Paths.get("../server/src/main/resources/bookings.json");
