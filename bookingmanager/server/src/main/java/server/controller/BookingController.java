@@ -20,8 +20,8 @@ import server.persistence.FileManagement;
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
-    final Path PATH = Paths.get("../server/src/main/resources/bookings.json");
-    final File BOOKING_DATA_FILE = PATH.toFile();
+    final Path path = Paths.get("../server/src/main/resources/bookings.json");
+    final File bookingDataFile = path.toFile();
 
     /**
      * Api call for getting bookings with parameters matching the given ones.
@@ -34,7 +34,7 @@ public class BookingController {
     public Collection<CustomDateObject> getBookingsByDateAndRestaurantName(
             @RequestParam(name = "date") String date,
             @RequestParam(name = "restaurantName") String restaurantName) {
-        return FileManagement.loadBookingsForSpecificDate(BOOKING_DATA_FILE, date, restaurantName);
+        return FileManagement.loadBookingsForSpecificDate(bookingDataFile, date, restaurantName);
     }
 
     /**
@@ -46,7 +46,7 @@ public class BookingController {
     @GetMapping(params = "user")
     public List<CustomDateObject> getBookingsByUser(
             @RequestParam(name = "user") String user) {
-        return FileManagement.loadBookingsForSpecificUser(BOOKING_DATA_FILE, user);
+        return FileManagement.loadBookingsForSpecificUser(bookingDataFile, user);
     }
 
     /**
@@ -58,7 +58,7 @@ public class BookingController {
     @GetMapping(params = "id")
     public CustomDateObject getBookingById(
             @RequestParam(name = "id") String id) {
-        return FileManagement.loadSpecificBooking(BOOKING_DATA_FILE, id);
+        return FileManagement.loadSpecificBooking(bookingDataFile, id);
     }
 
     /**
@@ -68,7 +68,7 @@ public class BookingController {
      */
     @GetMapping
     public Collection<CustomDateObject> getAllBookings() {
-        return FileManagement.loadAllBookings(BOOKING_DATA_FILE);
+        return FileManagement.loadAllBookings(bookingDataFile);
     }
 
     /**
@@ -79,7 +79,7 @@ public class BookingController {
     @PostMapping("/save")
     public void saveBooking(
             @RequestBody CustomDateObject bookedDate) {
-        FileManagement.saveBooking(BOOKING_DATA_FILE, bookedDate);
+        FileManagement.saveBooking(bookingDataFile, bookedDate);
     }
 
     /**
@@ -90,6 +90,6 @@ public class BookingController {
     @PostMapping("/delete")
     public void deleteBooking(
             @RequestBody CustomDateObject bookingToDelete) {
-        FileManagement.deleteBooking(BOOKING_DATA_FILE, bookingToDelete);
+        FileManagement.deleteBooking(bookingDataFile, bookingToDelete);
     }
 }
