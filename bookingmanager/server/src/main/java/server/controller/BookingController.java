@@ -28,7 +28,7 @@ public class BookingController {
 
      * @param date date to compare with in search.
      * @param restaurantName restaurant name to compare with in search.
-     * @return all bookings matching the given date an restaurant name.
+     * @return all bookings matching the given date and restaurant name.
      */
     @GetMapping(params = { "date", "restaurantName" })
     public Collection<CustomDateObject> getBookingsByDateAndRestaurantName(
