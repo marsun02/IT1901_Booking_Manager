@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 public class CustomDateObjectTest {
-     @Test
+    @Test
     void testConstructor(){
         CustomDateObject obj = new CustomDateObject(
             "2025-12-24",
@@ -86,5 +86,16 @@ public class CustomDateObjectTest {
         assertNotNull(obj.getId());
         assertEquals(Integer.valueOf(3), obj.getId());
         assertEquals("3", obj.getId().toString());
+    }
+
+    @Test
+    void testInitialize(){
+        new CustomDateObject();
+    }
+
+    @Test
+    void testCopyInitialize(){
+        CustomDateObject booking = new CustomDateObject();
+        new CustomDateObject(booking);
     }
 }
