@@ -156,11 +156,21 @@ public class BookingPageController {
         }
     }
 
+    /**
+     * Updates available time slots for the selected date by removing already booked times.
+     * 
+     * @param chosenDateString the selected date as a string
+     */
     public void correctlyReloadTimeSlots(String chosenDateString) {
         removeBookedTimeSlots(chosenDateString);
         reloadTimeSlotPicker();
     }
 
+    /**
+     * Checks that all required fields are filled before saving a booking.
+     * 
+     * @return true if all fields are filled, false otherwise
+     */
     private boolean checkThatAllFieldsAreFilled() {
         if (name.getText().isEmpty() || surname.getText().isEmpty() || date.getValue() == null
                 || timeSlotsPicker.getValue() == null) {
@@ -172,6 +182,9 @@ public class BookingPageController {
         return true;
     }
 
+    /**
+     * Called when a user selects a date. Updates the available time slots accordingly.
+     */
     @FXML
     public void pickDateToBook() {
         String chosenDateString;
@@ -184,10 +197,20 @@ public class BookingPageController {
         correctlyReloadTimeSlots(chosenDateString);
     }
     
+    /**
+     * Links the main page controller to the booking page controller.
+     * 
+     * @param controller the main page controller instance
+     */
     public void setMainPageController(MainPageController controller) {
         this.mainPageController = controller;
     }
 
+    /**
+     * Returns the user to the main page and resets the booking form.
+     * <p>
+     * Also clears any event listeners to prevent memory leaks
+     */
     @FXML
     public void returnToMainPage() {
         resetInfo();
@@ -200,6 +223,13 @@ public class BookingPageController {
         });
     }
 
+    /**
+     * Displays information for the selected restaurant and sets up the booking form.
+     * <p>
+     * Disables past dates in the date picker and attaches a listener for selecting time slots.
+     * 
+     * @param restaurant the restaurant to display
+     */
     public void setCurrentRestaurantDisplayed(Restaurant restaurant) {
         this.restaurant = new Restaurant(restaurant);
         restaurantLabel.setText("Velkommen til " + restaurant.getName());
@@ -228,6 +258,11 @@ public class BookingPageController {
         });
     }
 
+    /**
+     * Generates all possible time slots based on the restaurant's number of tables.
+     * <p>
+     * By default, restaurants are assumed to be open from 14:00 to 24:00
+     */
     public void clearAndPopulateTimeslots() {
         allAvailableTimeslots.clear();
         int bookingIntervalLength = (int) (120 / restaurant.getAmountOfTables());
@@ -240,11 +275,25 @@ public class BookingPageController {
         }
     }
 
+    /**
+     * Sets whether the booking page is in edit mode and stores the booking being edited.
+     * 
+     * @param state         true if editing an existing booking, false otherwise
+     * @param bookingToEdit the booking object to edit
+     */
     public void setEditState(boolean state, CustomDateObject bookingToEdit) {
         currentlyInEditState = state;
         this.bookingToEdit = new CustomDateObject(bookingToEdit);
     }
 
+    /**
+     * Fills the booking form with data from an existing booking.
+     * 
+     * @param name      the first name of the person who booked
+     * @param surname   the surname of the person who booked
+     * @param date      the date of the booking
+     * @param timeSlot  the time slot of the booking
+     */
     public void fillFieldsWithExistingBookingInfo(String name, String surname, String date, String timeSlot) {
         this.name.setText(name);
         this.surname.setText(surname);
