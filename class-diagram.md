@@ -4,48 +4,43 @@ title: Class diagram
 ---
 
 classDiagram
-    
-
     class User{
         int id
         String name
         String email
         String password
         String phoneNumber
-        Set&lt;Table&gt bookedTables
 
         int getId()
         String getName()
         String getEmail()
         String getPhonenumber()
-        Set&lt;Table&gt getBookedTables()
-        void addTable(Table table)
-        void removeTable(Table table)
         boolean checkNamePassword(String name, String password)
     }
 
     class Restaurant{
-        
-        HashSet&lt;Table&gt; tables
         int id
         String name
-        int tableId
+        int amountOfTables
 
-
-        Collection&lt;Table&gt getTables()
         String getName()
         int getId()
-        void addTable(Table table)
-        Collection&lt;Table&gt getAvailableTables()
-        Table getTableById(int tableId)
-        int getNextTableId()
-        void incrementTableId()
+        int getAmountOfTables()
     }
 
     class FileManagement{
 
-        void saveRestaurants(File restaurantDataFile, Collection&lt;Restaurant&gt restaurants)
-        Collection&lt;Restaurant&gt loadRestaurants(File restaurantDataFile)
+        saveRestaurants(File, Collection~Restaurant~)
+        loadRestaurants(File)
+        saveBooking(File, CustomDateObject)
+        deleteBooking(File, CustomDateObject)
+        loadBookingsForSpecificDate(File, date, restaurantName)
+        loadBookingsForSpecificUser(File, user)
+        loadAllBookings(File)
+        loadSpecificBooking(File, id)
+        loadUsers(File)
+        saveUser(File, User)
+        updateId(File, idType)
     }
 
     User "1" -- "*" Table : Booking
