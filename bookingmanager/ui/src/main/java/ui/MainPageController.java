@@ -34,7 +34,7 @@ public class MainPageController {
     private Scene loginScene;
     private BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
-    private static final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
+    private static final String SuperUserName = "Admin"; // Username of the user that has access to all bookings made in the
     // entire app
 
     @FXML
@@ -208,7 +208,7 @@ public class MainPageController {
 
         List<CustomDateObject> bookings;
 
-        if (currentlyLoggedInUser.getName().toLowerCase().equals(SUPER_USER_NAME.toLowerCase())) {
+        if (currentlyLoggedInUser.getName().toLowerCase().equals(SuperUserName.toLowerCase())) {
             bookings = new ArrayList<>(ServerCommunication.getAllBookings());
             yourBookingsLabel.setText("ALL BOOKINGS");
         } else {
