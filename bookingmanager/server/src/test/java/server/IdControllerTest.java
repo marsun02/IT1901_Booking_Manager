@@ -9,11 +9,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import io.micrometer.core.instrument.Meter.Id;
 // import model.Resta;
@@ -36,6 +42,18 @@ public class IdControllerTest {
         }
     }
 
+    @BeforeEach
+    void resetIdsToZero() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+
+        Map<String, Integer> ids = new HashMap<>();
+        ids.put("userId", 0);
+        ids.put("bookingId", 0);
+
+        mapper.writeValue(new File(ORIGINAL.toString()), ids);
+    }
+
     @AfterAll
     private static void restoreOriginalFile() throws IOException{
         if (Files.exists(tempBackupFile)){
@@ -47,8 +65,9 @@ public class IdControllerTest {
     }
 
     @Test
-    void saveIdTest(){
-        assertEquals(controller.updateId("userId"), 2);
+    void updateIdTest(){
+        assertEquals(controller.updateId("userId"), 1);
+        assertEquals(controller.updateId("bookingId"), 1);
         
     }
 
