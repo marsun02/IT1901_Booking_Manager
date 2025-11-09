@@ -143,7 +143,7 @@ public class BookingPageController {
         clearAndPopulateTimeslots();
         correctlyReloadTimeSlots(chosenDateString);
     }
-
+    
     public void setMainPageController(MainPageController controller) {
         this.mainPageController = controller;
     }
