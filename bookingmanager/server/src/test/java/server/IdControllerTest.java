@@ -3,6 +3,7 @@ package server;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,9 +23,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import io.micrometer.core.instrument.Meter.Id;
-// import model.Resta;
+
 import server.controller.IdController;
-import server.controller.RestaurantController;
+
 
 public class IdControllerTest {
     private final static Path ORIGINAL = Paths.get("../server/src/main/resources/ids.json");
