@@ -22,6 +22,17 @@ public class CustomDateObject {
         this.id = id;
     }
 
+    public CustomDateObject(CustomDateObject other){
+        this.date = other.getDate();
+        this.time = other.getTime();
+        this.restaurantName = other.getRestaurantName();
+        this.user = other.getUser();
+        this.firstName = other.getFirstName();
+        this.lastName = other.getLastName();
+        this.bookedName = other.getBookedName();
+        this.id = other.getId();
+    }
+
     public CustomDateObject() {
     }
 

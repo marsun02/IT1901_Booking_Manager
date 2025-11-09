@@ -31,5 +31,15 @@ public class RestaurantTest {
         restaurant.setAmountOfTables(15);
         assertEquals(15, restaurant.getAmountOfTables());
     }
+
+    @Test
+    void testInitialize(){
+        new Restaurant();
+    }
+
+    @Test
+    void testCopyInitialize(){
+        new Restaurant(restaurant);
+    }
 }
 

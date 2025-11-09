@@ -2,13 +2,12 @@ package core;
 
 import java.util.Collection;
 import java.util.HashSet;
-
 import model.Restaurant;
 
 public class RestaurantInitialization {
     private static Collection<Restaurant> restaurants = new HashSet<>();
     private static String[] restaurantNames = { "Frati", "Szechuan", "BurgerKing", "Barbecuez", "McDonalds",
-            "SteakHouse" };
+        "SteakHouse" };
     private static int tablesPerRestaurant = 8;
 
     public static Collection<Restaurant> initializeAllRestaurants() {

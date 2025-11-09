@@ -20,6 +20,12 @@ public class Restaurant {
 
     }
 
+    public Restaurant(Restaurant restaurant) {
+        this.name = restaurant.getName();
+        this.id = restaurant.getId();
+        this.amountOfTables = restaurant.getAmountOfTables();
+    }
+
     public void setName(String name) {
         this.name = name;
     }
