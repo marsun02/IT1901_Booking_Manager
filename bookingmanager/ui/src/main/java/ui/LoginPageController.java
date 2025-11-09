@@ -22,7 +22,7 @@ import model.User;
  * Controller class for the login page in the application.
  * <p>
  * This class manages both the login and registration workflows. It handles 
- * user authentication, input validation, account creation, and switching
+ * users that exists in the system, input validation, account creation, and switching
  * between the login and registration layouts.
  */
 public class LoginPageController implements Initializable {
@@ -64,9 +64,6 @@ public class LoginPageController implements Initializable {
 
     @FXML
     Text noAccountText;
-
-    // There comes spotbugs from these, but Stage and Scene should not be copied,
-    // therefore the spotsbugs remain for now
 
     /**
      * Sets up the stage and scene references for the controller.
@@ -112,10 +109,10 @@ public class LoginPageController implements Initializable {
      * Handles user login or account creation depending on the current layout.
      * <p>
      * - In login mode, it validates input against existing users and
-     *   navigates to the main page upon success.
+     *   navigates to the main page if the user already exists.
      * <p>
      * - In registration mode, it validates all input fields, ensures username
-     *   is unique, checks password, email and phonenumber format, and creates
+     *   is unique, checks password, email and phone number format, and creates
      *   a new user if all checks pass.
      */
     @FXML

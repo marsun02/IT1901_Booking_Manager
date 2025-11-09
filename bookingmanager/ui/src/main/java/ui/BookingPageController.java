@@ -261,7 +261,7 @@ public class BookingPageController {
     /**
      * Generates all possible time slots based on the restaurant's number of tables.
      * <p>
-     * By default, restaurants are assumed to be open from 14:00 to 24:00
+     * Restaurants are assumed to be open from 14:00 to 24:00
      */
     public void clearAndPopulateTimeslots() {
         allAvailableTimeslots.clear();

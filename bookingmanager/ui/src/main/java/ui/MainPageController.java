@@ -108,7 +108,6 @@ public class MainPageController {
         saveRestaurants();
     }
 
-    // saves the current restaurants in restaurants hashSet to file
     /**
      * Saves all current restaurant data to file.
      */
@@ -116,7 +115,6 @@ public class MainPageController {
         ServerCommunication.saveAllRestaurants(restaurants);
     }
 
-    // loads restaurants from file to hashSet
     /**
      * Loads restaurant data from file into hashSet
      */
@@ -124,8 +122,6 @@ public class MainPageController {
         restaurants = ServerCommunication.getAllRestaurants();
     }
 
-    // There comes spotbugs from these, but Stage and Scene should not be copied,
-    // therefore the spotsbugs remain for now
     /**
      * Sets the stage and scenes used for navigation between pages.
      * 
@@ -218,7 +214,7 @@ public class MainPageController {
     /**
      * Loads and displays all bookings related to the currently logged in user.
      * <p>
-     * Populates the table view with the user's bookings, including restaurant images,
+     * Fills the table view with the user's bookings, including restaurant images,
      * booking details, and edit/delete buttons. If the logged in user is the admin,
      * all bookings in the system are displayed instead.
      */
