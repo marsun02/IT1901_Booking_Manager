@@ -127,7 +127,6 @@ public class BookingPageControllerUITest {
         assertNull(controller.date.getValue());
     }
 
-    // ------------------ New test to cover edit booking branch ------------------
     @Test
     void testBookingSucceedsWhenEditing(FxRobot robot) {
         Consumer<CustomDateObject> mockSaveBooking = mock(Consumer.class);
@@ -160,7 +159,6 @@ public class BookingPageControllerUITest {
         assertFalse(controller.currentlyInEditState); // ensures flag reset after edit
     }
 
-    // ------------------ New test to cover fillFieldsWithExistingBookingInfo ------------------
     @Test
     void testFillFieldsWithExistingBookingInfo(FxRobot robot) {
         String testName = "Eren";
@@ -201,6 +199,4 @@ public class BookingPageControllerUITest {
 
         WaitForAsyncUtils.waitForFxEvents();
     }
-
-
 }
