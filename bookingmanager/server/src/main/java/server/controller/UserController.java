@@ -18,8 +18,8 @@ import server.persistence.FileManagement;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-    final Path PATH = Paths.get("../server/src/main/resources/users.json");
-    final File USERS_DATA_FILE = PATH.toFile();
+    final Path path = Paths.get("../server/src/main/resources/users.json");
+    final File usersDataFile = path.toFile();
 
     /**
      * api call for getting all saved users.
@@ -28,7 +28,7 @@ public class UserController {
      */
     @GetMapping
     public Collection<User> getAllUsers() {
-        return FileManagement.loadUsers(USERS_DATA_FILE);
+        return FileManagement.loadUsers(usersDataFile);
     }
 
     /**
@@ -38,7 +38,6 @@ public class UserController {
      */
     @PostMapping
     public void saveUser(@RequestBody User user) {
-        FileManagement.saveUser(USERS_DATA_FILE, user);
+        FileManagement.saveUser(usersDataFile, user);
     }
-
 }
