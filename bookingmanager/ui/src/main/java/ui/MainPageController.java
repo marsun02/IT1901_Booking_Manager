@@ -31,7 +31,7 @@ import model.User;
  * <p> 
  * Handles displaying restaurants, managing user bookings, and controlling navigation
  * between the main page, booking page, and the login page. It also manages loading,
- * saving, and displaying restarant and booking data.
+ * saving, and displaying restaurant and booking data.
  */
 public class MainPageController {
     Collection<Restaurant> restaurants;

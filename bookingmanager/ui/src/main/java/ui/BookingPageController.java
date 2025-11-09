@@ -20,7 +20,7 @@ import model.Restaurant;
 /**
  * Controller class for booking page in the application
  * <p>
- * Handles all logic related to booking a table, including displaying available
+ * Handles all logic related to making a booking reservation, including displaying available
  * time slots, validating user input, saving new bookings, editing 
  * existing bookings, and navigating back to the main page.
  */
