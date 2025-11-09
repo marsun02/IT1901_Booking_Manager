@@ -34,7 +34,7 @@ public class MainPageController {
     private Scene loginScene;
     private BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
-    private final static String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
+    private static final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
     // entire app
 
     @FXML
@@ -96,8 +96,6 @@ public class MainPageController {
         restaurants = ServerCommunication.getAllRestaurants();
     }
 
-    // There comes spotbugs from these, but Stage and Scene should not be copied,
-    // therefore the spotsbugs remain for now
     public void setStage(
             App app,
             Stage primaryStage,

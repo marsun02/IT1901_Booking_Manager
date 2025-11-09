@@ -44,8 +44,6 @@ public class BookingPageController {
 
     private String chosenTimeToBook;
 
-    // There comes spotbugs from these, but Stage and Scene should not be copied,
-    // therefore the spotsbugs remain for now
     public void setStage(
             App app,
             Stage primaryStage,
