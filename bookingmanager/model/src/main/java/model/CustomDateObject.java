@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * CustomDateObject is a class representing a date and time tailored for this project as other
+ * similar classes had problems/redundant info for saving/loading.
+ * Can also be seen as a representation of a booking as the bookings datafile only contains a collection of this class.
+ */
 public class CustomDateObject {
     private String date;
     private String time;
@@ -10,6 +15,17 @@ public class CustomDateObject {
     private String lastName;
     private int id;
 
+    /**
+     * Creates a new date object containing a date, time, name of linked restaurant, linked user, first and last name of booking user and an id.
+
+     * @param date date for booking.
+     * @param time time of day for booking.
+     * @param restaurantName name of linked restaurant.
+     * @param user name of linked user.
+     * @param firstName first name of user making booking.
+     * @param lastName last name of user making booking.
+     * @param id id of this date object.
+     */
     public CustomDateObject(String date, String time, String restaurantName, String user, String firstName,
             String lastName, int id) {
         this.date = date;
@@ -22,6 +38,11 @@ public class CustomDateObject {
         this.id = id;
     }
 
+    /**
+     * Creates copy of another instance of this class.
+
+     * @param other object of which to make copy of.
+     */
     public CustomDateObject(CustomDateObject other){
         this.date = other.getDate();
         this.time = other.getTime();
@@ -33,6 +54,9 @@ public class CustomDateObject {
         this.id = other.getId();
     }
 
+    /**
+     * Creates instance of this class without the parameters set.
+     */
     public CustomDateObject() {
     }
 
