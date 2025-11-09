@@ -1,31 +1,52 @@
 ```mermaid
-    graph TD
+    flowchart TD
 
-    %% Pakke: Persistance
-    subgraph Persistance["Persistance"]
-        A1[CustomDateObject]
-        A2[FileManagement]
-        A3[Restaurant]
-        A4[Table]
-        A5[User]
+    %% packages
 
+    subgraph UI
+        App
+        MainPageController
+        BookingPageController
+        LoginPageController
     end    
 
 
-    %% Pakke: Core
-    subgraph Core["Core"]
-        B1[RestaurantInitialization]
-        B2[ControllerHelpFunctions]
+    
+    subgraph Core
+        ServerCommunication
+        ControllerHelpFunctions
+        RestaurantInitialization
     end   
 
-    %% Pakke: UI
-    subgraph UI["UI"]
-        C1[App]
-        C2[BookingPageController]
-        C3[MainPageController]
+    
+    subgraph Model
+        User
+        Restaurant
+        CustomDateObject
     end 
+
+
+    subgraph Server_Controller
+        BookingController
+        RestaurantController
+        UserController
+        IdController
+    end
+
+    subgraph Server_Persistence
+        FileManagement
+    end
+
 
     %% Dependencies
     UI --> Core
-    Core --> Persistance
+    UI --> Model
+
+    Core --> Model
+    Core --> Server_Controller
+
+    Server_Controller --> Model
+    Server_Controller --> Server_Persistence
+
+    Server_Persistence --> Model
 ```
