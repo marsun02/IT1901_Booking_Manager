@@ -85,7 +85,7 @@ public class User {
 
      * @param name username filled in to login form.
      * @param password password filled in to login form.
-     * @return boolean representing wether or not the username and password is matching.
+     * @return boolean representing whether or not the username and password is matching.
      */
     public boolean checkNamePassword(String name, String password) {
         if (name == null || password == null) {
