@@ -25,7 +25,7 @@ public class BookingPageController {
     private Restaurant restaurant;
     private MainPageController mainPageController;
     private Collection<String> allAvailableTimeslots = new ArrayList<>();
-    private boolean currentlyInEditState = false;
+    boolean currentlyInEditState = false;
     private CustomDateObject bookingToEdit = null;
 
     @FXML

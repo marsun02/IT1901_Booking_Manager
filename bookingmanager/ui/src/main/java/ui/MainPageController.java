@@ -32,12 +32,11 @@ public class MainPageController {
     Collection<Restaurant> restaurants;
 
     Stage primaryStage;
-    private Scene bookingScene;
+    Scene bookingScene;
     Scene loginScene;
     BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
-    private final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
-                                                    // entire app
+    private final String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the entire app
 
     @FXML Label loggedInUserLabel;
 
@@ -67,8 +66,7 @@ public class MainPageController {
 
         loadRestaurants();
 
-        // If the data file does not contain the correct amount of restaurants, it
-        // creates 6 new ones
+        // If the data file does not contain the correct amount of restaurants, it creates 6 new ones
         if (restaurants.size() != 6) {
             initializeAllRestaurants();
         }
@@ -140,9 +138,14 @@ public class MainPageController {
         return currentlyLoggedInUser;
     }
 
+    public Collection<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
     public void loadUserBookings() {
         bookingOverview.getItems().clear();
         bookingOverview.getColumns().forEach(col -> col.setStyle("-fx-alignment: CENTER;"));
+
         tableImage.setCellValueFactory(cellData -> {
             final Image editImage = new Image(
                     getClass().getResourceAsStream("/ui/" + cellData.getValue().getRestaurantName() + ".png"));
@@ -150,17 +153,22 @@ public class MainPageController {
             editImageView.setFitWidth(100);
             editImageView.setFitHeight(100);
             return new ReadOnlyObjectWrapper<>(editImageView);
-
         });
+
         tableName.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
         tableDate.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
         tableTime.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
+
         tableEdit.setCellValueFactory(cellData -> {
             final Image editImage = new Image(getClass().getResourceAsStream("/ui/editIcon.png"));
             final ImageView editImageView = new ImageView(editImage);
             editImageView.setFitWidth(20);
             editImageView.setFitHeight(20);
             Button editButton = new Button("", editImageView);
+
+            // ✅ Added fx:id for testing
+            editButton.setId("editButton_" + cellData.getValue().getId());
+
             editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
@@ -182,12 +190,17 @@ public class MainPageController {
             });
             return new ReadOnlyObjectWrapper<>(editButton);
         });
+
         tableDelete.setCellValueFactory(cellData -> {
             final Image deleteImage = new Image(getClass().getResourceAsStream("/ui/deleteIcon.png"));
             final ImageView deleteImageView = new ImageView(deleteImage);
             deleteImageView.setFitWidth(20);
             deleteImageView.setFitHeight(20);
             Button deleteButton = new Button("", deleteImageView);
+
+            // ✅ Added fx:id for testing
+            deleteButton.setId("deleteButton_" + cellData.getValue().getId());
+
             deleteButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
@@ -203,7 +216,7 @@ public class MainPageController {
 
         List<CustomDateObject> bookings;
 
-        if (currentlyLoggedInUser.getName().toLowerCase().equals(SUPER_USER_NAME.toLowerCase())) {
+        if (currentlyLoggedInUser.getName().equalsIgnoreCase(SUPER_USER_NAME)) {
             bookings = new ArrayList<>(ServerCommunication.getAllBookings());
             yourBookingsLabel.setText("ALL BOOKINGS");
         } else {
