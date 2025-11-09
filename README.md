@@ -92,6 +92,19 @@ Run tests with this command:
 
 ---
 
+## Checkstyle and spotbugs
+
+To verify whether the project follows checkstyle standards, you can run the following command:
+   ```bash
+   mvn checkstyle:check
+   ```
+   And similarly you can check for any spotbugs using this command:
+   ```bash
+   mvn spotbugs:check
+   ```
+
+---
+
 ## Versions and dependencies
    - Java/javafx 23.0.1
    - Maven: 17
