@@ -12,19 +12,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import server.persistence.FileManagement;
 
+/**
+ * Controller managing all api calls regarding restaurants data file.
+ */
 @RestController
 @RequestMapping("/api/restaurants")
 public class RestaurantController {
-    final Path PATH = Paths.get("../server/src/main/resources/restaurants.json");
-    final File RESTAURANT_DATA_FILE = PATH.toFile();
+    final Path path = Paths.get("../server/src/main/resources/restaurants.json");
+    final File restaurantDataFile = path.toFile();
 
+    /**
+     * api call retrieving all saved restaurants.
+
+     * @return all saved restaurants.
+     */
     @GetMapping
     public Collection<Restaurant> getAllRestaurants() {
-        return FileManagement.loadRestaurants(RESTAURANT_DATA_FILE);
+        return FileManagement.loadRestaurants(restaurantDataFile);
     }
 
+    /**
+     * api call saving given restaurants to file (and overriding the previously saved ones).
+
+     * @param restaurants restaurants to be saved.
+     */
     @PostMapping
     public void saveAllRestaurants(@RequestBody Collection<Restaurant> restaurants) {
-        FileManagement.saveRestaurants(RESTAURANT_DATA_FILE, restaurants);
+        FileManagement.saveRestaurants(restaurantDataFile, restaurants);
     }
 }
