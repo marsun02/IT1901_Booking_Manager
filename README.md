@@ -88,6 +88,8 @@ Run tests with this command:
    ```
    Note that some tests will print a stacktrace unless the **server** is running. The tests should still pass, but may clutter the terminal window.
 
+   Additionally, to see jacoco test coverage for the project, each module has to be checked separately. This is due to how jacoco works, and checking coverage for the project as a whole will result in incorrect percentages.
+
 ---
 
 ## Versions and dependencies
