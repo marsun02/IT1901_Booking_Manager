@@ -133,7 +133,9 @@ The application also includes a .gitignore file to prevent unnecessary or local 
 
 ## Release specific documentation
 ### Project Specific Documentation
-[Class Diagram](class-diagram.md)
+[Class Diagram](docs/diagrams/class-diagram.md)
+[Package Diagram](docs/diagrams/package-diagram.md)
+[Sequence Diagram](docs/diagrams/sequence-diagram.md)
 [Userstory - Book Tables](docs/userstories/table-booking.md)
 [Userstory - Sign in](docs/userstories/sign-in.md)
 

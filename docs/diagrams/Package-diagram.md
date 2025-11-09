@@ -1,4 +1,7 @@
 ```mermaid
+---
+title: Package diagram
+---
     flowchart TD
 
     %% packages
@@ -50,3 +53,5 @@
 
     Server_Persistence --> Model
 ```
+
+**[Back to root README](../../README.md)**
