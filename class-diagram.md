@@ -4,19 +4,7 @@ title: Class diagram
 ---
 
 classDiagram
-    class Table{
-        boolean isBooked
-        int id
-        int spots
-        Date bookedTime
-
-        boolean isBooked()
-        int getId()
-        int getSpots()
-        Date getBookedTime()
-        void book(User bookingUser, Date bookedTime)
-        void freeTable(User bookingUser)
-    }
+    
 
     class User{
         int id
