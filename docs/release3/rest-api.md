@@ -19,4 +19,4 @@ The server module includes four main parts: The app, the controllers, the data f
 
 When implementing this, we decided to keep the old file management all the way until all the calls were done. When the calls were done, we made a ServerCommunication.java class to handle the calling of api calls. This is located in the core module. Once the api was ready, the persistence module was removed and all its method calls was replaced with api calls (ServerCommunication methods).
 
-[Root README](../../README.md)
+**[Back to root README](../../README.md)**

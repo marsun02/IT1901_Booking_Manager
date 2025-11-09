@@ -19,3 +19,5 @@ In this project, martiwar started by creating several tests for Release 1. Later
 
 ## Contribution of tobiaheg
 In this project, tobiaheg created several guides to help the team with workflow processes, including how to write conventional commit messages and how to create branches and pull requests. He also initialized the project and set up the main classes used to build the application. Together with mariuscf, he divided the project into different modules and established the overall structure for them. Towards the second release, tobiaheg worked on tests and implemented the ControllerHelpFunctionTest. Later, he worked on developing the REST API, implementing several API calls for the methods that were previously part of the FileManagement class. Once the API was fully set up, he also helped transition away from the old file management system. In addition, he configured the .gitignore file for the project.
+
+**[Back to root README](../../README.md)**
