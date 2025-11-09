@@ -88,6 +88,23 @@ Run tests with this command:
    ```
    Note that some tests will print a stacktrace unless the **server** is running. The tests should still pass, but may clutter the terminal window.
 
+   Additionally, to see jacoco test coverage for the project, each module has to be checked separately. To do this, navigate to the "Testing" section in the VSCode GUI and click "Run Test with Coverage" which appears when hovering over the module. This is due to how jacoco works, and checking coverage for the project as a whole will result in incorrect percentages.
+
+   Sometimes the UI tests will not show up in the Testing section. To resolve this, open the test file itself, and then navigate back to the "Testing" section. It should now be visible.
+
+---
+
+## Checkstyle and spotbugs
+
+To verify whether the project follows checkstyle standards, you can run the following command:
+   ```bash
+   mvn checkstyle:check
+   ```
+   And similarly you can check for any spotbugs using this command:
+   ```bash
+   mvn spotbugs:check
+   ```
+
 ---
 
 ## Versions and dependencies
