@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * CustomDateObject is a class representing a date and time tailored for this project as other
+ * similar classes had problems/redundant info for saving/loading.
+ * Can also be seen as a representation of a booking as the bookings datafile only contains a collection of this class.
+ */
 public class CustomDateObject {
     private String date;
     private String time;
@@ -10,7 +15,19 @@ public class CustomDateObject {
     private String lastName;
     private int id;
 
-    public CustomDateObject(String date, String time, String restaurantName, String user, String firstName, String lastName, int id){
+    /**
+     * Creates a new date object containing a date, time, name of linked restaurant, linked user, first and last name of booking user and an id.
+
+     * @param date date for booking.
+     * @param time time of day for booking.
+     * @param restaurantName name of linked restaurant.
+     * @param user name of linked user.
+     * @param firstName first name of user making booking.
+     * @param lastName last name of user making booking.
+     * @param id id of this date object.
+     */
+    public CustomDateObject(String date, String time, String restaurantName, String user, String firstName,
+            String lastName, int id) {
         this.date = date;
         this.time = time;
         this.restaurantName = restaurantName;
@@ -21,7 +38,27 @@ public class CustomDateObject {
         this.id = id;
     }
 
-    public CustomDateObject() {}
+    /**
+     * Creates copy of another instance of this class.
+
+     * @param other object of which to make copy of.
+     */
+    public CustomDateObject(CustomDateObject other){
+        this.date = other.getDate();
+        this.time = other.getTime();
+        this.restaurantName = other.getRestaurantName();
+        this.user = other.getUser();
+        this.firstName = other.getFirstName();
+        this.lastName = other.getLastName();
+        this.bookedName = other.getBookedName();
+        this.id = other.getId();
+    }
+
+    /**
+     * Creates instance of this class without the parameters set.
+     */
+    public CustomDateObject() {
+    }
 
     public String getDate() {
         return date;
@@ -35,11 +72,11 @@ public class CustomDateObject {
         return restaurantName;
     }
 
-    public String getUser(){
+    public String getUser() {
         return user;
     }
 
-    public String getBookedName(){
+    public String getBookedName() {
         return bookedName;
     }
 
@@ -51,10 +88,9 @@ public class CustomDateObject {
         return lastName;
     }
 
-    public Integer getId(){ // Integer instead of int so we can use toString() on it
+    public Integer getId() { // Integer instead of int so we can use toString() on it
         return id;
     }
-
 
     public void setDate(String date) {
         this.date = date;
@@ -63,16 +99,16 @@ public class CustomDateObject {
     public void setTime(String time) {
         this.time = time;
     }
-    
+
     public void setRestaurantName(String restaurantName) {
         this.restaurantName = restaurantName;
     }
 
-    public void setUser(String user){
+    public void setUser(String user) {
         this.user = user;
     }
 
-    public void setBookedName(String bookedName){
+    public void setBookedName(String bookedName) {
         this.bookedName = bookedName;
     }
 
@@ -83,8 +119,8 @@ public class CustomDateObject {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
 

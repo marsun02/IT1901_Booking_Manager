@@ -1,89 +1,76 @@
 package model;
 
-import java.util.Collection;
-import java.util.HashSet;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+/**
+ * Represents a restaurant with id, name and tables.
+ * 
+ * <p>The restaurants have a set amount of tables which decides the available time slots for booking.</p>
+ */
 
 public class Restaurant {
     // Private fields
-    private Collection<Table> tables = new HashSet<>();
-    private int id;
-    private String name;
-    private int tableId = 0;
 
-    // Constructor
-    public Restaurant(String name, int id){
+    /** Id used for referencing by other classes. */
+    private int id;
+
+    /** Name of the restaurant. */
+    private String name;
+
+    /** Amount of tables available for bookings. */
+    private int amountOfTables;
+
+    /**
+     * Creates a new {@Code Restaurant}-object with a name, id and amount of tables.
+
+     * @param name Name of the restaurant.
+     * @param id Id used for referencing by other classes.
+     * @param amountOfTables Amount of tables available for booking.
+     */
+    public Restaurant(String name, int id, int amountOfTables) {
         this.name = name;
         this.id = id;
-        this.tables = new HashSet<>();
+        this.amountOfTables = amountOfTables;
     }
 
     // empty constructor and setters for Jackson
     // not intended for normal use
 
-    public Restaurant(){
+    /**
+     * Creates restaurant without any parameters.
+     */
+    public Restaurant() {}
 
+    /**
+     * Creates a copy of a restaurant by taking in another instance of this class.
+
+     * @param restaurant The restaurant of which to make a copy of.
+     */
+    public Restaurant(Restaurant restaurant) {
+        this.name = restaurant.getName();
+        this.id = restaurant.getId();
+        this.amountOfTables = restaurant.getAmountOfTables();
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setNextTableId(int nextTableId){
-        this.tableId = nextTableId;
-    }
-
-    // Getters
-    public Collection<Table> getTables(){
-        return new HashSet<>(this.tables);
+    public void setAmountOfTables(int amount) {
+        this.amountOfTables = amount;
     }
 
     public String getName() {
         return name;
     }
-    
-    public int getId(){
-        return this.id;
+
+    public int getId() {
+        return id;
     }
 
-    // Adds table to collection of tables
-    public void addTable(Table table){
-        this.tables.add(table);
-        incrementTableId();
-    }
-    
-    // Puts all the available tables in a list and returns them
-    @JsonIgnore // This is to prevent jackson from writing this as a seperate field
-    public Collection<Table> getAvailableTables() {
-        Collection<Table> available = new HashSet<>();
-        for (Table table : tables) {
-            if (!table.isBooked()){
-                available.add(table);
-            }
-        }
-        return available;
-    }
-
-    // Returns the table of a given id
-    public Table getTableById(int tableId){
-        for (Table table : tables){
-            if (table.getId() == tableId){
-                return table;
-            }
-        }
-        return null;
-    }
-
-    public int getNextTableId(){
-        return tableId;
-    }
-
-    private void incrementTableId(){
-        tableId++;
+    public int getAmountOfTables() {
+        return amountOfTables;
     }
 }

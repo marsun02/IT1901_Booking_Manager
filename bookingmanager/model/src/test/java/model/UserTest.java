@@ -3,19 +3,15 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
 
     private User user;
-    private Table table1;
 
     @BeforeEach
     void setUp() {
         user = new User(1, "Alice", "alice@example.com", "1234567890", "secret");
-        table1 = new Table(101, 4);
     }
 
     @Test
@@ -24,7 +20,6 @@ public class UserTest {
         assertEquals("Alice", user.getName());
         assertEquals("alice@example.com", user.getEmail());
         assertEquals("1234567890", user.getPhoneNumber());
-        assertTrue(user.getBookedTables().isEmpty());
     }
 
     @Test
@@ -40,47 +35,27 @@ public class UserTest {
     }
 
     @Test
-    void testAddTable() {
-        assertTrue(user.getBookedTables().isEmpty());
+    void testEmptyconstructorAndSetters(){
+        User emptyUser = new User();
+        assertNull(emptyUser.getEmail());
+        assertEquals(0, emptyUser.getId());
+        assertNull(emptyUser.getName());
+        assertNull(emptyUser.getPhoneNumber());
+        assertFalse(emptyUser.checkNamePassword(null, null)); // Should return false when either name or password is false
 
-        user.addTable(table1);
-        assertEquals(1, user.getBookedTables().size());
-        assertTrue(user.getBookedTables().contains(table1));
-    }
+        emptyUser.setName("name");
+        assertEquals("name", emptyUser.getName());
 
-    @Test
-    void testAddTableTwice() {
-        user.addTable(table1);
-        user.addTable(table1); // should not duplicate
-        assertEquals(1, user.getBookedTables().size());
-    }
+        emptyUser.setId(1);
+        assertEquals(1, emptyUser.getId());
 
-    @Test
-    void testRemoveTable() {
-        user.addTable(table1);
-        assertEquals(1, user.getBookedTables().size());
+        emptyUser.setEmail("e@mail.test");
+        assertEquals("e@mail.test", emptyUser.getEmail());
 
-        user.removeTable(table1);
-        assertTrue(user.getBookedTables().isEmpty());
-    }
+        emptyUser.setPhoneNumber("12345678");
+        assertEquals("12345678", emptyUser.getPhoneNumber());
 
-    @Test
-    void testRemoveTableNotInList() {
-        // removing something not booked should not crash
-        user.removeTable(table1);
-        assertTrue(user.getBookedTables().isEmpty());
-    }
-
-    @Test
-    void testIntegrationWithTableBooking() {
-        // Book table from the Table side
-        table1.book(user, new Date());
-        assertTrue(table1.isBooked());
-        assertTrue(user.getBookedTables().contains(table1));
-
-        // Free the table
-        table1.freeTable(user);
-        assertFalse(table1.isBooked());
-        assertFalse(user.getBookedTables().contains(table1));
+        emptyUser.setPassword("password");
+        assertTrue(emptyUser.checkNamePassword("name", "password"));
     }
 }

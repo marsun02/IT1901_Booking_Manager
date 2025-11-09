@@ -82,6 +82,23 @@
             <version>5.5.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bookingmanager.core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bookingmanager.server</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>bookingmanager.model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <!-- Code section fetched from stack overflow |
         https://stackoverflow.com/questions/29360631/can-i-add-springboot-framework-to-existing-maven-project -->
@@ -120,6 +137,9 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>${main.class}</mainClass>
+                            <launcher>bookingmanager</launcher>
+                            <jlinkImageName>BookingManagerImage</jlinkImageName>
+                            <jlinkZipName>BookingManagerZip</jlinkZipName>
                         </configuration>
                     </execution>
                 </executions>
@@ -153,9 +173,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.3.4</version> 
+                <version>3.3.4</version>
             </plugin>
             <!-- End of stack overflow section -->
+
         </plugins>
     </build>
 </project>

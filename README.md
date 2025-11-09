@@ -4,43 +4,78 @@
 ---
 
 ## Quick description
-Our application is an overview of a wide selection of restaurants, which allows users to easily book tables at their preferred locations. The goal is to simplify the table booking process by gathering everything in one convenient place.
+Our application is an overview of a wide selection of restaurants, which allows users to easily book reservations at their preferred locations. The goal is to simplify the booking process by gathering everything in one convenient place.
 
-Our target users are the people who frequently book tables and want a platform to manage all their table reservations. With this app, you'll be able to view and manage bookings across multiple restaurants at the same time.
+Our target users are the people who frequently book reservations and want a platform to manage all their restaurant reservations. With this app, you'll be able to view and manage bookings across multiple restaurants at the same time.
 
-To help keep everything organized, the app will include a login feature, giving users a personalized overview of their upcoming table reservations.
+To help keep everything organized, the app will include a login feature, giving users a personalized overview of their upcoming restaurant reservations.
 
 ---
 
 ## Features
-- Shows a list of available tables in the selected restaurant
-- Allows the user to book the desired table
+- Shows a list of available time slots in the selected restaurant
+- Allows the user to book the desired reservation
 - Prevents double booking by checking availability before completing the booking process
 - Supports multiple users on the same booking management system
+- An admin user will have access to all bookings
 
 ---
 
 ## How to run
-1. Clone the repository:
+1. Clone the repository in a directory of choice:
    ```bash
    git clone git@git.ntnu.no:IT1901-2025-groups/gr2515.git
    ```
 
-2. Navigate to correct directory:
+2. Navigate to the correct directory:
    ```bash
    cd bookingmanager/
    ```
+
+The rest of the commands are meant to be run from the **bookingmanager**-directory. Always be sure to be in the correct directory before running any commands.
 
 3. Compile code:
    ```bash
    mvn clean compile
    ```
 
-4. Start SpringBoot app (important to do before Javafx app)
+4. Install code: 
+   ```bash
+   mvn clean install
+   ```
 
-5. Start Javafx app:
+5. Start SpringBoot app (important to do before Javafx app)
+   ```bash
+   mvn clean spring-boot:run -pl server
+   ```
+
+6. Start Javafx app:
    ```bash
    mvn javafx:run -pl ui
+   ```
+
+---
+
+## Download and run
+
+All of the following commands are meant to be run from the **bookingmanager**-directory. Always be sure to be in the correct directory before running any commands.
+
+1. Download app:
+   ```bash
+   mvn javafx:jlink -f ui/pom.xml
+   ```
+
+2. To run the downloaded app, paste the following command in your terminal:
+   ```bash
+   ./ui/target/BookingManagerImage/bin/bookingmanager
+   ```
+
+   If step 2 does not work, you can also find the zip file in ui/target/
+   
+   Also make sure the **server** is running when trying to use the downloaded app.
+   If the server is not running, you can do so using the following line of code:
+   ```bash
+   mvn clean spring-boot:run -pl server
    ```
 
 ---
@@ -51,16 +86,17 @@ Run tests with this command:
    ```bash
    mvn test
    ```
+   Note that some tests will print a stacktrace unless the **server** is running. The tests should still pass, but may clutter the terminal window.
 
 ---
 
 ## Versions and dependencies
    - Java/javafx 23.0.1
    - Maven: 17
-   - Jackson: 2.10.0
-   - JUnit: 5.11.0
+   - Jackson: 2.20.0
+   - JUnit: 5.12.2
    - SpringBoot: 3.3.4
-   - JaCoCo: 0.8.3
+   - JaCoCo: 0.8.13
 
 ---
 
@@ -83,17 +119,15 @@ Follow the checklist provided below before opening a new PR to ensure smooth col
 
 ---
 
-## General folder structure
+## General directory structure
 
-We have divded our project into different modules, and each module has its own pom.xml file. The bookingmanager folder has the main application logic. It has the core folder which include the core logic. The persistence folder includes the saving and loading from file. While the UI folder has all the application controls. That means it includes all the visible content for the application. 
+We have divded our project into several modules, each with its own pom.xml file. The bookingmanager directory is our project which includes four modules, core, server, model and UI. The core module holds the essential functionality. The server module handles saving and loading data from files, as well as the controllers which make the application run. The model module contains the classes that the rest of the project depends on. Finally, the UI module manages all the application controls. That means it includes all the visible content for the application. 
 
-Within the project, we have a config folder which includes checkstyles and spotbugs. Checkstyles is used to see how the code is formatted while spotbugs is in place to check how it is made and if we have any poor written code that needs to be changed. 
+In our project, we have a config folder that includes Checkstyle and SpotBugs. Checkstyle is used to ensure that the code follows consistent formatting and style guidelines, while SpotBugs helps identify potential issues or poorly written code that may need improvement.
 
-In the docs folder, we have added in all documentation that relates to the specific releases. We are adding in a new folder for each release that we create, and all necessary information will be found there. These will include our general workflow and teamwork, and also ai-tools that we have used and similar documentation.
+The docs folder contains all documentation related to each project release. For every new release, we create a separate folder that includes all the necessary information. This documentation covers topics such as our general workflow, teamwork practices, and AI tools we've used. It also includes userstories, diagrams and other work-related materials. Overall, the documentation is intended to provide a clear overview of the project and serve as a helpful guide for any new members joining the team.
 
-The application also has a .gitignore file included, to prevent anything that we don't need for the project to be pushed to github. We have added certain directories in this .gitignore file such as "target", which we want to be ignored. That means anything that is locally for your own computer will be disregarded when changed.
-
-In the root directory, you will find the [class-diagram.md](class-diagram.md) file that explains the relations between our main classes. There is also the root README file (which is this file) that has the main info about the application.
+The application also includes a .gitignore file to prevent unnecessary or local files from being pushed to GitHub. We've added certain directories to this file, such as "target", so that files generated locally on each computer are ignored and not included in version control.
 
 ---
 
@@ -114,3 +148,15 @@ In the root directory, you will find the [class-diagram.md](class-diagram.md) fi
 [Use of ai-tools](docs/release2/ai-tools.md)
 [Persistence](docs/release2/persistence.md)
 [Code quality](docs/release2/code-quality.md)
+
+### Release 3
+[Rest api](docs/release3/rest-api.md)
+[Teamwork]
+[Sustainability]
+[Challenges]
+[Contribution]
+[Use of ai-tools]
+[Work Practices]
+[Workflow]
+[Persistence](docs/release3/persistence.md)
+[Code quality]

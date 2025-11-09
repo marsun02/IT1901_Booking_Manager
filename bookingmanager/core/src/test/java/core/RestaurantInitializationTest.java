@@ -25,8 +25,13 @@ public class RestaurantInitializationTest {
         restaurants = RestaurantInitialization.initializeAllRestaurants();
         assertEquals(6, restaurants.size());
         for (Restaurant restaurant : restaurants) {
-            assertEquals(8, restaurant.getTables().size());
+            assertEquals(8, restaurant.getAmountOfTables());
             assertTrue(restaurantNames.contains(restaurant.getName()));
         }
+    }
+
+    @Test
+    void testClassInitialize(){
+        new RestaurantInitialization();
     }
 }

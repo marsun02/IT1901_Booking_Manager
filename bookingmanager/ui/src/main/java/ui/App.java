@@ -5,11 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-public class App extends Application{
+public class App extends Application {
 
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage) {
         try {
             FXMLLoader mainLoader = new FXMLLoader(App.class.getResource("MainPage.fxml"));
             Scene mainScene = new Scene(mainLoader.load());
@@ -23,18 +22,18 @@ public class App extends Application{
             Scene loginScene = new Scene(loginLoader.load());
             LoginPageController loginController = loginLoader.getController();
 
-            mainController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
-            mainController.setBookingPageController(bookingController);
-            bookingController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
-            bookingController.setMainPageController(mainController);
             loginController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
+            mainController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
+            bookingController.setStage(this, primaryStage, bookingScene, mainScene, loginScene);
             loginController.setMainPageController(mainController);
+            mainController.setBookingPageController(bookingController);
+            bookingController.setMainPageController(mainController);
 
             primaryStage.setScene(loginScene);
             primaryStage.setTitle("Booking manager");
             primaryStage.show();
-        } catch (Exception e){
-            System.out.println("Error loading FXML file: " + e.getMessage()); 
+        } catch (Exception e) {
+            System.out.println("Error loading FXML file: " + e.getMessage());
             e.printStackTrace();
         }
     }
