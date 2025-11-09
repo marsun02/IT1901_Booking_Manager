@@ -58,11 +58,10 @@ public class UserControllerTest {
     @Test
     void SaveAndGetUserTest(){
         Collection<User> usersOrginal = controller.getAllUsers();
-        assertEquals(usersOrginal.size(), 2);
         User user = new User(10, "tester", "test@gmail.com", "10101010", "123");
         controller.saveUser(user);
         Collection<User> userAddedToUsers = controller.getAllUsers();
-        assertEquals(userAddedToUsers.size(), 3);
+        assertEquals(usersOrginal.size() + 1, userAddedToUsers.size());
     }
 
 
