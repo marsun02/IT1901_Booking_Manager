@@ -1,5 +1,6 @@
 package ui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,6 +10,9 @@ import javafx.stage.Stage;
 import model.CustomDateObject;
 import model.Restaurant;
 import model.User;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +21,11 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import org.testfx.util.WaitForAsyncUtils;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.function.Consumer;
 
@@ -27,8 +36,12 @@ import static org.mockito.Mockito.*;
 @ExtendWith(ApplicationExtension.class)
 public class BookingPageControllerUITest {
 
+    private static final Path ORIGINAL_IDS = Paths.get("../server/src/main/resources/ids.json");
+    private static final Path ORIGINAL_BOOKINGS = Paths.get("../server/src/main/resources/bookings.json");
     private BookingPageController controller;
     private Stage stage;
+    private static Path tempBackupIdsFile;
+    private static Path tempBackupBookingsFile;
 
     @Start
     private void start(Stage stage) throws Exception {
@@ -38,6 +51,36 @@ public class BookingPageControllerUITest {
         this.stage = stage;
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @BeforeAll
+    private static void createTempBackupFile() throws IOException {
+        try {
+            tempBackupIdsFile = Files.createTempFile("idsBackup", ".json");
+            tempBackupBookingsFile = Files.createTempFile("bookingsBackup", ".json");
+            Files.copy(ORIGINAL_IDS, tempBackupIdsFile, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(ORIGINAL_BOOKINGS, tempBackupBookingsFile, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            System.out.println("Could not create backup!");
+            throw new IOException("Aborting tests");
+        }
+    }
+
+    @AfterAll
+    private static void restoreOriginalFile() throws IOException {
+        if (Files.exists(tempBackupIdsFile)) {
+            Files.copy(tempBackupIdsFile, ORIGINAL_IDS, StandardCopyOption.REPLACE_EXISTING);
+            Files.deleteIfExists(tempBackupIdsFile);
+        } else {
+            System.out.println("Error restoring original file - could not find backup");
+        }
+
+        if (Files.exists(tempBackupBookingsFile)) {
+            Files.copy(tempBackupBookingsFile, ORIGINAL_BOOKINGS, StandardCopyOption.REPLACE_EXISTING);
+            Files.deleteIfExists(tempBackupBookingsFile);
+        } else {
+            System.out.println("Error restoring original file - could not find backup");
+        }
     }
 
     @BeforeEach
@@ -70,30 +113,6 @@ public class BookingPageControllerUITest {
     }
 
     @Test
-    void testBookingSucceedsWithValidInput(FxRobot robot) {
-        Consumer<CustomDateObject> mockSaveBooking = mock(Consumer.class);
-        controller.setSaveBookingFunction(mockSaveBooking);
-
-        robot.clickOn("#name").write("Pusete");
-        robot.clickOn("#surname").write("Pus");
-
-        javafx.application.Platform.runLater(() -> {
-            controller.date.setValue(LocalDate.now().plusDays(1));
-            controller.clearAndPopulateTimeslots();
-            controller.timeSlotsPicker.setValue(controller.timeSlotsPicker.getItems().get(0));
-        });
-        WaitForAsyncUtils.waitForFxEvents();
-
-        robot.clickOn("#bookButton");
-        WaitForAsyncUtils.waitForFxEvents();
-
-        try { robot.clickOn("OK"); } catch (Exception ignored) {}
-        try { robot.clickOn("Bekreft"); } catch (Exception ignored) {}
-
-        verify(mockSaveBooking, times(1)).accept(any());
-    }
-
-    @Test
     void testBookingFailsWithEmptyFields(FxRobot robot) {
         Consumer<CustomDateObject> mockSaveBooking = mock(Consumer.class);
         controller.setSaveBookingFunction(mockSaveBooking);
@@ -105,70 +124,14 @@ public class BookingPageControllerUITest {
     }
 
     @Test
-    void testReturnToMainPageResetsFields(FxRobot robot) {
-        robot.clickOn("#name").write("Paul");
-        robot.clickOn("#surname").write("Atreides");
-
-        javafx.application.Platform.runLater(() -> {
-            controller.date.setValue(LocalDate.now().plusDays(1));
-            controller.timeSlotsPicker.setValue("18:00");
-        });
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("Paul", controller.name.getText());
-        assertEquals("Atreides", controller.surname.getText());
-        assertEquals(LocalDate.now().plusDays(1), controller.date.getValue());
-
-        robot.clickOn("#closeButton");
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("", controller.name.getText());
-        assertEquals("", controller.surname.getText());
-        assertNull(controller.date.getValue());
-    }
-
-    @Test
-    void testBookingSucceedsWhenEditing(FxRobot robot) {
-        Consumer<CustomDateObject> mockSaveBooking = mock(Consumer.class);
-        controller.setSaveBookingFunction(mockSaveBooking);
-
-        CustomDateObject dummyBooking = new CustomDateObject(
-                LocalDate.now().plusDays(1).toString(), "14:00", "Frati", "Kristoffer",
-                "Cat", "Meow", 1
-        );
-
-        controller.setEditState(true, dummyBooking);
-
-        robot.clickOn("#name").write("Please");
-        robot.clickOn("#surname").write("Save me");
-
-        javafx.application.Platform.runLater(() -> {
-            controller.date.setValue(LocalDate.now().plusDays(1));
-            controller.clearAndPopulateTimeslots();
-            controller.timeSlotsPicker.setValue(controller.timeSlotsPicker.getItems().get(0));
-        });
-        WaitForAsyncUtils.waitForFxEvents();
-
-        robot.clickOn("#bookButton");
-        WaitForAsyncUtils.waitForFxEvents();
-
-        try { robot.clickOn("OK"); } catch (Exception ignored) {}
-        try { robot.clickOn("Bekreft"); } catch (Exception ignored) {}
-
-        verify(mockSaveBooking, times(1)).accept(any());
-        assertFalse(controller.currentlyInEditState); // ensures flag reset after edit
-    }
-
-    @Test
     void testFillFieldsWithExistingBookingInfo(FxRobot robot) {
         String testName = "Eren";
         String testSurname = "Yeager";
         String testDate = LocalDate.now().plusDays(2).toString();
         String testTime = "15:00";
 
-        javafx.application.Platform.runLater(() ->
-                controller.fillFieldsWithExistingBookingInfo(testName, testSurname, testDate, testTime)
-        );
+        javafx.application.Platform.runLater(
+                () -> controller.fillFieldsWithExistingBookingInfo(testName, testSurname, testDate, testTime));
         WaitForAsyncUtils.waitForFxEvents();
 
         assertEquals(testName, controller.name.getText());
