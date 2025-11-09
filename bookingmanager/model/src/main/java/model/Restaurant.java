@@ -50,56 +50,26 @@ public class Restaurant {
         this.amountOfTables = restaurant.getAmountOfTables();
     }
 
-    /**
-     * Sets the name of the restaurant.
-
-     * @param name New name of restaurant.
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * gives the restaurant a new id.
-
-     * @param id New id.
-     */
     public void setId(int id) {
         this.id = id;
     }
 
-    /**
-     * Changes the restaurants amount of available tables.
-
-     * @param amount New amound of available tables.
-     */
     public void setAmountOfTables(int amount) {
         this.amountOfTables = amount;
     }
 
-    /**
-     * Gets the name of the restaurant.
-
-     * @return the restaurants name.
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Gets the restaurants id.
-
-     * @return restaurants id.
-     */
     public int getId() {
         return id;
     }
 
-    /**
-     * Gets the amount of tables available for booking.
-
-     * @return the amount of tables in this restaurant.
-     */
     public int getAmountOfTables() {
         return amountOfTables;
     }
