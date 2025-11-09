@@ -1,16 +1,15 @@
 package ui;
 
+import core.ServerCommunication;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-
-import core.ServerCommunication;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -103,7 +102,7 @@ public class BookingPageController {
         timeSlotsPicker.getSelectionModel().clearSelection(); // resets logical selection
         timeSlotsPicker.setValue(null); // reset UI selection
         chosenTimeToBook = null; // Reset the chosen time so it doesn't try to save the previously selected time,
-                                 // avoid "ghost selection"
+        // avoid "ghost selection"
         for (String time : allAvailableTimeslots) {
             timeSlotsPicker.getItems().add(time);
         }
@@ -144,7 +143,7 @@ public class BookingPageController {
         clearAndPopulateTimeslots();
         correctlyReloadTimeSlots(chosenDateString);
     }
-
+    
     public void setMainPageController(MainPageController controller) {
         this.mainPageController = controller;
     }
@@ -153,7 +152,7 @@ public class BookingPageController {
     public void returnToMainPage() {
         resetInfo();
         setEditState(false, null); // Makes sure the state is reset in the scenario where one clicks edit then
-                                   // doesn't save any changes
+        // doesn't save any changes
         primaryStage.setScene(mainScene);
         mainPageController.loadUserBookings();
         timeSlotsPicker.getSelectionModel().selectedItemProperty().removeListener((observable, oldValue, newValue) -> {
@@ -162,7 +161,7 @@ public class BookingPageController {
     }
 
     public void setCurrentRestaurantDisplayed(Restaurant restaurant) {
-        this.restaurant = restaurant;
+        this.restaurant = new Restaurant(restaurant);
         restaurantLabel.setText("Velkommen til " + restaurant.getName());
         clearAndPopulateTimeslots();
 
@@ -193,17 +192,17 @@ public class BookingPageController {
         allAvailableTimeslots.clear();
         int bookingIntervalLength = (int) (120 / restaurant.getAmountOfTables());
         for (Integer i = 14; i < 24; i++) { // For simplicity we pretend that all restaurants open at 14 and close at
-                                            // midnight.
+            // midnight.
             for (int j = 0; j < 60; j += bookingIntervalLength) {
                 allAvailableTimeslots.add(i.toString() + ":" + String.format("%02d", j)); // formats the minute part to
-                                                                                          // always be 2 digits.
+                // always be 2 digits.
             }
         }
     }
 
     public void setEditState(boolean state, CustomDateObject bookingToEdit) {
         currentlyInEditState = state;
-        this.bookingToEdit = bookingToEdit;
+        this.bookingToEdit = new CustomDateObject(bookingToEdit);
     }
 
     public void fillFieldsWithExistingBookingInfo(String name, String surname, String date, String timeSlot) {
