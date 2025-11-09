@@ -18,8 +18,8 @@ import server.persistence.FileManagement;
 @RestController
 @RequestMapping("/api/restaurants")
 public class RestaurantController {
-    final Path PATH = Paths.get("../server/src/main/resources/restaurants.json");
-    final File RESTAURANT_DATA_FILE = PATH.toFile();
+    final Path path = Paths.get("../server/src/main/resources/restaurants.json");
+    final File restaurantDataFile = path.toFile();
 
     /**
      * api call retrieving all saved restaurants.
@@ -28,7 +28,7 @@ public class RestaurantController {
      */
     @GetMapping
     public Collection<Restaurant> getAllRestaurants() {
-        return FileManagement.loadRestaurants(RESTAURANT_DATA_FILE);
+        return FileManagement.loadRestaurants(restaurantDataFile);
     }
 
     /**
@@ -38,6 +38,6 @@ public class RestaurantController {
      */
     @PostMapping
     public void saveAllRestaurants(@RequestBody Collection<Restaurant> restaurants) {
-        FileManagement.saveRestaurants(RESTAURANT_DATA_FILE, restaurants);
+        FileManagement.saveRestaurants(restaurantDataFile, restaurants);
     }
 }
