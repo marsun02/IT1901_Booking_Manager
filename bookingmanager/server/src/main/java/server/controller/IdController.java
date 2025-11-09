@@ -9,12 +9,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import server.persistence.FileManagement;
 
+/**
+ * Controller to manage the api call regarding id data file.
+ */
 @RestController
 @RequestMapping("/api/ids")
 public class IdController {
     final Path PATH = Paths.get("../server/src/main/resources/ids.json");
     final File IDS_DATA_FILE = PATH.toFile();
 
+    /**
+     * Api call updating the given id.
+
+     * @param idType string determining which id to be updated.
+     * @return the updated id.
+     */
     @GetMapping
     public int updateId(@RequestParam("idType") String idType) {
         return FileManagement.updateId(IDS_DATA_FILE, idType);
