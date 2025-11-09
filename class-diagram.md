@@ -28,6 +28,26 @@ classDiagram
         int getAmountOfTables()
     }
 
+    class CustomDateObject {
+        String date
+        String time
+        String restaurantName
+        String user
+        String bookedName
+        String firstName
+        String lastName
+        int id
+
+        String getDate()
+        String getTime()
+        String getRestaurantName()
+        String getUser()
+        String getBookedName()
+        String getFirstName()
+        String getLastName()
+        Integer getId()
+    }
+
     class FileManagement{
 
         saveRestaurants(File, Collection~Restaurant~)
