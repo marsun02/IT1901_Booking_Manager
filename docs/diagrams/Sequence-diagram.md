@@ -1,4 +1,7 @@
 ```mermaid 
+---
+title: Sequence diagram
+---
 
 sequenceDiagram
     participant User
@@ -24,3 +27,5 @@ sequenceDiagram
     BookingPageController-->User: Shows confirmed booking
     
 ```
+
+**[Back to root README](../../README.md)**
