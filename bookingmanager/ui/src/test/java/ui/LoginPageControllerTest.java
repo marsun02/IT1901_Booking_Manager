@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ApplicationExtension.class)
-public class LoginPageControllerUITest {
+public class LoginPageControllerTest {
 
     private LoginPageController controller;
     private Stage stage;
@@ -51,9 +51,9 @@ public class LoginPageControllerUITest {
 
     @Test
     void testInitialLayoutShowsLoginOnly(FxRobot robot) {
-        assertFalse(controller.emailHBox.isVisible());
-        assertFalse(controller.confirmPasswordHBox.isVisible());
-        assertFalse(controller.phoneNumberHBox.isVisible());
+        assertFalse(controller.emailhBox.isVisible());
+        assertFalse(controller.confirmPasswordhBox.isVisible());
+        assertFalse(controller.phoneNumberhBox.isVisible());
 
         assertEquals("Log in", controller.loginButton.getText());
         assertEquals("CREATE ONE", controller.createAccountLink.getText());
@@ -65,9 +65,9 @@ public class LoginPageControllerUITest {
         robot.clickOn("#createAccountLink");
         WaitForAsyncUtils.waitForFxEvents();
 
-        assertTrue(controller.emailHBox.isVisible());
-        assertTrue(controller.confirmPasswordHBox.isVisible());
-        assertTrue(controller.phoneNumberHBox.isVisible());
+        assertTrue(controller.emailhBox.isVisible());
+        assertTrue(controller.confirmPasswordhBox.isVisible());
+        assertTrue(controller.phoneNumberhBox.isVisible());
 
         assertEquals("Register Account", controller.loginButton.getText());
         assertEquals("LOGIN", controller.createAccountLink.getText());
