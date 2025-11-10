@@ -32,6 +32,12 @@
         <Bug pattern="EI_EXPOSE_REP2"/>
     </Match>
 
+    <Match>
+        <Class name="ui.LoginPageController"/>
+        <Method name="setInjectedTestUser"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+
     <!-- ===== MainPageController exclusions ===== -->
     <Match>
         <Class name="ui.MainPageController"/>

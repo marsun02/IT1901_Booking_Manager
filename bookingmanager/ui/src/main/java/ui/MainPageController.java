@@ -211,7 +211,7 @@ public class MainPageController {
      * @return the {@link Collection} of {@link Restaurant} objects
      */
     public Collection<Restaurant> getRestaurants() {
-        return restaurants;
+        return new HashSet<>(restaurants);
     }
 
     /**

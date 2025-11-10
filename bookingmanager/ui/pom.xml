@@ -17,7 +17,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <main.class>bookingmanager.ui/ui.App</main.class>
-        <javafx.version>23.0.1</javafx.version>
+        <javafx.version>17.0.11</javafx.version>
         <jupiter.version>5.12.2</jupiter.version>
         <jackson.version>2.20.0</jackson.version>
     </properties>

@@ -98,6 +98,7 @@ public class MainPageControllerTest {
 
     @Test
     void testBookingTableDisplaysCorrectData(FxRobot robot) {
+        @SuppressWarnings("unchecked")
         TableView<CustomDateObject> table = robot.lookup("#bookingOverview").queryAs(TableView.class);
         assertEquals(2, table.getItems().size());
         assertEquals("John", table.getItems().get(0).getFirstName());

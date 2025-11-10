@@ -114,7 +114,7 @@ To verify whether the project follows checkstyle standards, you can run the foll
 ---
 
 ## Versions and dependencies
-   - Java/javafx 23.0.1
+   - Java/javafx 17.0.11
    - Maven: 17
    - Jackson: 2.20.0
    - JUnit: 5.12.2
@@ -124,6 +124,7 @@ To verify whether the project follows checkstyle standards, you can run the foll
    - Mockito: 5.5.0
    - Maven Checkstyle Plugin: 3.6.0
    - Maven Spotbugs Plugin: 4.9.3.0
+   - Log4J: 2.23.1
 
 ---
 
