@@ -77,12 +77,6 @@
                 <version>2.20.0</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-slf4j-impl</artifactId>
-                <version>2.23.1</version>
-            </dependency>
-
             <!-- Code section fetched from stack overflow |
             https://stackoverflow.com/questions/29360631/can-i-add-springboot-framework-to-existing-maven-project -->
             <dependency>
