@@ -20,7 +20,6 @@ import model.User;
 
 /**
  * Controller class for the login page in the application.
- * <p>
  * This class manages both the login and registration workflows. It handles 
  * users that exists in the system, input validation, account creation, and switching
  * between the login and registration layouts.
@@ -42,19 +41,19 @@ public class LoginPageController implements Initializable {
     PasswordField confirmPasswordField;
 
     @FXML
-    HBox confirmPasswordHBox;
+    HBox confirmPasswordhBox;
 
     @FXML
     TextField emailField;
 
     @FXML
-    HBox emailHBox;
+    HBox emailhBox;
 
     @FXML
     TextField phoneNumberField;
 
     @FXML
-    HBox phoneNumberHBox;
+    HBox phoneNumberhBox;
 
     @FXML
     Button loginButton;
@@ -67,11 +66,10 @@ public class LoginPageController implements Initializable {
 
     /**
      * Sets up the stage and scene references for the controller.
-     * <p>
      * This method is called once when initializing the UI. It also attaches an
      * event handler to the "Create Account" hyperlink, allowing the user to
      * toggle between login and registration layouts.
-     * 
+
      * @param app           reference to the main application
      * @param primaryStage  the main stage used by the application
      * @param bookingScene  the booking page
@@ -97,8 +95,8 @@ public class LoginPageController implements Initializable {
     }
 
     /**
-     * Connects the main page controller to this controller
-     * 
+     * Connects the main page controller to this controller.
+
      * @param controller the main page controller instance
      */
     public void setMainPageController(MainPageController controller) {
@@ -107,10 +105,8 @@ public class LoginPageController implements Initializable {
 
     /**
      * Handles user login or account creation depending on the current layout.
-     * <p>
      * - In login mode, it validates input against existing users and
      *   navigates to the main page if the user already exists.
-     * <p>
      * - In registration mode, it validates all input fields, ensures username
      *   is unique, checks password, email and phone number format, and creates
      *   a new user if all checks pass.
@@ -211,7 +207,6 @@ public class LoginPageController implements Initializable {
 
     /**
      * Switches the layout from login to account registration mode.
-     * <p>
      * This method updates button labels, and shows the extra input fields
      * (email, confirm password, and phone number), and resets the form.
      */
@@ -221,17 +216,16 @@ public class LoginPageController implements Initializable {
         createAccountLink.setText("LOGIN");
         currentLayoutIsRegisterAccount = true;
         resetInfo();
-        emailHBox.setVisible(true);
-        emailHBox.setManaged(true);
-        confirmPasswordHBox.setVisible(true);
-        confirmPasswordHBox.setManaged(true);
-        phoneNumberHBox.setVisible(true);
-        phoneNumberHBox.setManaged(true);
+        emailhBox.setVisible(true);
+        emailhBox.setManaged(true);
+        confirmPasswordhBox.setVisible(true);
+        confirmPasswordhBox.setManaged(true);
+        phoneNumberhBox.setVisible(true);
+        phoneNumberhBox.setManaged(true);
     }
 
     /**
      * Switches the layout from account registration back to login mode.
-     * <p>
      * This method hides the additional input fields and resets the form.
      */
     private void switchBackToLoginLayout() {
@@ -240,12 +234,12 @@ public class LoginPageController implements Initializable {
         createAccountLink.setText("CREATE ONE");
         currentLayoutIsRegisterAccount = false;
         resetInfo();
-        emailHBox.setVisible(false);
-        emailHBox.setManaged(false);
-        confirmPasswordHBox.setVisible(false);
-        confirmPasswordHBox.setManaged(false);
-        phoneNumberHBox.setVisible(false);
-        phoneNumberHBox.setManaged(false);
+        emailhBox.setVisible(false);
+        emailhBox.setManaged(false);
+        confirmPasswordhBox.setVisible(false);
+        confirmPasswordhBox.setManaged(false);
+        phoneNumberhBox.setVisible(false);
+        phoneNumberhBox.setManaged(false);
     }
 
     /**
@@ -261,18 +255,17 @@ public class LoginPageController implements Initializable {
 
     /**
      * Initializes the controller when the FXML file is loaded.
-     * <p>
      * By default, it hides the registration-specific input fields so that
      * the layout starts in login mode.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        emailHBox.setVisible(false);
-        emailHBox.setManaged(false);
-        confirmPasswordHBox.setVisible(false);
-        confirmPasswordHBox.setManaged(false);
-        phoneNumberHBox.setVisible(false);
-        phoneNumberHBox.setManaged(false);
+        emailhBox.setVisible(false);
+        emailhBox.setManaged(false);
+        confirmPasswordhBox.setVisible(false);
+        confirmPasswordhBox.setManaged(false);
+        phoneNumberhBox.setVisible(false);
+        phoneNumberhBox.setManaged(false);
     }
 
 }

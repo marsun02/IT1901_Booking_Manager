@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 
 /**
  * The startup point of the application.
- * <p>
  * The {@Code App} class is responsible for launching the JavaFX application.
  * It loads the FXML files for the different pages (Login, Main, and Booking),
  * sets up their controllers, and defines the initial stage and scene for the application.
@@ -16,10 +15,9 @@ public class App extends Application {
 
     /**
      * Called automatically when the JavaFX application starts.
-     * <p>
      * This method loads all necessary FXML files, starts their corresponding controllers,
      * connects the controllers together for communication, and sets up the primary stage.
-     * 
+
      * @param primaryStage  the main stage of the application
      */
     @Override
@@ -53,6 +51,11 @@ public class App extends Application {
         }
     }
 
+    /**
+     * main method to run app.
+
+     * @param args args are needed to run app
+     */
     public static void main(String[] args) {
         launch(args);
     }
