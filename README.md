@@ -15,7 +15,7 @@ To help keep everything organized, the app will include a login feature, giving 
 ## Features
 - Shows a list of available time slots in the selected restaurant
 - Allows the user to book the desired reservation
-- Prevents double booking by checking availability before completing the booking process
+- Prevents double booking by hiding all booked timeslots when trying to book
 - Supports multiple users on the same booking management system
 - An admin user will have access to all bookings
 
