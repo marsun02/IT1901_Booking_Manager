@@ -190,3 +190,21 @@ The application also includes a .gitignore file to prevent unnecessary or local 
 [Use of ai-tools](docs/release3/ai-tools.md)
 [Workflow](docs/release3/workflow.md)
 [Work Practices](docs/release3/work-practices.md)
+
+---
+## Note about pre-saved data
+We have included a few pre saved accounts, each with their own bookings.
+#### Login info:
+ - Test user 1:
+ Username: test1
+ Password: test1password
+
+ - Test user 2:
+ Username: test2
+ Password: test2password
+
+ - Admin:
+ Username: Admin
+ Password: 12345
+
+ Each user is allowed to see their own bookings, with the exception of Admin, who can see all bookings.
