@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="640" prefWidth="1000.0" style="-fx-background-color: grey;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainPageController">
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="640" prefWidth="1000.0" style="-fx-background-color: grey;" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/17.0.11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainPageController">
    <content>
       <VBox prefHeight="640" prefWidth="994.0">
          <children>
