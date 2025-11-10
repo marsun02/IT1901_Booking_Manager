@@ -98,4 +98,18 @@ public class CustomDateObjectTest {
         CustomDateObject booking = new CustomDateObject();
         new CustomDateObject(booking);
     }
+
+    @Test
+    void testCopyConstructorTakesNullParameter(){
+        CustomDateObject booking = null;
+        CustomDateObject copy = new CustomDateObject(booking);
+        assertEquals(null, copy.getBookedName());
+        assertEquals(null, copy.getDate());
+        assertEquals(null, copy.getFirstName());
+        assertEquals(-1, copy.getId());
+        assertEquals(null, copy.getLastName());
+        assertEquals(null, copy.getRestaurantName());
+        assertEquals(null, copy.getTime());
+        assertEquals(null, copy.getUser());
+    }
 }

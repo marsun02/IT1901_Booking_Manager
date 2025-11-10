@@ -44,5 +44,14 @@ public class RestaurantTest {
     void testCopyInitialize(){
         new Restaurant(restaurant);
     }
+
+    @Test
+    void testCopyConstructorTakesNullParameter(){
+        Restaurant restaurant = null;
+        Restaurant copy = new Restaurant(restaurant);
+        assertEquals(null, copy.getName());
+        assertEquals(-1, copy.getId());
+        assertEquals(0, copy.getAmountOfTables());
+    }
 }
 
