@@ -64,8 +64,17 @@ public class Restaurant {
         this.id = id;
     }
 
+    /**
+     * Setter function to set the amount of tables a restaurant has.
+
+     * @param amount amount of tables
+     */
     public void setAmountOfTables(int amount) {
-        this.amountOfTables = amount;
+        if (amount < 0){
+            this.amountOfTables = 0;
+        } else {
+            this.amountOfTables = amount;
+        }
     }
 
     public String getName() {
