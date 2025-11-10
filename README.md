@@ -55,6 +55,12 @@ The rest of the commands are meant to be run from the **bookingmanager**-directo
    ```
 
 ---
+Sometimes the mocking tests takes a long time to complete, due to the nature of Mockito tests. In the case you already have run the tests once, and just want to install without waiting for all the tests, you can skip the tests with this command:
+```bash
+mvn clean compile -DskipTests
+```
+
+---
 
 ## Download and run
 
