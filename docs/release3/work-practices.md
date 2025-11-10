@@ -7,7 +7,7 @@ Working in branches allows us to collaborate more effectively without overwritin
 
 For major tasks, we often use pair programming, working together on the same computer to discuss and implement solutions in real time. To maintain transparency, we include a "Co-authored-by" line in our commit messages to reflect shared contributions.
 
-Within our group, we've also created a set of internal work-practice files to help improve the quality of our commit messages and pull requests. These files serve as both a reference for existing members and a guide for new contributors. They are stored in the work-practices folder located in the root directory of the project. 
+Within our group, we've also created a set of internal work-practice files to help improve the quality of our commit messages and pull requests. These files serve as both a reference for existing members and a guide for new contributors. They are stored in the work-practices directory located in the root directory of the project. 
 
 This way of working has proven effective, allowing us to complete tasks more efficiently and with higher quality, while smaller issues continue to be handled individually.
 
