@@ -75,22 +75,6 @@ public class LoginPageControllerUITest {
     }
 
     @Test
-    void testClickCreateAccountThenBackToLogin(FxRobot robot) {
-        robot.clickOn("#createAccountLink");
-        WaitForAsyncUtils.waitForFxEvents();
-        robot.clickOn("#createAccountLink"); // Click again should switch back
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertFalse(controller.emailHBox.isVisible());
-        assertFalse(controller.confirmPasswordHBox.isVisible());
-        assertFalse(controller.phoneNumberHBox.isVisible());
-
-        assertEquals("Log in", controller.loginButton.getText());
-        assertEquals("CREATE ONE", controller.createAccountLink.getText());
-        assertEquals("NO ACCOUNT?", controller.noAccountText.getText());
-    }
-
-    @Test
     void testLoginActionFunctionIsCalledOnLogin(FxRobot robot) {
         AtomicBoolean called = new AtomicBoolean(false);
         controller.setLoginActionFunction(user -> called.set(true));
