@@ -114,6 +114,10 @@ To verify whether the project follows checkstyle standards, you can run the foll
    - JUnit: 5.12.2
    - SpringBoot: 3.3.4
    - JaCoCo: 0.8.13
+   - TestFX: 4.0.18
+   - Mockito: 5.5.0
+   - Maven Checkstyle Plugin: 3.6.0
+   - Maven Spotbugs Plugin: 4.9.3.0
 
 ---
 
