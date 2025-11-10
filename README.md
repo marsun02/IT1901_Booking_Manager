@@ -8,7 +8,7 @@ Our application is an overview of a wide selection of restaurants, which allows 
 
 Our target users are the people who frequently book reservations and want a platform to manage all their restaurant reservations. With this app, you'll be able to view and manage bookings across multiple restaurants at the same time.
 
-To help keep everything organized, the app will include a login feature, giving users a personalized overview of their upcoming restaurant reservations.
+To help keep everything organized, the app will include a login feature, giving users a personalized overview of their upcoming restaurant reservations. There also exists an Admin user that allows restaurants to keep track of all bookings across all users.
 
 ---
 
