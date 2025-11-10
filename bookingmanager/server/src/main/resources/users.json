@@ -1,13 +1,19 @@
 [ {
-  "id" : 1,
-  "name" : "testaccountyay",
-  "email" : null,
-  "password" : "password",
-  "phoneNumber" : null
-}, {
   "id" : 0,
   "name" : "Admin",
   "email" : null,
   "password" : "12345",
   "phoneNumber" : null
+}, {
+  "id" : 1,
+  "name" : "test1",
+  "email" : "test1@gmail.com",
+  "password" : "test1password",
+  "phoneNumber" : "00000001"
+}, {
+  "id" : 2,
+  "name" : "test2",
+  "email" : "test2@gmail.com",
+  "password" : "test2password",
+  "phoneNumber" : "00000002"
 } ]
