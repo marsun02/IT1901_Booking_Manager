@@ -45,9 +45,15 @@ public class Restaurant {
      * @param restaurant The restaurant of which to make a copy of.
      */
     public Restaurant(Restaurant restaurant) {
-        this.name = restaurant.getName();
-        this.id = restaurant.getId();
-        this.amountOfTables = restaurant.getAmountOfTables();
+        if (restaurant == null){
+            this.name = null;
+            this.id = -1;
+            this.amountOfTables = 0;
+        } else {
+            this.name = restaurant.getName();
+            this.id = restaurant.getId();
+            this.amountOfTables = restaurant.getAmountOfTables();
+        }
     }
 
     public void setName(String name) {

@@ -44,14 +44,25 @@ public class CustomDateObject {
      * @param other object of which to make copy of.
      */
     public CustomDateObject(CustomDateObject other){
-        this.date = other.getDate();
-        this.time = other.getTime();
-        this.restaurantName = other.getRestaurantName();
-        this.user = other.getUser();
-        this.firstName = other.getFirstName();
-        this.lastName = other.getLastName();
-        this.bookedName = other.getBookedName();
-        this.id = other.getId();
+        if (other == null){
+            this.date = null;
+            this.time = null;
+            this.restaurantName = null;
+            this.user = null;
+            this.firstName = null;
+            this.lastName = null;
+            this.bookedName = null;
+            this.id = -1;
+        } else {
+            this.date = other.getDate();
+            this.time = other.getTime();
+            this.restaurantName = other.getRestaurantName();
+            this.user = other.getUser();
+            this.firstName = other.getFirstName();
+            this.lastName = other.getLastName();
+            this.bookedName = other.getBookedName();
+            this.id = other.getId();
+        }
     }
 
     /**
