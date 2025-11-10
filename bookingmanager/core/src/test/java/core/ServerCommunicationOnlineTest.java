@@ -89,7 +89,7 @@ public class ServerCommunicationOnlineTest {
         // The content inside withBody is just a copy/paste of our json file contents.
         .withBody("[ {\r\n" + //
                         "  \"id\" : 1,\r\n" + //
-                        "  \"name\" : \"testaccountyay\",\r\n" + //
+                        "  \"name\" : \"testaccount\",\r\n" + //
                         "  \"email\" : null,\r\n" + //
                         "  \"password\" : \"password\",\r\n" + //
                         "  \"phoneNumber\" : null\r\n" + //
@@ -116,27 +116,27 @@ public class ServerCommunicationOnlineTest {
                         "  \"time\" : \"16.30\",\r\n" + //
                         "  \"restaurantName\" : \"Frati\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
-                        "  \"firstName\" : \"jajatest\",\r\n" + //
-                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"bookedName\" : \"test 1\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"1\",\r\n" + //
                         "  \"id\" : 15\r\n" + //
                         "}, {\r\n" + //
                         "  \"date\" : \"2025-10-31\",\r\n" + //
                         "  \"time\" : \"16:39\",\r\n" + //
                         "  \"restaurantName\" : \"BurgerKing\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"testja hais\",\r\n" + //
-                        "  \"firstName\" : \"testja\",\r\n" + //
-                        "  \"lastName\" : \"hais\",\r\n" + //
+                        "  \"bookedName\" : \"test 2\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"2\",\r\n" + //
                         "  \"id\" : 18\r\n" + //
                         "}, {\r\n" + //
                         "  \"date\" : \"2025-11-12\",\r\n" + //
                         "  \"time\" : \"15:20\",\r\n" + //
                         "  \"restaurantName\" : \"McDonalds\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"test2 test2\",\r\n" + //
-                        "  \"firstName\" : \"test2\",\r\n" + //
-                        "  \"lastName\" : \"test2\",\r\n" + //
+                        "  \"bookedName\" : \"test 3\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"3\",\r\n" + //
                         "  \"id\" : 25\r\n" + //
                         "} ]")));
         Collection<CustomDateObject> bookings = ServerCommunication.getAllBookings();
@@ -158,9 +158,9 @@ public class ServerCommunicationOnlineTest {
                         "  \"time\" : \"17:30\",\r\n" + //
                         "  \"restaurantName\" : \"McDonalds\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"test test\",\r\n" + //
+                        "  \"bookedName\" : \"test 1\",\r\n" + //
                         "  \"firstName\" : \"test\",\r\n" + //
-                        "  \"lastName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"1\",\r\n" + //
                         "  \"id\" : 3\r\n" + //
                         "}")));
         CustomDateObject booking = ServerCommunication.getBookingById(id);
@@ -184,36 +184,36 @@ public class ServerCommunicationOnlineTest {
                         "  \"time\" : \"16.30\",\r\n" + //
                         "  \"restaurantName\" : \"Frati\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
-                        "  \"firstName\" : \"jajatest\",\r\n" + //
-                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"bookedName\" : \"test 1\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"1\",\r\n" + //
                         "  \"id\" : 15\r\n" + //
                         "}, {\r\n" + //
                         "  \"date\" : \"2025-10-31\",\r\n" + //
                         "  \"time\" : \"16:39\",\r\n" + //
                         "  \"restaurantName\" : \"BurgerKing\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"testja hais\",\r\n" + //
-                        "  \"firstName\" : \"testja\",\r\n" + //
-                        "  \"lastName\" : \"hais\",\r\n" + //
+                        "  \"bookedName\" : \"test 2\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"2\",\r\n" + //
                         "  \"id\" : 18\r\n" + //
                         "}, {\r\n" + //
                         "  \"date\" : \"2025-11-12\",\r\n" + //
                         "  \"time\" : \"15:20\",\r\n" + //
                         "  \"restaurantName\" : \"McDonalds\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"test2 test2\",\r\n" + //
-                        "  \"firstName\" : \"test2\",\r\n" + //
-                        "  \"lastName\" : \"test2\",\r\n" + //
+                        "  \"bookedName\" : \"test 3\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"3\",\r\n" + //
                         "  \"id\" : 25\r\n" + //
                         "}, {\r\n" + //
                         "  \"date\" : \"2025-11-12\",\r\n" + //
                         "  \"time\" : \"17:30\",\r\n" + //
                         "  \"restaurantName\" : \"McDonalds\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"test test\",\r\n" + //
+                        "  \"bookedName\" : \"test 4\",\r\n" + //
                         "  \"firstName\" : \"test\",\r\n" + //
-                        "  \"lastName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"4\",\r\n" + //
                         "  \"id\" : 24\r\n" + //
                         "} ]")));
         Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByUser(user.getName());
@@ -239,19 +239,19 @@ public class ServerCommunicationOnlineTest {
                         "  \"date\" : \"2025-10-31\",\r\n" + //
                         "  \"time\" : \"22.00\",\r\n" + //
                         "  \"restaurantName\" : \"SteakHouse\",\r\n" + //
-                        "  \"user\" : \"KjellMagnar\",\r\n" + //
-                        "  \"bookedName\" : \"e a\",\r\n" + //
-                        "  \"firstName\" : \"e\",\r\n" + //
-                        "  \"lastName\" : \"a\",\r\n" + //
+                        "  \"user\" : \"TestUser\",\r\n" + //
+                        "  \"bookedName\" : \"test 1\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"1\",\r\n" + //
                         "  \"id\" : 16\r\n" + //
                         "}, {\r\n" + //
                         "  \"date\" : \"2025-10-31\",\r\n" + //
                         "  \"time\" : \"18:13\",\r\n" + //
                         "  \"restaurantName\" : \"SteakHouse\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"test2 jada\",\r\n" + //
-                        "  \"firstName\" : \"test2\",\r\n" + //
-                        "  \"lastName\" : \"jada\",\r\n" + //
+                        "  \"bookedName\" : \"test 2\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"2\",\r\n" + //
                         "  \"id\" : 19\r\n" + //
                         "} ]")));
         Collection<CustomDateObject> bookings = ServerCommunication.getBookingsByDateAndRestaurantName(date, restaurant.getName());
@@ -358,15 +358,15 @@ public class ServerCommunicationOnlineTest {
                         "  \"time\" : \"16.30\",\r\n" + //
                         "  \"restaurantName\" : \"Frati\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
-                        "  \"firstName\" : \"jajatest\",\r\n" + //
-                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"bookedName\" : \"test 1\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"1\",\r\n" + //
                         "  \"id\" : 15\r\n" + //
                         "}", true, true))
         .willReturn(aResponse()
         .withStatus(200)));
 
-        CustomDateObject booking = new CustomDateObject("2025-10-30", "16.30", "Frati", "Admin", "jajatest", "woho", 15);
+        CustomDateObject booking = new CustomDateObject("2025-10-30", "16.30", "Frati", "Admin", "test", "1", 15);
         ServerCommunication.saveBooking(booking);
         
         verify(postRequestedFor(urlEqualTo("/api/bookings/save"))
@@ -376,9 +376,9 @@ public class ServerCommunicationOnlineTest {
                         "  \"time\" : \"16.30\",\r\n" + //
                         "  \"restaurantName\" : \"Frati\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
-                        "  \"firstName\" : \"jajatest\",\r\n" + //
-                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"bookedName\" : \"test 1\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"1\",\r\n" + //
                         "  \"id\" : 15\r\n" + //
                         "}", true, true)));
     }
@@ -392,15 +392,15 @@ public class ServerCommunicationOnlineTest {
                         "  \"time\" : \"16.30\",\r\n" + //
                         "  \"restaurantName\" : \"Frati\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
-                        "  \"firstName\" : \"jajatest\",\r\n" + //
-                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"bookedName\" : \"test 1\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"1\",\r\n" + //
                         "  \"id\" : 15\r\n" + //
                         "}", true, true))
         .willReturn(aResponse()
         .withStatus(200)));
 
-        CustomDateObject bookingToDelete = new CustomDateObject("2025-10-30", "16.30", "Frati", "Admin", "jajatest", "woho", 15);
+        CustomDateObject bookingToDelete = new CustomDateObject("2025-10-30", "16.30", "Frati", "Admin", "test", "1", 15);
         ServerCommunication.deleteBooking(bookingToDelete);
         
         verify(postRequestedFor(urlEqualTo("/api/bookings/delete"))
@@ -410,9 +410,9 @@ public class ServerCommunicationOnlineTest {
                         "  \"time\" : \"16.30\",\r\n" + //
                         "  \"restaurantName\" : \"Frati\",\r\n" + //
                         "  \"user\" : \"Admin\",\r\n" + //
-                        "  \"bookedName\" : \"jajatest woho\",\r\n" + //
-                        "  \"firstName\" : \"jajatest\",\r\n" + //
-                        "  \"lastName\" : \"woho\",\r\n" + //
+                        "  \"bookedName\" : \"test 1\",\r\n" + //
+                        "  \"firstName\" : \"test\",\r\n" + //
+                        "  \"lastName\" : \"1\",\r\n" + //
                         "  \"id\" : 15\r\n" + //
                         "}", true, true)));
     }

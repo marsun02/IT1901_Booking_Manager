@@ -8,14 +8,14 @@ Our application is an overview of a wide selection of restaurants, which allows 
 
 Our target users are the people who frequently book reservations and want a platform to manage all their restaurant reservations. With this app, you'll be able to view and manage bookings across multiple restaurants at the same time.
 
-To help keep everything organized, the app will include a login feature, giving users a personalized overview of their upcoming restaurant reservations.
+To help keep everything organized, the app will include a login feature, giving users a personalized overview of their upcoming restaurant reservations. There also exists an Admin user that allows restaurants to keep track of all bookings across all users.
 
 ---
 
 ## Features
 - Shows a list of available time slots in the selected restaurant
 - Allows the user to book the desired reservation
-- Prevents double booking by checking availability before completing the booking process
+- Prevents double booking by hiding all booked timeslots when trying to book
 - Supports multiple users on the same booking management system
 - An admin user will have access to all bookings
 
@@ -53,6 +53,12 @@ The rest of the commands are meant to be run from the **bookingmanager**-directo
    ```bash
    mvn javafx:run -pl ui
    ```
+
+---
+Sometimes the mocking tests takes a long time to complete, due to the nature of Mockito tests. In the case you already have run the tests once, and just want to install without waiting for all the tests, you can skip the tests with this command:
+```bash
+mvn clean compile -DskipTests
+```
 
 ---
 
@@ -114,6 +120,10 @@ To verify whether the project follows checkstyle standards, you can run the foll
    - JUnit: 5.12.2
    - SpringBoot: 3.3.4
    - JaCoCo: 0.8.13
+   - TestFX: 4.0.18
+   - Mockito: 5.5.0
+   - Maven Checkstyle Plugin: 3.6.0
+   - Maven Spotbugs Plugin: 4.9.3.0
    - Log4J: 2.23.1
 
 ---
@@ -141,9 +151,9 @@ Follow the checklist provided below before opening a new PR to ensure smooth col
 
 We have divded our project into several modules, each with its own pom.xml file. The bookingmanager directory is our project which includes four modules, core, server, model and UI. The core module holds the essential functionality. The server module handles saving and loading data from files, as well as the controllers which make the application run. The model module contains the classes that the rest of the project depends on. Finally, the UI module manages all the application controls. That means it includes all the visible content for the application. 
 
-In our project, we have a config folder that includes Checkstyle and SpotBugs. Checkstyle is used to ensure that the code follows consistent formatting and style guidelines, while SpotBugs helps identify potential issues or poorly written code that may need improvement.
+In our project, we have a config directory that includes Checkstyle and SpotBugs. Checkstyle is used to ensure that the code follows consistent formatting and style guidelines, while SpotBugs helps identify potential issues or poorly written code that may need improvement.
 
-The docs folder contains all documentation related to each project release. For every new release, we create a separate folder that includes all the necessary information. This documentation covers topics such as our general workflow, teamwork practices, and AI tools we've used. It also includes userstories, diagrams and other work-related materials. Overall, the documentation is intended to provide a clear overview of the project and serve as a helpful guide for any new members joining the team.
+The docs directory contains all documentation related to each project release. For every new release, we create a separate directory that includes all the necessary information. This documentation covers topics such as our general workflow, teamwork practices, and AI tools we've used. It also includes userstories, diagrams and other work-related materials. Overall, the documentation is intended to provide a clear overview of the project and serve as a helpful guide for any new members joining the team.
 
 The application also includes a .gitignore file to prevent unnecessary or local files from being pushed to GitHub. We've added certain directories to this file, such as "target", so that files generated locally on each computer are ignored and not included in version control.
 
