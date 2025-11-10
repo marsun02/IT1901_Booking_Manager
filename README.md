@@ -88,6 +88,23 @@ Run tests with this command:
    ```
    Note that some tests will print a stacktrace unless the **server** is running. The tests should still pass, but may clutter the terminal window.
 
+   Additionally, to see jacoco test coverage for the project, each module has to be checked separately. To do this, navigate to the "Testing" section in the VSCode GUI and click "Run Test with Coverage" which appears when hovering over the module. This is due to how jacoco works, and checking coverage for the project as a whole will result in incorrect percentages.
+
+   Sometimes the UI tests will not show up in the Testing section. To resolve this, open the test file itself, and then navigate back to the "Testing" section. It should now be visible.
+
+---
+
+## Checkstyle and spotbugs
+
+To verify whether the project follows checkstyle standards, you can run the following command:
+   ```bash
+   mvn checkstyle:check
+   ```
+   And similarly you can check for any spotbugs using this command:
+   ```bash
+   mvn spotbugs:check
+   ```
+
 ---
 
 ## Versions and dependencies
@@ -133,7 +150,9 @@ The application also includes a .gitignore file to prevent unnecessary or local 
 
 ## Release specific documentation
 ### Project Specific Documentation
-[Class Diagram](class-diagram.md)
+[Class Diagram](docs/diagrams/class-diagram.md)
+[Package Diagram](docs/diagrams/package-diagram.md)
+[Sequence Diagram](docs/diagrams/sequence-diagram.md)
 [Userstory - Book Tables](docs/userstories/table-booking.md)
 [Userstory - Sign in](docs/userstories/sign-in.md)
 
@@ -142,21 +161,21 @@ The application also includes a .gitignore file to prevent unnecessary or local 
 [Use of ai-tools](docs/release1/ai-tools.md)
 
 ### Release 2
-[Teamwork](docs/release2/teamwork.md)
-[Work Practices](docs/release2/work-practices.md)
-[Workflow](docs/release2/workflow.md)
-[Use of ai-tools](docs/release2/ai-tools.md)
-[Persistence](docs/release2/persistence.md)
 [Code quality](docs/release2/code-quality.md)
+[Persistence](docs/release2/persistence.md)
+[Teamwork](docs/release2/teamwork.md)
+[Use of ai-tools](docs/release2/ai-tools.md)
+[Workflow](docs/release2/workflow.md)
+[Work Practices](docs/release2/work-practices.md)
 
 ### Release 3
-[Rest api](docs/release3/rest-api.md)
-[Teamwork]
-[Sustainability]
-[Challenges]
-[Contribution]
-[Use of ai-tools]
-[Work Practices]
-[Workflow]
+[Challenges](docs/release3/challenges.md)
+[Code quality](docs/release3/code-quality.md)
+[Contribution](docs/release3/contribution.md)
 [Persistence](docs/release3/persistence.md)
-[Code quality]
+[Rest api](docs/release3/rest-api.md)
+[Sustainability](docs/release3/sustainability-reflection.md)
+[Teamwork](docs/release3/teamwork.md)
+[Use of ai-tools](docs/release3/ai-tools.md)
+[Workflow](docs/release3/workflow.md)
+[Work Practices](docs/release3/work-practices.md)
