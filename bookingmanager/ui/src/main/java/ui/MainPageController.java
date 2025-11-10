@@ -26,78 +26,110 @@ import model.CustomDateObject;
 import model.Restaurant;
 import model.User;
 
+/**
+ * Controller class for the application's main page
+ * <p> 
+ * Handles displaying restaurants, managing user bookings, and controlling navigation
+ * between the main page, booking page, and the login page. It also manages loading,
+ * saving, and displaying restaurant and booking data.
+ */
 public class MainPageController {
-    Collection<Restaurant> restaurants;
+    private Collection<Restaurant> restaurants;
 
     private Stage primaryStage;
     private Scene bookingScene;
     private Scene loginScene;
     private BookingPageController bookingPageController;
     private User currentlyLoggedInUser = new User();
-    private final static String SUPER_USER_NAME = "Admin"; // Username of the user that has access to all bookings made in the
+    private static final String SuperUserName = "Admin"; // Username of the user that has access to all bookings made in the
     // entire app
 
-    @FXML
-    private Label loggedInUserLabel;
+    @FXML 
+    protected Label loggedInUserLabel;
 
-    @FXML
-    private Label yourBookingsLabel;
+    @FXML 
+    protected Label yourBookingsLabel;
 
-    @FXML
-    private TableView<CustomDateObject> bookingOverview;
+    @FXML 
+    protected TableView<CustomDateObject> bookingOverview;
 
-    @FXML
-    private TableColumn<CustomDateObject, ImageView> tableImage;
+    @FXML 
+    protected TableColumn<CustomDateObject, ImageView> tableImage;
 
-    @FXML
-    private TableColumn<CustomDateObject, String> tableName;
+    @FXML 
+    protected TableColumn<CustomDateObject, String> tableName;
 
-    @FXML
-    private TableColumn<CustomDateObject, String> tableDate;
+    @FXML 
+    protected TableColumn<CustomDateObject, String> tableDate;
 
-    @FXML
-    private TableColumn<CustomDateObject, String> tableTime;
+    @FXML 
+    protected TableColumn<CustomDateObject, String> tableTime;
 
-    @FXML
-    private TableColumn<CustomDateObject, Button> tableEdit;
+    @FXML 
+    protected TableColumn<CustomDateObject, Button> tableEdit;
 
-    @FXML
-    private TableColumn<CustomDateObject, Button> tableDelete;
+    @FXML 
+    protected TableColumn<CustomDateObject, Button> tableDelete;
 
+    /**
+     * Default constructor.
+     * <p>
+     * Initializes the controller by loading or creating restaurant data.
+     */
     public MainPageController() {
         initialize();
     }
 
+    /**
+     * Initializes the controller when the page is loaded.
+     * <p>
+     * Loads restaurants from storage and initializes default restaurants if none exist.
+     */
     @FXML
     public void initialize() {
         restaurants = new HashSet<>();
 
         loadRestaurants();
 
-        // If the data file does not contain the correct amount of restaurants, it
-        // creates 6 new ones
+        // If the data file does not contain the correct amount of restaurants, it creates 6 new ones
         if (restaurants.size() != 6) {
             initializeAllRestaurants();
         }
     }
 
+    /**
+     * Creates and saves six default restaurants to file.
+     * <p>
+     * This method is used if no valid restaurant data exists.
+     */
     private void initializeAllRestaurants() {
         restaurants = RestaurantInitialization.initializeAllRestaurants();
         saveRestaurants();
     }
 
-    // saves the current restaurants in restaurants hashSet to file
+    /**
+     * Saves all current restaurant data to file.
+     */
     public void saveRestaurants() {
         ServerCommunication.saveAllRestaurants(restaurants);
     }
 
-    // loads restaurants from file to hashSet
+    /**
+     * Loads restaurant data from file into hashSet
+     */
     public void loadRestaurants() {
         restaurants = ServerCommunication.getAllRestaurants();
     }
 
-    // There comes spotbugs from these, but Stage and Scene should not be copied,
-    // therefore the spotsbugs remain for now
+    /**
+     * Sets the stage and scenes used for navigation between pages.
+     * 
+     * @param app           reference to the main application
+     * @param primaryStage  the main application
+     * @param bookingScene  the booking page
+     * @param mainScene     the main page
+     * @param loginScene    the login page
+     */
     public void setStage(
             App app,
             Stage primaryStage,
@@ -109,10 +141,23 @@ public class MainPageController {
         this.loginScene = loginScene;
     }
 
+    /**
+     * Links the booking page controller to the main page controller.
+     * 
+     * @param controller the booking page controller instance
+     */
     public void setBookingPageController(BookingPageController controller) {
         this.bookingPageController = controller;
     }
 
+    /**
+     * Opens the booking page for the restaurant selected by the user.
+     * <p>
+     * Finds the restaurant by button ID, loads it into the booking page,
+     * and switches the scene to the booking interface.
+     * 
+     * @param event the button click event that triggered this method
+     */
     @FXML
     public void enterRestaurantPage(ActionEvent event) {
         Button source = (Button) event.getSource();
@@ -129,27 +174,62 @@ public class MainPageController {
         primaryStage.setScene(bookingScene);
     }
 
+    /**
+     * Sets the currently logged in user.
+     * 
+     * @param loggedInUser the user that has just logged in
+     */
     public void setcurrentlyLoggedInUser(User loggedInUser) {
         currentlyLoggedInUser = loggedInUser;
     }
 
+    /**
+     * Updates the label showing the currently logged in user's name
+     * 
+     * @param name  the username to display
+     */
     public void setLoggedInUserLabel(String name) {
         loggedInUserLabel.setText(name);
     }
 
+    /**
+     * Logs out the current user and returns to the login page.
+     */
     @FXML
     public void logOutUser() {
         this.currentlyLoggedInUser = null;
         primaryStage.setScene(loginScene);
     }
 
+    /**
+     * Returns the user who is currently logged in.
+     * 
+     * @return the active {@link User}
+     */
     public User getCurrentlyLoggedInUser() {
         return currentlyLoggedInUser;
     }
 
+    /**
+     * Returns the collection of all restaurants.
+     * 
+     * @return the {@link Collection} of {@link Restaurant} objects
+     */
+    public Collection<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    /**
+     * Loads and displays all bookings related to the currently logged in user.
+     * <p>
+     * Fills the table view with the user's bookings, including restaurant images,
+     * booking details, and edit/delete buttons. If the logged in user is the admin,
+     * all bookings in the system are displayed instead.
+     */
     public void loadUserBookings() {
         bookingOverview.getItems().clear();
         bookingOverview.getColumns().forEach(col -> col.setStyle("-fx-alignment: CENTER;"));
+
         tableImage.setCellValueFactory(cellData -> {
             final Image editImage = new Image(
                     getClass().getResourceAsStream("/ui/" + cellData.getValue().getRestaurantName() + ".png"));
@@ -157,17 +237,24 @@ public class MainPageController {
             editImageView.setFitWidth(100);
             editImageView.setFitHeight(100);
             return new ReadOnlyObjectWrapper<>(editImageView);
-
         });
+
         tableName.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getBookedName()));
         tableDate.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getDate()));
         tableTime.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper<>(cellData.getValue().getTime()));
+
         tableEdit.setCellValueFactory(cellData -> {
             final Image editImage = new Image(getClass().getResourceAsStream("/ui/editIcon.png"));
             final ImageView editImageView = new ImageView(editImage);
             editImageView.setFitWidth(20);
             editImageView.setFitHeight(20);
             Button editButton = new Button("", editImageView);
+
+            // Added dynamic fx:id for testing
+            // This code/idea was generated by ChatGPT
+            editButton.setId("editButton_" + cellData.getValue().getId());
+            // -------------------- Ends here
+
             editButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
@@ -189,12 +276,19 @@ public class MainPageController {
             });
             return new ReadOnlyObjectWrapper<>(editButton);
         });
+
         tableDelete.setCellValueFactory(cellData -> {
             final Image deleteImage = new Image(getClass().getResourceAsStream("/ui/deleteIcon.png"));
             final ImageView deleteImageView = new ImageView(deleteImage);
             deleteImageView.setFitWidth(20);
             deleteImageView.setFitHeight(20);
             Button deleteButton = new Button("", deleteImageView);
+
+            // Added dynamic fx:id for testing
+            // This code/idea was generated by ChatGPT
+            deleteButton.setId("deleteButton_" + cellData.getValue().getId());
+            // --------------------- Ends here
+
             deleteButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
@@ -210,7 +304,7 @@ public class MainPageController {
 
         List<CustomDateObject> bookings;
 
-        if (currentlyLoggedInUser.getName().toLowerCase().equals(SUPER_USER_NAME.toLowerCase())) {
+        if (currentlyLoggedInUser.getName().toLowerCase().equals(SuperUserName.toLowerCase())) {
             bookings = new ArrayList<>(ServerCommunication.getAllBookings());
             yourBookingsLabel.setText("ALL BOOKINGS");
         } else {

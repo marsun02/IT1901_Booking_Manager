@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -14,17 +15,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
 
-    private static boolean jfxInitialized = false;
-
     @BeforeAll
     public static void initJavaFX() throws InterruptedException {
-        if (!jfxInitialized) {
+        try {
             CountDownLatch latch = new CountDownLatch(1);
             Platform.startup(latch::countDown);
             if (!latch.await(5, TimeUnit.SECONDS)) {
                 throw new RuntimeException("JavaFX runtime failed to start");
             }
-            jfxInitialized = true;
+        } catch (Exception e) {
         }
     }
 

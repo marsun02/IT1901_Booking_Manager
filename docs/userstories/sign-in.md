@@ -1,4 +1,4 @@
-# User story for signing in
+## User story for signing in
 
 ![Sign inn page](sign-in-pictures/SignUp1.png)
 ![click "create one"](sign-in-pictures/SignUp2.png)

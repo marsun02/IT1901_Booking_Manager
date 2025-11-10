@@ -18,6 +18,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.User;
 
+/**
+ * Controller class for the login page in the application.
+ * <p>
+ * This class manages both the login and registration workflows. It handles 
+ * users that exists in the system, input validation, account creation, and switching
+ * between the login and registration layouts.
+ */
 public class LoginPageController implements Initializable {
 
     private Stage primaryStage;
@@ -73,8 +80,19 @@ public class LoginPageController implements Initializable {
     @FXML
     Text noAccountText;
 
-    // There comes spotbugs from these, but Stage and Scene should not be copied,
-    // therefore the spotsbugs remain for now
+    /**
+     * Sets up the stage and scene references for the controller.
+     * <p>
+     * This method is called once when initializing the UI. It also attaches an
+     * event handler to the "Create Account" hyperlink, allowing the user to
+     * toggle between login and registration layouts.
+     * 
+     * @param app           reference to the main application
+     * @param primaryStage  the main stage used by the application
+     * @param bookingScene  the booking page
+     * @param mainScene     the main page
+     * @param loginScene    the login page
+     */
     public void setStage(
             App app,
             Stage primaryStage,
@@ -93,10 +111,25 @@ public class LoginPageController implements Initializable {
         });
     }
 
+    /**
+     * Connects the main page controller to this controller
+     * 
+     * @param controller the main page controller instance
+     */
     public void setMainPageController(MainPageController controller) {
         this.mainPageController = controller;
     }
 
+    /**
+     * Handles user login or account creation depending on the current layout.
+     * <p>
+     * - In login mode, it validates input against existing users and
+     *   navigates to the main page if the user already exists.
+     * <p>
+     * - In registration mode, it validates all input fields, ensures username
+     *   is unique, checks password, email and phone number format, and creates
+     *   a new user if all checks pass.
+     */
     @FXML
     void loginAccount() {
         // TEST INJECTION: run for both login and registration
@@ -222,8 +255,13 @@ public class LoginPageController implements Initializable {
         }
     }
 
-
-    void switchLayoutToRegisterAccount() {
+    /**
+     * Switches the layout from login to account registration mode.
+     * <p>
+     * This method updates button labels, and shows the extra input fields
+     * (email, confirm password, and phone number), and resets the form.
+     */
+    private void switchLayoutToRegisterAccount() {
         loginButton.setText("Register Account");
         noAccountText.setText("ALREADY HAVE AN ACCOUNT?");
         createAccountLink.setText("LOGIN");
@@ -237,6 +275,11 @@ public class LoginPageController implements Initializable {
         phoneNumberHBox.setManaged(true);
     }
 
+    /**
+     * Switches the layout from account registration back to login mode.
+     * <p>
+     * This method hides the additional input fields and resets the form.
+     */
     private void switchBackToLoginLayout() {
         loginButton.setText("Log in");
         noAccountText.setText("NO ACCOUNT?");
@@ -251,6 +294,9 @@ public class LoginPageController implements Initializable {
         phoneNumberHBox.setManaged(false);
     }
 
+    /**
+     * Clears all text fields in the form.
+     */
     private void resetInfo() {
         usernameField.setText("");
         passwordField.setText("");
@@ -259,6 +305,12 @@ public class LoginPageController implements Initializable {
         phoneNumberField.setText("");
     }
 
+    /**
+     * Initializes the controller when the FXML file is loaded.
+     * <p>
+     * By default, it hides the registration-specific input fields so that
+     * the layout starts in login mode.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         emailHBox.setVisible(false);
