@@ -127,7 +127,6 @@ public class MainPageControllerTest {
         assertEquals("Jane", table.getItems().get(0).getFirstName());
     }
 
-
     @Test
     void testAdminSeesAllBookings(FxRobot robot) {
         User adminUser = new User();

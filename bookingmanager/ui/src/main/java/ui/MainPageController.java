@@ -207,7 +207,7 @@ public class MainPageController {
 
     /**
      * Returns the collection of all restaurants.
-     * 
+
      * @return the {@link Collection} of {@link Restaurant} objects
      */
     public Collection<Restaurant> getRestaurants() {
