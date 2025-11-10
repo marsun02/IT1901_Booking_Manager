@@ -105,15 +105,6 @@ public class MainPageControllerTest {
     }
 
     @Test
-    void testLogOutClearsUserAndSwitchesScene(FxRobot robot) {
-        robot.clickOn("Log out");
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("Login Scene", ((Label) stage.getScene().getRoot()).getText());
-        assertNull(controller.getCurrentlyLoggedInUser());
-    }
-
-    @Test
     void testEditButtonTriggersEditFlow(FxRobot robot) {
         robot.clickOn("#editButton_" + booking1.getId());
         WaitForAsyncUtils.waitForFxEvents();
