@@ -1,21 +1,23 @@
-# Contributions of every team member in group 2515
+## Contributions of every team member in group 2515
 
 This file will outline the contributions of each group member throughout the semester and the duration of the project. Each member will have a dedicated paragraph describing the specific areas they have worked on. The purpose of this file is to highlight each member's work ethic, and provide an overview of their contributions to the project. Although not everyone has been involved in every aspects of the project, we have worked as a team, holding weekly meetings to share updates on the most important topics that has been worked on. The following sections will summarize what all group members have worked on during this project.
 
-## Contribution of krkristi
+### Contribution of krkristi
 In this project, krkristi worked on the basic classes at the start, helping to set up the general structure of the project. He also wrote several tests, covering most of the classes and making sure different parts of the code were properly checked. Together with other team members, he added JaCoCo to get a better overview of the test coverage. Like the others, he also reviewed issues completed by other team members, and offered guidance when something was unclear. He also worked on some documentation, organizing the release structure, though this part was not pushed to the original code.
 
-## Contribution of leonarli
+### Contribution of leonarli
 In this project, leonarli has worked on several tasks, including writing tests, creating the Restaurant.java class, and drafting both the userstories. He also worked with krkristi to set up JaCoCo for test coverage. Later in the project, he focused mainly on documentation, writing files such as sustainability-reflection.md and challenges.md. Towards the end, he returned to working on tests, including working on the springboot test. leonarli has contributed consistently throughout the project and completed a wide range of issues and also been helping with reviewing the work of other team members. 
 
-## Contribution of mariuscf
+### Contribution of mariuscf
 In this project, mariuscf has worked on both frontend and backend parts of the application. Some of the individual contributions include setting up Checkstyle and SpotBugs, and creating the necessary configurations for those tools. He has also coded much of the controller logic that makes the application functional. In addition, mariuscf has worked on the overall code structure, including files such as FileManagement.java, REST API controllers, CustomDateObject.java, ControllerHelpFunctions.java and RestaurantInitialization.java, and more. He also helped working in SceneBuilder, designing the general layout for several of the visual pages used in the application. Throughout the project, he has been very helpful to other team members, assisting with issues, reviewing code, and providing support wherever it was needed.
 
-## Contribution of martiasu 
+### Contribution of martiasu 
 In this project, martiasu has contributed to many different parts of the project. Early in the project, he helped develop some of the main classes we planned to use, although these were later restructured to reduce dependencies between them. After that, he focused mainly on documentation, writing several of the files, and organizing and linking the various markdown files. martiasu also designed the overall layout for the FXML files in SceneBuilder, creating the visual structure of the application. Towards the end of the project, he implemented new features such as the TableView for viewing user bookings and the "create account" fields on the login page. Throughout the process, he has regularly reviewed code from other team members and provided helpful feedback. When coming close to submitting the project, martiasu reviewed and improved the organization of the documentation.
 
-## Contribution of martiwar
+### Contribution of martiwar
 In this project, martiwar started by creating several tests for Release 1. Later, he designed the SceneBuilder pages for the main page and booking page. After completing those, he focused mainly on documentation, contributing to writing files such as ai-tools.md, code-quality.md, teamwork.md, and workflow.md. He also worked on various project diagrams and continued improving the documentation. Towards the end of the project, he returned to making tests again, including work on CustomDateObjectTest.java. Overall, martiwar has been consistent in his work, contributing to a wide range of tasks and maintaining good collaboration with the rest of the team.
 
-## Contribution of tobiaheg
+### Contribution of tobiaheg
 In this project, tobiaheg created several guides to help the team with workflow processes, including how to write conventional commit messages and how to create branches and pull requests. He also initialized the project and set up the main classes used to build the application. Together with mariuscf, he divided the project into different modules and established the overall structure for them. Towards the second release, tobiaheg worked on tests and implemented the ControllerHelpFunctionTest. Later, he worked on developing the REST API, implementing several API calls for the methods that were previously part of the FileManagement class. Once the API was fully set up, he also helped transition away from the old file management system. In addition, he configured the .gitignore file for the project.
+
+**[Back to root README](../../README.md)**
