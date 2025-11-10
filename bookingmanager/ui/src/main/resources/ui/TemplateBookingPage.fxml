@@ -17,7 +17,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="142.0" prefWidth="1007.0">
          <children>
-            <Label fx:id="restaurantLabel" alignment="CENTER" prefHeight="55.0" prefWidth="348.0" text="Velkommen til x Restaurant" textAlignment="CENTER">
+            <Label fx:id="restaurantLabel" alignment="CENTER" prefHeight="55.0" prefWidth="348.0" text="Welcome to x Restaurant" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
@@ -26,7 +26,7 @@
       </HBox>
       <VBox alignment="CENTER" layoutX="-1.0" layoutY="89.0" prefHeight="391.0" prefWidth="1007.0">
          <children>
-            <Label alignment="TOP_CENTER" contentDisplay="TOP" text="Reserver et bord">
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" text="Make a reservation">
                <font>
                   <Font size="24.0" />
                </font>
@@ -39,7 +39,7 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="62.0" prefWidth="748.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kontaktinformasjon">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contact information">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -48,8 +48,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="54.0" prefWidth="414.0" spacing="20.0" style="-fx-background-color: beige;">
                <children>
-                  <TextField fx:id="name" prefHeight="26.0" prefWidth="175.0" promptText="Fornavn" />
-                  <TextField fx:id="surname" prefHeight="26.0" prefWidth="175.0" promptText="Etternavn" />
+                  <TextField fx:id="name" prefHeight="26.0" prefWidth="175.0" promptText="First Name" />
+                  <TextField fx:id="surname" prefHeight="26.0" prefWidth="175.0" promptText="Last Name" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="61.0" prefWidth="414.0" spacing="20.0">
@@ -65,7 +65,7 @@
                   <Insets left="10.0" right="10.0" />
                </padding>
             </HBox>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#bookTable" prefHeight="26.0" prefWidth="192.0" text="Bekreft Booking" textAlignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#bookTable" prefHeight="26.0" prefWidth="192.0" text="Confirm Booking" textAlignment="CENTER">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -74,8 +74,8 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="-2.0" layoutY="469.0" prefHeight="100.0" prefWidth="1007.0" spacing="100.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#resetBookingInfo" text="Tilbakestill" />
-            <Button fx:id="closeButton" alignment="CENTER" mnemonicParsing="false" onAction="#returnToMainPage" text="Lukk" />
+            <Button mnemonicParsing="false" onAction="#resetBookingInfo" text="Reset" />
+            <Button fx:id="closeButton" alignment="CENTER" mnemonicParsing="false" onAction="#returnToMainPage" text="Close" />
          </children>
       </HBox>
    </children>

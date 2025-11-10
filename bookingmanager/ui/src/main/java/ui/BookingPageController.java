@@ -232,7 +232,7 @@ public class BookingPageController {
      */
     public void setCurrentRestaurantDisplayed(Restaurant restaurant) {
         this.restaurant = new Restaurant(restaurant);
-        restaurantLabel.setText("Velkommen til " + restaurant.getName());
+        restaurantLabel.setText("Welcome to " + restaurant.getName());
         clearAndPopulateTimeslots();
 
         // makes Date field un-editable so you must pick a correctly formatted date
